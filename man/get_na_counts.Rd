@@ -2,15 +2,21 @@
 % Please edit documentation in R/get_na_counts.R
 \name{get_na_counts}
 \alias{get_na_counts}
-\title{Add columnwise counts of missing values}
+\title{Add columnwise/groupwise counts of missing values}
 \usage{
-get_na_counts(x)
+get_na_counts(x, grouped = FALSE, grouping_cols = NULL)
 }
 \arguments{
 \item{x}{A valid R `object` for which `na_counts` are needed.}
+
+\item{grouped}{Logical. Do you need to add grouped counts? Defaults to `FALSE`}
+
+\item{grouping_cols}{If `grouped` is set to `TRUE`, one can provide the columns by which to group the
+data.}
 }
 \value{
-An object of the same type as `x` showing the respective number of missing values.
+An object of the same type as `x` showing the respective number of missing values. If
+grouped is set to `TRUE`, the results are returned by group.
 }
 \description{
 This function takes a `data.frame` object as an input and returns the corresponding
@@ -18,4 +24,9 @@ This function takes a `data.frame` object as an input and returns the correspond
 }
 \examples{
 get_na_counts(airquality)
+# Grouped counts
+test <- data.frame(Subject = c("A","A","B","B"), res = c(NA,1,2,3),
+ID = c("1","1","2","2"))
+get_na_counts(test,grouped = FALSE, grouping_cols =
+                        c("ID", "Subject"))
 }

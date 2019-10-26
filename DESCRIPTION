@@ -10,7 +10,9 @@ Description: Correct identification and handling of missing data is one of the m
              lies and therefore find the most appropriate action to take.
 License: GPL-3
 Imports:
-         purrr(>= 0.3.3)
+         purrr(>= 0.3.3),
+         dplyr(>= 0.8.3),
+         magrittr(>= 1.5)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
