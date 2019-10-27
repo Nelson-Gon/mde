@@ -48,6 +48,10 @@ percent_missing.data.frame <- function(x, percent = TRUE,
         dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
         dplyr::summarise_all(list(function(x) sum(is.na(x))/length(x)))
     }
-    purrr::map_dbl(x, ~sum(is.na(.x))/ length(.x))
+    else{
+
+      purrr::map_dbl(x, ~sum(is.na(.x))/ length(.x))
+    }
+
   }
 }
