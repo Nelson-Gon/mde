@@ -2,6 +2,7 @@
 
 S3method(get_na_counts,data.frame)
 S3method(percent_missing,data.frame)
+S3method(recode_as_na,data.frame)
 export(get_na_counts)
 export(percent_missing)
 export(recode_as_na)

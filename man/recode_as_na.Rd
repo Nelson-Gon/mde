@@ -11,9 +11,9 @@ recode_as_na(x, value = NULL, subset_df = FALSE, subset_cols = NULL)
 
 \item{value}{The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.}
 
-\item{subset_cols}{Vector. If subset_df is TRUE, then this provides the columns for which changes are required.}
+\item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
 
-\item{subset}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
+\item{subset_cols}{Vector. If subset_df is TRUE, then this provides the columns for which changes are required.}
 }
 \value{
 An object of the same class as x with values changed to `NA`.

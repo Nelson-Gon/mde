@@ -3,18 +3,18 @@
 #' "NA" to "NA". In otherwords, it converts a value to R's recognized NA.
 #' @inheritParams get_na_counts
 #' @param value The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.
-#' @param subset Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".
+#' @param subset_df Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".
 #' @param subset_cols Vector. If subset_df is TRUE, then this provides the columns for which changes are required.
 #' @return An object of the same class as x with values changed to `NA`.
 #' @export
 
-recode_as_na <- function(x, value=NULL, subset = FALSE,
+recode_as_na <- function(x, value=NULL, subset_df = FALSE,
                          subset_cols = NULL){
   UseMethod("recode_as_na")
 }
 
 #' @export
-recode_as_na <- function(x, value=NULL, subset_df = FALSE,
+recode_as_na.data.frame <- function(x, value=NULL, subset_df = FALSE,
                          subset_cols = NULL){
   if(subset_df){
     # Change values only at specific columns, not all
