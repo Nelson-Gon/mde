@@ -4,13 +4,19 @@
 \alias{percent_missing}
 \title{Columnwise missingness percentages}
 \usage{
-percent_missing(x, percent = TRUE)
+percent_missing(x, percent = TRUE, grouped = FALSE,
+  grouping_cols = NULL)
 }
 \arguments{
 \item{x}{A valid R `object` for which the percentage of missing values is required.}
 
 \item{percent}{Logical. Should values be displayed as percentages? Defaults to `TRUE`, otherwise
 results are shown in decimals.}
+
+\item{grouped}{Logical. Do you need to add grouped counts? Defaults to `FALSE`}
+
+\item{grouping_cols}{If `grouped` is set to `TRUE`, one can provide the columns by which to group the
+data.}
 }
 \value{
 An object of the same class as x showing the percentage of missing values.
