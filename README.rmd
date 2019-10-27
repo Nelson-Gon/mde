@@ -29,3 +29,45 @@ This provides a convenient way to show the number of missing values columnwise. 
 get_na_counts(airquality)
 ```
 
+The above might be less useful if one would like to get the results by group. In that case, one can set `grouped` to `TRUE` and provide a vector of names in `grouping_cols` that will be used for grouping. 
+
+```{r}
+
+test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A", 
+"B"), class = "factor"), res = c(NA, 1, 2, 3), ID = structure(c(1L, 
+1L, 2L, 2L), .Label = c("1", "2"), class = "factor")), class = "data.frame", row.names = c(NA, 
+-4L))
+
+get_na_counts(test, grouped = TRUE, grouping_cols = "ID")
+
+```
+
+
+
+2. `percent_missing`
+
+This is a very simple to use but quick way to take a look at the percentage of data that is missing columnwise.
+
+```{r}
+
+percent_missing(airquality)
+
+```
+
+I don't want percentages, give me decimals
+
+
+```{r}
+
+percent_missing(airquality, percent = FALSE)
+
+```
+
+Again, we can get the results by group by setting `grouped` to `TRUE`
+
+```{r}
+percent_missing(test, grouped = TRUE, grouping_cols = "Subject")
+
+```
+
+
