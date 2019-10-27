@@ -82,3 +82,43 @@ percent_missing(test, grouped = TRUE, grouping_cols = "Subject")
 #2 B           0     0
 
 ```
+
+3. `recode_as_na`
+
+As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
+
+To use the function out of the box(with default arguments), one simply does something like:
+
+```
+
+dummy_test <- data.frame(ID = c("A","B","B","A"), 
+                         values = c("n/a",NA,"Yes","No"))
+# Convert n/a to NA
+recode_as_na(dummy_test, value = "n/a")
+#  ID values
+#1  1     NA
+#2  2     NA
+#3  2      3
+#4  1      2
+
+```
+
+Great, but I want to do so for specific columns not the entire dataset. You can do this by setting `subset_df` to `TRUE` and providing column names to `subset_cols`. 
+
+```
+
+another_dummy <- data.frame(ID = 1:5, Subject = 7:11, 
+Change = c("missing","n/a",2:4 ))
+# Only change values at the column Change
+recode_as_na(another_dummy, subset_df = TRUE,
+             subset_cols = "Change", value = c("n/a",
+                                               "missing"))
+                                               
+#  ID Subject Change
+#1  1       7     NA
+#2  2       8     NA
+#3  3       9      1
+#4  4      10      2
+#5  5      11      3
+
+```
