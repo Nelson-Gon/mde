@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ^REA.*rmd
 LICE*
+^\.travis.*
