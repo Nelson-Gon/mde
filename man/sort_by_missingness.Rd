@@ -22,6 +22,13 @@ A `data.frame` object sorted by number/percentage of missing values
 Provides a useful way to sort the variables(columns) according
 to their missingness.
 }
+\examples{
+sort_by_missingness(airquality, sort_by = "counts")
+# sort by percents
+sort_by_missingness(airquality, sort_by="percents")
+# descending order
+sort_by_missingness(airquality, descend = TRUE)
+}
 \seealso{
 \code{\link{get_na_counts}} \code{\link{percent_missing}}
 }

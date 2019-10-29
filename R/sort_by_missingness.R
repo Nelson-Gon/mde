@@ -7,6 +7,12 @@
 #' @param descending Logical. Should missing values be sorted in decreasing order ie largest to smallest? Defaults to FALSE.
 #' @param ... Other arguments to specific functions. See "See also below"
 #' @return A `data.frame` object sorted by number/percentage of missing values
+#' @examples 
+#' sort_by_missingness(airquality, sort_by = "counts")
+#' # sort by percents
+#' sort_by_missingness(airquality, sort_by="percents")
+#' # descending order
+#' sort_by_missingness(airquality, descend = TRUE)
 #' @seealso \code{\link{get_na_counts}} \code{\link{percent_missing}}
 #' @export
 # Might as well just give classes to the package's "objects"
@@ -31,6 +37,7 @@ sort_by_missingness.data.frame <- function(x, sort_by = "counts",
       # Make result more "sensible" res -h
       res_stacked <- stack(res)[,c(2,1)]
       names(res_stacked) <- c("variable", "count")
+      res_stacked
     }
   
     else{
@@ -38,6 +45,7 @@ sort_by_missingness.data.frame <- function(x, sort_by = "counts",
       # Make result more "sensible" res -h
       res_stacked <- stack(res)[,c(2,1)]
       names(res_stacked) <- c("variable","count")
+      res_stacked
       
     }
   }
