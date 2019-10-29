@@ -124,3 +124,47 @@ recode_as_na(another_dummy, subset_df = TRUE,
 #5  5      11      3
 
 ```
+
+4. `sort_by_missingness`
+
+This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
+
+Usage:
+
+```
+
+sort_by_missingness(airquality, sort_by = "counts")
+
+#  variable count
+#1     Wind     0
+#2     Temp     0
+#3    Month     0
+#4      Day     0
+#5  Solar.R     7
+#6    Ozone    37
+
+# sort in descending order
+
+sort_by_missingness(airquality, sort_by = "counts",
+descend = TRUE)
+
+# variable count
+#1    Ozone    37
+#2  Solar.R     7
+#3     Wind     0
+#4     Temp     0
+#5    Month     0
+#6      Day     0
+
+# Use percents
+sort_by_missingness(airquality, sort_by = "percents")
+#  variable   percent
+#1     Wind  0.000000
+#2     Temp  0.000000
+#3    Month  0.000000
+#4      Day  0.000000
+#5  Solar.R  4.575163
+#6    Ozone 24.183007
+
+```
+

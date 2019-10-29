@@ -99,4 +99,34 @@ recode_as_na(another_dummy, subset_df = TRUE,
 
 ```
 
+4. `sort_by_missingness`
+
+This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
+
+Usage:
+
+```{r}
+
+sort_by_missingness(airquality, sort_by = "counts")
+
+```
+
+```{r}
+
+# sort in descending order
+
+sort_by_missingness(airquality, sort_by = "counts",
+descend = TRUE)
+
+
+```
+
+```{r}
+
+# Use percents
+sort_by_missingness(airquality, sort_by = "percents")
+
+
+```
+
 
