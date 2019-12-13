@@ -7,9 +7,9 @@ The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  
 While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explorer missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
 
 
-## Installation
+# Installation
 
-We can install `missplore` as follows:
+We can install `mde` as follows:
 
 ```
 # install.packages("devtools")
@@ -17,7 +17,14 @@ devtools::install_github("Nelson-Gon/mde")
 
 ```
 
-## Currently available functions.
+# Loading the package
+
+```
+library(mde)
+
+```
+
+# Currently available functions.
 
 1. `get_na_counts`
 
