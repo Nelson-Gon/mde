@@ -176,3 +176,46 @@ sort_by_missingness(airquality, sort_by = "percents")
 
 ```
 
+5. `recode_na_as`
+
+Sometimes, for whatever reason one would like to replace `NA`s with whatever value they would like. `recode_na_as` provides a very simple way to do just that. 
+
+```
+# defaults
+head(recode_na_as(airquality))
+# Ozone Solar.R Wind Temp Month Day
+#1    41     190  7.4   67     5   1
+#2    36     118  8.0   72     5   2
+#3    12     149 12.6   74     5   3
+#4    18     313 11.5   62     5   4
+#5     0       0 14.3   56     5   5
+#6    28       0 14.9   66     5   6
+
+# use a different value
+
+head(recode_na_as(airquality, value=NaN))
+#  Ozone Solar.R Wind Temp Month Day
+#1    41     190  7.4   67     5   1
+#2    36     118  8.0   72     5   2
+#3    12     149 12.6   74     5   3
+#4    18     313 11.5   62     5   4
+#5   NaN     NaN 14.3   56     5   5
+#6    28     NaN 14.9   66     5   6
+
+```
+
+As a "bonus", you can manipulate the data only at specific columns as shown here:
+
+```
+head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
+
+#  Ozone Solar.R Wind Temp Month Day
+#1    41     190  7.4   67     5   1
+#2    36     118  8.0   72     5   2
+#3    12     149 12.6   74     5   3
+#4    18     313 11.5   62     5   4
+#5     0      NA 14.3   56     5   5
+#6    28      NA 14.9   66     5   6
+
+```
+

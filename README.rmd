@@ -129,4 +129,32 @@ sort_by_missingness(airquality, sort_by = "percents")
 
 ```
 
+5. `recode_na_as`
+
+Sometimes, for whatever reason one would like to replace `NA`s with whatever value they would like. `recode_na_as` provides a very simple way to do just that. 
+
+```{r}
+# defaults
+head(recode_na_as(airquality))
+
+```
+
+To use a different value,
+
+
+```{r}
+head(recode_na_as(airquality, value=NaN))
+
+```
+
+
+As a "bonus", you can manipulate the data only at specific columns as shown here:
+
+```{r}
+
+head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
+
+```
+
+
 
