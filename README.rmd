@@ -3,19 +3,19 @@ author: Nelson-Gon
 
 ---
 
-# missplore: Missing Data Explorer
+# mde: Missing Data Explorer
 
-As the name suggests, `missplore` is intended to make missing data exploration as smooth and as easy as possible. While several packages exist to handle the same, differences in syntax and preferences will often lead to different people using different packages.
+The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
-`missplore` therefore hopes to fill this gap by offering a very simple yet robust way to explore missingness. 
+While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explorer missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
 
 # Installation
 
-We can install `missplore` as follows:
+We can install `mde` as follows:
 
 ```{r}
 # install.packages("devtools")
-devtools::install_github("Nelson-Gon/missplore")
+devtools::install_github("Nelson-Gon/mde")
 
 ```
 
