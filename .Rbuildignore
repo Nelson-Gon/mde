@@ -5,3 +5,4 @@ LICE*
 ^\.travis.*
 ^doc$
 ^Meta$
+^.*yml$
