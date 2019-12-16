@@ -3,3 +3,5 @@
 ^REA.*rmd
 LICE*
 ^\.travis.*
+^doc$
+^Meta$

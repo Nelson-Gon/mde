@@ -1,0 +1,205 @@
+---
+title: "mde-Missing-Data-Explorer"
+author: "Nelson Gonzabato"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mde-Missing-Data-Explorer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
+
+While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explorer missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
+
+## Installation
+
+We can install `mde` as follows:
+
+```{r}
+# install.packages("devtools")
+# This should work when building vignettes but doesn't for some reason
+# I currently have no idea why
+#devtools::install_github("Nelson-Gon/mde@develop")
+
+```
+
+We can load the package as follows:
+
+```{r}
+library(mde)
+```
+
+### Currently available functions.
+
+1. `get_na_counts`
+
+This provides a convenient way to show the number of missing values columnwise. It is relatively fast(tests done on about 400,000 rows, took a few microseconds.)
+
+```{r}
+get_na_counts(airquality)
+```
+
+The above might be less useful if one would like to get the results by group. In that case, one can set `grouped` to `TRUE` and provide a vector of names in `grouping_cols` that will be used for grouping. 
+
+```{r}
+
+test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A", 
+"B"), class = "factor"), res = c(NA, 1, 2, 3), ID = structure(c(1L, 
+1L, 2L, 2L), .Label = c("1", "2"), class = "factor")), class = "data.frame", row.names = c(NA, 
+-4L))
+
+get_na_counts(test, grouped = TRUE, grouping_cols = "ID")
+
+```
+
+
+
+2. `percent_missing`
+
+This is a very simple to use but quick way to take a look at the percentage of data that is missing columnwise.
+
+```{r}
+
+percent_missing(airquality)
+
+```
+
+I don't want percentages, give me decimals
+
+
+```{r}
+
+percent_missing(airquality, percent = FALSE)
+
+```
+
+Again, we can get the results by group by setting `grouped` to `TRUE`
+
+```{r}
+percent_missing(test, grouped = TRUE, grouping_cols = "Subject")
+
+```
+
+3. `recode_as_na`
+
+As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
+
+To use the function out of the box(with default arguments), one simply does something like:
+
+```{r}
+
+dummy_test <- data.frame(ID = c("A","B","B","A"), 
+                         values = c("n/a",NA,"Yes","No"))
+# Convert n/a to NA
+recode_as_na(dummy_test, value = "n/a")
+
+```
+
+Great, but I want to do so for specific columns not the entire dataset. You can do this by setting `subset_df` to `TRUE` and providing column names to `subset_cols`. 
+
+```{r}
+
+another_dummy <- data.frame(ID = 1:5, Subject = 7:11, 
+Change = c("missing","n/a",2:4 ))
+# Only change values at the column Change
+recode_as_na(another_dummy, subset_df = TRUE,
+             subset_cols = "Change", value = c("n/a",
+                                               "missing"))
+                                               
+
+```
+
+4. `sort_by_missingness`
+
+This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
+
+Usage:
+
+```{r}
+
+sort_by_missingness(airquality, sort_by = "counts")
+
+```
+
+```{r}
+
+# sort in descending order
+
+sort_by_missingness(airquality, sort_by = "counts",
+descend = TRUE)
+
+
+```
+
+```{r}
+
+# Use percents
+sort_by_missingness(airquality, sort_by = "percents")
+
+
+```
+
+5. `recode_na_as`
+
+Sometimes, for whatever reason one would like to replace `NA`s with whatever value they would like. `recode_na_as` provides a very simple way to do just that. 
+
+```{r}
+# defaults
+head(recode_na_as(airquality))
+
+```
+
+To use a different value,
+
+
+```{r}
+head(recode_na_as(airquality, value=NaN))
+
+```
+
+
+As a "bonus", you can manipulate the data only at specific columns as shown here:
+
+```{r}
+
+head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
+
+```
+
+6. `drop_na_if`
+
+Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
+
+We can drop any columns that have greater than or equal 24% of the values missing from `airquality`:
+
+```{r}
+drop_na_if(airquality, percent_na = 24)
+
+```
+
+If for whatever reason one would like to use decimals instead of percentages, then:
+
+```{r}
+
+drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
+
+```
+
+
+For more information, please see the documentation for `drop_na_if` especially for grouping support.
+
+To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
+
+Thank you, feedback is always welcome :)
+
