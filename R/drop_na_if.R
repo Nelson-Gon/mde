@@ -23,5 +23,5 @@ drop_na_if.data.frame <- function(x, percent_na= 50,...){
   # First use >= percent_na
   # Can change this later
 Filter(function(col_percentage) ! col_percentage >=percent_na,
-         mde::percent_missing(x))
+         mde::percent_missing(x,...))
 }

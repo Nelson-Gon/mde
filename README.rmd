@@ -156,5 +156,26 @@ head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
 
 ```
 
+6. `drop_na_if`
+
+Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
+
+We can drop any columns that have greater than or equal 24% of the values missing from `airquality`:
+
+```{r}
+drop_na_if(airquality, percent_na = 24)
+
+```
+
+If for whatever reason one would like to use decimals instead of percentages, then:
+
+```{r}
+
+drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
+
+```
+
+
+For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
 

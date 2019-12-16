@@ -4,10 +4,11 @@
 
 The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
-While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explorer missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
+While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explore missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
 
+---
 
-# Installation
+**Installation**
 
 We can install `mde` as follows:
 
@@ -17,14 +18,18 @@ devtools::install_github("Nelson-Gon/mde")
 
 ```
 
-# Loading the package
+---
+
+**Loading the package**
 
 ```
 library(mde)
 
 ```
 
-# Currently available functions.
+---
+
+**Currently available functions.**
 
 1. `get_na_counts`
 
@@ -219,3 +224,24 @@ head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
 
 ```
 
+6. `drop_na_if`
+
+Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
+
+We can drop any columns that have greater than or equal 24% of the values missing from `airquality`:
+
+```
+drop_na_if(airquality, percent_na = 24)
+#Solar.R     Wind     Temp    Month      Day 
+#4.575163 0.000000 0.000000 0.000000 0.000000 
+
+# Use decimals, not percentages
+
+drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
+
+#  Solar.R       Wind       Temp      Month        Day 
+# 0.04575163 0.00000000 0.00000000 0.00000000 0.00000000 
+
+```
+
+For more information, please see the documentation for `drop_na_if` especially for grouping support.
