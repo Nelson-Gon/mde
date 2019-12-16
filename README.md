@@ -15,6 +15,13 @@ We can install `mde` as follows:
 ```
 # install.packages("devtools")
 devtools::install_github("Nelson-Gon/mde")
+# if dev
+devtools::install_github("Nelson-Gon/mde@develop")
+# build vignettes
+devtools::install_github("Nelson-Gon/mde@develop", 
+build_vignettes=TRUE)
+# browse vignettes
+browseVignettes("mde")
 
 ```
 
