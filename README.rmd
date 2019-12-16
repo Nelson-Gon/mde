@@ -178,4 +178,6 @@ drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
 
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
+To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
 
+Thank you, feedback is always welcome :)
