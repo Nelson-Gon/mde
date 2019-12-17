@@ -260,6 +260,25 @@ drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
 
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
+
+7. `drop_na_at`
+
+This provides a simple way to drop missing values only at specific columns. It currently only returns those columns with their missing values removed. See usage below. Further details are given in the documentation. It is currently case sensitive. 
+
+```
+drop_na_at(airquality,pattern_type = "starts_with","O")
+
+#     Ozone
+#1      41
+#2      36
+#3      12
+#4      18
+#5      28
+#6      23
+#7      19
+
+```
+
 ---
 
 To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
