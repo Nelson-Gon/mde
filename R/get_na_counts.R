@@ -27,9 +27,14 @@ get_na_counts <- function(x, grouped = FALSE,
 get_na_counts.data.frame <- function(x, grouped = FALSE,
                                      grouping_cols = NULL){
   if(grouped){
+    if(is.null(grouping_cols)){
+      stop("Grouping chosen but no grouping columns provided.")
+    }
+    else{
     x %>%
     dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
       dplyr::summarise_all(list(function(column) sum(is.na(column))))
+    }
   }
   else{
     lengths(sapply(x,function(column) which(is.na(column))))
