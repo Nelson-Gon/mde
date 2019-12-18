@@ -24,6 +24,10 @@ drop_na_at.data.frame <- function(x, pattern_type="contains",
   # Of course you can do this with dplyr/rlang
   # Just trying to stick with base as much as possible
   # First check if all NA sums are equal
+  # Confirm user hasn't forgotten to provide a pattern
+  if(is.null(pattern)){
+    stop("No pattern was provided. Please provide one.")
+  }
 
   column_ends_with <- function(df=x) {
     # Get columns that match this pattern
