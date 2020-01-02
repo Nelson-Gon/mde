@@ -4,7 +4,8 @@
 \alias{recode_as_na}
 \title{Recode a value as NA}
 \usage{
-recode_as_na(x, value = NULL, subset_df = FALSE, subset_cols = NULL)
+recode_as_na(x, value = NULL, subset_df = FALSE, tidy = FALSE,
+  subset_cols = NULL, pattern_type = NULL, pattern = NULL, ...)
 }
 \arguments{
 \item{x}{A valid R `object` for which `na_counts` are needed.}
@@ -13,7 +14,16 @@ recode_as_na(x, value = NULL, subset_df = FALSE, subset_cols = NULL)
 
 \item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
 
-\item{subset_cols}{Vector. If subset_df is TRUE, then this provides the columns for which changes are required.}
+\item{tidy}{If set to TRUE,
+then one can provide additional arguments to match specific patterns using pattern and pattern_type}
+
+\item{subset_cols}{Character. If subset_df is TRUE, then this provides the columns for which changes are required.}
+
+\item{pattern_type}{One of contains, starts_with or ends_with. Used only if subset_cols is set to tidy.}
+
+\item{pattern}{A character pattern to match}
+
+\item{...}{Other arguments to other functions}
 }
 \value{
 An object of the same class as x with values changed to `NA`.
@@ -34,4 +44,7 @@ Change = c("missing", "n/a", 2:4 ))
 recode_as_na(another_dummy, subset_df = TRUE,
 subset_cols = "Change", value = c("n/a",
                               "missing"))
+ recode_as_na(airquality, subset_df = TRUE,
+tidy=TRUE, pattern_type="starts_with",
+pattern="Solar")                             
 }

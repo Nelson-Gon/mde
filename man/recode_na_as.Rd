@@ -13,7 +13,7 @@ recode_na_as(x, value = 0, subset_df = FALSE, subset_cols = NULL)
 
 \item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
 
-\item{subset_cols}{Vector. If subset_df is TRUE, then this provides the columns for which changes are required.}
+\item{subset_cols}{Character. If subset_df is TRUE, then this provides the columns for which changes are required.}
 }
 \value{
 An object of the same type as x with NAs replaced with the desired value.

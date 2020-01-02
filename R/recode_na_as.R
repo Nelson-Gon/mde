@@ -26,6 +26,7 @@ recode_na_as.data.frame <- function(x, value=0,
     if(!all(subset_cols %in% names(x))){
       stop("Some names not found in the dataset. Please check and try again.")
     }
+    
     else{
     which_to_subset <- which(names(x) %in% subset_cols)
     # which is.na
@@ -34,6 +35,7 @@ recode_na_as.data.frame <- function(x, value=0,
   x
     }
   }
+ 
   else{
     as.data.frame(sapply(x, function(column)
       replace(column,is.na(column),value)))

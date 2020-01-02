@@ -4,7 +4,8 @@
 \alias{percent_missing}
 \title{Columnwise missingness percentages}
 \usage{
-percent_missing(x, percent = TRUE, grouped = FALSE, grouping_cols = NULL)
+percent_missing(x, percent = TRUE, grouped = FALSE,
+  grouping_cols = NULL)
 }
 \arguments{
 \item{x}{A valid R `object` for which the percentage of missing values is required.}
