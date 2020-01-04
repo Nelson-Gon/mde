@@ -7,10 +7,18 @@
 #' recode_na_as(airquality, "n/a")
 #' recode_na_as(airquality, subset_df = TRUE,
 #' subset_cols = "Ozone", value = "N/A")
+#' recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
+#' value=0, pattern_type="starts_with",
+#' pattern="solar",ignore.case=TRUE)
 #' @export
 
-recode_na_as <- function(x,value=0,subset_df = FALSE,
-                         subset_cols=NULL) {
+recode_na_as <-  function(x, value=0,
+                          subset_df = FALSE,
+                          tidy=FALSE,
+                          subset_cols = NULL,
+                          pattern_type= NULL,
+                          pattern=NULL,
+                          ...) {
   UseMethod("recode_na_as")
 
 }
@@ -19,15 +27,20 @@ recode_na_as <- function(x,value=0,subset_df = FALSE,
 
 recode_na_as.data.frame <- function(x, value=0,
                                     subset_df = FALSE,
-                                    subset_cols = NULL){
+                                    tidy=FALSE,
+                                     subset_cols = NULL,
+                                    pattern_type= NULL,
+                                    pattern=NULL,
+                                    ...){
   # Use a purely base solution, there are no trophies for that
   # but yeah
-  if(subset_df){
-    if(!all(subset_cols %in% names(x))){
-      stop("Some names not found in the dataset. Please check and try again.")
+  if(subset_df & ! tidy){
+
+if(!all(subset_cols %in% names(x))){
+   stop("Some names not found in the dataset. Please check and try again.")
     }
-    
-    else{
+
+else{
     which_to_subset <- which(names(x) %in% subset_cols)
     # which is.na
   x[,which_to_subset] <-  sapply(x[,which_to_subset], function(column)
@@ -35,8 +48,26 @@ recode_na_as.data.frame <- function(x, value=0,
   x
     }
   }
- 
+
+else if (subset_df & tidy){
+  switch(pattern_type,
+         starts_with = recode_na_as_starts_with(x,
+                                                pattern=pattern,
+                                                value=value,
+                                                ...),
+         ends_with = recode_na_as_ends_with(x,
+                                            pattern=pattern,
+                                            value=value,
+                                            ...),
+         contains = recode_na_as_contains(x,
+                                          pattern=pattern,
+                                          value=value,
+                                          ...))
+}
+
   else{
+    # Can use dplyr, this looks a bit ugly
+
     as.data.frame(sapply(x, function(column)
       replace(column,is.na(column),value)))
   }

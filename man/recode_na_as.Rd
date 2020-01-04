@@ -4,7 +4,16 @@
 \alias{recode_na_as}
 \title{Replace missing values with another value}
 \usage{
-recode_na_as(x, value = 0, subset_df = FALSE, subset_cols = NULL)
+recode_na_as(
+  x,
+  value = 0,
+  subset_df = FALSE,
+  tidy = FALSE,
+  subset_cols = NULL,
+  pattern_type = NULL,
+  pattern = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{A valid R `object` for which `na_counts` are needed.}
@@ -13,7 +22,16 @@ recode_na_as(x, value = 0, subset_df = FALSE, subset_cols = NULL)
 
 \item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
 
+\item{tidy}{If set to TRUE,
+then one can provide additional arguments to match specific patterns using pattern and pattern_type}
+
 \item{subset_cols}{Character. If subset_df is TRUE, then this provides the columns for which changes are required.}
+
+\item{pattern_type}{One of contains, starts_with or ends_with. Used only if subset_cols is set to tidy.}
+
+\item{pattern}{A character pattern to match}
+
+\item{...}{Other arguments to other functions}
 }
 \value{
 An object of the same type as x with NAs replaced with the desired value.
@@ -26,4 +44,7 @@ any other value a user wishes to use.
 recode_na_as(airquality, "n/a")
 recode_na_as(airquality, subset_df = TRUE,
 subset_cols = "Ozone", value = "N/A")
+recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
+value=0, pattern_type="starts_with",
+pattern="solar",ignore.case=TRUE)
 }
