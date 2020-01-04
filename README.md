@@ -230,6 +230,21 @@ head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
 #6    28      NA 14.9   66     5   6
 
 ```
+The above also supports `tidy` selection as follows:
+
+```
+head(mde::recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
+                  value=0, pattern_type="starts_with",
+                  pattern="solar",ignore.case=TRUE))
+#Ozone Solar.R Wind Temp Month Day
+#1    41     190  7.4   67     5   1
+#2    36     118  8.0   72     5   2
+#3    12     149 12.6   74     5   3
+#4    18     313 11.5   62     5   4
+#5    NA       0 14.3   56     5   5
+#6    28       0 14.9   66     5   6
+                  
+```
 
 6. `drop_na_if`
 

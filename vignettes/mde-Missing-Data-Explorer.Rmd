@@ -120,6 +120,15 @@ recode_as_na(another_dummy, subset_df = TRUE,
 
 ```
 
+To use `tidy` selection, one can do the following:
+
+```{r}
+mde::recode_as_na(airquality, subset_df = TRUE,
+tidy=TRUE, pattern_type="starts_with",
+pattern="Solar")
+
+```
+
 4. `sort_by_missingness`
 
 This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
@@ -174,6 +183,16 @@ As a "bonus", you can manipulate the data only at specific columns as shown here
 ```{r}
 
 head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
+
+```
+
+The above also supports `tidy` selection as follows:
+
+```{r}
+
+head(mde::recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
+                  value=0, pattern_type="starts_with",
+                  pattern="solar",ignore.case=TRUE))
 
 ```
 

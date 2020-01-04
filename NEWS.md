@@ -20,3 +20,7 @@ Available functions
 5. `recode_na_as`
 
 6. `drop_na_if`
+
+Key changes
+
+7. Now supports tidy selection and exploration at specific columns
