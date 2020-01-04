@@ -4,8 +4,16 @@
 \alias{recode_as_na}
 \title{Recode a value as NA}
 \usage{
-recode_as_na(x, value = NULL, subset_df = FALSE, tidy = FALSE,
-  subset_cols = NULL, pattern_type = NULL, pattern = NULL, ...)
+recode_as_na(
+  x,
+  value = NULL,
+  subset_df = FALSE,
+  tidy = FALSE,
+  subset_cols = NULL,
+  pattern_type = NULL,
+  pattern = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{A valid R `object` for which `na_counts` are needed.}
@@ -46,5 +54,5 @@ subset_cols = "Change", value = c("n/a",
                               "missing"))
  recode_as_na(airquality, subset_df = TRUE,
 tidy=TRUE, pattern_type="starts_with",
-pattern="Solar")                             
+pattern="Solar")
 }

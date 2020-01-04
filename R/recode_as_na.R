@@ -4,7 +4,7 @@
 #' @inheritParams get_na_counts
 #' @param value The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.
 #' @param subset_df Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".
-#' @param subset_cols Character. If subset_df is TRUE, then this provides the columns for which changes are required. 
+#' @param subset_cols Character. If subset_df is TRUE, then this provides the columns for which changes are required.
 #' @param tidy If set to TRUE,
 #' then one can provide additional arguments to match specific patterns using pattern and pattern_type
 #' @param pattern_type One of contains, starts_with or ends_with. Used only if subset_cols is set to tidy.
@@ -25,11 +25,11 @@
 #'                               "missing"))
 #'  recode_as_na(airquality, subset_df = TRUE,
 #' tidy=TRUE, pattern_type="starts_with",
-#' pattern="Solar")                             
-                           
+#' pattern="Solar")
+
 #' @export
 
-recode_as_na <- function(x, value=NULL, 
+recode_as_na <- function(x, value=NULL,
                          subset_df = FALSE,
                          tidy=FALSE,
                          subset_cols = NULL,
@@ -39,21 +39,30 @@ recode_as_na <- function(x, value=NULL,
 }
 
 #' @export
-recode_as_na.data.frame <-function(x, value=NULL, 
+recode_as_na.data.frame <-function(x, value=NULL,
                                    subset_df = FALSE,
                                    tidy=FALSE,
                                    subset_cols = NULL,
                                    pattern_type=NULL,
                                    pattern=NULL,...){
-  if(subset_df){
+  if(subset_df & ! tidy){
     # Change values only at specific columns, not all
     # Currently uses contains, this might be a bad idea
     # Perhaps just use vars?
     if(!all(subset_cols %in% names(x))){
       stop("Some names not found in the dataset. Please check and try again.")
     }
-    
-else if(tidy){
+
+else{
+      x %>%
+        dplyr::mutate_at(dplyr::vars(subset_cols),
+                         function(x) ifelse(x %in% value, NA,
+                                            x))
+}
+
+}
+
+else if(subset_df & tidy){
 
 switch(pattern_type,
        starts_with = recode_starts_with(x=x,
@@ -74,14 +83,7 @@ switch(pattern_type,
 
 }
 
-else{
-    x %>%
-      dplyr::mutate_at(dplyr::vars(subset_cols),
-                            function(x) ifelse(x %in% value, NA,
-                                               x))
-}
-  }
-    
+
 else{
     x %>%
       dplyr::mutate_all(list(function(x) ifelse(x %in% value, NA, x)))
