@@ -246,7 +246,28 @@ head(mde::recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
                   
 ```
 
-6. `drop_na_if`
+6. `recode_na_if`
+
+Given a `data.frame` object, one can recode `NA`s as another value based on a grouping variable. In the example below, we replace all `NA`s in all columns with 0s if the ID is `A2` or `A3`
+
+```
+some_data <- data.frame(ID=c("A1","A2","A3", "A4"), 
+                        A=c(5,NA,0,8), B=c(10,0,0,1),
+                        C=c(1,NA,NA,25))
+                        
+recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
+           replacement= 0)   
+# A tibble: 4 x 4
+#  ID        A     B     C
+#  <fct> <dbl> <dbl> <dbl>
+#1 A1        5    10     1
+#2 A2        0     0     0
+#3 A3        0     0     0
+#4 A4        8     1    25
+
+```
+
+7. `drop_na_if`
 
 Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
 
@@ -276,7 +297,7 @@ drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
 
-7. `drop_na_at`
+8. `drop_na_at`
 
 This provides a simple way to drop missing values only at specific columns. It currently only returns those columns with their missing values removed. See usage below. Further details are given in the documentation. It is currently case sensitive. 
 

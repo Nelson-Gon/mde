@@ -21,6 +21,10 @@ Available functions
 
 6. `drop_na_if`
 
+7. `recode_na_if`
+
+8. `drop_na_at`
+
 Key changes
 
-7. Now supports tidy selection and exploration at specific columns
+9. Now supports tidy selection and exploration at specific columns
