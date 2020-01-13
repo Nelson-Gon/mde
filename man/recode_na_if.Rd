@@ -14,15 +14,15 @@ recode_na_if(x, grouping_col = NULL, target_groups = NULL, replacement = 0)
 \item{target_groups}{Character Recode NA as if and only if the grouping column is
 in this vector of values}
 
-\item{replacement}{Values to use to replace NAs for IDs that meet the requirements. 
+\item{replacement}{Values to use to replace NAs for IDs that meet the requirements.
 Defaults to 0.}
 }
 \description{
 Recode NA as another value with some conditions
 }
 \examples{
-some_data <- data.frame(ID=c("A1","A2","A3", "A4"), 
+some_data <- data.frame(ID=c("A1","A2","A3", "A4"),
 A=c(5,NA,0,8), B=c(10,0,0,1),C=c(1,NA,NA,25))
 # Replace NAs with 0s only for IDs in A2 and A3
-recode_na_if(some_data,"ID",c("A2","A3"),replacement=0) 
+recode_na_if(some_data,"ID",c("A2","A3"),replacement=0)
 }
