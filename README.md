@@ -1,6 +1,7 @@
 # mde: Missing Data Explorer
-
-[![Build Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde) [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
+[![Build Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
