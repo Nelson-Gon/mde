@@ -271,10 +271,10 @@ recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
 
 Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
 
-We can drop any columns that have greater than or equal to 24% of the values missing from `airquality`:
+We can drop any columns that have greater than or equal(gteq) to 24% of the values missing from `airquality`:
 
 ```
-drop_na_if(airquality, percent_na = 24)
+drop_na_if(airquality, sign="gteq",percent_na = 24)
 # Solar.R Wind Temp Month Day
 #1       190  7.4   67     5   1
 #2       118  8.0   72     5   2
@@ -293,6 +293,8 @@ drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
 
 
 ```
+
+The above also supports less than or equal to(`lteq`), equal to(`eq`), greater than(`gt`) and less than(`lt`).
 
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 

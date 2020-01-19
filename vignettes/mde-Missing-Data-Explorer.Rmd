@@ -16,31 +16,28 @@ knitr::opts_chunk$set(
 )
 ```
 
-
+# mde: Missing Data Explorer
 
 The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
 While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explorer missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
 
-## Installation
+# Installation
 
 We can install `mde` as follows:
 
 ```{r}
 # install.packages("devtools")
-# This should work when building vignettes but doesn't for some reason
-# I currently have no idea why
-#devtools::install_github("Nelson-Gon/mde@develop")
+#devtools::install_github("Nelson-Gon/mde")
 
 ```
-
-We can load the package as follows:
+Loading the package
 
 ```{r}
 library(mde)
-```
 
-### Currently available functions.
+```
+# Currently available functions.
 
 1. `get_na_counts`
 
@@ -129,6 +126,7 @@ pattern="Solar")
 
 ```
 
+
 4. `sort_by_missingness`
 
 This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
@@ -185,7 +183,6 @@ As a "bonus", you can manipulate the data only at specific columns as shown here
 head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
 
 ```
-
 The above also supports `tidy` selection as follows:
 
 ```{r}
@@ -195,7 +192,6 @@ head(mde::recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
                   pattern="solar",ignore.case=TRUE))
 
 ```
-
 
 6. `recode_na_if`
 
@@ -211,7 +207,6 @@ recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
 
 ```
 
-
 7. `drop_na_if`
 
 Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
@@ -219,7 +214,7 @@ Suppose you wanted to drop any column that has a percentage of `NA`s greater tha
 We can drop any columns that have greater than or equal 24% of the values missing from `airquality`:
 
 ```{r}
-drop_na_if(airquality, percent_na = 24)
+drop_na_if(airquality, sign = "gteq",percent_na = 24)
 
 ```
 
@@ -227,10 +222,14 @@ If for whatever reason one would like to use decimals instead of percentages, th
 
 ```{r}
 
-drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
+drop_na_if(airquality, sign="gteq",percent_na = 0.24, percent = FALSE)
 
 ```
 
+
+For more information, please see the documentation for `drop_na_if` especially for grouping support.
+
+The above also supports less than or equal to(`lteq`), equal to(`eq`), greater than(`gt`) and less than(`lt`).
 
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
@@ -247,4 +246,3 @@ drop_na_at(airquality,pattern_type = "starts_with","O")
 To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
 
 Thank you, feedback is always welcome :)
-

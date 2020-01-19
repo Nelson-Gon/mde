@@ -4,10 +4,13 @@
 \alias{drop_na_if}
 \title{Conditon based dropping of columns with missing values}
 \usage{
-drop_na_if(x, percent_na = 50, ...)
+drop_na_if(x, sign = "gteq", percent_na = 50, ...)
 }
 \arguments{
 \item{x}{A data.frame object}
+
+\item{sign}{Character. One of gteq,lteq,lt,gt or eq which refer to greater than(gt) or equal(eq) or
+less than(lt) or equal to(eq) respectively.}
 
 \item{percent_na}{The percentage to use when dropping columns with missing values}
 
@@ -20,12 +23,10 @@ A data.frame object with columns  that meet the target criteria dropped
 "drop_na_if" provides a simple way to drop columns with missing values if
 they meet certain criteria/conditions.
 }
-\details{
-When dropping columns, percent_na is taken as the minimum percentage ie any columns
-with greater than or equal to percent_na missingness are dropped(currently)
-}
 \examples{
 drop_na_if(airquality, percent_na = 24)
+#drop columns that have less tan or equal to 4\%
+drop_na_if(airquality,sign="lteq", percent_na = 4)
 }
 \seealso{
 \code{\link{percent_missing}}

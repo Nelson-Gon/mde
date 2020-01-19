@@ -196,7 +196,7 @@ Suppose you wanted to drop any column that has a percentage of `NA`s greater tha
 We can drop any columns that have greater than or equal 24% of the values missing from `airquality`:
 
 ```{r}
-drop_na_if(airquality, percent_na = 24)
+drop_na_if(airquality, sign = "gteq",percent_na = 24)
 
 ```
 
@@ -204,13 +204,16 @@ If for whatever reason one would like to use decimals instead of percentages, th
 
 ```{r}
 
-drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
+drop_na_if(airquality, sign="gteq",percent_na = 0.24, percent = FALSE)
 
 ```
 
 
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
+The above also supports less than or equal to(`lteq`), equal to(`eq`), greater than(`gt`) and less than(`lt`).
+
+For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
 8. `drop_na_at`
 
