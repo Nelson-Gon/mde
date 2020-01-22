@@ -4,7 +4,7 @@
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![GitHub issues](https://img.shields.io/github/issues/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues/)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues?q=is%3Aissue+is%3Aclosed)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Nelson-Gon/badges.svg)](http://isitmaintained.com/project/Nelson-Gon/badges "Average time to resolve an issue")
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Nelson-Gon/mde.svg)](http://isitmaintained.com/project/Nelson-Gon/badges "Average time to resolve an issue")
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 
@@ -321,6 +321,44 @@ drop_na_at(airquality,pattern_type = "starts_with","O")
 #5      28
 #6      23
 #7      19
+
+```
+
+9. `recode_as_na_for` 
+
+For all values greater/less/less or equal/greater or equal than some value, can I convert them to `NA`?!
+
+**Yes You Can!** All we have to do is use `recode_as_na_for`:
+
+```
+recode_as_na_for(airquality,criteria="gt",value=25)
+
+      Ozone Solar.R Wind Temp Month Day
+1      NA      NA  7.4   NA     5   1
+2      NA      NA  8.0   NA     5   2
+3      12      NA 12.6   NA     5   3
+4      18      NA 11.5   NA     5   4
+5      NA      NA 14.3   NA     5   5
+6      NA      NA 14.9   NA     5   6
+7      23      NA  8.6   NA     5   7
+8      19      NA 13.8   NA     5   8
+9       8      19 20.1   NA     5   9
+
+```
+
+To do so at specific columns, pass an optional `subset_cols` character vector:
+
+```
+recode_as_na_for(airquality, value=25,subset_cols="Solar.R",
+criteria="gt")
+    
+    Ozone Solar.R Wind Temp Month Day
+1      41      NA  7.4   67     5   1
+2      36      NA  8.0   72     5   2
+3      12      NA 12.6   74     5   3
+4      18      NA 11.5   62     5   4
+5      NA      NA 14.3   56     5   5
+6      28      NA 14.9   66     5   6
 
 ```
 

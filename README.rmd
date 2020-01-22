@@ -224,6 +224,27 @@ This provides a simple way to drop missing values only at specific columns. It c
 drop_na_at(airquality,pattern_type = "starts_with","O")
 
 ```
+9. `recode_as_na_for` 
+
+For all values greater/less/less or equal/greater or equal than some value, can I convert them to `NA`?!
+
+**Yes You Can!** All we have to do is use `recode_as_na_for`:
+
+```{r}
+
+recode_as_na_for(airquality,criteria="gt",value=25)
+
+```
+
+To do so at specific columns, pass an optional `subset_cols` character vector:
+
+```{r}
+
+recode_as_na_for(airquality, value=25,subset_cols="Solar.R",
+criteria="gt")
+
+```
+
 
 To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
 
