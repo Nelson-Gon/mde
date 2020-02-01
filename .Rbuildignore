@@ -6,3 +6,4 @@ LICE*
 ^doc$
 ^Meta$
 ^.*yml$
+^codecov\.yml$
