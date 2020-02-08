@@ -5,7 +5,7 @@
 \title{Recode a value as NA}
 \usage{
 recode_as_na(
-  x,
+  df,
   value = NULL,
   subset_df = FALSE,
   tidy = FALSE,
@@ -16,7 +16,7 @@ recode_as_na(
 )
 }
 \arguments{
-\item{x}{A valid R `object` for which `na_counts` are needed.}
+\item{df}{A data.frame object for which recoding is to be done.}
 
 \item{value}{The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.}
 

@@ -16,8 +16,6 @@ recode_na_as(
 )
 }
 \arguments{
-\item{x}{A valid R `object` for which `na_counts` are needed.}
-
 \item{value}{The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.}
 
 \item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}

@@ -2,6 +2,7 @@
 #' @description This provides a convenient way to convert a number/value that should indeed be an
 #' "NA" to "NA". In otherwords, it converts a value to R's recognized NA.
 #' @inheritParams get_na_counts
+#' @param df A data.frame object for which recoding is to be done.
 #' @param value The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.
 #' @param subset_df Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".
 #' @param subset_cols Character. If subset_df is TRUE, then this provides the columns for which changes are required.
@@ -29,7 +30,7 @@
 
 #' @export
 
-recode_as_na <- function(x, value=NULL,
+recode_as_na <- function(df, value=NULL,
                          subset_df = FALSE,
                          tidy=FALSE,
                          subset_cols = NULL,
@@ -39,25 +40,28 @@ recode_as_na <- function(x, value=NULL,
 }
 
 #' @export
-recode_as_na.data.frame <-function(x, value=NULL,
+recode_as_na.data.frame <-function(df, value=NULL,
                                    subset_df = FALSE,
                                    tidy=FALSE,
                                    subset_cols = NULL,
                                    pattern_type=NULL,
                                    pattern=NULL,...){
+  if(any(sapply(df,is.factor))){
+    warning("Factor columns have been converted to character")
+  }
+
   if(subset_df & ! tidy){
     # Change values only at specific columns, not all
     # Currently uses contains, this might be a bad idea
     # Perhaps just use vars?
-    if(!all(subset_cols %in% names(x))){
+    if(!all(subset_cols %in% names(df))){
       stop("Some names not found in the dataset. Please check and try again.")
     }
 
 else{
-      x %>%
+      df %>%
         dplyr::mutate_at(dplyr::vars(subset_cols),
-                         function(x) ifelse(x %in% value, NA,
-                                            x))
+          ~ifelse(. %in% value, NA, as.character(.)))
 }
 
 }
@@ -65,17 +69,17 @@ else{
 else if(subset_df & tidy){
 
 switch(pattern_type,
-       starts_with = recode_starts_with(x=x,
+       starts_with = recode_starts_with(x=df,
                                         pattern=pattern,
                                         original_value=value,
                                         new_value=NA,
                                         ...),
-       ends_with = recode_ends_with(x=x,
+       ends_with = recode_ends_with(x=df,
                                         pattern=pattern,
                                         original_value=value,
                                         new_value=NA,
                                         ...),
-       contains = recode_contains(x=x,
+       contains = recode_contains(x=df,
                                      pattern=pattern,
                                       original_value=value,
                                        new_value=NA,
@@ -85,8 +89,9 @@ switch(pattern_type,
 
 
 else{
-    x %>%
-      dplyr::mutate_all(list(function(x) ifelse(x %in% value, NA, x)))
+
+    df %>%
+      dplyr::mutate_all(~ifelse(. %in% value, NA, as.character(.)))
 
   }
 }
