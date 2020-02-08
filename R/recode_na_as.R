@@ -12,7 +12,7 @@
 #' pattern="solar",ignore.case=TRUE)
 #' @export
 
-recode_na_as <-  function(x, value=0,
+recode_na_as <-  function(df, value=0,
                           subset_df = FALSE,
                           tidy=FALSE,
                           subset_cols = NULL,
@@ -25,7 +25,7 @@ recode_na_as <-  function(x, value=0,
 
 #' @export
 
-recode_na_as.data.frame <- function(x, value=0,
+recode_na_as.data.frame <- function(df, value=0,
                                     subset_df = FALSE,
                                     tidy=FALSE,
                                      subset_cols = NULL,
@@ -36,30 +36,30 @@ recode_na_as.data.frame <- function(x, value=0,
   # but yeah
   if(subset_df & ! tidy){
 
-if(!all(subset_cols %in% names(x))){
+if(!all(subset_cols %in% names(df))){
    stop("Some names not found in the dataset. Please check and try again.")
     }
 
 else{
-    which_to_subset <- which(names(x) %in% subset_cols)
+    which_to_subset <- which(names(df) %in% subset_cols)
     # which is.na
-  x[,which_to_subset] <-  sapply(x[,which_to_subset], function(column)
+  df[,which_to_subset] <-  sapply(df[,which_to_subset], function(column)
                 replace(column,is.na(column),value))
-  x
+  df
     }
   }
 
 else if (subset_df & tidy){
   switch(pattern_type,
-         starts_with = recode_na_as_starts_with(x,
+         starts_with = recode_na_as_starts_with(x=df,
                                                 pattern=pattern,
                                                 value=value,
                                                 ...),
-         ends_with = recode_na_as_ends_with(x,
+         ends_with = recode_na_as_ends_with(x=df,
                                             pattern=pattern,
                                             value=value,
                                             ...),
-         contains = recode_na_as_contains(x,
+         contains = recode_na_as_contains(x=df,
                                           pattern=pattern,
                                           value=value,
                                           ...))
@@ -68,7 +68,7 @@ else if (subset_df & tidy){
   else{
     # Can use dplyr, this looks a bit ugly
 
-    as.data.frame(sapply(x, function(column)
+    as.data.frame(sapply(df, function(column)
       replace(column,is.na(column),value)))
   }
 

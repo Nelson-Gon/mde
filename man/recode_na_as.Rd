@@ -5,7 +5,7 @@
 \title{Replace missing values with another value}
 \usage{
 recode_na_as(
-  x,
+  df,
   value = 0,
   subset_df = FALSE,
   tidy = FALSE,
@@ -16,6 +16,8 @@ recode_na_as(
 )
 }
 \arguments{
+\item{df}{A data.frame object for which recoding is to be done.}
+
 \item{value}{The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.}
 
 \item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
