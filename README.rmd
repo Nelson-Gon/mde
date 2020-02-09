@@ -44,29 +44,25 @@ get_na_counts(test, grouped = TRUE, grouping_cols = "ID")
 
 
 
+
 2. `percent_missing`
 
 This is a very simple to use but quick way to take a look at the percentage of data that is missing columnwise.
+
 
 ```{r}
 
 percent_missing(airquality)
 
-```
-
-I don't want percentages, give me decimals
-
-
-```{r}
-
-percent_missing(airquality, percent = FALSE)
 
 ```
 
-Again, we can get the results by group by setting `grouped` to `TRUE`
+We can get the results by group by providing an optional `grouping_cols` character vector. 
 
 ```{r}
-percent_missing(test, grouped = TRUE, grouping_cols = "Subject")
+
+percent_missing(test, grouping_cols = "Subject")
+
 
 ```
 

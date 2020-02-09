@@ -88,21 +88,16 @@ percent_missing(airquality)
 #   Ozone   Solar.R      Wind      Temp     Month       Day 
 # 24.183007  4.575163  0.000000  0.000000  0.000000  0.000000 
 
-# I don't want percentages, give me decimals
 
-percent_missing(airquality, percent = FALSE)
-
-#  Ozone    Solar.R       Wind       Temp      Month        Day 
-# 0.24183007 0.04575163 0.00000000 0.00000000 0.00000000 0.00000000 
 
 
 
 ```
 
-Again, we can get the results by group by setting `grouped` to `TRUE`
+We can get the results by group by providing an optional `grouping_cols` character vector. 
 
 ```
-percent_missing(test, grouped = TRUE, grouping_cols = "Subject")
+percent_missing(test, grouping_cols = "Subject")
 
 # A tibble: 2 x 3
 #  Subject   res    ID

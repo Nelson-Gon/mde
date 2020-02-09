@@ -4,15 +4,10 @@
 \alias{percent_missing}
 \title{Columnwise missingness percentages}
 \usage{
-percent_missing(x, percent = TRUE, grouped = FALSE, grouping_cols = NULL)
+percent_missing(df, grouping_cols = NULL)
 }
 \arguments{
-\item{x}{A valid R `object` for which the percentage of missing values is required.}
-
-\item{percent}{Logical. Should values be displayed as percentages? Defaults to `TRUE`, otherwise
-results are shown in decimals.}
-
-\item{grouped}{Logical. Do you need to add grouped counts? Defaults to `FALSE`}
+\item{df}{A valid R `object` for which the percentage of missing values is required.}
 
 \item{grouping_cols}{If `grouped` is set to `TRUE`, one can provide the columns by which to group the
 data.}
@@ -24,7 +19,7 @@ An object of the same class as x showing the percentage of missing values.
 A convenient way to obtain percent missingness columnwise.
 }
 \examples{
+test <- data.frame(ID= c("A","B","A","B","A","B","A"), Vals = c(NA,25,34,NA,67,NA,45))
+percent_missing(test,grouping_cols = "ID")
 percent_missing(airquality)
-# show decimals
-percent_missing(airquality, percent = FALSE)
 }

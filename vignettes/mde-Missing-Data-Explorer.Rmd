@@ -61,33 +61,26 @@ get_na_counts(test, grouped = TRUE, grouping_cols = "ID")
 ```
 
 
-
 2. `percent_missing`
 
 This is a very simple to use but quick way to take a look at the percentage of data that is missing columnwise.
+
 
 ```{r}
 
 percent_missing(airquality)
 
+
 ```
 
-I don't want percentages, give me decimals
-
+We can get the results by group by providing an optional `grouping_cols` character vector. 
 
 ```{r}
 
-percent_missing(airquality, percent = FALSE)
+percent_missing(test, grouping_cols = "Subject")
+
 
 ```
-
-Again, we can get the results by group by setting `grouped` to `TRUE`
-
-```{r}
-percent_missing(test, grouped = TRUE, grouping_cols = "Subject")
-
-```
-
 3. `recode_as_na`
 
 As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
@@ -222,7 +215,7 @@ If for whatever reason one would like to use decimals instead of percentages, th
 
 ```{r}
 
-drop_na_if(airquality, sign="gteq",percent_na = 0.24, percent = FALSE)
+drop_na_if(airquality, sign="gteq",percent_na = 0.24)
 
 ```
 

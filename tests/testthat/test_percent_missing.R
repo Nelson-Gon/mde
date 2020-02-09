@@ -1,8 +1,10 @@
 testthat::test_that(desc="percent_missing warns",
                     code = {
-                      
-                      testthat::expect_warning(mde::percent_missing(airquality,
-                                                              grouped=TRUE),
-                                               "You chose to do grouping but no grouping columns were provided.",
-                                               fixed=TRUE)
+                      test <- data.frame(ID= c("A","B","A","B","A","B","A"),
+                                         Vals = c(NA,25,34,NA,67,NA,45))
+                    testthat::expect_equal(percent_missing(test,
+                                          grouping_cols =
+                                                 "ID")[[2]][1],
+                                          25)
                     })
+
