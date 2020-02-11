@@ -1,7 +1,6 @@
 #' Recode a value as NA
 #' @description This provides a convenient way to convert a number/value that should indeed be an
 #' "NA" to "NA". In otherwords, it converts a value to R's recognized NA.
-#' @inheritParams get_na_counts
 #' @param df A data.frame object for which recoding is to be done.
 #' @param value The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.
 #' @param subset_df Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".
