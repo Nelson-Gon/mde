@@ -181,8 +181,7 @@ sort_by_missingness(airquality, sort_by = "counts")
 
 # sort in descending order
 
-sort_by_missingness(airquality, sort_by = "counts",
-descend = TRUE)
+sort_by_missingness(airquality, sort_by = "counts", descend = TRUE)
 
 # variable count
 #1    Ozone    37
@@ -297,15 +296,6 @@ drop_na_if(airquality, sign="gteq",percent_na = 24)
 #3       149 12.6   74     5   3
 #4       313 11.5   62     5   4
 
-# Use decimals, not percentages
-
-drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
-#    Solar.R Wind Temp Month Day
-#1       190  7.4   67     5   1
-#2       118  8.0   72     5   2
-#3       149 12.6   74     5   3
-#4       313 11.5   62     5   4
-#5        NA 14.3   56     5   5
 
 
 ```
