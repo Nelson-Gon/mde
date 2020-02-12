@@ -81,6 +81,15 @@ percent_missing(test, grouping_cols = "Subject")
 
 
 ```
+
+To exclude some columns from the above exploration, one can provide an optional character vector in `exclude_cols`.
+
+
+```{r}
+percent_missing(airquality,exclude_cols = c("Day","Temp"))
+
+```
+
 3. `recode_as_na`
 
 As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
@@ -220,11 +229,30 @@ drop_na_if(airquality, sign="gteq",percent_na = 0.24)
 ```
 
 
-For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
 The above also supports less than or equal to(`lteq`), equal to(`eq`), greater than(`gt`) and less than(`lt`).
 
+To keep certain columns despite fitting the target `percent_na` criteria, one can provide an optional `keep_columns` character vector.
+
+```{r}
+
+head(drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone"))
+
+
+```
+
+Compare the above result to the following:
+
+
+```{r}
+
+head(drop_na_if(airquality, percent_na = 24))
+
+
+```
+
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
+
 
 8. `drop_na_at`
 

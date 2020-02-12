@@ -30,3 +30,8 @@ Available functions
 Key changes
 
 10. Now supports tidy selection and exploration at specific columns
+
+11. `percent_missing` supports grouping and exclusion of certain columns.
+
+12. `drop_na_if` allows exclusion of columns. 
+

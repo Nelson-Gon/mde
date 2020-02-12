@@ -107,6 +107,20 @@ percent_missing(test, grouping_cols = "Subject")
 
 ```
 
+
+To exclude some columns from the above exploration, one can provide an optional character vector in `exclude_cols`
+
+
+```
+
+percent_missing(airquality,exclude_cols = c("Day","Temp"))
+
+#  Ozone   Solar.R      Wind     Month 
+# 24.183007  4.575163  0.000000  0.000000
+
+
+```
+
 3. `recode_as_na`
 
 As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
@@ -298,7 +312,44 @@ drop_na_if(airquality, percent_na = 0.24, percent = FALSE)
 
 The above also supports less than or equal to(`lteq`), equal to(`eq`), greater than(`gt`) and less than(`lt`).
 
+
+To keep certain columns despite fitting the target `percent_na` criteria, one can provide an optional `keep_columns` character vector.
+
+```
+
+head(drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone"))
+
+#  Solar.R Wind Temp Month Day Ozone
+#1     190  7.4   67     5   1    41
+#2     118  8.0   72     5   2    36
+#3     149 12.6   74     5   3    12
+#4     313 11.5   62     5   4    18
+#5      NA 14.3   56     5   5    NA
+#6      NA 14.9   66     5   6    28
+
+
+```
+
+Compare the above result to the following:
+
+
+```
+
+head(drop_na_if(airquality, percent_na = 24))
+
+# Solar.R Wind Temp Month Day
+#1     190  7.4   67     5   1
+#2     118  8.0   72     5   2
+#3     149 12.6   74     5   3
+#4     313 11.5   62     5   4
+#5      NA 14.3   56     5   5
+#6      NA 14.9   66     5   6
+
+```
+
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
+
+
 
 
 8. `drop_na_at`
