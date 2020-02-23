@@ -20,15 +20,16 @@ knitr::opts_chunk$set(
 
 The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
-While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explorer missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
+The goal of `mde` is to ease exploration of missingness without feeling overwhelmed by syntax with particular focus on simplicity.  
 
 # Installation
 
 We can install `mde` as follows:
 
 ```{r}
-# install.packages("devtools")
-#devtools::install_github("Nelson-Gon/mde")
+
+# install.packages("mde")
+
 
 ```
 Loading the package

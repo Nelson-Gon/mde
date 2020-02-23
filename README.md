@@ -9,9 +9,10 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 
 
+
 The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
-While several packages exist to handle the same, the author has placed user convenience at the core of design with the sole purpose of enabling anyone to easily and quickly explore missingness in their data without feeling overwhelmed by syntax. The focus is on simplicity, nothing more, nothing less! 
+The goal of `mde` is to ease exploration of missingness without feeling overwhelmed by syntax with particular focus on simplicity.  
 
 ---
 
