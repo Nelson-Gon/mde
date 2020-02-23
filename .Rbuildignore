@@ -7,3 +7,5 @@ LICE*
 ^Meta$
 ^.*yml$
 cran-comments.md
+README.md
+README.rmd

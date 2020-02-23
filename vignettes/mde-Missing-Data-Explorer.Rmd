@@ -1,5 +1,5 @@
 ---
-title: "mde: Missing Data Explorer"
+title: "Missing Data Explorer"
 author: "Nelson Gonzabato"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-# mde: Missing Data Explorer
 
 The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 

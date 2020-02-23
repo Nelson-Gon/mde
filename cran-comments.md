@@ -2,9 +2,10 @@
 Release Summary
 
 
-This is an intial release of `mde`. The goal of `mde` is to provide a simple to use yet robust way of exploring missing data. 
+This is a resubmission. It fixes issues as advised. 
 
 ## Test environments
+
 * local Windows 10 1903 x86_64, R 3.6.2 
 
 * ubuntu 16.04.6 (on Travis), R 3.5.3

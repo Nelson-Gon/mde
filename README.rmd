@@ -3,7 +3,7 @@ author: Nelson-Gon
 
 ---
 
-# mde: Missing Data Explorer
+# Missing Data Explorer
 
 The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
