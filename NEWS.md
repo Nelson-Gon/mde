@@ -1,11 +1,11 @@
 ---
-title: 'mde: Missing Data Explorer'
+title: 'Missing Data Explorer'
 author: "Nelson Gonzabato"
 date: "16/12/2019"
 output: html_document
 ---
 
-# mde version 0.1.1
+# mde version 0.1.0
 
 Available functions
 
