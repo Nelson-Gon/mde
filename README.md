@@ -402,6 +402,11 @@ criteria="gt")
 
 ---
 
+Please note that the 'mde' project is released with a
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
+
+
 To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
 
 Thank you, feedback is always welcome :)
