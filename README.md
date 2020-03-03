@@ -2,7 +2,10 @@
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
 [![Build Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
-[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html)
+[![Rdoc](http://www.rdocumentation.org/badges/version/mde)](http://www.rdocumentation.org/packages/mde) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
+[![TotalDownloads](http://cranlogs.r-pkg.org/badges/grand-total/mde?color=yellow)](https://cran.r-project.org/package=mde)
 [![GitHub issues](https://img.shields.io/github/issues/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues/)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues?q=is%3Aissue+is%3Aclosed)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Nelson-Gon/mde.svg)](http://isitmaintained.com/project/Nelson-Gon/mde "Average time to resolve an issue")
@@ -19,18 +22,35 @@ The goal of `mde` is to ease exploration of missingness without feeling overwhel
 
 **Installation**
 
-We can install `mde` as follows:
+1. **CRAN release**
+
+
+```
+install.packages("mde")
+
+
+```
+
+2. **Stable Development version**
+
 
 ```
 # install.packages("devtools")
 devtools::install_github("Nelson-Gon/mde")
-# if dev
-devtools::install_github("Nelson-Gon/mde@develop")
+
 # build vignettes
-devtools::install_github("Nelson-Gon/mde@develop", 
+devtools::install_github("Nelson-Gon/mde", 
 build_vignettes=TRUE)
-# browse vignettes
-browseVignettes("mde")
+
+```
+
+3. **Unstable Development version**
+
+```
+
+devtools::install_github("Nelson-Gon/mde@develop")
+
+
 
 ```
 
@@ -44,6 +64,8 @@ library(mde)
 ```
 
 ---
+
+
 
 **Currently available functions.**
 
@@ -405,6 +427,9 @@ criteria="gt")
 Please note that the 'mde' project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
+
+
+For further exploration, please `browseVignettes("mde")`. 
 
 
 To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
