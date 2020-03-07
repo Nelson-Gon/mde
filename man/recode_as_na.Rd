@@ -7,8 +7,6 @@
 recode_as_na(
   df,
   value = NULL,
-  subset_df = FALSE,
-  tidy = FALSE,
   subset_cols = NULL,
   pattern_type = NULL,
   pattern = NULL,
@@ -20,14 +18,9 @@ recode_as_na(
 
 \item{value}{The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.}
 
-\item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
+\item{subset_cols}{An optional character vector to define columns for which changes are required.}
 
-\item{tidy}{If set to TRUE,
-then one can provide additional arguments to match specific patterns using pattern and pattern_type}
-
-\item{subset_cols}{Character. If subset_df is TRUE, then this provides the columns for which changes are required.}
-
-\item{pattern_type}{One of contains, starts_with or ends_with. Used only if subset_cols is set to tidy.}
+\item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
 
 \item{pattern}{A character pattern to match}
 
@@ -49,10 +42,8 @@ recode_as_na(dummy_test,"n/a")
 another_dummy <- data.frame(ID = 1:5, Subject = 7:11,
 Change = c("missing", "n/a", 2:4 ))
 # Change missing and n/a to NA only for the column named Change.
-recode_as_na(another_dummy, subset_df = TRUE,
-subset_cols = "Change", value = c("n/a",
+recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
                               "missing"))
- recode_as_na(airquality, subset_df = TRUE,
-tidy=TRUE, pattern_type="starts_with",
-pattern="Solar")
+ head(recode_as_na(airquality,pattern_type="starts_with",
+pattern="Solar"))
 }

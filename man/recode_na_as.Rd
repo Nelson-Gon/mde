@@ -7,8 +7,6 @@
 recode_na_as(
   df,
   value = 0,
-  subset_df = FALSE,
-  tidy = FALSE,
   subset_cols = NULL,
   pattern_type = NULL,
   pattern = NULL,
@@ -20,14 +18,9 @@ recode_na_as(
 
 \item{value}{The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.}
 
-\item{subset_df}{Logical. Use only specific columns? Defaults to FALSE. All "value"s everywhere are "recoded".}
+\item{subset_cols}{An optional character vector to define columns for which changes are required.}
 
-\item{tidy}{If set to TRUE,
-then one can provide additional arguments to match specific patterns using pattern and pattern_type}
-
-\item{subset_cols}{Character. If subset_df is TRUE, then this provides the columns for which changes are required.}
-
-\item{pattern_type}{One of contains, starts_with or ends_with. Used only if subset_cols is set to tidy.}
+\item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
 
 \item{pattern}{A character pattern to match}
 
@@ -41,10 +34,8 @@ This provides a convenient way to recode "NA" as another value for instance "NaN
 any other value a user wishes to use.
 }
 \examples{
-recode_na_as(airquality, "n/a")
-recode_na_as(airquality, subset_df = TRUE,
-subset_cols = "Ozone", value = "N/A")
-recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
-value=0, pattern_type="starts_with",
-pattern="solar",ignore.case=TRUE)
+head(recode_na_as(airquality, "n/a"))
+head(recode_na_as(airquality, subset_cols = "Ozone", value = "N/A"))
+head(recode_na_as(airquality, value=0, pattern_type="starts_with",
+pattern="solar",ignore.case=TRUE))
 }

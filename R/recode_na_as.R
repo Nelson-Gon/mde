@@ -4,17 +4,13 @@
 #' @inheritParams recode_as_na
 #' @return An object of the same type as x with NAs replaced with the desired value.
 #' @examples
-#' recode_na_as(airquality, "n/a")
-#' recode_na_as(airquality, subset_df = TRUE,
-#' subset_cols = "Ozone", value = "N/A")
-#' recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
-#' value=0, pattern_type="starts_with",
-#' pattern="solar",ignore.case=TRUE)
+#' head(recode_na_as(airquality, "n/a"))
+#' head(recode_na_as(airquality, subset_cols = "Ozone", value = "N/A"))
+#' head(recode_na_as(airquality, value=0, pattern_type="starts_with",
+#' pattern="solar",ignore.case=TRUE))
 #' @export
 
 recode_na_as <-  function(df, value=0,
-                          subset_df = FALSE,
-                          tidy=FALSE,
                           subset_cols = NULL,
                           pattern_type= NULL,
                           pattern=NULL,
@@ -26,15 +22,13 @@ recode_na_as <-  function(df, value=0,
 #' @export
 
 recode_na_as.data.frame <- function(df, value=0,
-                                    subset_df = FALSE,
-                                    tidy=FALSE,
-                                     subset_cols = NULL,
+                                    subset_cols = NULL,
                                     pattern_type= NULL,
                                     pattern=NULL,
                                     ...){
   # Use a purely base solution, there are no trophies for that
   # but yeah
-  if(subset_df & ! tidy){
+  if(!is.null(subset_cols)){
 
 if(!all(subset_cols %in% names(df))){
    stop("Some names not found in the dataset. Please check and try again.")
@@ -49,7 +43,11 @@ else{
     }
   }
 
-else if (subset_df & tidy){
+else if (!is.null(pattern_type)){
+
+  if(all(!is.null(subset_cols), !is.null(pattern_type))){
+    stop("Only one of pattern_type or subset_cols should be used but not both.")
+  }
   switch(pattern_type,
          starts_with = recode_na_as_starts_with(x=df,
                                                 pattern=pattern,

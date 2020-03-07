@@ -5,6 +5,18 @@ date: "16/12/2019"
 output: html_document
 ---
 
+# mde version 0.1.1
+
+**Major changes**
+
+1. In `percent_missing`, the argument `grouped` was dropped in favour of simply providing a `grouping_cols` vector.
+
+2. In `recode_as_na` `, `subset_df` was dropped. It now simply accepts an optional `subset_cols` argument. The argument `tidy` was also dropped.One can simply provide an optional `pattern_type` and `pattern`.
+
+3. Similar changes were made for `recode_na_as` as above.
+
+
+
 # mde version 0.1.0
 
 Available functions
