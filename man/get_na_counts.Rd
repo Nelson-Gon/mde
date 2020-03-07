@@ -4,14 +4,12 @@
 \alias{get_na_counts}
 \title{Add columnwise/groupwise counts of missing values}
 \usage{
-get_na_counts(x, grouped = FALSE, grouping_cols = NULL)
+get_na_counts(x, grouping_cols = NULL)
 }
 \arguments{
 \item{x}{A valid R `object` for which `na_counts` are needed.}
 
-\item{grouped}{Logical. Do you need to add grouped counts? Defaults to `FALSE`}
-
-\item{grouping_cols}{If `grouped` is set to `TRUE`, one can provide the columns by which to group the
+\item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}
 }
 \value{
@@ -27,6 +25,6 @@ get_na_counts(airquality)
 # Grouped counts
 test <- data.frame(Subject = c("A","A","B","B"), res = c(NA,1,2,3),
 ID = c("1","1","2","2"))
-get_na_counts(test,grouped = FALSE, grouping_cols =
+get_na_counts(test,grouping_cols =
                         c("ID", "Subject"))
 }

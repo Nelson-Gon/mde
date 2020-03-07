@@ -9,7 +9,7 @@ percent_missing(df, grouping_cols = NULL, exclude_cols = NULL)
 \arguments{
 \item{df}{A valid R `object` for which the percentage of missing values is required.}
 
-\item{grouping_cols}{If `grouped` is set to `TRUE`, one can provide the columns by which to group the
+\item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}
 
 \item{exclude_cols}{A character vector indicating columns to exclude when returning results.}

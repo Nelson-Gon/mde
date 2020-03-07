@@ -86,7 +86,8 @@ get_na_counts(airquality)
 
 ```
 
-The above might be less useful if one would like to get the results by group. In that case, one can set `grouped` to `TRUE` and provide a vector of names in `grouping_cols` that will be used for grouping. 
+The above might be less useful if one would like to get the results by group. In that case, one can provide a vector of names in `grouping_cols` to use for grouping. 
+
 
 ```
 
@@ -95,7 +96,7 @@ test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A",
 1L, 2L, 2L), .Label = c("1", "2"), class = "factor")), class = "data.frame", row.names = c(NA, 
 -4L))
 
-get_na_counts(test, grouped = TRUE, grouping_cols = "ID")
+get_na_counts(test, grouping_cols = "ID")
 
 # A tibble: 2 x 3
 #  ID    Subject   res
