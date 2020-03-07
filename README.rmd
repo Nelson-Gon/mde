@@ -1,52 +1,42 @@
 ---
-author: Nelson-Gon
-
+title: "Missing Data Explorer"
+author: "Nelson Gonzabato"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mde-Missing-Data-Explorer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-# Missing Data Explorer
-
-This is the development version of `mde`. The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
-
-The goal of `mde` is to ease exploration of missingness without feeling overwhelmed by syntax with particular focus on simplicity.  .  
-
-**Installation**
-
-1. **CRAN release**
-
-
-```{r}
-
-#install.packages("mde")
-
-
-```
-
-2. **Stable Development version**
-
-
-```{r}
-
-# install.packages("devtools")
-#devtools::install_github("Nelson-Gon/mde")
-
-# build vignettes
-#devtools::install_github("Nelson-Gon/mde", 
-#build_vignettes=TRUE)
-
-```
-
-3. **Unstable Development version**
-
-
-```{r}
-
-#devtools::install_github("Nelson-Gon/mde@develop")
-
-
-
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 
+The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
+
+The goal of `mde` is to ease exploration of missingness without feeling overwhelmed by syntax with particular focus on simplicity.  
+
+# Installation
+
+We can install `mde` as follows:
+
+```{r}
+
+# install.packages("mde")
+
+
+```
+Loading the package
+
+```{r}
+library(mde)
+
+```
 # Currently available functions.
 
 1. `get_na_counts`
@@ -54,10 +44,12 @@ The goal of `mde` is to ease exploration of missingness without feeling overwhel
 This provides a convenient way to show the number of missing values columnwise. It is relatively fast(tests done on about 400,000 rows, took a few microseconds.)
 
 ```{r}
+
 get_na_counts(airquality)
+
 ```
 
-The above might be less useful if one would like to get the results by group. In that case, one can set `grouped` to `TRUE` and provide a vector of names in `grouping_cols` that will be used for grouping. 
+The above might be less useful if one would like to get the results by group. In that case, one can provide a vector of names in `grouping_cols` to use for grouping. 
 
 ```{r}
 
@@ -66,11 +58,9 @@ test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A",
 1L, 2L, 2L), .Label = c("1", "2"), class = "factor")), class = "data.frame", row.names = c(NA, 
 -4L))
 
-get_na_counts(test, grouped = TRUE, grouping_cols = "ID")
+get_na_counts(test,grouping_cols = "ID")
 
 ```
-
-
 
 
 2. `percent_missing`
@@ -98,6 +88,7 @@ To exclude some columns from the above exploration, one can provide an optional 
 
 
 ```{r}
+
 percent_missing(airquality,exclude_cols = c("Day","Temp"))
 
 ```
@@ -117,26 +108,24 @@ recode_as_na(dummy_test, value = "n/a")
 
 ```
 
-Great, but I want to do so for specific columns not the entire dataset. You can do this by setting `subset_df` to `TRUE` and providing column names to `subset_cols`. 
+Great, but I want to do so for specific columns not the entire dataset. You can do this by providing column names to `subset_cols`. 
 
 ```{r}
 
 another_dummy <- data.frame(ID = 1:5, Subject = 7:11, 
 Change = c("missing","n/a",2:4 ))
 # Only change values at the column Change
-recode_as_na(another_dummy, subset_df = TRUE,
-             subset_cols = "Change", value = c("n/a",
+recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
                                                "missing"))
                                                
 
 ```
 
-To use `tidy` selection, one can do the following:
+To use `tidy` column selection, one can do the following:
 
 ```{r}
-mde::recode_as_na(airquality, subset_df = TRUE,
-tidy=TRUE, pattern_type="starts_with",
-pattern="Solar")
+
+head(mde::recode_as_na(airquality,value=190,pattern_type="starts_with",pattern="Solar"))
 
 ```
 
@@ -194,15 +183,14 @@ As a "bonus", you can manipulate the data only at specific columns as shown here
 
 ```{r}
 
-head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
+head(recode_na_as(airquality, value=0, subset_cols="Ozone"))
 
 ```
 The above also supports `tidy` selection as follows:
 
 ```{r}
 
-head(mde::recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
-                  value=0, pattern_type="starts_with",
+head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",
                   pattern="solar",ignore.case=TRUE))
 
 ```
@@ -228,7 +216,8 @@ Suppose you wanted to drop any column that has a percentage of `NA`s greater tha
 We can drop any columns that have greater than or equal 24% of the values missing from `airquality`:
 
 ```{r}
-drop_na_if(airquality, sign = "gteq",percent_na = 24)
+
+head(drop_na_if(airquality, sign = "gteq",percent_na = 24))
 
 ```
 
@@ -236,7 +225,7 @@ If for whatever reason one would like to use decimals instead of percentages, th
 
 ```{r}
 
-drop_na_if(airquality, sign="gteq",percent_na = 0.24, percent = FALSE)
+head(drop_na_if(airquality, sign="gteq",percent_na = 0.24))
 
 ```
 
@@ -263,10 +252,7 @@ head(drop_na_if(airquality, percent_na = 24))
 
 ```
 
-
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
-
-
 
 
 8. `drop_na_at`
@@ -275,7 +261,7 @@ This provides a simple way to drop missing values only at specific columns. It c
 
 ```{r}
 
-drop_na_at(airquality,pattern_type = "starts_with","O")
+head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 
 ```
 9. `recode_as_na_for` 
@@ -286,7 +272,7 @@ For all values greater/less/less or equal/greater or equal than some value, can 
 
 ```{r}
 
-recode_as_na_for(airquality,criteria="gt",value=25)
+head(recode_as_na_for(airquality,criteria="gt",value=25))
 
 ```
 
@@ -294,8 +280,8 @@ To do so at specific columns, pass an optional `subset_cols` character vector:
 
 ```{r}
 
-recode_as_na_for(airquality, value=25,subset_cols="Solar.R",
-criteria="gt")
+head(recode_as_na_for(airquality, value=25,subset_cols="Solar.R",
+criteria="gt"))
 
 ```
 

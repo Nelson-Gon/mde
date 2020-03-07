@@ -7,7 +7,7 @@
 #' @param ... Other params to other methods
 #' @return A data.frame object containing only columns that match the given pattern with the missing values removed.
 #' @examples
-#' drop_na_at(airquality,pattern_type = "starts_with","O")
+#' head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 #' @export
 
 drop_na_at <- function(x, pattern_type="contains",pattern=NULL,

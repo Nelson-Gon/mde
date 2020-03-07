@@ -169,15 +169,14 @@ recode_as_na(dummy_test, value = "n/a")
 
 ```
 
-Great, but I want to do so for specific columns not the entire dataset. You can do this by setting `subset_df` to `TRUE` and providing column names to `subset_cols`. 
+Great, but I want to do so for specific columns not the entire dataset. You can do this by providing column names to `subset_cols`. 
 
 ```
 
 another_dummy <- data.frame(ID = 1:5, Subject = 7:11, 
 Change = c("missing","n/a",2:4 ))
 # Only change values at the column Change
-recode_as_na(another_dummy, subset_df = TRUE,
-             subset_cols = "Change", value = c("n/a",
+recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
                                                "missing"))
                                                
 #  ID Subject Change
@@ -186,6 +185,14 @@ recode_as_na(another_dummy, subset_df = TRUE,
 #3  3       9      1
 #4  4      10      2
 #5  5      11      3
+
+```
+
+To use `tidy` column selection, one can do the following:
+
+```
+
+head(mde::recode_as_na(airquality,value=190,pattern_type="starts_with",pattern="Solar"))
 
 ```
 
@@ -262,7 +269,7 @@ head(recode_na_as(airquality, value=NaN))
 As a "bonus", you can manipulate the data only at specific columns as shown here:
 
 ```
-head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
+head(recode_na_as(airquality, value=0, subset_cols="Ozone"))
 
 #  Ozone Solar.R Wind Temp Month Day
 #1    41     190  7.4   67     5   1
@@ -276,8 +283,7 @@ head(recode_na_as(airquality, value=0, subset_df=TRUE, subset_cols="Ozone"))
 The above also supports `tidy` selection as follows:
 
 ```
-head(mde::recode_na_as(airquality, subset_df=TRUE, tidy=TRUE,
-                  value=0, pattern_type="starts_with",
+head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",
                   pattern="solar",ignore.case=TRUE))
 #Ozone Solar.R Wind Temp Month Day
 #1    41     190  7.4   67     5   1

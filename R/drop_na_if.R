@@ -10,11 +10,11 @@
 #' @return A data.frame object with columns  that meet the target criteria dropped
 #' @seealso \code{\link{percent_missing}}
 #' @examples
-#' drop_na_if(airquality, percent_na = 24)
+#' head(drop_na_if(airquality, percent_na = 24))
 #' #drop columns that have less tan or equal to 4%
-#' drop_na_if(airquality,sign="lteq", percent_na = 4)
+#' head(drop_na_if(airquality,sign="lteq", percent_na = 4))
 #' # Drop all except Ozone
-#' drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone")
+#' head(drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone"))
 #' @export
 
 drop_na_if <- function(df, sign="gteq",percent_na= 50,

@@ -26,11 +26,11 @@ A data.frame object with columns  that meet the target criteria dropped
 they meet certain criteria/conditions.
 }
 \examples{
-drop_na_if(airquality, percent_na = 24)
+head(drop_na_if(airquality, percent_na = 24))
 #drop columns that have less tan or equal to 4\%
-drop_na_if(airquality,sign="lteq", percent_na = 4)
+head(drop_na_if(airquality,sign="lteq", percent_na = 4))
 # Drop all except Ozone
-drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone")
+head(drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone"))
 }
 \seealso{
 \code{\link{percent_missing}}

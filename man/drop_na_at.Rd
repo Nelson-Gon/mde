@@ -23,5 +23,5 @@ Provides a simple yet efficient way to drop missing values("NA"s) at
 columns that match a given pattern.
 }
 \examples{
-drop_na_at(airquality,pattern_type = "starts_with","O")
+head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 }
