@@ -1,6 +1,6 @@
 Package: mde
 Title: Missing Data Explorer
-Version: 0.1.0
+Version: 0.1.1.9000
 Authors@R: 
     person(given = "Nelson",
            family = "Gonzabato",
