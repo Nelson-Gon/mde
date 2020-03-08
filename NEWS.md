@@ -15,6 +15,8 @@ output: html_document
 
 3. Similar changes were made for `recode_na_as` as above.
 
+4. The argument `x` was changed to `df` in `drop_na_at`. 
+
 
 
 # mde version 0.1.0
