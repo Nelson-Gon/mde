@@ -4,10 +4,10 @@
 \alias{drop_na_at}
 \title{Drop missing values at columns that match a given pattern}
 \usage{
-drop_na_at(x, pattern_type = "contains", pattern = NULL, ...)
+drop_na_at(df, pattern_type = "contains", pattern = NULL, ...)
 }
 \arguments{
-\item{x}{A data.frame object}
+\item{df}{A data.frame object}
 
 \item{pattern_type}{One of "contains", "ends_with" or "starts_with"}
 
