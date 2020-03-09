@@ -28,6 +28,10 @@ recode_na_as.data.frame <- function(df, value=0,
                                     ...){
   # Use a purely base solution, there are no trophies for that
   # but yeah
+
+ if(all(!is.null(subset_cols), !is.null(pattern_type))){
+    stop("Only one of pattern_type or subset_cols should be used but not both.")
+  }
   if(!is.null(subset_cols)){
 
 if(!all(subset_cols %in% names(df))){
@@ -45,9 +49,6 @@ else{
 
 else if (!is.null(pattern_type)){
 
-  if(all(!is.null(subset_cols), !is.null(pattern_type))){
-    stop("Only one of pattern_type or subset_cols should be used but not both.")
-  }
   switch(pattern_type,
          starts_with = recode_na_as_starts_with(x=df,
                                                 pattern=pattern,
