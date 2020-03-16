@@ -432,10 +432,27 @@ criteria="gt")
 
 ```
 
+
+10. To get a simple missingness report, use `na_summary`:
+
+
+```
+na_summary(airquality)
+
+     variable missing complete percent_complete percent_missing
+1      Day       0      153        100.00000        0.000000
+2    Month       0      153        100.00000        0.000000
+3    Ozone      37      116         75.81699       24.183007
+4  Solar.R       7      146         95.42484        4.575163
+5     Temp       0      153        100.00000        0.000000
+6     Wind       0      153        100.00000        0.000000
+
+```
+
 ---
 
 Please note that the 'mde' project is released with a
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
 

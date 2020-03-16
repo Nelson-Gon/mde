@@ -285,6 +285,15 @@ criteria="gt"))
 
 ```
 
+10. To get a simple missingness report, use `na_summary`:
+
+
+```{r}
+
+na_summary(airquality)
+
+```
+
 
 To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
 
