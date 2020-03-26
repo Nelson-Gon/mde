@@ -38,6 +38,13 @@ drop_na_if.data.frame <- function(df,sign="gteq",percent_na = 50,
 
 # Currently does double work ie gets percents then returns those columns
 # Need a way to actually do it in one function
+  available_options <- c("gteq","lteq","gt","lt","eq")
+
+if(! sign %in% available_options ) {
+  stop(paste(paste(c("I was expecting one of ",available_options),collapse=" "),
+             "not",
+              sign))
+}
 
 to_keep<- switch(sign,
        gteq = names(Filter(function(col_percentage) ! col_percentage >= percent_na ,
