@@ -9,6 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -17,39 +18,89 @@ knitr::opts_chunk$set(
 ```
 
 
-The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
+
+
+This is the development version of `mde`. The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
 The goal of `mde` is to ease exploration of missingness without feeling overwhelmed by syntax with particular focus on simplicity.  
 
-# Installation
 
-We can install `mde` as follows:
 
-```{r}
+**Installation**
 
-# install.packages("mde")
+1. **CRAN release**
+
+
+```{r, eval=FALSE}
+
+install.packages("mde")
 
 
 ```
-Loading the package
+
+2. **Stable Development version**
+
+
+```{r, eval = FALSE}
+
+devtools::install_github("Nelson-Gon/mde")
+
+
+devtools::install_github("Nelson-Gon/mde",  build_vignettes=TRUE)
+
+```
+
+3. **Unstable Development version**
+
+```{r, eval=FALSE}
+
+devtools::install_github("Nelson-Gon/mde@develop")
+
+
+
+```
+
+
+
+**Loading the package**
 
 ```{r}
+
 library(mde)
 
 ```
-# Currently available functions.
 
-1. `get_na_counts`
+
+
+
+
+**Currently available functions.**
+
+
+1. To get a simple missingness report, use `na_summary`:
+
+
+```{r}
+
+na_summary(airquality)
+
+```
+
+2. `get_na_counts`
 
 This provides a convenient way to show the number of missing values columnwise. It is relatively fast(tests done on about 400,000 rows, took a few microseconds.)
+
+To get the number of missing values in each column of `airquality`, we can use the function as follows:
 
 ```{r}
 
 get_na_counts(airquality)
 
+
 ```
 
 The above might be less useful if one would like to get the results by group. In that case, one can provide a vector of names in `grouping_cols` to use for grouping. 
+
 
 ```{r}
 
@@ -58,17 +109,18 @@ test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A",
 1L, 2L, 2L), .Label = c("1", "2"), class = "factor")), class = "data.frame", row.names = c(NA, 
 -4L))
 
-get_na_counts(test,grouping_cols = "ID")
+get_na_counts(test, grouping_cols = "ID")
+
 
 ```
 
-
-2. `percent_missing`
+3. `percent_missing`
 
 This is a very simple to use but quick way to take a look at the percentage of data that is missing columnwise.
 
 
 ```{r}
+
 
 percent_missing(airquality)
 
@@ -82,18 +134,21 @@ We can get the results by group by providing an optional `grouping_cols` charact
 percent_missing(test, grouping_cols = "Subject")
 
 
+
 ```
 
-To exclude some columns from the above exploration, one can provide an optional character vector in `exclude_cols`.
+
+To exclude some columns from the above exploration, one can provide an optional character vector in `exclude_cols`
 
 
 ```{r}
 
 percent_missing(airquality,exclude_cols = c("Day","Temp"))
 
+
 ```
 
-3. `recode_as_na`
+4. `recode_as_na`
 
 As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
 
@@ -103,8 +158,10 @@ To use the function out of the box(with default arguments), one simply does some
 
 dummy_test <- data.frame(ID = c("A","B","B","A"), 
                          values = c("n/a",NA,"Yes","No"))
-# Convert n/a to NA
+
 recode_as_na(dummy_test, value = "n/a")
+
+
 
 ```
 
@@ -114,23 +171,22 @@ Great, but I want to do so for specific columns not the entire dataset. You can 
 
 another_dummy <- data.frame(ID = 1:5, Subject = 7:11, 
 Change = c("missing","n/a",2:4 ))
-# Only change values at the column Change
+
 recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
                                                "missing"))
-                                               
-
+                                              
 ```
 
 To use `tidy` column selection, one can do the following:
 
 ```{r}
 
+
 head(mde::recode_as_na(airquality,value=190,pattern_type="starts_with",pattern="Solar"))
 
 ```
 
-
-4. `sort_by_missingness`
+5. `sort_by_missingness`
 
 This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
 
@@ -138,46 +194,46 @@ Usage:
 
 ```{r}
 
+
 sort_by_missingness(airquality, sort_by = "counts")
 
-```
-
-```{r}
-
-# sort in descending order
-
-sort_by_missingness(airquality, sort_by = "counts",
-descend = TRUE)
-
 
 ```
 
+To sort in descending order:
+
 ```{r}
 
-# Use percents
+sort_by_missingness(airquality, sort_by = "counts", descend = TRUE)
+
+```
+
+To use percentages instead:
+
+```{r}
+
 sort_by_missingness(airquality, sort_by = "percents")
 
-
 ```
 
-5. `recode_na_as`
+
+
+
+
+
+6. `recode_na_as`
 
 Sometimes, for whatever reason one would like to replace `NA`s with whatever value they would like. `recode_na_as` provides a very simple way to do just that. 
 
 ```{r}
-# defaults
+
 head(recode_na_as(airquality))
 
-```
+# use NaN
 
-To use a different value,
-
-
-```{r}
 head(recode_na_as(airquality, value=NaN))
 
 ```
-
 
 As a "bonus", you can manipulate the data only at specific columns as shown here:
 
@@ -195,47 +251,40 @@ head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",
 
 ```
 
-6. `recode_na_if`
+7. `recode_na_if`
 
 Given a `data.frame` object, one can recode `NA`s as another value based on a grouping variable. In the example below, we replace all `NA`s in all columns with 0s if the ID is `A2` or `A3`
 
 ```{r}
+
 some_data <- data.frame(ID=c("A1","A2","A3", "A4"), 
                         A=c(5,NA,0,8), B=c(10,0,0,1),
                         C=c(1,NA,NA,25))
                         
 recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
-           replacement= 0)  
+           replacement= 0)   
 
 ```
 
-7. `drop_na_if`
+8. `drop_na_if`
 
 Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
 
-We can drop any columns that have greater than or equal 24% of the values missing from `airquality`:
+We can drop any columns that have greater than or equal(gteq) to 24% of the values missing from `airquality`:
 
 ```{r}
 
-head(drop_na_if(airquality, sign = "gteq",percent_na = 24))
+drop_na_if(airquality, sign="gteq",percent_na = 24)
 
 ```
-
-If for whatever reason one would like to use decimals instead of percentages, then:
-
-```{r}
-
-head(drop_na_if(airquality, sign="gteq",percent_na = 0.24))
-
-```
-
-
 
 The above also supports less than or equal to(`lteq`), equal to(`eq`), greater than(`gt`) and less than(`lt`).
+
 
 To keep certain columns despite fitting the target `percent_na` criteria, one can provide an optional `keep_columns` character vector.
 
 ```{r}
+
 
 head(drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone"))
 
@@ -249,22 +298,25 @@ Compare the above result to the following:
 
 head(drop_na_if(airquality, percent_na = 24))
 
-
 ```
 
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
 
-8. `drop_na_at`
+
+
+9. `drop_na_at`
 
 This provides a simple way to drop missing values only at specific columns. It currently only returns those columns with their missing values removed. See usage below. Further details are given in the documentation. It is currently case sensitive. 
 
 ```{r}
 
-head(drop_na_at(airquality,pattern_type = "starts_with","O"))
+drop_na_at(airquality,pattern_type = "starts_with","O")
+
 
 ```
-9. `recode_as_na_for` 
+
+10. `recode_as_na_for` 
 
 For all values greater/less/less or equal/greater or equal than some value, can I convert them to `NA`?!
 
@@ -272,7 +324,9 @@ For all values greater/less/less or equal/greater or equal than some value, can 
 
 ```{r}
 
-head(recode_as_na_for(airquality,criteria="gt",value=25))
+recode_as_na_for(airquality,criteria="gt",value=25)
+
+
 
 ```
 
@@ -280,19 +334,33 @@ To do so at specific columns, pass an optional `subset_cols` character vector:
 
 ```{r}
 
-head(recode_as_na_for(airquality, value=25,subset_cols="Solar.R",
-criteria="gt"))
+recode_as_na_for(airquality, value=25,subset_cols="Solar.R", criteria="gt")
 
 ```
 
-10. To get a simple missingness report, use `na_summary`:
+11. `drop_all_na` 
+
+
+This drops columns where all values are missing.
 
 
 ```{r}
 
-na_summary(airquality)
+test <- data.frame(ID= c("A","A","B","A",NA), Vals = rep(NA,5))
+drop_all_na(test)
+
 
 ```
+
+
+
+Please note that the 'mde' project is released with a
+[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
+
+
+For further exploration, please `browseVignettes("mde")`. 
+
 
 To raise an issue, please do so [here](https://www.github.com/Nelson-Gon/mde/issues)
 

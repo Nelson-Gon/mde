@@ -11,6 +11,8 @@ output: html_document
 
 1. `na_summary` which provides a very quick overview of missingness. 
 
+2/ `drop_na_if` allows easy dropping of columns where all values are missing.
+
 **Major changes**
 
 2. In `percent_missing`, the argument `grouped` was dropped in favour of simply providing a `grouping_cols` vector.
