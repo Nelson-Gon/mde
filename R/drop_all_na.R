@@ -19,7 +19,6 @@ drop_all_na.data.frame <- function(df, grouping_cols = NULL){
   }
 
 
-
 }
 
 

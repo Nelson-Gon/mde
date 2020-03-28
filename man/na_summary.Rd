@@ -4,16 +4,25 @@
 \alias{na_summary}
 \title{An all-in-one missingness report}
 \usage{
-na_summary(df, ...)
+na_summary(df, grouping_cols = NULL, ...)
 }
 \arguments{
-\item{df}{A data.frame object}
+\item{df}{A valid R `object` for which the percentage of missing values is required.}
 
-\item{...}{Other params to other methods}
+\item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
+data.}
+
+\item{...}{Arguments to other functions}
 }
 \description{
 An all-in-one missingness report
 }
 \examples{
 na_summary(airquality)
+# grouping
+test2 <- data.frame(ID= c("A","A","B","A","B"),
+Vals = c(rep(NA,4),"No"),ID2 = c("E","E","D","E","D"))
+na_summary(test2,grouping_cols = c("ID","ID2"))
+
+
 }
