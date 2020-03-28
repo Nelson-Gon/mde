@@ -48,8 +48,11 @@ if(is.null(grouping_cols)){
   # base grouping, may fail
 else{
     non_grouping = setdiff(names(df), grouping_cols)
+    if(length(non_grouping) > 1){
+      warning("All non grouping values used. Using select non groups is currently not supported")
+    }
     grouping_cols = paste0(grouping_cols,collapse="+")
-    agg_formula <- as.formula(paste0(non_grouping,"~",
+    agg_formula <- as.formula(paste0(".~",
                                      grouping_cols))
     res<-do.call(data.frame,aggregate(agg_formula,data=df,
                                       function(x)
