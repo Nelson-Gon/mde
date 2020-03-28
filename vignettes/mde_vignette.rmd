@@ -18,8 +18,6 @@ knitr::opts_chunk$set(
 ```
 
 
-
-
 This is the development version of `mde`. The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
 
 The goal of `mde` is to ease exploration of missingness without feeling overwhelmed by syntax with particular focus on simplicity.  
@@ -83,6 +81,42 @@ library(mde)
 ```{r}
 
 na_summary(airquality)
+
+```
+
+
+1. To get a simple missingness report, use `na_summary`:
+
+
+```
+na_summary(airquality)
+
+     variable missing complete percent_complete percent_missing
+1      Day       0      153        100.00000        0.000000
+2    Month       0      153        100.00000        0.000000
+3    Ozone      37      116         75.81699       24.183007
+4  Solar.R       7      146         95.42484        4.575163
+5     Temp       0      153        100.00000        0.000000
+6     Wind       0      153        100.00000        0.000000
+
+```
+
+To get this summary by group:
+
+```{r}
+
+test2 <- data.frame(ID= c("A","A","B","A","B"), 
+                   Vals = c(rep(NA,4),"No"),
+                   ID2 = c("E","E","D","E","D"))
+
+na_summary(test2,grouping_cols = c("ID","ID2"))
+
+```
+
+```{r}
+
+na_summary(test2, grouping_cols="ID")
+
 
 ```
 

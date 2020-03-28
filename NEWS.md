@@ -9,15 +9,15 @@ output: html_document
 
 **Additions**
 
-1. `na_summary` which provides a very quick overview of missingness. 
+1. `na_summary` which provides a very quick overview of missingness. It also supports grouped summaries. 
 
-2/ `drop_na_if` allows easy dropping of columns where all values are missing.
+2. `drop_na_if` allows easy dropping of columns where all values are missing.
 
 **Major changes**
 
 2. In `percent_missing`, the argument `grouped` was dropped in favour of simply providing a `grouping_cols` vector.
 
-3. In `recode_as_na` `, `subset_df` was dropped. It now simply accepts an optional `subset_cols` argument. The argument `tidy` was also dropped.One can simply provide an optional `pattern_type` and `pattern`.
+3. In `recode_as_na` , `subset_df` was dropped. It now simply accepts an optional `subset_cols` argument. The argument `tidy` was also dropped.One can simply provide an optional `pattern_type` and `pattern`.
 
 4. Similar changes were made for `recode_na_as` as above.
 

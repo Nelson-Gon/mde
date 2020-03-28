@@ -88,6 +88,32 @@ na_summary(airquality)
 
 ```
 
+To get this summary by group:
+
+```
+
+test2 <- data.frame(ID= c("A","A","B","A","B"), 
+                   Vals = c(rep(NA,4),"No"),
+                   ID2 = c("E","E","D","E","D"))
+
+na_summary(test2,grouping_cols = c("ID","ID2"))
+
+#ID ID2 Vals.missing Vals.complete Vals.percent_complete
+#1  B   D            1             1                    50
+#2  A   E            3             0                     0
+#  Vals.percent_missing
+#1                   50
+#2                  100
+
+
+na_summary(test2, grouping_cols="ID")
+
+   ID     Vals.missing Vals.complete Vals.percent_complete Vals.percent_missing
+1  A            3             0                     0                  100
+2  B            1             1                    50                   50
+
+```
+
 2. `get_na_counts`
 
 This provides a convenient way to show the number of missing values columnwise. It is relatively fast(tests done on about 400,000 rows, took a few microseconds.)
