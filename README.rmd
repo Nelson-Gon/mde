@@ -388,6 +388,21 @@ drop_all_na(test)
 
 
 
+12. `custom_na_recode`
+
+This allows recoding `NA` values with common stats functions such as `mean`,`max`,`min`,`sd`.
+
+
+```{r}
+
+
+
+head(custom_na_recode(airquality,func="mean",across_columns=c("Solar.R","Ozone")))
+
+
+```
+
+
 Please note that the 'mde' project is released with a
 [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

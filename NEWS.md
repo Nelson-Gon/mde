@@ -13,6 +13,8 @@ output: html_document
 
 2. `drop_na_if` allows easy dropping of columns where all values are missing.
 
+3. `custom_na_recode` allows replacing missing values with common values such as mean, min, max, sd. 
+
 **Major changes**
 
 2. In `percent_missing`, the argument `grouped` was dropped in favour of simply providing a `grouping_cols` vector.
