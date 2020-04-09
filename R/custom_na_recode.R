@@ -1,6 +1,6 @@
 #' Recode NA as another value using a function or a custom equation
 #' @inheritParams na_summary
-#' @param func Function to use for the replacement e.g "mean"
+#' @param func Function to use for the replacement e.g "mean". Defaults to mean.
 #' @param across_columns A character vector specifying across which columns recoding should be done
 #' @examples
 #' #use all columns
@@ -27,7 +27,8 @@ if(all(is.null(across_columns), is.null(grouping_cols))){
 # wait for dplyr release, move to across
 
   df %>%
-        dplyr::mutate_all(~ifelse(is.na(.),do.call(func,list(na.omit(.))),.))
+        dplyr::mutate(dplyr::across(dplyr::everything(),
+                      ~ifelse(is.na(.),do.call(func,list(na.omit(.))),.)))
 
 }
 
@@ -40,9 +41,9 @@ else if(!is.null(across_columns)){
   if(is.null(grouping_cols)){
 
      df %>%
-      dplyr::mutate_at(dplyr::vars(!!!dplyr::syms(across_columns)),
+      dplyr::mutate(dplyr::across(c(!!!dplyr::syms(across_columns)),
                        ~ifelse(is.na(.),
-                               do.call(func,list(na.omit(.))),.))
+                               do.call(func,list(na.omit(.))),.)))
 
 }
 

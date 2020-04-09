@@ -14,7 +14,7 @@ custom_na_recode(
 \arguments{
 \item{df}{A valid R `object` for which the percentage of missing values is required.}
 
-\item{func}{Function to use for the replacement e.g "mean"}
+\item{func}{Function to use for the replacement e.g "mean". Defaults to mean.}
 
 \item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}
