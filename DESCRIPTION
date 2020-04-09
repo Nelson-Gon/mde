@@ -1,6 +1,6 @@
 Package: mde
 Title: Missing Data Explorer
-Version: 0.1.1.9000
+Version: 0.2.0.9000
 Authors@R: 
     person(given = "Nelson",
            family = "Gonzabato",
@@ -12,7 +12,7 @@ Description: Correct identification and handling of missing data is one of the m
 License: GPL-3
 Imports:
          purrr(>= 0.3.3),
-         dplyr(>= 0.8.3),
+         dplyr(>= 0.8.99.9000),
          magrittr(>= 1.5)
 Encoding: UTF-8
 LazyData: true

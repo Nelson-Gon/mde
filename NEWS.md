@@ -5,7 +5,7 @@ date: "16/12/2019"
 output: html_document
 ---
 
-# mde version 0.1.1
+# mde version 0.2.0
 
 **Additions**
 
@@ -24,6 +24,8 @@ output: html_document
 4. Similar changes were made for `recode_na_as` as above.
 
 5. The argument `x` was changed to `df` in `drop_na_at`. 
+
+
 
 
 

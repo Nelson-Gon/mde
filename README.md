@@ -41,8 +41,7 @@ install.packages("mde")
 devtools::install_github("Nelson-Gon/mde")
 
 # build vignettes
-devtools::install_github("Nelson-Gon/mde", 
-build_vignettes=TRUE)
+devtools::install_github("Nelson-Gon/mde", build_vignettes=TRUE)
 
 ```
 
@@ -498,6 +497,26 @@ drop_all_na(test)
 
 
 This allows recoding `NA` values with common stats functions such as `mean`,`max`,`min`,`sd`.
+
+To use default values:
+
+
+```
+
+ head(custom_na_recode(airquality))
+ 
+     Ozone  Solar.R Wind Temp Month Day
+1 41.00000 190.0000  7.4   67     5   1
+2 36.00000 118.0000  8.0   72     5   2
+3 12.00000 149.0000 12.6   74     5   3
+4 18.00000 313.0000 11.5   62     5   4
+5 42.12931 185.9315 14.3   56     5   5
+6 28.00000 185.9315 14.9   66     5   6
+
+
+```
+
+To replace only at select columns:
 
 
 ```

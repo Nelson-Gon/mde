@@ -33,9 +33,9 @@ recode_na_if.data.frame <- function(x,
   else{
     x %>%
       dplyr::group_by(!!!dplyr::syms(grouping_col)) %>%
-      dplyr::mutate_at(dplyr::vars(-dplyr::group_cols()),
-               ~ifelse(.data[[grouping_col]] %in%
-      target_groups,replace(.,is.na(.),replacement),.)) %>%
+      dplyr::mutate(across(everything(),
+               ~ifelse(.data[[grouping_col]] %in% target_groups,
+                       replace(.,is.na(.),replacement),.))) %>%
       dplyr::ungroup()
   }
 }
