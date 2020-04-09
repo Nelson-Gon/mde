@@ -53,8 +53,8 @@ recode_as_na.data.frame <-function(df, value=NULL,
     }
 
 df %>%
-        dplyr::mutate_at(dplyr::vars(subset_cols),
-          ~ifelse(. %in% value, NA, as.character(.)))
+        dplyr::mutate(across(subset_cols,
+          ~ifelse(. %in% value, NA, as.character(.))))
 }
 
 
@@ -89,7 +89,8 @@ else if(is.null(subset_cols) & !is.null(pattern_type)){
 else{
 
   df %>%
-    dplyr::mutate_all(~ifelse(. %in% value, NA, as.character(.)))
+    dplyr::mutate(across(everything(),
+                         ~ifelse(. %in% value, NA, as.character(.))))
 
 }
 

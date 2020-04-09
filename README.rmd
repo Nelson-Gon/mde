@@ -345,7 +345,7 @@ This provides a simple way to drop missing values only at specific columns. It c
 
 ```{r}
 
-drop_na_at(airquality,pattern_type = "starts_with","O")
+head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 
 
 ```
@@ -358,7 +358,7 @@ For all values greater/less/less or equal/greater or equal than some value, can 
 
 ```{r}
 
-recode_as_na_for(airquality,criteria="gt",value=25)
+head(recode_as_na_for(airquality,criteria="gt",value=25))
 
 
 
@@ -368,7 +368,7 @@ To do so at specific columns, pass an optional `subset_cols` character vector:
 
 ```{r}
 
-recode_as_na_for(airquality, value=25,subset_cols="Solar.R", criteria="gt")
+head(recode_as_na_for(airquality, value=40,subset_cols=c("Solar.R","Ozone"), criteria="gt"))
 
 ```
 
