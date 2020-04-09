@@ -25,6 +25,9 @@ data.}
 Recode NA as another value using a function or a custom equation
 }
 \examples{
+#use all columns
+head(custom_na_recode(airquality,func="mean"))
+# use only a few columns
 head(custom_na_recode(airquality,func="mean",across_columns = c("Solar.R","Ozone")))
 
 }
