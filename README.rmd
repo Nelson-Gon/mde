@@ -345,7 +345,7 @@ This provides a simple way to drop missing values only at specific columns. It c
 
 ```{r}
 
-drop_na_at(airquality,pattern_type = "starts_with","O")
+head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 
 
 ```
@@ -358,7 +358,7 @@ For all values greater/less/less or equal/greater or equal than some value, can 
 
 ```{r}
 
-recode_as_na_for(airquality,criteria="gt",value=25)
+head(recode_as_na_for(airquality,criteria="gt",value=25))
 
 
 
@@ -368,7 +368,7 @@ To do so at specific columns, pass an optional `subset_cols` character vector:
 
 ```{r}
 
-recode_as_na_for(airquality, value=25,subset_cols="Solar.R", criteria="gt")
+head(recode_as_na_for(airquality, value=40,subset_cols=c("Solar.R","Ozone"), criteria="gt"))
 
 ```
 
@@ -392,6 +392,17 @@ drop_all_na(test)
 
 This allows recoding `NA` values with common stats functions such as `mean`,`max`,`min`,`sd`.
 
+To use default values:
+
+
+```{r}
+
+head(custom_na_recode(airquality))
+ 
+```
+
+To use select columns:
+
 
 ```{r}
 
@@ -404,7 +415,7 @@ head(custom_na_recode(airquality,func="mean",across_columns=c("Solar.R","Ozone")
 
 
 Please note that the 'mde' project is released with a
-[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
+[Contributor Code of Conduct](https://www.github.com/Nelson-Gon/mde/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
 

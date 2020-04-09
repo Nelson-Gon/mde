@@ -27,15 +27,14 @@ if(!is.null(grouping_cols)){
 
     df %>%
       dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
-      dplyr::summarise_all(~ sum(is.na(.))/length(.) * 100)
+      dplyr::summarise(across(everything(),~ sum(is.na(.))/length(.) * 100))
 
   }
 
   else{
     df %>%
       dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
-      dplyr::summarise_at(dplyr::vars(-exclude_cols),
-                          ~ sum(is.na(.))/length(.) * 100)
+      dplyr::summarise(across(-exclude_cols, ~ sum(is.na(.))/length(.) * 100))
   }
 
 

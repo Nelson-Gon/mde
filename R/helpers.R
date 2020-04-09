@@ -2,30 +2,31 @@
 recode_starts_with <- function(x,pattern,original_value,
                                new_value,...){
 x %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::starts_with(match = pattern,
+    dplyr::mutate(across(starts_with(match = pattern,
                                         ignore.case = TRUE,
-                                                    ...)),
-                     function(y) ifelse(y %in% original_value ,
+                                                    ...),
+                     ~ ifelse(. %in% original_value ,
                                         new_value,
-                                        y))
+                                        .)))
 }
+
 recode_ends_with <- function(x,pattern,original_value,new_value,
                              ...){
   x %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::ends_with(match = pattern,
+    dplyr::mutate(across(ends_with(match = pattern,
                                                     ignore.case = TRUE,
-                                                    ...)),
-            function(y) ifelse(y %in% original_value ,new_value,
-                                        y))
+                                                    ...),
+            ~ifelse(. %in% original_value ,new_value,
+                                        .)))
 }
 recode_contains<- function(x,pattern,original_value,new_value,
                            ...){
   x %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::contains(match = pattern,
+    dplyr::mutate(across(contains(match = pattern,
                                         ignore.case = TRUE,
-                                                    ...)),
-              function(y) ifelse(y %in% original_value ,new_value,
-                                        y))
+                                                    ...),
+              ~ifelse(. %in% original_value ,new_value,
+                                        .)))
 }
 
 # NA replacements at given columns
@@ -34,29 +35,21 @@ recode_contains<- function(x,pattern,original_value,new_value,
 recode_na_as_starts_with <- function(x,pattern,
                                      value,...){
   x %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::starts_with(pattern,
-                                                    ...)),
-                     function(x_data) replace(x_data,
-                                              is.na(x_data),
-                                              value))
+    dplyr::mutate(across(starts_with(pattern,
+                                          ...),
+                     ~replace(., is.na(.), value)))
 }
 
 recode_na_as_ends_with <- function(x,pattern,
                                      value,...){
   x %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::ends_with(pattern,
-                                                  ...)),
-                     function(x_data) replace(x_data,
-                                              is.na(x_data),
-                                              value))
+    dplyr::mutate(across(ends_with(pattern, ...),
+                     ~ replace(., is.na(.), value)))
 }
 recode_na_as_contains <- function(x,pattern,
                                      value,...){
   x %>%
-    dplyr::mutate_at(dplyr::vars(dplyr::contains(pattern,
-                                                 ...)),
-                     function(x_data) replace(x_data,
-                                              is.na(x_data),
-                                              value))
+    dplyr::mutate(across(contains(pattern,...),
+                     ~replace(., is.na(.), value)))
 }
 
