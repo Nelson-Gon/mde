@@ -6,4 +6,6 @@ r:
     - devel
 r_github_packages: tidyverse/dplyr
 warnings_are_errors: true
+ after_success:
+    - Rscript -e 'covr::codecov()'
 
