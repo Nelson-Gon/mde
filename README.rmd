@@ -18,9 +18,7 @@ knitr::opts_chunk$set(
 ```
 
 
-This is the development version of `mde`. The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
-
-The goal of `mde` is to ease exploration of missingness without feeling overwhelmed by syntax with particular focus on simplicity.  
+The goal of `mde` is to ease exploration of missingnes with particular focus on simplicity.  
 
 
 
@@ -409,6 +407,28 @@ To use select columns:
 
 
 head(custom_na_recode(airquality,func="mean",across_columns=c("Solar.R","Ozone")))
+
+
+```
+
+To use a function from another package to perform replacements:
+
+
+```{r, eval=FALSE}
+
+# use get_mode from manymodelr
+head(custom_na_recode(airquality,func=manymodelr::get_mode,across_columns=c("Solar.R","Ozone")))
+
+
+```
+
+To perform a forward fill with `dplyr`'s `lead`:
+
+
+```{r,eval=FALSE}
+
+# use lag for a backfill
+head(custom_na_recode(airquality,func=dplyr::lead ))
 
 
 ```

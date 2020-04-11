@@ -7,6 +7,8 @@
 #' head(custom_na_recode(airquality,func="mean"))
 #' # use only a few columns
 #' head(custom_na_recode(airquality,func="mean",across_columns = c("Solar.R","Ozone")))
+#' # use a function from another package
+#' #head(custom_na_recode(airquality, func=dplyr::lead))
 #'
 #' @export
 
