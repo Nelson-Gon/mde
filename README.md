@@ -572,6 +572,46 @@ head(custom_na_recode(airquality,func=dplyr::lead ))
 
 ```
 
+To perform replacements by group:
+
+
+```
+
+some_data <- data.frame(ID=c("A1","A1","A1","A2","A2", "A2"),A=c(5,NA,0,8,3,4),B=c(10,0,0,NA,5,6),C=c(1,NA,NA,25,7,8))
+
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID"))
+# A tibble: 6 x 4
+  ID        A     B     C
+  <fct> <dbl> <dbl> <dbl>
+1 A1      5    10       1
+2 A1      2.5   0       1
+3 A1      0     0       1
+4 A2      8     5.5    25
+5 A2      3     5       7
+6 A2      4     6       8
+
+
+
+```
+
+Across specific columns:
+
+
+```
+
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID", across_columns = c("C", "A")))
+
+# A tibble: 6 x 4
+  ID        A     B     C
+  <fct> <dbl> <dbl> <dbl>
+1 A1      5      10     1
+2 A1      2.5     0     1
+3 A1      0       0     1
+4 A2      8      NA    25
+5 A2      3       5     7
+6 A2      4       6     8
+
+```
 ---
 
 Please note that the 'mde' project is released with a

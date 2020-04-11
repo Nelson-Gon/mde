@@ -19,17 +19,18 @@ custom_na_recode(
 \item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}
 
-\item{across_columns}{A character vector specifying across which columns recoding should be done}
-}
-\description{
-Recode NA as another value using a function or a custom equation
-}
-\examples{
+\item{across_columns}{A character vector specifying across which columns recoding should be done
 #use all columns
 head(custom_na_recode(airquality,func="mean"))
 # use only a few columns
 head(custom_na_recode(airquality,func="mean",across_columns = c("Solar.R","Ozone")))
 # use a function from another package
 #head(custom_na_recode(airquality, func=dplyr::lead))
-
+some_data <- data.frame(ID=c("A1","A1","A1","A2","A2", "A2"), A=c(5,NA,0,8,3,4), B=c(10,0,0,NA,5,6),C=c(1,NA,NA,25,7,8))
+# grouping
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID", across_columns = c("C", "A")))
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID"))}
+}
+\description{
+Recode NA as another value using a function or a custom equation
 }

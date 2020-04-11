@@ -433,6 +433,27 @@ head(custom_na_recode(airquality,func=dplyr::lead ))
 
 ```
 
+To perform replacement by group:
+
+
+```{r}
+
+some_data <- data.frame(ID=c("A1","A1","A1","A2","A2", "A2"),A=c(5,NA,0,8,3,4),B=c(10,0,0,NA,5,6),C=c(1,NA,NA,25,7,8))
+
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID"))
+
+
+```
+
+Across specific columns:
+
+
+```{r}
+
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID", across_columns = c("C", "A")))
+
+```
+
 
 Please note that the 'mde' project is released with a
 [Contributor Code of Conduct](https://www.github.com/Nelson-Gon/mde/.github/CODE_OF_CONDUCT.md).
