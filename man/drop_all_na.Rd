@@ -16,6 +16,10 @@ data.}
 Drop columns for which all values are NA
 }
 \examples{
-test <- data.frame(ID= c("A","A","B","A",NA), Vals = rep(NA,5))
-drop_all_na(test)
+test <- data.frame(ID= c("A","A","B","A","B"), Vals = c(rep(NA,4),2))
+test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = rep(NA, 5))
+# drop columns where all values are NA
+drop_all_na(test2)
+# drop NAs only if all are NA for a given group, drops group too.
+drop_all_na(test, "ID")
 }

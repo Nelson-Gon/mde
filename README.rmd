@@ -384,7 +384,17 @@ drop_all_na(test)
 
 ```
 
+Alternatively, we can drop groups where all variables are all NA. 
 
+
+```{r}
+
+test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = rep(NA, 5)) 
+
+drop_all_na(test, grouping_cols = "ID")
+
+
+```
 
 12. `custom_na_recode`
 
