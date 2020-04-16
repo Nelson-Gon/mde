@@ -26,7 +26,9 @@ get_na_counts <- function(x, grouping_cols = NULL){
 get_na_counts.data.frame <- function(x, grouping_cols = NULL){
 
 if(! is.null(grouping_cols)){
-
+if(any(!grouping_cols %in% names(x))){
+  stop("All grouping columns must exist in the data set")
+}
   x %>%
     dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
     dplyr::summarise(dplyr::across(dplyr::everything(),
