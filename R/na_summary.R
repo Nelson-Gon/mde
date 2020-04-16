@@ -23,15 +23,18 @@ na_summary <- function(df,grouping_cols=NULL,...){
 na_summary.data.frame <- function(df,grouping_cols=NULL,...){
   # stick to(with?) base as much as possible
   # get total NAs columnwise
+all_counts <-stack(get_na_counts(df))
+all_percents <- stack(percent_missing(df,...))
+names(all_counts) <- c("missing","variable")
+names(all_percents) <- c("percent_missing","variable")
 if(is.null(grouping_cols)){
 
+if(nrow(all_counts) != nrow(all_percents)){
+  stop("Binding of datasets failed. Please check using percent_missing and get_na_counts first")
+}
 
-  all_counts <-stack(get_na_counts(df))
-  # percents
-  all_percents <- stack(percent_missing(df,...))
-  names(all_counts) <- c("missing","variable")
 
-  names(all_percents) <- c("percent_missing","variable")
+
 
   all_counts$complete <- ifelse(all_counts$missing==0,nrow(df),
                                 nrow(df) - all_counts$missing)
@@ -50,6 +53,9 @@ else{
     non_grouping = setdiff(names(df), grouping_cols)
     if(length(non_grouping) > 1){
       warning("All non grouping values used. Using select non groups is currently not supported")
+    }
+    if(!all(grouping_cols %in% names(df))){
+      stop("All grouping_cols should exist in the dataset.")
     }
     grouping_cols = paste0(grouping_cols,collapse="+")
     agg_formula <- as.formula(paste0(".~",

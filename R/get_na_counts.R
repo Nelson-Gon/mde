@@ -4,7 +4,7 @@
 #' data.
 #' @description This function takes a `data.frame` object as an input and returns the corresponding
 #' `NA` counts. `NA` refers to R's builtin missing data holder.
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #' @importFrom dplyr starts_with ends_with contains across everything
 #' @return An object of the same type as `x` showing the respective number of missing values. If
 #' grouped is set to `TRUE`, the results are returned by group.
@@ -30,13 +30,14 @@ if(! is.null(grouping_cols)){
   x %>%
     dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
     dplyr::summarise(dplyr::across(dplyr::everything(),
-                                   list(function(column) sum(is.na(column)))))
+                                   ~sum(is.na(.))))
 
 }
 
   else{
 
-    lengths(sapply(x,function(column) which(is.na(column))))
+    colSums(is.na(x))
   }
 
 }
+
