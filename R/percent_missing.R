@@ -32,22 +32,26 @@ if(!is.null(grouping_cols)){
 
 }
 
-if(is.null(exclude_cols)){
+if(! is.null(exclude_cols)){
+  if(any(!exclude_cols %in% names(df))){
+    stop("Can only exclude columns that exist in the dataset.")
+  }
+
+  df <- df %>%
+        dplyr::select(-exclude_cols)
+
+
+}
 
   df %>%
-      dplyr::summarise(across(everything(),~ sum(is.na(.))/length(.) * 100)) %>%
+    dplyr::summarise(across(everything(),~ sum(is.na(.))/length(.) * 100)) %>%
     dplyr::ungroup()
 
-}
-
-else{
-df %>%
-    dplyr::summarise(across(-c(!!!dplyr::syms(exclude_cols)),~ sum(is.na(.))/length(.) * 100)) %>%
-    dplyr::ungroup()
-
-}
 
 
 }
+
+
+
 
 

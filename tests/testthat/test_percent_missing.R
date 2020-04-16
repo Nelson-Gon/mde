@@ -6,5 +6,13 @@ testthat::test_that(desc="percent_missing warns",
                                           grouping_cols =
                                                  "ID")[[2]][1],
                                           25)
+                    testthat::expect_error(percent_missing(airquality,
+                                                 grouping_cols = "Nope"),
+                       "All grouping columns should exist in the dataset",
+                       fixed = TRUE)
+                    testthat::expect_error(percent_missing(airquality,
+                                                   exclude_cols = "nope"),
+                      "Can only exclude columns that exist in the dataset.",
+                      fixed=TRUE)
                     })
 
