@@ -40,7 +40,7 @@ values = c("n/a",NA,"Yes","No"))
 recode_as_na(dummy_test,"n/a")
 # Recode only at specific columns
 another_dummy <- data.frame(ID = 1:5, Subject = 7:11,
-Change = c("missing", "n/a", 2:4 ))
+Change = c("missing", "n/a", 2:4 ), stringsAsFactors = FALSE)
 # Change missing and n/a to NA only for the column named Change.
 recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
                               "missing"))
