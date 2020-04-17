@@ -4,12 +4,12 @@
 \alias{recode_na_if}
 \title{Recode NA as another value with some conditions}
 \usage{
-recode_na_if(x, grouping_col = NULL, target_groups = NULL, replacement = 0)
+recode_na_if(df, grouping_cols = NULL, target_groups = NULL, replacement = 0)
 }
 \arguments{
-\item{x}{A data.frame object with missing values}
+\item{df}{A data.frame object with missing values}
 
-\item{grouping_col}{Character column to use for grouping the data}
+\item{grouping_cols}{Character columns to use for grouping the data}
 
 \item{target_groups}{Character Recode NA as if and only if the grouping column is
 in this vector of values}
