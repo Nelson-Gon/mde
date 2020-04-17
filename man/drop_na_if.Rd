@@ -29,8 +29,8 @@ they meet certain criteria/conditions.
 head(drop_na_if(airquality, percent_na = 24))
 #drop columns that have less tan or equal to 4\%
 head(drop_na_if(airquality,sign="lteq", percent_na = 4))
-# Drop all except Ozone
-head(drop_na_if(airquality, percent_na = 24, keep_columns = "Ozone"))
+# Drop all except with greater than oe equal to 4\% missing but keep Ozone
+head(drop_na_if(airquality, sign="gteq",percent_na = 4, keep_columns = "Ozone"))
 }
 \seealso{
 \code{\link{percent_missing}}
