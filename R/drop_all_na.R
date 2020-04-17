@@ -20,15 +20,18 @@ drop_all_na.data.frame <- function(df, grouping_cols = NULL){
     if(!all(grouping_cols %in% names(df))){
       stop("All grouping columns should exist in the dataset.")
     }
-    df %>%
+   df %>%
          dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
-    dplyr::filter(dplyr::across(everything(),~!all(is.na(.)))) %>%
-      dplyr::ungroup()
-  }
+     dplyr::filter(dplyr::across(everything(),~!all(is.na(.)))) %>%
+     dplyr::ungroup()
 
-  else{
-    Filter(function(x) ! all(is.na(x)), df)
+
   }
+else{
+
+  Filter(function(x) !all(is.na(x)), df)
+
+}
 
 
 
