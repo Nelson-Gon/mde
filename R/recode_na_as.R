@@ -26,28 +26,35 @@ recode_na_as.data.frame <- function(df, value=0,
                                     pattern_type= NULL,
                                     pattern=NULL,
                                     ...){
-  # Use a purely base solution, there are no trophies for that
-  # but yeah
 
- if(all(!is.null(subset_cols), !is.null(pattern_type))){
+
+if(!is.null(subset_cols)){
+
+ if(!is.null(pattern_type)){
     stop("Only one of pattern_type or subset_cols should be used but not both.")
   }
-  if(!is.null(subset_cols)){
+
 
 if(!all(subset_cols %in% names(df))){
    stop("Some names not found in the dataset. Please check and try again.")
-    }
+}
 
-else{
-    which_to_subset <- which(names(df) %in% subset_cols)
-    # which is.na
-  df[,which_to_subset] <-  sapply(df[,which_to_subset], function(column)
-                replace(column,is.na(column),value))
-  df
-    }
+
+df %>%
+      dplyr::mutate(across(!!!c(dplyr::syms(subset_cols)),
+                           ~replace(.,is.na(.), value)))
+
+
+
+
+}
+
+
+else if(!is.null(pattern_type)){
+
+  if(!pattern_type %in% c("starts_with", "ends_with","contains")){
+    stop("pattern_type should be one of starts_with, ends_with or contains.")
   }
-
-else if (!is.null(pattern_type)){
 
   switch(pattern_type,
          starts_with = recode_na_as_starts_with(x=df,
@@ -64,12 +71,9 @@ else if (!is.null(pattern_type)){
                                           ...))
 }
 
-  else{
-    # Can use dplyr, this looks a bit ugly
-
-    as.data.frame(sapply(df, function(column)
-      replace(column,is.na(column),value)))
-  }
-
+else{
+  df %>%
+    dplyr::mutate(across(everything(), ~replace(., is.na(.), value)))
+}
 
 }

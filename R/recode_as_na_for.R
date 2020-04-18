@@ -24,12 +24,12 @@ recode_as_na_for.data.frame <- function(df, criteria="gt",
                                      value=0,
                                      subset_cols=NULL){
 
-  # Use specific columns
-  # Find these columns
-  # This is really too repetitive. There must be a simpler way.
-  #use_columns_in <- which(names(df) %in% subset_cols)
+
 
 if(is.null(subset_cols)){
+  if(! criteria %in% c("gt", "gteq","lt","lteq","eq")){
+    stop("criteria should be one of gteq, lt, lteq,gteq or eq.")
+  }
     gt <-  df %>%
       mutate(across(everything(),~replace(., .> value, NA)))
     gteq <-  df %>%
@@ -38,15 +38,20 @@ if(is.null(subset_cols)){
       mutate(across(everything(), ~replace(. , . <= value, NA)))
     lt =  df %>%
       mutate(across(everything(), ~replace(., . < value, NA)))
+    eq =  df %>%
+      mutate(across(everything(), ~replace(., . == value, NA)))
     switch(criteria,
            gt = gt,
            gteq = gteq,
            lteq = lteq,
-           lt = lt)
+           lt = lt,
+           eq = eq)
   }
 
   else{
-
+  if(!all(subset_cols %in% names(df))){
+    stop("All subset_cols should exist in the data set.")
+  }
     gteq_subset <- df %>%
       mutate(across(subset_cols,~ifelse(. >= value,NA,
                                         .)))
@@ -59,11 +64,15 @@ if(is.null(subset_cols)){
     gt_subset <- df %>%
       mutate(across(subset_cols, ~ifelse(. > value,
                                          NA, .)))
+    eq_subset <- df %>%
+      mutate(across(subset_cols, ~ifelse(. == value,
+                                         NA, .)))
     switch(criteria,
            gt = gt_subset,
            gteq = gteq_subset,
            lt = lt_subset,
-           lteq = lteq_subset)
+           lteq = lteq_subset,
+           eq = eq_subset)
   }
 
 }
