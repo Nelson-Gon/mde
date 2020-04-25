@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages(c("remotes"))
+          install.packages(c("remotes","testthat"),dependencies=TRUE)
           remotes::install_github("tidyverse/dplyr")
           remotes::install_cran("covr")
         shell: Rscript {0}
