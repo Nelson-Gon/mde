@@ -1,73 +1,30 @@
-# Tidy recoding
-recode_starts_with <- function(x,pattern=NULL,original_value,
-                               new_value,...){
-  if(is.null(pattern)){
-    stop("A pattern must be supplied.")
-  }
+# Tidy recoding: Hardcoded(dplyr less flexible)
+
+
+recode_selectors <- function(x,pattern_type=NULL,pattern=NULL){
+
+ columns_start_with<-grep(paste0("^(",pattern,")",collapse = ""),names(x))
+ columns_end_with <- grep(paste0("(",pattern,")$",collapse = ""),names(x))
+ columns_contain <- grep(pattern,names(x))
+ regex <- columns_contain
+
+final_selectors <- switch(pattern_type,
+       starts_with = columns_start_with,
+       ends_with = columns_end_with,
+       contains = columns_contain,
+       regex = columns_contain
+       )
+final_selectors
+}
+# make changes
+recode_helper <- function(x,pattern_type=NULL,pattern=NULL,original_value,
+                          new_value,...){
 x %>%
-    dplyr::mutate(across(starts_with(match = pattern,
-                                        ignore.case = TRUE,
-                                                    ...),
-                     ~ ifelse(. %in% original_value ,
-                                        new_value,
-                                        .)))
+  mutate(across(recode_selectors(x,pattern=pattern,pattern_type=pattern_type,
+                                 ...),~ifelse(. %in% original_value, new_value,.)))
+
 }
 
-recode_ends_with <- function(x,pattern=NULL,original_value,new_value,
-                             ...){
-  if(is.null(pattern)){
-    stop("A pattern must be supplied.")
-  }
-  x %>%
-    dplyr::mutate(across(ends_with(match = pattern,
-                                                    ignore.case = TRUE,
-                                                    ...),
-            ~ifelse(. %in% original_value ,new_value,
-                                        .)))
-}
-recode_contains<- function(x,pattern=NULL,original_value,new_value,
-                           ...){
-  if(is.null(pattern)){
-    stop("A pattern must be supplied.")
-  }
-  x %>%
-    dplyr::mutate(across(contains(match = pattern,
-                                        ignore.case = TRUE,
-                                                    ...),
-              ~ifelse(. %in% original_value ,new_value,
-                                        .)))
-}
 
-# NA replacements at given columns
-# No idea how this could have been done under recode_*
-# Maybe someday I'll figure it out, for now I'll go "manual"
-recode_na_as_starts_with <- function(x,pattern=NULL,
-                                     value,...){
-  if(is.null(pattern)){
-    stop("A pattern must be supplied.")
-  }
-  x %>%
-    dplyr::mutate(across(starts_with(pattern,
-                                          ...),
-                     ~replace(., is.na(.), value)))
-}
 
-recode_na_as_ends_with <- function(x,pattern=NULL,
-                                     value,...){
-  if(is.null(pattern)){
-    stop("A pattern must be supplied.")
-  }
-  x %>%
-    dplyr::mutate(across(ends_with(pattern, ...),
-                     ~ replace(., is.na(.), value)))
-}
-recode_na_as_contains <- function(x,pattern=NULL,
-                                     value,...){
-  if(is.null(pattern)){
-    stop("A pattern must be supplied.")
-  }
-  x %>%
-    dplyr::mutate(across(contains(pattern,...),
-                     ~replace(., is.na(.), value)))
-}
 

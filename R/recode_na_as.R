@@ -28,52 +28,35 @@ recode_na_as.data.frame <- function(df, value=0,
                                     ...){
 
 
-if(!is.null(subset_cols)){
-
- if(!is.null(pattern_type)){
+  if(all(!is.null(subset_cols), !is.null(pattern_type))){
     stop("Only one of pattern_type or subset_cols should be used but not both.")
   }
+  if(!is.null(subset_cols)){
 
+    if(! all(subset_cols %in% names(df))){
+      stop("Some names not found in the dataset. Please check and try again.")
+    }
 
-if(!all(subset_cols %in% names(df))){
-   stop("Some names not found in the dataset. Please check and try again.")
-}
-
-
-df %>%
-      dplyr::mutate(across(!!!c(dplyr::syms(subset_cols)),
-                           ~replace(.,is.na(.), value)))
-
-
-
-
-}
-
-
-else if(!is.null(pattern_type)){
-
-  if(!pattern_type %in% c("starts_with", "ends_with","contains")){
-    stop("pattern_type should be one of starts_with, ends_with or contains.")
+    df %>%
+      dplyr::mutate(across(subset_cols,
+                           ~ifelse(. %in% value, NA, as.character(.))))
   }
 
-  switch(pattern_type,
-         starts_with = recode_na_as_starts_with(x=df,
-                                                pattern=pattern,
-                                                value=value,
-                                                ...),
-         ends_with = recode_na_as_ends_with(x=df,
-                                            pattern=pattern,
-                                            value=value,
-                                            ...),
-         contains = recode_na_as_contains(x=df,
-                                          pattern=pattern,
-                                          value=value,
-                                          ...))
-}
+  if(!is.null(pattern_type)){
+    if(any(!pattern_type %in% c("starts_with","ends_with","contains",
+                                "regex"))){
 
-else{
-  df %>%
-    dplyr::mutate(across(everything(), ~replace(., is.na(.), value)))
-}
+      stop("pattern_type should be one of starts_with,ends_with,contains or regex")
+    }
+    if(is.null(pattern)) stop("A pattern must be supplied.")
+    recode_helper(df,pattern_type=pattern_type,original_value=NA,pattern=pattern,
+                  new_value=value)
+  }
+
+
 
 }
+
+
+
+

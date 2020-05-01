@@ -17,46 +17,37 @@ drop_na_at <- function(df, pattern_type="contains",pattern=NULL,
 
 #' @export
 
-drop_na_at.data.frame <- function(df, pattern_type="contains",
+drop_na_at.data.frame <- function(df, pattern_type=NULL,
                                   pattern=NULL,...){
 
-  # First start with case sensitive
-  # Of course you can do this with dplyr/rlang
-  # Just trying to stick with base as much as possible
-  # First check if all NA sums are equal
-  # Confirm user hasn't forgotten to provide a pattern
-  if(is.null(pattern)){
-    stop("No pattern was provided. Please provide one.")
+
+
+if(!is.null(pattern_type)){
+    if(any(!pattern_type %in% c("starts_with","ends_with","contains",
+                                "regex"))){
+
+      stop("pattern_type should be one of starts_with,ends_with,contains or regex")
+    }
+    if(is.null(pattern)) stop("A pattern must be supplied.")
+    res<-df[recode_selectors(df,pattern_type=pattern_type,pattern=pattern)]
   }
-
-
-
-columns_list <- list(columns_ends_with = df[endsWith(names(df),pattern)],
-                     column_starts_with = df[startsWith(names(df),pattern)],
-                     column_contains_string = df[grepl(pattern, names(df),...)]
-)
-
-res<-switch (pattern_type,
-        starts_with = columns_list[[2]],
-        ends_with = columns_list[[1]],
-        contains = columns_list[[3]])
 
 
 
 
 na_counts <- get_na_counts(res)
 na_counts_test <- all(na_counts == unname(na_counts)[1])
-if(na_counts_test){
-  final_res <- stats::na.omit(res)
-  row.names(final_res) <- 1:nrow(final_res)
-  final_res
-}
-
-else{
+if(!na_counts_test){
 
   stop("Unequal number of missing values, cannot rebind data. Please check with get_na_counts first")
 
 }
+
+final_res <- stats::na.omit(res)
+row.names(final_res) <- 1:nrow(final_res)
+final_res
+
+
 
 
 }

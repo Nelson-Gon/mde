@@ -10,7 +10,7 @@ Description: Correct identification and handling of missing data is one of the m
              lies and therefore find the most appropriate action to take.
              Graham WJ (2009) <doi:10.1146/annurev.psych.58.110405.085530>. 
 License: GPL-3
-Depends:
+Imports:
          dplyr(>= 0.8.99.9000)
 Encoding: UTF-8
 LazyData: true

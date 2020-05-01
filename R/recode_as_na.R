@@ -40,12 +40,8 @@ recode_as_na.data.frame <-function(df, value=NULL,
     warning("Factor columns have been converted to character")
   }
 
-   if(all(!is.null(subset_cols), !is.null(pattern_type))){
-    stop("Only one of pattern_type or subset_cols should be used but not both.")
-  }
-
+  throw_both_subset_and_pattern_error()
   if(!is.null(subset_cols)){
-    # Change values only at specific columns, not all
     if(! all(subset_cols %in% names(df))){
       stop("Some names not found in the dataset. Please check and try again.")
     }
@@ -53,46 +49,18 @@ recode_as_na.data.frame <-function(df, value=NULL,
 df %>%
         dplyr::mutate(across(subset_cols,
           ~ifelse(. %in% value, NA, as.character(.))))
-}
-
-
-
-if(!is.null(pattern_type)){
-
-  if(! pattern_type %in% c("starts_with","ends_with","contains")){
-    stop("pattern_type should be one of starts_with, ends_with or contains")
   }
 
-if(is.null(pattern)){
+  if(!is.null(pattern_type)){
+    if(any(!pattern_type %in% c("starts_with","ends_with","contains",
+                                "regex"))){
 
-stop("A pattern must be supplied. See help(recode_as_na) for details")
-
-}
-
-switch(pattern_type,
-            starts_with = recode_starts_with(x=df,
-                                             pattern=pattern,
-                                             original_value=value,
-                                             new_value=NA,
-                                             ...),
-            ends_with = recode_ends_with(x=df,
-                                         pattern=pattern,
-                                         original_value=value,
-                                         new_value=NA,
-                                         ...),
-            contains = recode_contains(x=df,
-                                       pattern=pattern,
-                                       original_value=value,
-                                       new_value=NA,
-                                       ...))
-
-}
-
-
-  df %>%
-    dplyr::mutate(across(everything(),
-                         ~ifelse(. %in% value, NA, as.character(.))))
-
+      stop("pattern_type should be one of starts_with,ends_with,contains or regex")
+    }
+    if(is.null(pattern)) stop("A pattern must be supplied.")
+    recode_helper(df,pattern_type=pattern_type,original_value=value,pattern=pattern,
+                  new_value=NA)
+  }
 
 
 
