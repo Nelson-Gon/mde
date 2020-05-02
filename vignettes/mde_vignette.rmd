@@ -182,7 +182,7 @@ percent_missing(airquality,exclude_cols = c("Day","Temp"))
 
 4. `recode_as_na`
 
-As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
+As the name might imply, this converts any value or vector of values to `NA` i.e we take a value such as "missing" or "NA"(not a real `NA` according to `R`) and convert it to R's known handler for missing values(`NA`).
 
 To use the function out of the box(with default arguments), one simply does something like:
 
@@ -190,9 +190,8 @@ To use the function out of the box(with default arguments), one simply does some
 
 dummy_test <- data.frame(ID = c("A","B","B","A"), 
                          values = c("n/a",NA,"Yes","No"))
-
-recode_as_na(dummy_test, value = "n/a")
-
+# Convert n/a and no to NA
+recode_as_na(dummy_test, value = c("n/a","No"))
 
 
 ```
@@ -201,20 +200,34 @@ Great, but I want to do so for specific columns not the entire dataset. You can 
 
 ```{r}
 
+
 another_dummy <- data.frame(ID = 1:5, Subject = 7:11, 
 Change = c("missing","n/a",2:4 ))
-
+# Only change values at the column Change
 recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
                                                "missing"))
-                                              
+                                               
+
 ```
 
-To use `tidy` column selection, one can do the following:
+To recode columns using [RegEx](https://en.wikipedia.org/wiki/Regular_expression),one can provide `pattern_type` and a target `pattern`. Currently supported `pattern_types` are `starts_with`, `ends_with`, `contains` and `regex`. See docs for more details.:
 
 ```{r}
+# only change at columns that start with Solar
+head(recode_as_na(airquality,value=190,pattern_type="starts_with",pattern="Solar"))
+```
 
 
-head(mde::recode_as_na(airquality,value=190,pattern_type="starts_with",pattern="Solar"))
+```{r}
+# recode at columns that start with O or S(case sensitive)
+head(recode_as_na(airquality,value=c(67,118),pattern_type="starts_with",pattern="S|O"))
+
+```
+
+
+```{r}
+# use my own RegEx
+head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^(s|o)"))
 
 ```
 

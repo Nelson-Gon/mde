@@ -196,7 +196,7 @@ percent_missing(airquality,exclude_cols = c("Day","Temp"))
 
 4. `recode_as_na`
 
-As the name might imply, this converts any value or vector of values with `NA` i.e we take a value such as "missing" and convert it to R's known handler for missing values(`NA`).
+As the name might imply, this converts any value or vector of values to `NA` i.e we take a value such as "missing" or "NA"(not a real `NA` according to `R`) and convert it to R's known handler for missing values(`NA`).
 
 To use the function out of the box(with default arguments), one simply does something like:
 
@@ -205,12 +205,12 @@ To use the function out of the box(with default arguments), one simply does some
 dummy_test <- data.frame(ID = c("A","B","B","A"), 
                          values = c("n/a",NA,"Yes","No"))
 # Convert n/a to NA
-recode_as_na(dummy_test, value = "n/a")
+recode_as_na(dummy_test, value = c("n/a","No"))
 #  ID values
-#1  1     NA
-#2  2     NA
-#3  2      3
-#4  1      2
+#1  A   <NA>
+#2  B   <NA>
+#3  B    Yes
+#4  A   <NA>
 
 ```
 
@@ -224,20 +224,31 @@ Change = c("missing","n/a",2:4 ))
 recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
                                                "missing"))
                                                
-#  ID Subject Change
-#1  1       7     NA
-#2  2       8     NA
-#3  3       9      1
-#4  4      10      2
-#5  5      11      3
+  ID Subject Change
+1  1       7   <NA>
+2  2       8   <NA>
+3  3       9      2
+4  4      10      3
+5  5      11      4
 
 ```
 
-To use `tidy` column selection, one can do the following:
+To recode columns using [RegEx](https://en.wikipedia.org/wiki/Regular_expression),one can provide `pattern_type` and a target `pattern`. Currently supported `pattern_types` are `starts_with`, `ends_with`, `contains` and `regex`. See docs for more details.:
 
 ```
-
-head(mde::recode_as_na(airquality,value=190,pattern_type="starts_with",pattern="Solar"))
+# only change at columns that start with Solar
+head(recode_as_na(airquality,value=190,pattern_type="starts_with",pattern="Solar"))
+# recode at columns that start with O or S(case sensitive)
+head(recode_as_na(airquality,value=c(67,118),pattern_type="starts_with",pattern="S|O"))
+# use my own RegEx
+head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^(s|o)"))
+ Ozone Solar.R Wind Temp Month Day
+1    41     190  7.4 <NA>     5   1
+2    36    <NA>    8   72     5   2
+3    12     149 12.6   74     5   3
+4    18     313 11.5   62     5   4
+5  <NA>    <NA> 14.3   56     5   5
+6    28    <NA> 14.9   66     5   6
 
 ```
 
