@@ -34,16 +34,7 @@ This provides a convenient way to convert a number/value that should indeed be a
 "NA" to "NA". In otherwords, it converts a value to R's recognized NA.
 }
 \examples{
-dummy_test <- data.frame(ID = c("A","B","B","A"),
-values = c("n/a",NA,"Yes","No"))
-# Replace n/a with "NA". We assume n/a is treated as missing(subjective)
-recode_as_na(dummy_test,"n/a")
-# Recode only at specific columns
-another_dummy <- data.frame(ID = 1:5, Subject = 7:11,
-Change = c("missing", "n/a", 2:4 ), stringsAsFactors = FALSE)
-# Change missing and n/a to NA only for the column named Change.
-recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
-                              "missing"))
- head(recode_as_na(airquality,pattern_type="starts_with",
-pattern="Solar"))
+head(recode_as_na(airquality,value=c(67,118),pattern_type="starts_with",pattern="S|O"))
+head(recode_as_na(airquality,value=c(41),pattern_type="ends_with",pattern="e"))
+head(recode_as_na(airquality, value=41,subset_cols="Ozone"))
 }

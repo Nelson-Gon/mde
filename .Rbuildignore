@@ -9,9 +9,10 @@ README.md
 README.Rmd
 ^cran-comments\.md$
 .*\.yml$
+.*\.yaml$
 _config.yml
 ^\.$
 ^codecov\.yml$
 ^doc$
 ^Meta$
-^.github$
+.github

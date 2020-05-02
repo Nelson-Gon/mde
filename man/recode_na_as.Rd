@@ -36,6 +36,5 @@ any other value a user wishes to use.
 \examples{
 head(recode_na_as(airquality, "n/a"))
 head(recode_na_as(airquality, subset_cols = "Ozone", value = "N/A"))
-head(recode_na_as(airquality, value=0, pattern_type="starts_with",
-pattern="solar",ignore.case=TRUE))
+head(recode_na_as(airquality, value=0, pattern_type="starts_with",pattern="Solar"))
 }

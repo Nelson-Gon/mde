@@ -32,6 +32,9 @@ jobs:
           key: macOS-r-3.6-${{ hashFiles('depends.Rds') }}
           restore-keys: macOS-r-3.6-
 
+      - name: Update Packages
+        run: update.packages(checkBuilt = TRUE, ask = FALSE)
+
       - name: Install dependencies
         run: |
           install.packages(c("remotes","testthat"),dependencies=TRUE)
