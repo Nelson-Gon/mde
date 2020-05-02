@@ -11,6 +11,7 @@
 #' @examples
 #' head(recode_as_na(airquality,value=c(67,118),pattern_type="starts_with",pattern="S|O"))
 #' head(recode_as_na(airquality,value=c(41),pattern_type="ends_with",pattern="e"))
+#' head(recode_as_na(airquality, value=41,subset_cols="Ozone"))
 
 #' @export
 
@@ -30,17 +31,20 @@ recode_as_na.data.frame <-function(df, value=NULL,
     warning("Factor columns have been converted to character")
   }
 
+final_res <-  df %>%
+  mutate(across(everything(), ~ifelse(. %in% value, NA,.)))
+
   if(all(!is.null(subset_cols), !is.null(pattern_type))){
     stop("Only one of pattern_type or subset_cols should be used but not both.")
   }
   if(!is.null(subset_cols)){
-    if(! all(subset_cols %in% names(df))){
+    if(!all(subset_cols %in% names(df))){
       stop("Some names not found in the dataset. Please check and try again.")
     }
 
-df %>%
-        dplyr::mutate(across(subset_cols,
-          ~ifelse(. %in% value, NA, as.character(.))))
+    make_pattern <-paste(subset_cols,collapse="|")
+    final_res<-recode_helper(df,pattern_type="contains",original_value=value,pattern=make_pattern,
+                  new_value=NA)
   }
 
   if(!is.null(pattern_type)){
@@ -50,14 +54,13 @@ df %>%
       stop("pattern_type should be one of starts_with,ends_with,contains or regex")
     }
     if(is.null(pattern)) stop("A pattern must be supplied.")
-    recode_helper(df,pattern_type=pattern_type,original_value=value,pattern=pattern,
+    final_res<-recode_helper(df,pattern_type=pattern_type,original_value=value,pattern=pattern,
                   new_value=NA)
   }
 
 
-  df %>%
-    dplyr::mutate(across(everything(),
-                         ~ifelse(. %in% value, NA, as.character(.))))
+
+final_res
 
 }
 

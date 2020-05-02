@@ -287,14 +287,15 @@ As a "bonus", you can manipulate the data only at specific columns as shown here
 head(recode_na_as(airquality, value=0, subset_cols="Ozone"))
 
 ```
-The above also supports `tidy` selection as follows:
+
+The above also supports custom recoding similar to `recode_na_as`:
 
 ```{r}
 
-head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",
-                  pattern="solar",ignore.case=TRUE))
+head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",pattern="Solar"))
 
 ```
+
 
 7. `recode_na_if`
 

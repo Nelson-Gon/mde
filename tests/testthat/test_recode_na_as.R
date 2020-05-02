@@ -1,6 +1,6 @@
 testthat::test_that(desc="Check recoding",
                     code={
-                      testthat::expect_error(mde::recode_na_as(airquality,
+                      testthat::expect_error(recode_na_as(airquality,
                                                                value=0,
 
                                                         subset_cols=c("Ozone",
@@ -8,7 +8,7 @@ testthat::test_that(desc="Check recoding",
                                              "Some names not found in the dataset. Please check and try again.",
                                              fixed=TRUE)
 
-                  testthat::expect_error(mde::recode_na_as(airquality,0,
+                  testthat::expect_error(recode_na_as(airquality,0,
                                                            subset_cols="Ozone",
                                                            pattern_type="starts_with"
                                                            ),
@@ -27,7 +27,7 @@ testthat::test_that(desc="Check recoding",
                   # test that patterns throw errors
                   testthat::expect_error(recode_na_as(airquality,value = 0,
                                                       pattern_type = "na"),
-                                         "pattern_type should be one of starts_with, ends_with or contains.",
+                                         "pattern_type should be one of starts_with,ends_with,contains or regex",
                                          fixed = TRUE)
                   # expect a pattern
                   testthat::expect_error(recode_na_as(airquality,value = 0,
