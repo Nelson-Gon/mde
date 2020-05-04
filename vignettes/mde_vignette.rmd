@@ -1,4 +1,21 @@
-# Missing Data Explorer
+---
+author: "Nelson Gonzabato"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+title: Missing Data Explorer
+
+vignette: >
+  %\VignetteIndexEntry{ "Missing Data Explorer"}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764303.svg)](https://doi.org/10.5281/zenodo.3764303)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)

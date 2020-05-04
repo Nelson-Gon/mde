@@ -11,15 +11,15 @@
 #' head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 #' @export
 
-drop_na_at <- function(df, pattern_type="contains",pattern=NULL,case_sensitive=FALSE,
-                       ...){
+drop_na_at <- function(df, pattern_type="contains",pattern=NULL,
+                       case_sensitive=FALSE,...){
   UseMethod("drop_na_at")
 }
 
 #' @export
 
-drop_na_at.data.frame <- function(df, pattern_type=NULL,case_sensitive=FALSE,
-                                  pattern=NULL,...){
+drop_na_at.data.frame <- function(df, pattern_type="contains",pattern=NULL,
+                                  case_sensitive=FALSE,...){
 
 
 
