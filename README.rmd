@@ -83,21 +83,7 @@ na_summary(airquality)
 ```
 
 
-1. To get a simple missingness report, use `na_summary`:
 
-
-```
-na_summary(airquality)
-
-     variable missing complete percent_complete percent_missing
-1      Day       0      153        100.00000        0.000000
-2    Month       0      153        100.00000        0.000000
-3    Ozone      37      116         75.81699       24.183007
-4  Solar.R       7      146         95.42484        4.575163
-5     Temp       0      153        100.00000        0.000000
-6     Wind       0      153        100.00000        0.000000
-
-```
 
 To get this summary by group:
 
@@ -191,7 +177,7 @@ To use the function out of the box(with default arguments), one simply does some
 dummy_test <- data.frame(ID = c("A","B","B","A"), 
                          values = c("n/a",NA,"Yes","No"))
 # Convert n/a and no to NA
-recode_as_na(dummy_test, value = c("n/a","No"))
+head(recode_as_na(dummy_test, value = c("n/a","No")))
 
 
 ```
@@ -204,8 +190,7 @@ Great, but I want to do so for specific columns not the entire dataset. You can 
 another_dummy <- data.frame(ID = 1:5, Subject = 7:11, 
 Change = c("missing","n/a",2:4 ))
 # Only change values at the column Change
-recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a",
-                                               "missing"))
+head(recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a","missing")))
                                                
 
 ```
@@ -307,8 +292,8 @@ some_data <- data.frame(ID=c("A1","A2","A3", "A4"),
                         A=c(5,NA,0,8), B=c(10,0,0,1),
                         C=c(1,NA,NA,25))
                         
-recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
-           replacement= 0)   
+head(recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
+           replacement= 0))   
 
 ```
 
@@ -320,7 +305,7 @@ We can drop any columns that have greater than or equal(gteq) to 24% of the valu
 
 ```{r}
 
-drop_na_if(airquality, sign="gteq",percent_na = 24)
+head(drop_na_if(airquality, sign="gteq",percent_na = 24))
 
 ```
 
@@ -393,7 +378,8 @@ This drops columns where all values are missing.
 ```{r}
 
 test <- data.frame(ID= c("A","A","B","A",NA), Vals = rep(NA,5))
-drop_all_na(test)
+
+head(drop_all_na(test))
 
 
 ```
@@ -405,7 +391,7 @@ Alternatively, we can drop groups where all variables are all NA.
 
 test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = rep(NA, 5)) 
 
-drop_all_na(test, grouping_cols = "ID")
+head(drop_all_na(test, grouping_cols = "ID"))
 
 
 ```

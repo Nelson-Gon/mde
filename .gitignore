@@ -1,6 +1,7 @@
 .Rproj.user
 .RData
 .Rhistory
-inst/doc
-doc
+
 Meta
+
+docs
