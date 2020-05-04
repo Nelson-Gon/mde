@@ -3,7 +3,7 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   mde_vignette: mde_vignette.html
-last_built: 2020-05-04T15:21Z
+last_built: 2020-05-04T15:27Z
 urls:
   reference: https://nelson-gon.github.io/mde//reference
   article: https://nelson-gon.github.io/mde//articles
