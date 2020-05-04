@@ -12,7 +12,7 @@
 recode_na_as <-  function(df, value=0,
                           subset_cols = NULL,
                           pattern_type= NULL,
-                          pattern=NULL,
+                          pattern=NULL,case_sensitive=FALSE,
                           ...) {
   UseMethod("recode_na_as")
 
@@ -24,6 +24,7 @@ recode_na_as.data.frame <- function(df, value=0,
                                     subset_cols = NULL,
                                     pattern_type= NULL,
                                     pattern=NULL,
+                                    case_sensitive=FALSE,
                                     ...){
 
 
@@ -44,7 +45,7 @@ if(!all(subset_cols %in% names(df))){
   make_pattern <-paste(subset_cols,collapse="|")
 
   final_res<-recode_helper(df,pattern_type="contains",original_value=NA,pattern=make_pattern,
-                new_value=value)
+                new_value=value,case_sensitive=case_sensitive,...)
   }
 
   if(!is.null(pattern_type)){
@@ -55,7 +56,7 @@ if(!all(subset_cols %in% names(df))){
     }
     if(is.null(pattern)) stop("A pattern must be supplied.")
     final_res<-recode_helper(df,pattern_type=pattern_type,original_value=NA,pattern=pattern,
-                  new_value=value)
+                  new_value=value,case_sensitive=case_sensitive,...)
   }
 
 

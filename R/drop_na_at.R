@@ -5,19 +5,20 @@
 #' @param pattern_type One of "contains", "ends_with" or "starts_with"
 #' @param pattern The type of pattern to use when matching the pattern_type. The pattern is case sensitive
 #' @param ... Other params to other methods
+#' @inheritParams recode_as_na
 #' @return A data.frame object containing only columns that match the given pattern with the missing values removed.
 #' @examples
 #' head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 #' @export
 
-drop_na_at <- function(df, pattern_type="contains",pattern=NULL,
+drop_na_at <- function(df, pattern_type="contains",pattern=NULL,case_sensitive=FALSE,
                        ...){
   UseMethod("drop_na_at")
 }
 
 #' @export
 
-drop_na_at.data.frame <- function(df, pattern_type=NULL,
+drop_na_at.data.frame <- function(df, pattern_type=NULL,case_sensitive=FALSE,
                                   pattern=NULL,...){
 
 
@@ -29,7 +30,7 @@ if(!is.null(pattern_type)){
       stop("pattern_type should be one of starts_with,ends_with,contains or regex")
     }
     if(is.null(pattern)) stop("A pattern must be supplied.")
-    res<-df[recode_selectors(df,pattern_type=pattern_type,pattern=pattern)]
+    res<-df[recode_selectors(df,pattern_type=pattern_type,pattern=pattern,case_sensitive = case_sensitive,...)]
   }
 
 

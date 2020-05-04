@@ -10,6 +10,7 @@ recode_na_as(
   subset_cols = NULL,
   pattern_type = NULL,
   pattern = NULL,
+  case_sensitive = FALSE,
   ...
 )
 }
@@ -23,6 +24,8 @@ recode_na_as(
 \item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
 
 \item{pattern}{A character pattern to match}
+
+\item{case_sensitive}{Defaults to FALSE. Patterns are case insensitive if TRUE}
 
 \item{...}{Other arguments to other functions}
 }

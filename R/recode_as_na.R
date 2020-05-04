@@ -6,6 +6,7 @@
 #' @param subset_cols An optional character vector to define columns for which changes are required.
 #' @param pattern_type One of contains', 'starts_with' or 'ends_with'.
 #' @param pattern A character pattern to match
+#' @param case_sensitive Defaults to FALSE. Patterns are case insensitive if TRUE
 #' @param ... Other arguments to other functions
 #' @return An object of the same class as x with values changed to `NA`.
 #' @examples
@@ -18,7 +19,7 @@
 recode_as_na <- function(df, value=NULL,
                          subset_cols = NULL,
                          pattern_type=NULL,
-                         pattern=NULL,...){
+                         pattern=NULL,case_sensitive=FALSE,...){
   UseMethod("recode_as_na")
 }
 
@@ -26,7 +27,7 @@ recode_as_na <- function(df, value=NULL,
 recode_as_na.data.frame <-function(df, value=NULL,
                                    subset_cols = NULL,
                                    pattern_type=NULL,
-                                   pattern=NULL,...){
+                                   pattern=NULL,case_sensitive=FALSE,...){
   if(any(sapply(df,is.factor))){
     warning("Factor columns have been converted to character")
   }
@@ -44,7 +45,7 @@ final_res <-  df %>%
 
     make_pattern <-paste(subset_cols,collapse="|")
     final_res<-recode_helper(df,pattern_type="contains",original_value=value,pattern=make_pattern,
-                  new_value=NA)
+                  new_value=NA,case_sensitive=case_sensitive,...)
   }
 
   if(!is.null(pattern_type)){
@@ -55,7 +56,7 @@ final_res <-  df %>%
     }
     if(is.null(pattern)) stop("A pattern must be supplied.")
     final_res<-recode_helper(df,pattern_type=pattern_type,original_value=value,pattern=pattern,
-                  new_value=NA)
+                  new_value=NA,case_sensitive=case_sensitive,...)
   }
 
 

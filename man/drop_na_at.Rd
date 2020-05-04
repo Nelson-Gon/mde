@@ -4,7 +4,13 @@
 \alias{drop_na_at}
 \title{Drop missing values at columns that match a given pattern}
 \usage{
-drop_na_at(df, pattern_type = "contains", pattern = NULL, ...)
+drop_na_at(
+  df,
+  pattern_type = "contains",
+  pattern = NULL,
+  case_sensitive = FALSE,
+  ...
+)
 }
 \arguments{
 \item{df}{A data.frame object}
@@ -12,6 +18,8 @@ drop_na_at(df, pattern_type = "contains", pattern = NULL, ...)
 \item{pattern_type}{One of "contains", "ends_with" or "starts_with"}
 
 \item{pattern}{The type of pattern to use when matching the pattern_type. The pattern is case sensitive}
+
+\item{case_sensitive}{Defaults to FALSE. Patterns are case insensitive if TRUE}
 
 \item{...}{Other params to other methods}
 }
