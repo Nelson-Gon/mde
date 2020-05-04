@@ -1,10 +1,6 @@
-
------
-
-title: “Missing Data Explorer” date: “2020-05-04” output:
-github\_document vignette: \> % % %
-
------
+Missing Data Explorer
+================
+2020-05-04
 
 <!-- badges: start -->
 
