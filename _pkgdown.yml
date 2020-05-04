@@ -1,8 +1,8 @@
 title: Missing Data Explorer
-url: https://www.nelson-gon.github.io/mde
+url: https://nelson-gon.github.io/mde/
 template:
    params:
-      bootswatch: darkly
+      bootswatch: flatly
 reference:
   - title: Exported Functions
     desc: Functions exported by mde
@@ -13,22 +13,21 @@ reference:
        - '`drop_na_if`'
        - '`get_na_counts`'
        - '`na_summary`'
-       - '`percent_misssing`'
+       - '`percent_missing`'
        - '`recode_as_na`'
        - '`recode_as_na_for`'
        - '`recode_na_as`'
        - '`recode_na_if`'
-       - '`sort_by_missingess`'
-  -   title: Internal Functions
-      desc: Helper functions
-      contents:
-      -  '`recode_helper`'
+       - '`sort_by_missingness`'
+
 navbar:
   type: inverse
   left:
     - icon: fa-home
-      href: index.html
+      href: articles/mde_vignette.html
     - text: "Tutorial"
       menu:
-      -  text: Usage
-         href: artciles/mde_vignette.html
+        - text: Usage
+          href: articles/mde_vignette.html
+        - text: Changes
+          href: news/index.html

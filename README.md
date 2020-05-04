@@ -1,5 +1,7 @@
 # Missing Data Explorer
 
+<!-- badges: start -->
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764303.svg)](https://doi.org/10.5281/zenodo.3764303)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
 [![Build Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
@@ -18,6 +20,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 
+<!-- badges: end -->
 
 
 This is the development version of `mde`. The acronym `mde` stands for **M**issing **D**ata **E**xplorer, a package that  is intended to make missing data exploration as smooth and easy as possible. 
