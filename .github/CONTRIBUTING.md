@@ -25,6 +25,14 @@ If edited via an `.R` file, please also update the docs using `roxygen2` to gene
 
 * Update `NEWS.md` to reflect the changes made.
 
+* Update examples in `README.rmd` and knit it to make the relevant `README.md`
+
+* Copy `README.rmd` to `vignettes/mde_vignette.rmd` 
+
+* Perform tests and checks locally.
+
+* PR or push to branch not **master**
+
 
 Please note that the 'mde' project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
