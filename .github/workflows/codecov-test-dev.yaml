@@ -35,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages(c("remotes","testthat", "covr","rlang"),dependencies=TRUE)
+          install.packages(c("remotes","testthat", "covr","pillar","crayon","rlang"),dependencies=TRUE)
           remotes::install_github("tidyverse/dplyr")
 
         shell: Rscript {0}
