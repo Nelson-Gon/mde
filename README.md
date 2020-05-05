@@ -1,6 +1,6 @@
-Missing Data Explorer
-================
-2020-05-04
+2020-05-05
+
+# `mde`: Missing Data Explorer
 
 <!-- badges: start -->
 
@@ -29,7 +29,6 @@ issue](http://isitmaintained.com/badge/resolution/Nelson-Gon/mde.svg)](http://is
 [![PRs
 Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
-
 <!-- badges: end -->
 
 The goal of `mde` is to ease exploration of missingnes with particular

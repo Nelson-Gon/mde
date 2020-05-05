@@ -1,5 +1,4 @@
 ---
-title: "Missing Data Explorer"
 date: "`r Sys.Date()`"
 output: github_document
 vignette: >
@@ -17,8 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-<!-- badges: start -->
+# `mde`: Missing Data Explorer
 
+<!-- badges: start -->
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764303.svg)](https://doi.org/10.5281/zenodo.3764303)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
 [![Build Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
@@ -36,7 +36,6 @@ knitr::opts_chunk$set(
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Nelson-Gon/mde.svg)](http://isitmaintained.com/project/Nelson-Gon/mde "Average time to resolve an issue")
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
-
 <!-- badges: end -->
 
 The goal of `mde` is to ease exploration of missingnes with particular focus on simplicity.  
