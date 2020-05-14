@@ -20,7 +20,7 @@ jobs:
 
       - name: Query dependencies
         run: |
-          install.packages('remotes')
+          install.packages(c("remotes","testthat", "covr","rlang"),dependencies=TRUE)
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
 
         shell: Rscript {0}
@@ -34,9 +34,7 @@ jobs:
 
 
       - name: Install dependencies
-        run: |
-          install.packages(c("remotes","testthat", "covr","rlang"),dependencies=TRUE)
-          remotes::install_github("tidyverse/dplyr")
+        run:  remotes::install_github("tidyverse/dplyr")
 
         shell: Rscript {0}
 

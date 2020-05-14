@@ -44,7 +44,7 @@ The goal of `mde` is to ease exploration of missingnes with particular focus on 
 
 **Installation**
 
-1. **CRAN release**
+ **CRAN release**
 
 
 ```{r, eval=FALSE}
@@ -54,7 +54,7 @@ install.packages("mde")
 
 ```
 
-2. **Stable Development version**
+ **Stable Development version**
 
 
 ```{r, eval = FALSE}
@@ -66,7 +66,7 @@ devtools::install_github("Nelson-Gon/mde",  build_vignettes=TRUE)
 
 ```
 
-3. **Unstable Development version**
+ **Unstable Development version**
 
 ```{r, eval=FALSE}
 
@@ -93,7 +93,7 @@ library(mde)
 **Currently available functions.**
 
 
-1. To get a simple missingness report, use `na_summary`:
+ To get a simple missingness report, use `na_summary`:
 
 
 ```{r}
@@ -124,7 +124,7 @@ na_summary(test2, grouping_cols="ID")
 
 ```
 
-2. `get_na_counts`
+* `get_na_counts`
 
 This provides a convenient way to show the number of missing values columnwise. It is relatively fast(tests done on about 400,000 rows, took a few microseconds.)
 
@@ -152,7 +152,7 @@ get_na_counts(test, grouping_cols = "ID")
 
 ```
 
-3. `percent_missing`
+* `percent_missing`
 
 This is a very simple to use but quick way to take a look at the percentage of data that is missing columnwise.
 
@@ -186,7 +186,37 @@ percent_missing(airquality,exclude_cols = c("Day","Temp"))
 
 ```
 
-4. `recode_as_na`
+* `sort_by_missingness`
+
+This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
+
+Usage:
+
+```{r}
+
+
+sort_by_missingness(airquality, sort_by = "counts")
+
+
+```
+
+To sort in descending order:
+
+```{r}
+
+sort_by_missingness(airquality, sort_by = "counts", descend = TRUE)
+
+```
+
+To use percentages instead:
+
+```{r}
+
+sort_by_missingness(airquality, sort_by = "percents")
+
+```
+
+* `recode_as_na`
 
 As the name might imply, this converts any value or vector of values to `NA` i.e we take a value such as "missing" or "NA"(not a real `NA` according to `R`) and convert it to R's known handler for missing values(`NA`).
 
@@ -236,42 +266,8 @@ head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^
 
 ```
 
-5. `sort_by_missingness`
 
-This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.
-
-Usage:
-
-```{r}
-
-
-sort_by_missingness(airquality, sort_by = "counts")
-
-
-```
-
-To sort in descending order:
-
-```{r}
-
-sort_by_missingness(airquality, sort_by = "counts", descend = TRUE)
-
-```
-
-To use percentages instead:
-
-```{r}
-
-sort_by_missingness(airquality, sort_by = "percents")
-
-```
-
-
-
-
-
-
-6. `recode_na_as`
+* `recode_na_as`
 
 Sometimes, for whatever reason one would like to replace `NA`s with whatever value they would like. `recode_na_as` provides a very simple way to do just that. 
 
@@ -302,7 +298,76 @@ head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",pattern="
 ```
 
 
-7. `recode_na_if`
+* `custom_na_recode`
+
+This allows recoding `NA` values with common stats functions such as `mean`,`max`,`min`,`sd`.
+
+To use default values:
+
+
+```{r}
+
+head(custom_na_recode(airquality))
+ 
+```
+
+To use select columns:
+
+
+```{r}
+
+
+
+head(custom_na_recode(airquality,func="mean",across_columns=c("Solar.R","Ozone")))
+
+
+```
+
+To use a function from another package to perform replacements:
+
+
+```{r}
+
+# use get_mode from manymodelr
+head(custom_na_recode(airquality,func=manymodelr::get_mode,across_columns=c("Solar.R","Ozone")))
+
+
+```
+
+To perform a forward fill with `dplyr`'s `lead`:
+
+
+```{r}
+
+# use lag for a backfill
+head(custom_na_recode(airquality,func=dplyr::lead ))
+
+
+```
+
+To perform replacement by group:
+
+
+```{r}
+
+some_data <- data.frame(ID=c("A1","A1","A1","A2","A2", "A2"),A=c(5,NA,0,8,3,4),B=c(10,0,0,NA,5,6),C=c(1,NA,NA,25,7,8))
+
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID"))
+
+
+```
+
+Across specific columns:
+
+
+```{r}
+
+head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID", across_columns = c("C", "A")))
+
+```
+
+
+* `recode_na_if`
 
 Given a `data.frame` object, one can recode `NA`s as another value based on a grouping variable. In the example below, we replace all `NA`s in all columns with 0s if the ID is `A2` or `A3`
 
@@ -317,11 +382,13 @@ head(recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
 
 ```
 
-8. `drop_na_if`
+
+* `drop_na_if`
 
 Suppose you wanted to drop any column that has a percentage of `NA`s greater than or equal to a certain value? `drop_na_if` does just that. 
 
 We can drop any columns that have greater than or equal(gteq) to 24% of the values missing from `airquality`:
+
 
 ```{r}
 
@@ -356,7 +423,7 @@ For more information, please see the documentation for `drop_na_if` especially f
 
 
 
-9. `drop_na_at`
+* `drop_na_at`
 
 This provides a simple way to drop missing values only at specific columns. It currently only returns those columns with their missing values removed. See usage below. Further details are given in the documentation. It is currently case sensitive. 
 
@@ -367,7 +434,7 @@ head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 
 ```
 
-10. `recode_as_na_for` 
+* `recode_as_na_for` 
 
 For all values greater/less/less or equal/greater or equal than some value, can I convert them to `NA`?!
 
@@ -389,7 +456,7 @@ head(recode_as_na_for(airquality, value=40,subset_cols=c("Solar.R","Ozone"), cri
 
 ```
 
-11. `drop_all_na` 
+* `drop_all_na` 
 
 
 This drops columns where all values are missing.
@@ -413,74 +480,6 @@ test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = rep(NA, 5))
 
 head(drop_all_na(test, grouping_cols = "ID"))
 
-
-```
-
-12. `custom_na_recode`
-
-This allows recoding `NA` values with common stats functions such as `mean`,`max`,`min`,`sd`.
-
-To use default values:
-
-
-```{r}
-
-head(custom_na_recode(airquality))
- 
-```
-
-To use select columns:
-
-
-```{r}
-
-
-
-head(custom_na_recode(airquality,func="mean",across_columns=c("Solar.R","Ozone")))
-
-
-```
-
-To use a function from another package to perform replacements:
-
-
-```{r, eval=FALSE}
-
-# use get_mode from manymodelr
-head(custom_na_recode(airquality,func=manymodelr::get_mode,across_columns=c("Solar.R","Ozone")))
-
-
-```
-
-To perform a forward fill with `dplyr`'s `lead`:
-
-
-```{r,eval=FALSE}
-
-# use lag for a backfill
-head(custom_na_recode(airquality,func=dplyr::lead ))
-
-
-```
-
-To perform replacement by group:
-
-
-```{r}
-
-some_data <- data.frame(ID=c("A1","A1","A1","A2","A2", "A2"),A=c(5,NA,0,8,3,4),B=c(10,0,0,NA,5,6),C=c(1,NA,NA,25,7,8))
-
-head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID"))
-
-
-```
-
-Across specific columns:
-
-
-```{r}
-
-head(custom_na_recode(some_data,func = "mean", grouping_cols = "ID", across_columns = c("C", "A")))
 
 ```
 
