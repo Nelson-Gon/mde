@@ -6,6 +6,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764303.svg)](https://doi.org/10.5281/zenodo.3764303)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
+[![Codecov test
+coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/develop/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=develop)
 [![Build
 Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
 ![R-CMD-check-devel](https://github.com/Nelson-Gon/mde/workflows/R-CMD-check-devel/badge.svg)
@@ -13,8 +15,6 @@ Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-
 [![Project
 Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![Codecov test
-coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/develop/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=develop)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
 [![TotalDownloads](http://cranlogs.r-pkg.org/badges/grand-total/mde?color=yellow)](https://cran.r-project.org/package=mde)
