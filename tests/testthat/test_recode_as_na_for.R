@@ -30,6 +30,9 @@ testthat::test_that(desc = "test recode_as_na_for",
          testthat::expect_false(is.na(recode_as_na_for(airquality, criteria = "gt",
                                                        value = 25,
                                                        subset_cols = "Ozone")[[2]][1]))
+         testthat::expect_false(is.na(recode_as_na_for(airquality, criteria = "gteq",
+                                                       value = 25,
+                                                       subset_cols = "Ozone")[[2]][1]))
 
           # should be true since we're not subsetting
           expect_true(all(is.na(recode_as_na_for(airquality,
