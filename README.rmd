@@ -103,7 +103,27 @@ na_summary(airquality)
 ```
 
 
+To sort this summary by a given column :
 
+```{r}
+
+na_summary(airquality,sort_by = "percent_complete")
+
+```
+
+To sort by `percent_missing` instead:
+
+```{r}
+na_summary(airquality, sort_by = "percent_missing")
+
+```
+
+To sort the above in descending order:
+
+```{r}
+na_summary(airquality, sort_by="percent_missing", descending = TRUE)
+
+```
 
 To get this summary by group:
 

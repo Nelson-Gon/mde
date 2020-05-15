@@ -87,6 +87,46 @@ na_summary(airquality)
 #> 6     Wind       0      153        100.00000        0.000000
 ```
 
+To sort this summary by a given column :
+
+``` r
+
+na_summary(airquality,sort_by = "percent_complete")
+#>   variable missing complete percent_complete percent_missing
+#> 3    Ozone      37      116         75.81699       24.183007
+#> 4  Solar.R       7      146         95.42484        4.575163
+#> 1      Day       0      153        100.00000        0.000000
+#> 2    Month       0      153        100.00000        0.000000
+#> 5     Temp       0      153        100.00000        0.000000
+#> 6     Wind       0      153        100.00000        0.000000
+```
+
+To sort by `percent_missing` instead:
+
+``` r
+na_summary(airquality, sort_by = "percent_missing")
+#>   variable missing complete percent_complete percent_missing
+#> 1      Day       0      153        100.00000        0.000000
+#> 2    Month       0      153        100.00000        0.000000
+#> 5     Temp       0      153        100.00000        0.000000
+#> 6     Wind       0      153        100.00000        0.000000
+#> 4  Solar.R       7      146         95.42484        4.575163
+#> 3    Ozone      37      116         75.81699       24.183007
+```
+
+To sort the above in descending order:
+
+``` r
+na_summary(airquality, sort_by="percent_missing", descending = TRUE)
+#>   variable missing complete percent_complete percent_missing
+#> 3    Ozone      37      116         75.81699       24.183007
+#> 4  Solar.R       7      146         95.42484        4.575163
+#> 1      Day       0      153        100.00000        0.000000
+#> 2    Month       0      153        100.00000        0.000000
+#> 5     Temp       0      153        100.00000        0.000000
+#> 6     Wind       0      153        100.00000        0.000000
+```
+
 To get this summary by group:
 
 ``` r
