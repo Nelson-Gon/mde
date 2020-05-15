@@ -1,4 +1,4 @@
-2020-05-14
+2020-05-15
 
 # `mde`: Missing Data Explorer
 
@@ -636,7 +636,7 @@ head(drop_all_na(test, grouping_cols = "ID"))
 
 Please note that the ‘mde’ project is released with a [Contributor Code
 of
-Conduct](https://www.github.com/Nelson-Gon/mde/.github/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/Nelson-Gon/mde/blob/master/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
 For further exploration, please `browseVignettes("mde")`.
