@@ -10,4 +10,6 @@ testthat::test_that(desc="sorting only by columns or percents",
                                              37)
                       testthat::expect_equal(sort_by_missingness(airquality, descend = FALSE)[1,2],
                                              0)
+                      testhat::expect_equal(as.character(mde::sort_by_missingness(airquality,sort_by="percents",descend=TRUE)[[1]][1]),
+                                            "Ozone")
                     })

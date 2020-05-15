@@ -33,5 +33,9 @@ testthat::expect_error(recode_as_na(airquality,value=190,pattern_type = "gibberi
                                     pattern="R"),
                        "pattern_type should be one of starts_with,ends_with,contains or regex",
                        fixed = TRUE)
+# expect factor warnings
+testthat::expect_warning(recode_as_na(iris,value = 5.1 ), "Factor columns have been converted to character", fixed=TRUE)
+testthat::expect_true(is.na(recode_as_na(iris,value=5.1, subset_cols = c("Sepal.Length","Petal.Length"))[[1]][1]))
+
 
                     })

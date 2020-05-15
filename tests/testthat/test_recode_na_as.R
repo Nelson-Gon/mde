@@ -33,5 +33,7 @@ testthat::test_that(desc="Check recoding",
                   testthat::expect_error(recode_na_as(airquality,value = 0,
                                                       pattern_type = "ends_with"),
                                          "A pattern must be supplied.")
+                  testthat::expect_equal(mde::recode_na_as(airquality,value=0,pattern_type="regex",pattern="^O")[[1]][5],
+                                     0)
 
                   })
