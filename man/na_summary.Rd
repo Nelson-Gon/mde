@@ -27,6 +27,8 @@ na_summary(airquality)
 test2 <- data.frame(ID= c("A","A","B","A","B"),
 Vals = c(rep(NA,4),"No"),ID2 = c("E","E","D","E","D"))
 na_summary(test2,grouping_cols = c("ID","ID2"))
-
+# sort summary
+na_summary(airquality,sort_by = "percent_missing",descending = TRUE)
+na_summary(airquality,sort_by = "percent_complete")
 
 }

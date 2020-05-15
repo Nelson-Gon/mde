@@ -452,19 +452,6 @@ head(custom_na_recode(airquality,func="mean",across_columns=c("Solar.R","Ozone")
 
 To use a function from another package to perform replacements:
 
-``` r
-
-# use get_mode from manymodelr
-head(custom_na_recode(airquality,func=manymodelr::get_mode,across_columns=c("Solar.R","Ozone")))
-#>   Ozone Solar.R Wind Temp Month Day
-#> 1    41     190  7.4   67     5   1
-#> 2    36     118  8.0   72     5   2
-#> 3    12     149 12.6   74     5   3
-#> 4    18     313 11.5   62     5   4
-#> 5    23     259 14.3   56     5   5
-#> 6    28     259 14.9   66     5   6
-```
-
 To perform a forward fill with `dplyr`’s `lead`:
 
 ``` r
