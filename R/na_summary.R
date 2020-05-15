@@ -1,5 +1,6 @@
 #' An all-in-one missingness report
 #' @inheritParams percent_missing
+#' @inheritParams sort_by_missingness
 #' @importFrom stats "aggregate" "as.formula" "na.pass"
 #' @param ... Arguments to other functions
 #' @examples
@@ -12,7 +13,7 @@
 #'
 #' @export
 
-na_summary <- function(df,grouping_cols=NULL,...){
+na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,descending=FALSE,...){
   UseMethod("na_summary")
 
 
@@ -20,7 +21,7 @@ na_summary <- function(df,grouping_cols=NULL,...){
 
 #' @export
 
-na_summary.data.frame <- function(df,grouping_cols=NULL,...){
+na_summary.data.frame <- function(df,grouping_cols=NULL,sort_by=NULL,descending=FALSE,...){
   # stick to(with?) base as much as possible
   # get total NAs columnwise
 all_counts <-stack(get_na_counts(df))
@@ -43,7 +44,7 @@ if(nrow(all_counts) != nrow(all_percents)){
                                        100,
                                         100 - all_percents$percent_missing)
 
-  merge(all_counts,all_percents,by="variable")
+  res <- merge(all_counts,all_percents,by="variable")
 
 }
 
@@ -69,8 +70,14 @@ else{
         ) ,
       na.action = na.pass))
 
-  res
+
 }
+if(!is.null(sort_by)){
+  res <- res[sort(res[[sort_by]],decreasing=descending,index.return=TRUE)[[2]],]
+
+}
+res
+
 }
 
 

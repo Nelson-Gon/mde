@@ -4,13 +4,17 @@
 \alias{na_summary}
 \title{An all-in-one missingness report}
 \usage{
-na_summary(df, grouping_cols = NULL, ...)
+na_summary(df, grouping_cols = NULL, sort_by = NULL, descending = FALSE, ...)
 }
 \arguments{
 \item{df}{A valid R `object` for which the percentage of missing values is required.}
 
 \item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}
+
+\item{sort_by}{One of counts or percents. This determines whether the results are sorted by counts or percentages.}
+
+\item{descending}{Logical. Should missing values be sorted in decreasing order ie largest to smallest? Defaults to FALSE.}
 
 \item{...}{Arguments to other functions}
 }
