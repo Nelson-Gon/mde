@@ -1,4 +1,4 @@
-2020-05-15
+2020-05-16
 
 # `mde`: Missing Data Explorer
 
@@ -7,7 +7,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764303.svg)](https://doi.org/10.5281/zenodo.3764303)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
 [![Codecov test
-coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/develop/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=develop)
+coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![Build
 Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
 ![R-CMD-check-devel](https://github.com/Nelson-Gon/mde/workflows/R-CMD-check-devel/badge.svg)
