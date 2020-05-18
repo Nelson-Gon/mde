@@ -34,7 +34,9 @@ jobs:
 
 
       - name: Install dependencies
-        run:  remotes::install_github("tidyverse/dplyr")
+        run:  |
+          remotes::install_github("tidyverse/dplyr")
+          remotes::install_cran("tidyr")
 
         shell: Rscript {0}
 
