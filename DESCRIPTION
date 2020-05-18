@@ -11,7 +11,8 @@ Description: Correct identification and handling of missing data is one of the m
              Graham WJ (2009) <doi:10.1146/annurev.psych.58.110405.085530>. 
 License: GPL-3
 Imports:
-         dplyr(>= 0.8.99.9000)
+         dplyr(>= 0.8.99.9000),
+         tidyr(>= 1.0.3)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0

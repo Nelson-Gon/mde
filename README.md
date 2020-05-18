@@ -1,4 +1,4 @@
-2020-05-16
+2020-05-18
 
 # `mde`: Missing Data Explorer
 
@@ -31,8 +31,7 @@ Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-squ
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 <!-- badges: end -->
 
-The goal of `mde` is to ease exploration of missingnes with particular
-focus on simplicity.
+The goal of `mde` is to ease exploration of missingness.
 
 **Installation**
 
@@ -131,14 +130,14 @@ To get this summary by group:
 
 ``` r
 
-test2 <- data.frame(ID= c("A","A","B","A","B"), 
-                   Vals = c(rep(NA,4),"No"),
-                   ID2 = c("E","E","D","E","D"))
+test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = c(rep(NA,4),"No"),ID2 = c("E","E","D","E","D"))
 
 na_summary(test2,grouping_cols = c("ID","ID2"))
-#>   ID ID2 Vals.missing Vals.complete Vals.percent_complete Vals.percent_missing
-#> 1  B   D            1             1                    50                   50
-#> 2  A   E            3             0                     0                  100
+#> # A tibble: 2 x 7
+#>   ID    ID2   variable missing complete percent_complete percent_missing
+#>   <chr> <chr> <chr>      <dbl>    <dbl>            <dbl>           <dbl>
+#> 1 B     D     Vals           1        1               50              50
+#> 2 A     E     Vals           3        0                0             100
 ```
 
 ``` r
@@ -146,12 +145,13 @@ na_summary(test2,grouping_cols = c("ID","ID2"))
 na_summary(test2, grouping_cols="ID")
 #> Warning in na_summary.data.frame(test2, grouping_cols = "ID"): All non grouping
 #> values used. Using select non groups is currently not supported
-#>   ID Vals.missing Vals.complete Vals.percent_complete Vals.percent_missing
-#> 1  A            3             0                     0                  100
-#> 2  B            1             1                    50                   50
-#>   ID2.missing ID2.complete ID2.percent_complete ID2.percent_missing
-#> 1           0            3                  100                   0
-#> 2           0            2                  100                   0
+#> # A tibble: 4 x 6
+#>   ID    variable missing complete percent_complete percent_missing
+#>   <chr> <chr>      <dbl>    <dbl>            <dbl>           <dbl>
+#> 1 A     Vals           3        0                0             100
+#> 2 A     ID2            0        3              100               0
+#> 3 B     Vals           1        1               50              50
+#> 4 B     ID2            0        2              100               0
 ```
 
   - `get_na_counts`

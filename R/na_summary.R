@@ -6,8 +6,8 @@
 #' @examples
 #' na_summary(airquality)
 #' # grouping
-#' test2 <- data.frame(ID= c("A","A","B","A","B"),
-#' Vals = c(rep(NA,4),"No"),ID2 = c("E","E","D","E","D"))
+#' test2 <- data.frame(ID= c("A","A","B","A","B"),Vals = c(rep(NA,4),"No"),
+#' ID2 = c("E","E","D","E","D"))
 #' na_summary(test2,grouping_cols = c("ID","ID2"))
 #' # sort summary
 #' na_summary(airquality,sort_by = "percent_missing",descending = TRUE)
@@ -52,18 +52,19 @@ if(nrow(all_counts) != nrow(all_percents)){
 }
 
 
-  # base grouping, may fail
+
 else{
     non_grouping = setdiff(names(df), grouping_cols)
+    #matched_groups = which(names(df) %in% grouping_cols)
     if(length(non_grouping) > 1){
       warning("All non grouping values used. Using select non groups is currently not supported")
     }
     if(!all(grouping_cols %in% names(df))){
       stop("All grouping_cols should exist in the dataset.")
     }
-    grouping_cols = paste0(grouping_cols,collapse="+")
+    grouping_cols_formula = paste0(grouping_cols,collapse="+")
     agg_formula <- as.formula(paste0(".~",
-                                     grouping_cols))
+                                     grouping_cols_formula))
     res<-do.call(data.frame,aggregate(agg_formula,data=df,
                                       function(x)
                c(missing = sum(is.na(x)),
@@ -71,7 +72,10 @@ else{
         percent_complete = sum(!is.na(x)) / length(x) * 100,
         percent_missing = sum(is.na(x)) / length(x) * 100
         ) ,
-      na.action = na.pass))
+      na.action = na.pass)) %>%
+    tidyr::pivot_longer(cols = -all_of(grouping_cols)) %>%
+      tidyr::separate(name,c("variable","metric"),sep="\\.(?=percent|miss|complete)")  %>%
+      tidyr::pivot_wider(names_from=metric,values_from=value)
 
 
 }

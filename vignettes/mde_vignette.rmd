@@ -129,9 +129,7 @@ To get this summary by group:
 
 ```{r}
 
-test2 <- data.frame(ID= c("A","A","B","A","B"), 
-                   Vals = c(rep(NA,4),"No"),
-                   ID2 = c("E","E","D","E","D"))
+test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = c(rep(NA,4),"No"),ID2 = c("E","E","D","E","D"))
 
 na_summary(test2,grouping_cols = c("ID","ID2"))
 
