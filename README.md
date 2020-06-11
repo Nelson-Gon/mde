@@ -1,4 +1,4 @@
-2020-05-18
+2020-06-11
 
 # `mde`: Missing Data Explorer
 
@@ -661,7 +661,7 @@ head(drop_all_na(test, grouping_cols = "ID"))
 #> # ... with 2 variables: ID <chr>, Vals <lgl>
 ```
 
-Please note that the ‘mde’ project is released with a [Contributor Code
+Please note that the `mde` project is released with a [Contributor Code
 of
 Conduct](https://github.com/Nelson-Gon/mde/blob/master/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
