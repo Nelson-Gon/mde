@@ -264,7 +264,7 @@ head(recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a","missin
 
 ```
 
-To recode columns using [RegEx](https://en.wikipedia.org/wiki/Regular_expression),one can provide `pattern_type` and a target `pattern`. Currently supported `pattern_types` are `starts_with`, `ends_with`, `contains` and `regex`. See docs for more details.:
+To recode columns using RegEx,one can provide `pattern_type` and a target `pattern`. Currently supported `pattern_types` are `starts_with`, `ends_with`, `contains` and `regex`. See docs for more details.:
 
 ```{r}
 # only change at columns that start with Solar
