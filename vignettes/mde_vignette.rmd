@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 ![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
 [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
 [![TotalDownloads](http://cranlogs.r-pkg.org/badges/grand-total/mde?color=yellow)](https://cran.r-project.org/package=mde)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Nelson-Gon/mde.svg)](https://github.com/Nelson-Gon/mde/commits/master)
@@ -264,7 +264,7 @@ head(recode_as_na(another_dummy, subset_cols = "Change", value = c("n/a","missin
 
 ```
 
-To recode columns using RegEx,one can provide `pattern_type` and a target `pattern`. Currently supported `pattern_types` are `starts_with`, `ends_with`, `contains` and `regex`. See docs for more details.:
+To recode columns using [RegEx](https://en.wikipedia.org/wiki/Regular_expression),one can provide `pattern_type` and a target `pattern`. Currently supported `pattern_types` are `starts_with`, `ends_with`, `contains` and `regex`. See docs for more details.:
 
 ```{r}
 # only change at columns that start with Solar
