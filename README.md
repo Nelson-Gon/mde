@@ -4,8 +4,9 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890660.svg)](https://doi.org/10.5281/zenodo.3890660)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890659.svg)](https://doi.org/10.5281/zenodo.3890659)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
+[![Rdoc](http://www.rdocumentation.org/badges/version/mde)](http://www.rdocumentation.org/packages/mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![Build
