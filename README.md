@@ -1,10 +1,10 @@
-2020-06-11
+2020-06-12
 
 # `mde`: Missing Data Explorer
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764303.svg)](https://doi.org/10.5281/zenodo.3764303)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764302.svg)](https://doi.org/10.5281/zenodo.3764302)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
@@ -64,7 +64,7 @@ devtools::install_github("Nelson-Gon/mde@develop")
 ``` r
 
 library(mde)
-#> Welcome to mde. This is mde version 0.2.0.9000.
+#> Welcome to mde. This is mde version 0.2.0.
 #>  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues
 #> Turn this message off using 'suppressPackageStartupMessages(library(mde))'
 #>  Happy Exploration :)
