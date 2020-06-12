@@ -18,7 +18,7 @@ Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostat
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
-[![TotalDownloads](http://cranlogs.r-pkg.org/badges/grand-total/mde?color=yellow)](https://cran.r-project.org/package=mde)
+[![TotalDownloads](http://cranlogs.r-pkg.org/badges/grand-total/mde?color=green)](https://cran.r-project.org/package=mde)
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/Nelson-Gon/mde.svg)](https://github.com/Nelson-Gon/mde/commits/master)
 [![GitHub
@@ -31,6 +31,9 @@ issue](http://isitmaintained.com/badge/resolution/Nelson-Gon/mde.svg)](http://is
 Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 <!-- badges: end -->
+
+<a href='http://nelson-gon.github.io/mde'><img src='mde_icon_2.png' align="right"
+height="120" width="120"/></a>
 
 The goal of `mde` is to ease exploration of missingness.
 
