@@ -4,7 +4,7 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3764302.svg)](https://doi.org/10.5281/zenodo.3764302)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890660.svg)](https://doi.org/10.5281/zenodo.3890660)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
