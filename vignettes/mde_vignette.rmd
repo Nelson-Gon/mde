@@ -6,6 +6,8 @@ vignette: >
   %\VignetteIndexEntry{mde-Missing-Data-Explorer}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+resource_files:
+  - ../man/figures/mde_icon_2.png
 ---
 
 
@@ -39,6 +41,7 @@ knitr::opts_chunk$set(
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 <!-- badges: end -->
+
 <a href='http://nelson-gon.github.io/mde'><img src='../man/figures/mde_icon_2.png' align="right"
 height="120" width="120"/></a>
 
