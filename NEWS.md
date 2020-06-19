@@ -5,6 +5,10 @@ date: "11/06/2020"
 output: html_document
 ---
 
+# mde 0.2.1
+
+Patch Fix to skip tests on old R releases that were failing tests. 
+
 # mde version 0.2.0
 
 **Additions**

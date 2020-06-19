@@ -1,6 +1,8 @@
 testthat::test_that(desc="Test na_summary",
                     code = {
 
+                      skip_on_oldrel()
+
      expect_warning(mde::na_summary(airquality, grouping_cols=c("Month",
                                                                           "Day")),
                               "All non grouping values used. Using select non groups is currently not supported",
