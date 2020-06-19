@@ -67,7 +67,7 @@ devtools::install_github("Nelson-Gon/mde@develop")
 ``` r
 
 library(mde)
-#> Welcome to mde. This is mde version 0.2.0.
+#> Welcome to mde. This is mde version 0.2.1.
 #>  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues
 #> Turn this message off using 'suppressPackageStartupMessages(library(mde))'
 #>  Happy Exploration :)
