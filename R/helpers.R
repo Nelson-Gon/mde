@@ -33,9 +33,11 @@ x %>%
 # skip tests on old releases
 
 skip_on_oldrel <- function(version="3.6.3", msg = NULL) {
-  if (utils::packageVersion("base") < version) {
-    msg <- msg %||% paste("R version too old:", version)
-    devtools::skip(msg)
+  current_version <- utils::packageVersion("base")
+  if (current_version < version) {
+    msg <- paste("R version",current_version,
+                 "not supported. Please upgrade to R>= 3.6.3")
+    testthat::skip(msg)
   }
 }
 

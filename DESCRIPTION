@@ -11,7 +11,7 @@ Description: Correct identification and handling of missing data is one of the m
              Graham WJ (2009) <doi:10.1146/annurev.psych.58.110405.085530>. 
 License: GPL-3
 Depends:
-         R(>= 3.6.3)
+         R(>= 3.6.0)
 Imports:
          dplyr(>= 0.8.9),
          tidyr(>= 1.0.3)
