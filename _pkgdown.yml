@@ -2,7 +2,7 @@ title: Missing Data Explorer
 url: https://nelson-gon.github.io/mde/
 template:
    params:
-      bootswatch: flatly
+      bootswatch: darkly
 reference:
   - title: Exported Functions
     desc: Functions exported by mde
@@ -25,7 +25,7 @@ navbar:
   left:
     - icon: fa-home
       href: articles/mde_vignette.html
-    - text: "Tutorial"
+    - text: "Documentation"
       menu:
         - text: Usage
           href: articles/mde_vignette.html
