@@ -33,6 +33,31 @@ If edited via an `.R` file, please also update the docs using `roxygen2` to gene
 
 * PR or push to branch not **master**
 
+**Release checklist**
+
+* Check as CRAN with `devtools::checK()`
+
+
+* Check old releases with `devtools::check_win_oldrelease()`
+
+
+* Update changes in `NEWS.md`
+
+
+* Update version in `Description`.
+
+* Update `README.rmd`, knit to make `README.md`. 
+
+
+* Perform a spelling check.
+
+
+* Rebuild site if necessary with `pkgdown::build_site`
+
+
+* Update `cran-comments.md`
+
+* Release package with `devtools::release` if all steps above are fulfilled. 
 
 Please note that the 'mde' project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
