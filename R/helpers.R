@@ -34,9 +34,9 @@ x %>%
 
 skip_on_oldrel <- function(version="3.6.3", msg = NULL) {
   current_version <- utils::packageVersion("base")
-  if (current_version < version) {
+  if (current_version <= version) {
     msg <- paste("R version",current_version,
-                 "not supported. Please upgrade to R>= 3.6.3")
+                 "not supported. Please upgrade to R> 3.6.3")
     testthat::skip(msg)
   }
 }
