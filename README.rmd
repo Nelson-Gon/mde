@@ -42,7 +42,7 @@ knitr::opts_chunk$set(
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 <!-- badges: end -->
 
-<img src='man/figures/mde_icon_2.png' align="right" height="120" width="120"/>
+<img src='https://github.com/Nelson-Gon/mde/blob/master/man/figures/mde_icon_2.png?raw=true' align="right" height="120" width="120"/>
 
 The goal of `mde` is to ease exploration of missingness.  
 

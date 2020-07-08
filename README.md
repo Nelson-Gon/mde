@@ -1,4 +1,4 @@
-2020-06-19
+2020-07-08
 
 # `mde`: Missing Data Explorer
 
@@ -32,7 +32,7 @@ Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-squ
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
 <!-- badges: end -->
 
-<img src='man/figures/mde_icon_2.png' align="right" height="120" width="120"/>
+<img src='https://github.com/Nelson-Gon/mde/blob/master/man/figures/mde_icon_2.png?raw=true' align="right" height="120" width="120"/>
 
 The goal of `mde` is to ease exploration of missingness.
 
