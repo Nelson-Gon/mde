@@ -5,6 +5,10 @@ date: "11/06/2020"
 output: html_document
 ---
 
+# mde 0.2.2
+
+* Added a new function `column_based_recoode` that aims to allow `NA` recoding based on other columns. 
+
 # mde 0.2.1
 
 * Patch Fix to skip tests on old R releases.
