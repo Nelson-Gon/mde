@@ -1,3 +1,4 @@
+#' Recode NA as based on Other Columns
 #' @param  values_from Character. Name of column to get the original values from
 #' @param criterion Currently supports one of all_na or any_na to index rows that are either all NA or contain any NA.
 #' @param values_to  Character New column name for the newly recoded values. Defaults to the same name if none is supplied. 
