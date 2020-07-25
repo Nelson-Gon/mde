@@ -2,7 +2,7 @@
 % Please edit documentation in R/column_based_recode.R
 \name{column_based_recode}
 \alias{column_based_recode}
-\title{Recode NA as based on Other Columns}
+\title{Conditionally Recode NA values based on other Columns}
 \usage{
 column_based_recode(
   df,
@@ -16,21 +16,32 @@ column_based_recode(
 )
 }
 \arguments{
+\item{df}{A data.frame object for which recoding is to be done.}
+
 \item{criterion}{Currently supports one of all_na or any_na to index rows that are either all NA or contain any NA.}
 
 \item{values_from}{Character. Name of column to get the original values from}
 
-\item{values_to}{Character New column name for the newly recoded values. Defaults to the same name if none is supplied. 
-@inheritParams recode_na_as 
-@title Conditionally Recode NA values based on other Columns 
-@return A `data.frame` object with target `NA` values replaced.
-@examples 
-df <- structure(list(id = 40:43, v1 = c(NA, 1L, 1L, 1L), v2 = c(NA, 1L, 1L, 1L), v3 = c(NA, 2L, NA, 1L), 
-test = c(1L, 2L, 1L, 3L)), class = "data.frame", row.names = c(NA, -4L))
-# recode test as 0 if all NA, return test otherwise
-column_based_recode(df,values_from = "test", pattern_type = "starts_with", pattern="v")
-@export}
+\item{values_to}{Character New column name for the newly recoded values. Defaults to the same name if none is supplied.}
+
+\item{value}{The value to convert to `NA`. We can for instance change "n/a" to `NA` or any other value.}
+
+\item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
+
+\item{pattern}{A character pattern to match}
+
+\item{case_sensitive}{Defaults to FALSE. Patterns are case insensitive if TRUE}
+}
+\value{
+A `data.frame` object with target `NA` values replaced.
 }
 \description{
 Recode NA as based on Other Columns
+}
+\examples{
+df <- structure(list(id = 40:43, v1 = c(NA, 1L, 1L, 1L), v2 = c(NA, 1L, 1L, 1L), v3 = c(NA, 2L, NA, 1L), 
+test = c(1L, 2L, 1L, 3L)), class = "data.frame", row.names = c(NA, -4L))
+# recode test as 0 if all NA, return test otherwise
+ column_based_recode(df,values_from = "test", pattern_type = "starts_with", pattern="v")
+ @export
 }

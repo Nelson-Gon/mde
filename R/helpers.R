@@ -3,7 +3,7 @@
 # This is for use with na_summary
 # Will need to figure out how to avoid it, later
 # metric here is just a name that actually means nothing
-utils::globalVariables(c("all_of","metric","value","name"))
+utils::globalVariables(c("all_of","metric","value","name", ":="))
 # .....
 recode_selectors <- function(x,pattern_type=NULL,pattern=NULL,case_sensitive=FALSE,...){
 
