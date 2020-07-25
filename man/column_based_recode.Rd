@@ -39,9 +39,9 @@ A `data.frame` object with target `NA` values replaced.
 Recode NA as based on Other Columns
 }
 \examples{
-df <- structure(list(id = 40:43, v1 = c(NA, 1L, 1L, 1L), v2 = c(NA, 1L, 1L, 1L), v3 = c(NA, 2L, NA, 1L), 
+df <- structure(list(id = 40:43, v1 = c(NA, 1L, 1L, 1L), v2 = c(NA, 1L, 1L, 1L), 
+v3 = c(NA, 2L, NA, 1L), 
 test = c(1L, 2L, 1L, 3L)), class = "data.frame", row.names = c(NA, -4L))
 # recode test as 0 if all NA, return test otherwise
- column_based_recode(df,values_from = "test", pattern_type = "starts_with", pattern="v")
- @export
+(df,values_from = "test", pattern_type = "starts_with", pattern="v")
 }
