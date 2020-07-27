@@ -1,4 +1,4 @@
-2020-07-08
+2020-07-27
 
 # `mde`: Missing Data Explorer
 
@@ -67,7 +67,7 @@ devtools::install_github("Nelson-Gon/mde@develop")
 ``` r
 
 library(mde)
-#> Welcome to mde. This is mde version 0.2.1.
+#> Welcome to mde. This is mde version 0.2.2.9000.
 #>  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues
 #> Turn this message off using 'suppressPackageStartupMessages(library(mde))'
 #>  Happy Exploration :)
@@ -416,6 +416,26 @@ head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",pattern="
 #> 4    18     313 11.5   62     5   4
 #> 5    NA       0 14.3   56     5   5
 #> 6    28       0 14.9   66     5   6
+```
+
+  - `column_based_recode`
+
+Ever needed to change values in a given column based on the proportions
+of `NA`s in other columns(row-wise)?\!. The goal of
+`column_based_recode` is to achieve just that. Let’s see how we could do
+this with a simple example:
+
+``` r
+
+
+head(column_based_recode(airquality, values_from = "Wind", values_to="Wind", pattern_type = "regex", pattern = "Solar|Ozone"))
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    41     190  7.4   67     5   1
+#> 2    36     118  8.0   72     5   2
+#> 3    12     149 12.6   74     5   3
+#> 4    18     313 11.5   62     5   4
+#> 5    NA      NA  0.0   56     5   5
+#> 6    28      NA 14.9   66     5   6
 ```
 
   - `custom_na_recode`

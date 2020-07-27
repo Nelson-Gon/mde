@@ -322,6 +322,18 @@ head(mde::recode_na_as(airquality, value=0, pattern_type="starts_with",pattern="
 ```
 
 
+* `column_based_recode`
+
+Ever needed to change values in a given column based on the proportions of `NA`s in other columns(row-wise)?!. The goal of `column_based_recode` is to achieve just that. Let's see how we could do this with a simple example:
+
+```{r}
+
+
+head(column_based_recode(airquality, values_from = "Wind", values_to="Wind", pattern_type = "regex", pattern = "Solar|Ozone"))
+
+```
+
+
 * `custom_na_recode`
 
 This allows recoding `NA` values with common stats functions such as `mean`,`max`,`min`,`sd`.

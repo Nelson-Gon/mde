@@ -5,6 +5,11 @@
 # metric here is just a name that actually means nothing
 utils::globalVariables(c("all_of","metric","value","name", ":="))
 # .....
+
+#' @title Helpedr functions in package mde
+#' @inheritParams recode_na_as
+#' @param x A data.frame object
+#' @export
 recode_selectors <- function(x,pattern_type=NULL,pattern=NULL,case_sensitive=FALSE,...){
 
  columns_start_with<-grep(paste0("^(",pattern,")",collapse = ""),names(x),ignore.case=case_sensitive)
@@ -21,6 +26,11 @@ final_selectors <- switch(pattern_type,
 final_selectors
 }
 # make changes
+#' @title Helpedr functions in package mde
+#' #' @param x A data.frame object
+#' @inheritParams recode_na_as
+#' @export
+
 recode_helper <- function(x,pattern_type=NULL,pattern=NULL,original_value,
                           new_value,case_sensitive=FALSE,...){
 x %>%
