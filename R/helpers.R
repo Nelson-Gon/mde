@@ -26,9 +26,11 @@ final_selectors <- switch(pattern_type,
 final_selectors
 }
 # make changes
-#' @title Helpedr functions in package mde
-#' #' @param x A data.frame object
-#' @inheritParams recode_na_as
+#' @title Helper functions in package mde
+#' @param x A data.frame object
+#' @param original_value Value to replace
+#' @param new_value Replacement value.
+#' @inheritParams recode_selectors
 #' @export
 
 recode_helper <- function(x,pattern_type=NULL,pattern=NULL,original_value,
@@ -39,6 +41,31 @@ x %>%
 
 }
 
+#' Checks that all values are NA
+#' @param x A vector or data.frame column
+#' @description This is a helper function to check if all column/vector values are NA
+#' @return Boolean TRUE or FALSE depending on the nature of the column/vector
+#' @examples
+#' test <- data.frame(A=c(NA, 2), B= c(NA, NA))
+#' all_na(test)
+#' test_vec <- c("NA",NA,"nope")
+#' test_numeric <- c(NA, 2)
+#' all_na(test_vec)
+#' all_na(test_numeric)
+#' @export
+
+
+all_na <- function(x) UseMethod("all_na")
+
+#' @export
+
+all_na.data.frame <- function(x){
+  sapply(x, all_na)
+}
+
+#' @export
+
+all_na.default <- function(x) all(is.na(x))
 
 # skip tests on old releases
 

@@ -36,15 +36,15 @@ test_that(desc = "test recode_as_na_for",
                                                        subset_cols = "Ozone")[[2]][1]))
 
           # should be true since we're not subsetting
-          expect_true(all(is.na(recode_as_na_for(airquality,
-                                                           criteria = "gt",
+          expect_true(all(all_na(recode_as_na_for(airquality,
+                                      criteria = "gt",
                                        value=0)[1:2,c(1,2)])))
         expect_true(is.na(recode_as_na_for(airquality,
                                                       criteria="eq",
                                                       value = 41)[1,1]))
         head(airquality)
 
-        expect_true(all(is.na(recode_as_na_for(airquality,criteria = "gteq",value = 118)[[2]][1:2])))
+        expect_true(all_na(recode_as_na_for(airquality,criteria = "gteq",value = 118)[[2]][1:2]))
         expect_false(is.na(recode_as_na_for(airquality,criteria = "lteq",value=12)[[1]][1]))
         expect_false(is.na(recode_as_na_for(airquality,criteria = "lt",value=12)[[1]][1]))
 

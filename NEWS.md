@@ -1,11 +1,13 @@
 ---
 title: 'Missing Data Explorer'
 author: "Nelson Gonzabato"
-date: "11/06/2020"
+date: "09/08/2020"
 output: html_document
 ---
 
 # mde 0.2.2
+
+* `all_na` is a new low level function to perform missingness boolean checks for columns(vectors). 
 
 * Added a new function `column_based_recoode` that aims to allow `NA` recoding based on other columns. 
 

@@ -159,7 +159,13 @@ Defaults to 0.</p></td>
     <pre class="examples"><div class='input'><span class='no'>some_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>ID</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A1"</span>,<span class='st'>"A2"</span>,<span class='st'>"A3"</span>, <span class='st'>"A4"</span>),
 <span class='kw'>A</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>,<span class='fl'>NA</span>,<span class='fl'>0</span>,<span class='fl'>8</span>), <span class='kw'>B</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>1</span>),<span class='kw'>C</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>NA</span>,<span class='fl'>NA</span>,<span class='fl'>25</span>))
 <span class='co'># Replace NAs with 0s only for IDs in A2 and A3</span>
-<span class='fu'>recode_na_if</span>(<span class='no'>some_data</span>,<span class='st'>"ID"</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A2"</span>,<span class='st'>"A3"</span>),<span class='kw'>replacement</span><span class='kw'>=</span><span class='fl'>0</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 4</span><span>
+<span class='fu'>recode_na_if</span>(<span class='no'>some_data</span>,<span class='st'>"ID"</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A2"</span>,<span class='st'>"A3"</span>),<span class='kw'>replacement</span><span class='kw'>=</span><span class='fl'>0</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `...` is not empty.</span>
+#&gt; <span class='warning'></span>
+#&gt; <span class='warning'>We detected these problematic arguments:</span>
+#&gt; <span class='warning'>* `needs_dots`</span>
+#&gt; <span class='warning'></span>
+#&gt; <span class='warning'>These dots only exist to allow future extensions and should be empty.</span>
+#&gt; <span class='warning'>Did you misspecify an argument?</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 4</span><span>
 #&gt;   ID        A     B     C
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> A1        5    10     1

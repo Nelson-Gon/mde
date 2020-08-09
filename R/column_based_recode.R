@@ -28,11 +28,16 @@ column_based_recode.data.frame <- function(df, criterion="all_na", values_from=N
 
 if(is.null(values_to)) values_to = values_from
 
+stopifnot("criterion should be one of all_na or any_na for now" = criterion %in% c("all_na", "any_na"))
+
+use_criterion = all_na.default
+
+if(criterion == "any_na") use_criterion = anyNA
+
 use_these_columns <- recode_selectors(df, pattern_type = pattern_type, pattern = pattern, case_sensitive = case_sensitive)
 
 df %>%
-    mutate(!!values_to := ifelse(apply(df[use_these_columns],1, function(x) all(is.na(x))),value, !!dplyr::sym(values_from)))
-
+    mutate(!!values_to := ifelse(apply(df[use_these_columns],1,use_criterion), value, !!dplyr::sym(values_from)))
 
 
 }

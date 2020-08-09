@@ -2,8 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{recode_helper}
 \alias{recode_helper}
-\title{Helpedr functions in package mde
-#' @param x A data.frame object}
+\title{Helper functions in package mde}
 \usage{
 recode_helper(
   x,
@@ -16,15 +15,20 @@ recode_helper(
 )
 }
 \arguments{
+\item{x}{A data.frame object}
+
 \item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
 
 \item{pattern}{A character pattern to match}
+
+\item{original_value}{Value to replace}
+
+\item{new_value}{Replacement value.}
 
 \item{case_sensitive}{Defaults to FALSE. Patterns are case insensitive if TRUE}
 
 \item{...}{Other arguments to other functions}
 }
 \description{
-Helpedr functions in package mde
-#' @param x A data.frame object
+Helper functions in package mde
 }

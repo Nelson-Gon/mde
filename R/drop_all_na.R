@@ -22,14 +22,14 @@ drop_all_na.data.frame <- function(df, grouping_cols = NULL){
     }
    df %>%
          dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
-     dplyr::filter(dplyr::across(everything(),~!all(is.na(.)))) %>%
+     dplyr::filter(dplyr::across(everything(),~!all_na(.))) %>%
      dplyr::ungroup()
 
 
   }
 else{
 
-  Filter(function(x) !all(is.na(x)), df)
+  Filter(function(x) !all_na(x), df)
 
 }
 

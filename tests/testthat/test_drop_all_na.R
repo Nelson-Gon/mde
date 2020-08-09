@@ -13,7 +13,7 @@ test_that(desc="drop_all_na errors on absent columns",
                     test <- data.frame(ID= c("A","A","B","A","B"), Vals = c(rep(NA,4),2))
 
                     expect_equal(nrow(drop_all_na(test, grouping_cols = "ID")),2)
-                    expect_false("Vals" %in% names(mde::drop_all_na(test2)))
+                    expect_false("Vals" %in% names(drop_all_na(test2)))
                     expect_equal(ncol(mde::drop_all_na(test2)),1)
 
                     })

@@ -29,7 +29,7 @@ subset_pattern<-head(recode_as_na(airquality,pattern_type="starts_with",
                                   pattern="Solar",value = c(190, 118)))
 subset_pattern_more<-head(recode_as_na(airquality,pattern_type="ends_with",
                                   pattern="R",value = c(190, 118)))
-expect_true(all(is.na(subset_pattern_more[[2]][1:2])))
+expect_true(all_na(subset_pattern_more[[2]][1:2]))
 
 expect_error(recode_as_na(airquality,value=190,pattern_type = "gibberish",
                                     pattern="R"),
