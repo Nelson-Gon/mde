@@ -27,8 +27,8 @@ na_summary.data.frame <- function(df,grouping_cols=NULL,sort_by=NULL,descending=
                                   exclude_cols= NULL){
   # stick to(with?) base as much as possible
   # get total NAs columnwise
-all_counts <-stack(get_na_counts(df, grouping_cols = grouping_cols, exclude_cols = exclude_cols))
-all_percents <- stack(percent_missing(df,grouping_cols = grouping_cols, exclude_cols = exclude_cols))
+all_counts <-stack(get_na_counts(df,  exclude_cols = exclude_cols))
+all_percents <- stack(percent_missing(df, exclude_cols = exclude_cols))
 names(all_counts) <- c("missing","variable")
 names(all_percents) <- c("percent_missing","variable")
 if(is.null(grouping_cols)){

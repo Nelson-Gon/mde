@@ -37,7 +37,7 @@ if(!is.null(pattern_type)){
 
 
 na_counts <- get_na_counts(res)
-na_counts_test <- all(na_counts == unname(na_counts)[1])
+na_counts_test <-all(na_counts == unname(na_counts[[1]]))
 if(!na_counts_test){
 
   stop("Unequal number of missing values, cannot rebind data. Please check with get_na_counts first")

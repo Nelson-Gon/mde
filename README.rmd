@@ -130,6 +130,14 @@ To sort the above in descending order:
 na_summary(airquality, sort_by="percent_missing", descending = TRUE)
 
 ```
+To exclude certain columns from the analysis:
+
+```{r}
+
+na_summary(airquality, exclude_cols = c("Day", "Wind"))
+
+```
+
 
 To get this summary by group:
 

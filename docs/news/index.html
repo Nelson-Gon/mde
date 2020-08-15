@@ -128,6 +128,9 @@
 <a href="#mde-022" class="anchor"></a>mde 0.2.2<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Fixed issues with <code>drop_na_at</code> that resulted in failing data rebinding.</p></li>
+<li><p><code>get_na_counts</code> now includes an optional <code>exclude_cols</code> argument to exclude columns from the analysis.</p></li>
+<li><p><code>na_summary</code> has been fixed to allow exclusion of columns from the analysis.</p></li>
 <li><p><code>all_na</code> is a new low level function to perform missingness boolean checks for columns(vectors).</p></li>
 <li><p>Added a new function <code>column_based_recoode</code> that aims to allow <code>NA</code> recoding based on other columns.</p></li>
 </ul>

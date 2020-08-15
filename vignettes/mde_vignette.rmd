@@ -108,6 +108,13 @@ na_summary(airquality)
 
 ```
 
+To exclude certain columns from the analysis:
+
+```{r}
+
+na_summary(airquality, exclude_cols = c("Day", "Wind"))
+
+```
 
 To sort this summary by a given column :
 

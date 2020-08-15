@@ -1,4 +1,4 @@
-2020-07-27
+2020-08-15
 
 # `mde`: Missing Data Explorer
 
@@ -129,6 +129,18 @@ na_summary(airquality, sort_by="percent_missing", descending = TRUE)
 #> 6     Wind       0      153        100.00000        0.000000
 ```
 
+To exclude certain columns from the analysis:
+
+``` r
+
+na_summary(airquality, exclude_cols = c("Day", "Wind"))
+#>   variable missing complete percent_complete percent_missing
+#> 1    Month       0      153        100.00000        0.000000
+#> 2    Ozone      37      116         75.81699       24.183007
+#> 3  Solar.R       7      146         95.42484        4.575163
+#> 4     Temp       0      153        100.00000        0.000000
+```
+
 To get this summary by group:
 
 ``` r
@@ -169,8 +181,8 @@ can use the function as follows:
 ``` r
 
 get_na_counts(airquality)
-#>   Ozone Solar.R    Wind    Temp   Month     Day 
-#>      37       7       0       0       0       0
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    37       7    0    0     0   0
 ```
 
 The above might be less useful if one would like to get the results by

@@ -129,7 +129,13 @@
     <p>An all-in-one missingness report</p>
     </div>
 
-    <pre class="usage"><span class='fu'>na_summary</span>(<span class='no'>df</span>, <span class='kw'>grouping_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sort_by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>descending</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>na_summary</span>(
+  <span class='no'>df</span>,
+  <span class='kw'>grouping_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>sort_by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>descending</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>exclude_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,8 +158,8 @@ data.</p></td>
       <td><p>Logical. Should missing values be sorted in decreasing order ie largest to smallest? Defaults to FALSE.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments to other functions</p></td>
+      <th>exclude_cols</th>
+      <td><p>A character vector indicating columns to exclude when returning results.</p></td>
     </tr>
     </table>
 
@@ -168,13 +174,7 @@ data.</p></td>
 #&gt; 6     Wind       0      153        100.00000        0.000000</div><div class='input'><span class='co'># grouping</span>
 <span class='no'>test2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>ID</span><span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>),<span class='kw'>Vals</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>NA</span>,<span class='fl'>4</span>),<span class='st'>"No"</span>),
 <span class='kw'>ID2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"E"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span>))
-<span class='fu'>na_summary</span>(<span class='no'>test2</span>,<span class='kw'>grouping_cols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ID"</span>,<span class='st'>"ID2"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: `...` is not empty.</span>
-#&gt; <span class='warning'></span>
-#&gt; <span class='warning'>We detected these problematic arguments:</span>
-#&gt; <span class='warning'>* `needs_dots`</span>
-#&gt; <span class='warning'></span>
-#&gt; <span class='warning'>These dots only exist to allow future extensions and should be empty.</span>
-#&gt; <span class='warning'>Did you misspecify an argument?</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 7</span><span>
+<span class='fu'>na_summary</span>(<span class='no'>test2</span>,<span class='kw'>grouping_cols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ID"</span>,<span class='st'>"ID2"</span>))</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 7</span><span>
 #&gt;   ID    ID2   variable missing complete percent_complete percent_missing
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> B     D     Vals           1        1               50              50
