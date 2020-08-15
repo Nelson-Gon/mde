@@ -4,7 +4,13 @@
 \alias{na_summary}
 \title{An all-in-one missingness report}
 \usage{
-na_summary(df, grouping_cols = NULL, sort_by = NULL, descending = FALSE, ...)
+na_summary(
+  df,
+  grouping_cols = NULL,
+  sort_by = NULL,
+  descending = FALSE,
+  exclude_cols = NULL
+)
 }
 \arguments{
 \item{df}{A valid R `object` for which the percentage of missing values is required.}
@@ -16,7 +22,7 @@ data.}
 
 \item{descending}{Logical. Should missing values be sorted in decreasing order ie largest to smallest? Defaults to FALSE.}
 
-\item{...}{Arguments to other functions}
+\item{exclude_cols}{A character vector indicating columns to exclude when returning results.}
 }
 \description{
 An all-in-one missingness report

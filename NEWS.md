@@ -1,11 +1,16 @@
 ---
 title: 'Missing Data Explorer'
 author: "Nelson Gonzabato"
-date: "09/08/2020"
+date: "15/08/2020"
 output: html_document
 ---
 
 # mde 0.2.2
+
+* `get_na_counts` now includes an optional `exclude_cols` argument to exclude columns from the analysis. 
+
+
+* `na_summary` has been fixed to allow exclusion of columns from the analysis.
 
 * `all_na` is a new low level function to perform missingness boolean checks for columns(vectors). 
 

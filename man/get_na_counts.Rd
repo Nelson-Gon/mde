@@ -4,13 +4,15 @@
 \alias{get_na_counts}
 \title{Add columnwise/groupwise counts of missing values}
 \usage{
-get_na_counts(x, grouping_cols = NULL)
+get_na_counts(x, grouping_cols = NULL, exclude_cols = NULL)
 }
 \arguments{
 \item{x}{A valid R `object` for which `na_counts` are needed.}
 
 \item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}
+
+\item{exclude_cols}{Columns to exclude from the analysis.}
 }
 \value{
 An object of the same type as `x` showing the respective number of missing values. If

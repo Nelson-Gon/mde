@@ -2,6 +2,7 @@
 #' @param x A valid R `object` for which `na_counts` are needed.
 #' @param grouping_cols A character vector. If supplied, one can provide the columns by which to group the
 #' data.
+#' @param exclude_cols Columns to exclude from the analysis.
 #' @description This function takes a `data.frame` object as an input and returns the corresponding
 #' `NA` counts. `NA` refers to R's builtin missing data holder.
 #' @importFrom dplyr %>%
@@ -17,29 +18,38 @@
 #'                         c("ID", "Subject"))
 #' @export
 
-get_na_counts <- function(x, grouping_cols = NULL){
+get_na_counts <- function(x, grouping_cols = NULL, exclude_cols=NULL){
   UseMethod("get_na_counts")
 }
 
 #' @export
 
-get_na_counts.data.frame <- function(x, grouping_cols = NULL){
+get_na_counts.data.frame <- function(x, grouping_cols = NULL, exclude_cols = NULL){
 
 if(! is.null(grouping_cols)){
 if(any(!grouping_cols %in% names(x))){
   stop("All grouping columns must exist in the data set")
 }
-  x %>%
-    dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
-    dplyr::summarise(dplyr::across(dplyr::everything(),
-                                   ~sum(is.na(.))))
+  x <- x %>%
+    dplyr::group_by(!!!dplyr::syms(grouping_cols))
 
 }
 
-  else{
+if(! is.null(exclude_cols)){
+    if(any(!exclude_cols %in% names(x))){
+      stop("Can only exclude columns that exist in the dataset.")
+    }
 
-    colSums(is.na(x))
+    x <- x %>%
+      dplyr::select(-all_of(exclude_cols))
+
+
   }
+
+  x %>%
+  dplyr::summarise(dplyr::across(dplyr::everything(),
+                                 ~sum(is.na(.))))
+
 
 }
 
