@@ -41,6 +41,11 @@ check_column_existence(df, exclude_cols, "to exclude")
 
 }
 
+percent_missing.numeric <- get_na_means.numeric
+
+percent_missing.factor <- get_na_means.character
+
+percent_missing.character <- get_na_means.character
 
 
 
