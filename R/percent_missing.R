@@ -11,43 +11,33 @@
 #' percent_missing(airquality,exclude_cols = c("Day","Temp"))
 #' @export
 
-percent_missing <- function(df,  grouping_cols = NULL,
-                            exclude_cols = NULL){
+percent_missing <- function(df,  grouping_cols = NULL,exclude_cols = NULL){
   UseMethod("percent_missing")
 }
 
 #' @export
-percent_missing.data.frame <- function(df,  grouping_cols = NULL,
-                                       exclude_cols = NULL
-                                       ){
+percent_missing.data.frame <- function(df,  grouping_cols = NULL,exclude_cols = NULL){
 
 
 if(!is.null(grouping_cols)){
-  if(!all(grouping_cols %in% names(df))){
-    stop("All grouping columns should exist in the dataset")
-  }
 
-  df <-   df %>%
-    dplyr::group_by(!!!dplyr::syms(grouping_cols))
+check_column_existence(df, grouping_cols, unique_name = "to group by")
+
+df <-   df %>% dplyr::group_by(!!!dplyr::syms(grouping_cols))
 
 }
 
 if(! is.null(exclude_cols)){
-  if(any(!exclude_cols %in% names(df))){
-    stop("Can only exclude columns that exist in the dataset.")
-  }
 
-  df <- df %>%
-        dplyr::select(-exclude_cols)
+check_column_existence(df, exclude_cols, "to exclude")
+
+
+  df <- df %>% dplyr::select(-exclude_cols)
 
 
 }
 
-  df %>%
-    dplyr::summarise(across(everything(),~ sum(is.na(.))/length(.) * 100)) %>%
-    dplyr::ungroup()
-
-
+  df %>% dplyr::summarise(across(everything(),~ get_na_means(.))) %>% dplyr::ungroup()
 
 }
 

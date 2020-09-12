@@ -6,7 +6,7 @@ test_that(desc="Check recoding",
                                                                value=0,
                                                         subset_cols=c("Ozone",
                                                                   "not in")),
-                                             "Some names not found in the dataset. Please check and try again.",
+                                             "All columns to subset should exist in the data set.",
                                              fixed=TRUE)
 dummy_test <- data.frame(ID = c("A","B","B","A"),values = c("n/a",NA,"Yes","No"))
 
@@ -18,7 +18,7 @@ expect_error(recode_as_na(airquality,value=0,
                        fixed = TRUE)
 expect_error(recode_as_na(airquality,value=0,
                                     subset_cols = "nope"),
-                       "Some names not found in the dataset. Please check and try again.",
+                       "All columns to subset should exist in the data set.",
                        fixed=TRUE)
 expect_error(recode_as_na(airquality,value=0,
                                     pattern_type ="contains"),

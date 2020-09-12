@@ -8,7 +8,7 @@ test_that(desc="drop_all_na errors on absent columns",
 
                     expect_error(drop_all_na(test2,
                                         grouping_cols = c("ID","non_existant")),
-                                        "All grouping columns should exist in the dataset.",
+                                        "All columns to group by should exist in the data set.",
                                         fixed=TRUE)
                     test <- data.frame(ID= c("A","A","B","A","B"), Vals = c(rep(NA,4),2))
 

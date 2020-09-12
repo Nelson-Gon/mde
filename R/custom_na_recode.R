@@ -27,8 +27,9 @@ custom_na_recode.data.frame <- function(df,func="mean",grouping_cols=NULL, acros
 
 if(!is.null(grouping_cols)){
 
-    df <- df %>%
-      dplyr::group_by(!!!dplyr::syms(grouping_cols))
+check_column_existence(df,grouping_cols,unique_name = "to group by")
+
+df <- df %>% dplyr::group_by(!!!dplyr::syms(grouping_cols))
 
 }
 
@@ -42,14 +43,10 @@ if(is.null(across_columns)){
 }
 
 else{
-
-if(!all(across_columns %in% names(df))){
-  stop("All values in across_columns must be valid column names")
-}
+check_column_existence(df, across_columns, unique_name = "in across_columns")
 
 df %>%
-dplyr::mutate(dplyr::across(c(!!!dplyr::syms(across_columns)),
-                                ~ifelse(is.na(.),
+dplyr::mutate(dplyr::across(c(!!!dplyr::syms(across_columns)), ~ifelse(is.na(.),
                               do.call(func,list(na.omit(.))),.))) %>%
   dplyr::ungroup()
 

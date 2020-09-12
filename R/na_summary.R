@@ -53,7 +53,7 @@ else{
     #matched_groups = which(names(df) %in% grouping_cols)
     if(length(non_grouping) > 1) warning("All non grouping values used. Using select non groups is currently not supported")
 
-    if(!all(grouping_cols %in% names(df))) stop("All grouping_cols should exist in the dataset.")
+    check_column_existence(df,grouping_cols, "to group by")
     grouping_cols_formula = paste0(grouping_cols,collapse="+")
     agg_formula <- as.formula(paste0(".~",
                                      grouping_cols_formula))

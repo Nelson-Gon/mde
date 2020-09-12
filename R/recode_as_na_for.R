@@ -49,17 +49,13 @@ if(is.null(subset_cols)){
   }
 
   else{
-  if(!all(subset_cols %in% names(df))){
-    stop("All subset_cols should exist in the data set.")
-  }
+  check_column_existence(df,subset_cols, "to subset")
     gteq_subset <- df %>%
       mutate(across(subset_cols,~ifelse(. >= value,NA,
                                         .)))
-    lteq_subset <- df %>%
-      mutate(across(subset_cols, ~ifelse(. <= value, NA,
+    lteq_subset <- df %>% mutate(across(subset_cols, ~ifelse(. <= value, NA,
                                          .)))
-    lt_subset <- df %>%
-      mutate(across(subset_cols, ~ifelse(. < value,
+    lt_subset <- df %>% mutate(across(subset_cols, ~ifelse(. < value,
                                          NA, .)))
     gt_subset <- df %>%
       mutate(across(subset_cols, ~ifelse(. > value,

@@ -17,6 +17,6 @@ test_that(desc="custom_na_recode works as expected",
                                            3)
                     # test that column names exist
                     expect_error(mde::custom_na_recode(test_groups,func="mean",across_columns="nope"),
-                                           "All values in across_columns must be valid column names", fixed=TRUE)
+                                           "All columns in across_columns should exist in the data set.", fixed=TRUE)
 
                     })

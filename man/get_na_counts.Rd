@@ -27,6 +27,5 @@ get_na_counts(airquality)
 # Grouped counts
 test <- data.frame(Subject = c("A","A","B","B"), res = c(NA,1,2,3),
 ID = c("1","1","2","2"))
-get_na_counts(test,grouping_cols =
-                        c("ID", "Subject"))
+get_na_counts(test,grouping_cols = c("ID", "Subject"))
 }

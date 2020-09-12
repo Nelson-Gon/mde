@@ -30,10 +30,7 @@ recode_na_if.data.frame <- function(df,
     stop("Need both grouping cols and target_groups.")
   }
 
- if(!all(grouping_cols %in% names(df))){
-   stop("All grouping_cols should exist in the data set")
-
- }
+check_column_existence(df, grouping_cols,"to group by")
   if(!all(target_groups %in% df[,grouping_cols])){
     stop("All target_groups should exist in grouping_cols")
   }

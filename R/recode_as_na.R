@@ -39,9 +39,8 @@ final_res <-  df %>%
     stop("Only one of pattern_type or subset_cols should be used but not both.")
   }
   if(!is.null(subset_cols)){
-    if(!all(subset_cols %in% names(df))){
-      stop("Some names not found in the dataset. Please check and try again.")
-    }
+
+    check_column_existence(df, subset_cols, unique_name = "to subset")
 
     make_pattern <-paste(subset_cols,collapse="|")
     final_res<-recode_helper(df,pattern_type="contains",original_value=value,pattern=make_pattern,
@@ -49,8 +48,7 @@ final_res <-  df %>%
   }
 
   if(!is.null(pattern_type)){
-    if(any(!pattern_type %in% c("starts_with","ends_with","contains",
-                                "regex"))){
+    if(any(!pattern_type %in% c("starts_with","ends_with","contains","regex"))){
 
       stop("pattern_type should be one of starts_with,ends_with,contains or regex")
     }

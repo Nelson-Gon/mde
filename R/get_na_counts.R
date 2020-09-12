@@ -14,8 +14,7 @@
 #' # Grouped counts
 #' test <- data.frame(Subject = c("A","A","B","B"), res = c(NA,1,2,3),
 #' ID = c("1","1","2","2"))
-#' get_na_counts(test,grouping_cols =
-#'                         c("ID", "Subject"))
+#' get_na_counts(test,grouping_cols = c("ID", "Subject"))
 #' @export
 
 get_na_counts <- function(x, grouping_cols = NULL, exclude_cols=NULL){
@@ -27,28 +26,20 @@ get_na_counts <- function(x, grouping_cols = NULL, exclude_cols=NULL){
 get_na_counts.data.frame <- function(x, grouping_cols = NULL, exclude_cols = NULL){
 
 if(! is.null(grouping_cols)){
-if(any(!grouping_cols %in% names(x))){
-  stop("All grouping columns must exist in the data set")
-}
-  x <- x %>%
-    dplyr::group_by(!!!dplyr::syms(grouping_cols))
+check_column_existence(x, grouping_cols, unique_name = "to group by")
+x <- x %>% dplyr::group_by(!!!dplyr::syms(grouping_cols))
 
 }
 
 if(! is.null(exclude_cols)){
-    if(any(!exclude_cols %in% names(x))){
-      stop("Can only exclude columns that exist in the dataset.")
-    }
 
-    x <- x %>%
-      dplyr::select(-all_of(exclude_cols))
+check_column_existence(x, exclude_cols,unique_name = "to exclude")
 
+x <- x %>% dplyr::select(-all_of(exclude_cols))
 
-  }
+}
 
-  x %>%
-  dplyr::summarise(dplyr::across(dplyr::everything(),
-                                 ~sum(is.na(.))))
+x %>% dplyr::summarise(dplyr::across(dplyr::everything(), ~sum(is.na(.))))
 
 
 }

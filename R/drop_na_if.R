@@ -25,16 +25,11 @@ drop_na_if <- function(df, sign="gteq",percent_na= 50,
 
 #' @export
 
-drop_na_if.data.frame <- function(df,sign="gteq",percent_na = 50,
-                                  keep_columns  = NULL,
-                                  ...){
+drop_na_if.data.frame <- function(df,sign="gteq",percent_na = 50, keep_columns  = NULL, ...){
 
 available_options <- c("gteq","lteq","gt","lt","eq")
 
-if(! sign %in% available_options ) {
-  stop(paste(paste(c("I was expecting one of ",available_options),collapse=" "),
-             "not",
-              sign))
+if(! sign %in% available_options ) { stop(paste(paste(c("I was expecting one of ",available_options),collapse=" "), "not",sign))
 }
 
 # get percent missingness
@@ -49,16 +44,16 @@ to_drop<- switch(sign,
                 eq = which(missing_percents == percent_na))
 
 if(!is.null(keep_columns)){
-  if(!all(keep_columns %in% names(df))){
-    stop("All columns to keep should exist in the data set.")
-  }
-  keep_columns <- which(names(df) %in% keep_columns)
+
+check_column_existence(df,target_columns = keep_columns, unique_name = "to keep")
+
+keep_columns <- which(names(df) %in% keep_columns)
 
 }
 to_drop <- setdiff(to_drop, keep_columns)
-if(length(to_drop) ==0){
-  return(df)
-}
+
+if(length(to_drop) ==0) return(df)
+
 df[-to_drop]
 }
 

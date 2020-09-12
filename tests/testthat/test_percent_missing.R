@@ -9,11 +9,11 @@ test_that(desc="percent_missing warns",
                                           25)
                     expect_error(percent_missing(airquality,
                                                  grouping_cols = "Nope"),
-                       "All grouping columns should exist in the dataset",
+                       "All columns to group by should exist in the data set",
                        fixed = TRUE)
                     expect_error(percent_missing(airquality,
                                                    exclude_cols = "nope"),
-                      "Can only exclude columns that exist in the dataset.",
+                      "All columns to exclude should exist in the data set.",
                       fixed=TRUE)
                     })
 

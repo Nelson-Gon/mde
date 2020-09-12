@@ -11,7 +11,7 @@ test_that(desc="recode_na_if errors on absence of args",
                 "Need both grouping cols and target_groups.", fixed = TRUE)
 
           expect_error(recode_na_if(some_data,"nuh",c("A2","A3"),replacement=0),
-                                "All grouping_cols should exist in the data set",
+                                "All columns to group by should exist in the data set",
                                 fixed=TRUE)
           expect_error(recode_na_if(some_data,"ID",c("A2","no"),replacement=0),
                                  "All target_groups should exist in grouping_cols",

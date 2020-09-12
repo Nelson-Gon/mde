@@ -6,7 +6,7 @@ testthat::test_that(desc="Test na_summary",
      expect_warning(na_summary(airquality, grouping_cols=c("Month","Day")),
                               "All non grouping values used. Using select non groups is currently not supported",
                               fixed=TRUE)
-    expect_error(na_summary(airquality,grouping_cols="gibberish"), "All grouping_cols should exist in the dataset.",
+    expect_error(na_summary(airquality,grouping_cols="gibberish"), "All columns to group by should exist in the data set.",
                            fixed=TRUE)
     # expect that columns are excluded
     excluded <- na_summary(mtcars, exclude_cols = "mpg")

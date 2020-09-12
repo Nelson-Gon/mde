@@ -10,7 +10,7 @@ test_that(desc = "test recode_as_na_for",
 
                   expect_error(recode_as_na_for(airquality,
                                subset_cols = "gibberish"),
-                               "All subset_cols should exist in the data set.",
+                               "All columns to subset should exist in the data set.",
                                fixed = TRUE)
           expect_true(is.na(recode_as_na_for(airquality,
                                         criteria = "gt",value = 25,

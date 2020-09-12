@@ -79,3 +79,35 @@ skip_on_oldrel <- function(version="3.6.3", msg = NULL) {
 }
 
 
+get_na_means <- function(x, as_percent=TRUE) UseMethod("get_na_means")
+
+
+
+get_na_means.numeric <- function(x, as_percent=TRUE){
+  res <-mean(is.na(x))
+  if(as_percent) res<-res * 100
+  res
+}
+
+
+
+get_na_means.character <- get_na_means.numeric
+
+get_na_means.factor <- get_na_means.numeric
+
+
+get_na_means.data.frame <- function(x, as_percent=TRUE){
+  res <- colMeans(is.na(x))
+  if(as_percent) res <- res * 100
+  res
+}
+
+check_column_existence <- function(df, target_columns=NULL, unique_name=NULL){
+
+
+if(!all(target_columns %in% names(df))) stop(paste0("All columns ", unique_name, " should exist in the data set."))
+
+
+
+}
+
