@@ -130,11 +130,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>na_summary</span>(
-  <span class='no'>df</span>,
-  <span class='kw'>grouping_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sort_by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>descending</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>exclude_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>df</span>,
+  grouping_cols = <span class='kw'>NULL</span>,
+  sort_by = <span class='kw'>NULL</span>,
+  descending = <span class='fl'>FALSE</span>,
+  exclude_cols = <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -165,27 +165,31 @@ data.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>na_summary</span>(<span class='no'>airquality</span>)</div><div class='output co'>#&gt;   variable missing complete percent_complete percent_missing
+    <pre class="examples"><div class='input'><span class='fu'>na_summary</span>(<span class='kw'>airquality</span>)
+</div><div class='output co'>#&gt;   variable missing complete percent_complete percent_missing
 #&gt; 1      Day       0      153        100.00000        0.000000
 #&gt; 2    Month       0      153        100.00000        0.000000
 #&gt; 3    Ozone      37      116         75.81699       24.183007
 #&gt; 4  Solar.R       7      146         95.42484        4.575163
 #&gt; 5     Temp       0      153        100.00000        0.000000
 #&gt; 6     Wind       0      153        100.00000        0.000000</div><div class='input'><span class='co'># grouping</span>
-<span class='no'>test2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>ID</span><span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>),<span class='kw'>Vals</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>NA</span>,<span class='fl'>4</span>),<span class='st'>"No"</span>),
-<span class='kw'>ID2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"E"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span>))
-<span class='fu'>na_summary</span>(<span class='no'>test2</span>,<span class='kw'>grouping_cols</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ID"</span>,<span class='st'>"ID2"</span>))</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 7</span><span>
+<span class='kw'>test2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(ID= <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>),Vals = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>NA</span>,<span class='fl'>4</span>),<span class='st'>"No"</span>),
+ID2 = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"E"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span>))
+<span class='fu'>na_summary</span>(<span class='kw'>test2</span>,grouping_cols = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ID"</span>,<span class='st'>"ID2"</span>))
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 7</span><span>
 #&gt;   ID    ID2   variable missing complete percent_complete percent_missing
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> B     D     Vals           1        1               50              50
 #&gt; </span><span style='color: #555555;'>2</span><span> A     E     Vals           3        0                0             100</div><div class='input'><span class='co'># sort summary</span>
-<span class='fu'>na_summary</span>(<span class='no'>airquality</span>,<span class='kw'>sort_by</span> <span class='kw'>=</span> <span class='st'>"percent_missing"</span>,<span class='kw'>descending</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   variable missing complete percent_complete percent_missing
+<span class='fu'>na_summary</span>(<span class='kw'>airquality</span>,sort_by = <span class='st'>"percent_missing"</span>,descending = <span class='fl'>TRUE</span>)
+</div><div class='output co'>#&gt;   variable missing complete percent_complete percent_missing
 #&gt; 3    Ozone      37      116         75.81699       24.183007
 #&gt; 4  Solar.R       7      146         95.42484        4.575163
 #&gt; 1      Day       0      153        100.00000        0.000000
 #&gt; 2    Month       0      153        100.00000        0.000000
 #&gt; 5     Temp       0      153        100.00000        0.000000
-#&gt; 6     Wind       0      153        100.00000        0.000000</div><div class='input'><span class='fu'>na_summary</span>(<span class='no'>airquality</span>,<span class='kw'>sort_by</span> <span class='kw'>=</span> <span class='st'>"percent_complete"</span>)</div><div class='output co'>#&gt;   variable missing complete percent_complete percent_missing
+#&gt; 6     Wind       0      153        100.00000        0.000000</div><div class='input'><span class='fu'>na_summary</span>(<span class='kw'>airquality</span>,sort_by = <span class='st'>"percent_complete"</span>)
+</div><div class='output co'>#&gt;   variable missing complete percent_complete percent_missing
 #&gt; 3    Ozone      37      116         75.81699       24.183007
 #&gt; 4  Solar.R       7      146         95.42484        4.575163
 #&gt; 1      Day       0      153        100.00000        0.000000
@@ -208,7 +212,7 @@ data.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

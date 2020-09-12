@@ -132,13 +132,13 @@
     </div>
 
     <pre class="usage"><span class='fu'>recode_as_na</span>(
-  <span class='no'>df</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>subset_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>pattern_type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>case_sensitive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>
+  <span class='kw'>df</span>,
+  value = <span class='kw'>NULL</span>,
+  subset_cols = <span class='kw'>NULL</span>,
+  pattern_type = <span class='kw'>NULL</span>,
+  pattern = <span class='kw'>NULL</span>,
+  case_sensitive = <span class='fl'>FALSE</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -179,19 +179,22 @@
     <p>An object of the same class as x with values changed to `NA`.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_as_na</span>(<span class='no'>airquality</span>,<span class='kw'>value</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>67</span>,<span class='fl'>118</span>),<span class='kw'>pattern_type</span><span class='kw'>=</span><span class='st'>"starts_with"</span>,<span class='kw'>pattern</span><span class='kw'>=</span><span class='st'>"S|O"</span>))</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_as_na</span>(<span class='kw'>airquality</span>,value=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>67</span>,<span class='fl'>118</span>),pattern_type=<span class='st'>"starts_with"</span>,pattern=<span class='st'>"S|O"</span>))
+</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
 #&gt; 1    41     190  7.4   67     5   1
 #&gt; 2    36      NA  8.0   72     5   2
 #&gt; 3    12     149 12.6   74     5   3
 #&gt; 4    18     313 11.5   62     5   4
 #&gt; 5    NA      NA 14.3   56     5   5
-#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_as_na</span>(<span class='no'>airquality</span>,<span class='kw'>value</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>41</span>),<span class='kw'>pattern_type</span><span class='kw'>=</span><span class='st'>"ends_with"</span>,<span class='kw'>pattern</span><span class='kw'>=</span><span class='st'>"e"</span>))</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
+#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_as_na</span>(<span class='kw'>airquality</span>,value=<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>41</span>),pattern_type=<span class='st'>"ends_with"</span>,pattern=<span class='st'>"e"</span>))
+</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
 #&gt; 1    NA     190  7.4   67     5   1
 #&gt; 2    36     118  8.0   72     5   2
 #&gt; 3    12     149 12.6   74     5   3
 #&gt; 4    18     313 11.5   62     5   4
 #&gt; 5    NA      NA 14.3   56     5   5
-#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_as_na</span>(<span class='no'>airquality</span>, <span class='kw'>value</span><span class='kw'>=</span><span class='fl'>41</span>,<span class='kw'>subset_cols</span><span class='kw'>=</span><span class='st'>"Ozone"</span>))</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
+#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_as_na</span>(<span class='kw'>airquality</span>, value=<span class='fl'>41</span>,subset_cols=<span class='st'>"Ozone"</span>))
+</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
 #&gt; 1    NA     190  7.4   67     5   1
 #&gt; 2    36     118  8.0   72     5   2
 #&gt; 3    12     149 12.6   74     5   3
@@ -213,7 +216,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

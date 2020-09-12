@@ -91,83 +91,104 @@
 <p>The goal of <code>mde</code> is to ease exploration of missingness.</p>
 <p><strong>Installation</strong></p>
 <p><strong>CRAN release</strong></p>
-<div class="sourceCode" id="cb1"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"mde"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"mde"</span>)
+</pre></div>
 <p><strong>Stable Development version</strong></p>
-<div class="sourceCode" id="cb2"><pre class="r">
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"Nelson-Gon/mde"</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Nelson-Gon/mde"</span>)
 
 
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"Nelson-Gon/mde"</span>,  <span class="kw">build_vignettes</span><span class="kw">=</span><span class="fl">TRUE</span>)</pre></div>
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Nelson-Gon/mde"</span>,  build_vignettes=<span class="fl">TRUE</span>)
+</pre></div>
 <p><strong>Unstable Development version</strong></p>
-<div class="sourceCode" id="cb3"><pre class="r">
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"Nelson-Gon/mde@develop"</span>)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+
+<span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Nelson-Gon/mde@develop"</span>)
+</pre></div>
 <p><strong>Loading the package</strong></p>
-<div class="sourceCode" id="cb4"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">mde</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/Nelson-Gon/mde">mde</a></span>)
 <span class="co">#&gt; Welcome to mde. This is mde version 0.2.2.9000.</span>
 <span class="co">#&gt;  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues</span>
 <span class="co">#&gt; Turn this message off using 'suppressPackageStartupMessages(library(mde))'</span>
-<span class="co">#&gt;  Happy Exploration :)</span></pre></div>
+<span class="co">#&gt;  Happy Exploration :)</span>
+</pre></div>
 <p><strong>Currently available functions.</strong></p>
 <p>To get a simple missingness report, use <code>na_summary</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="r">
-<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="no">airquality</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit">
+
+<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="kw">airquality</span>)
 <span class="co">#&gt;   variable missing complete percent_complete percent_missing</span>
 <span class="co">#&gt; 1      Day       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 2    Month       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 3    Ozone      37      116         75.81699       24.183007</span>
 <span class="co">#&gt; 4  Solar.R       7      146         95.42484        4.575163</span>
 <span class="co">#&gt; 5     Temp       0      153        100.00000        0.000000</span>
-<span class="co">#&gt; 6     Wind       0      153        100.00000        0.000000</span></pre></div>
+<span class="co">#&gt; 6     Wind       0      153        100.00000        0.000000</span>
+</pre></div>
 <p>To sort this summary by a given column :</p>
-<div class="sourceCode" id="cb6"><pre class="r">
-<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="no">airquality</span>,<span class="kw">sort_by</span> <span class="kw">=</span> <span class="st">"percent_complete"</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit">
+
+<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="kw">airquality</span>,sort_by = <span class="st">"percent_complete"</span>)
 <span class="co">#&gt;   variable missing complete percent_complete percent_missing</span>
 <span class="co">#&gt; 3    Ozone      37      116         75.81699       24.183007</span>
 <span class="co">#&gt; 4  Solar.R       7      146         95.42484        4.575163</span>
 <span class="co">#&gt; 1      Day       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 2    Month       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 5     Temp       0      153        100.00000        0.000000</span>
-<span class="co">#&gt; 6     Wind       0      153        100.00000        0.000000</span></pre></div>
+<span class="co">#&gt; 6     Wind       0      153        100.00000        0.000000</span>
+</pre></div>
 <p>To sort by <code>percent_missing</code> instead:</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="no">airquality</span>, <span class="kw">sort_by</span> <span class="kw">=</span> <span class="st">"percent_missing"</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="kw">airquality</span>, sort_by = <span class="st">"percent_missing"</span>)
 <span class="co">#&gt;   variable missing complete percent_complete percent_missing</span>
 <span class="co">#&gt; 1      Day       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 2    Month       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 5     Temp       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 6     Wind       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 4  Solar.R       7      146         95.42484        4.575163</span>
-<span class="co">#&gt; 3    Ozone      37      116         75.81699       24.183007</span></pre></div>
+<span class="co">#&gt; 3    Ozone      37      116         75.81699       24.183007</span>
+</pre></div>
 <p>To sort the above in descending order:</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="no">airquality</span>, <span class="kw">sort_by</span><span class="kw">=</span><span class="st">"percent_missing"</span>, <span class="kw">descending</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="kw">airquality</span>, sort_by=<span class="st">"percent_missing"</span>, descending = <span class="fl">TRUE</span>)
 <span class="co">#&gt;   variable missing complete percent_complete percent_missing</span>
 <span class="co">#&gt; 3    Ozone      37      116         75.81699       24.183007</span>
 <span class="co">#&gt; 4  Solar.R       7      146         95.42484        4.575163</span>
 <span class="co">#&gt; 1      Day       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 2    Month       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 5     Temp       0      153        100.00000        0.000000</span>
-<span class="co">#&gt; 6     Wind       0      153        100.00000        0.000000</span></pre></div>
+<span class="co">#&gt; 6     Wind       0      153        100.00000        0.000000</span>
+</pre></div>
 <p>To exclude certain columns from the analysis:</p>
-<div class="sourceCode" id="cb9"><pre class="r">
-<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="no">airquality</span>, <span class="kw">exclude_cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Day"</span>, <span class="st">"Wind"</span>))
+<div class="sourceCode" id="cb9"><pre class="downlit">
+
+<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="kw">airquality</span>, exclude_cols = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Day"</span>, <span class="st">"Wind"</span>))
 <span class="co">#&gt;   variable missing complete percent_complete percent_missing</span>
 <span class="co">#&gt; 1    Month       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 2    Ozone      37      116         75.81699       24.183007</span>
 <span class="co">#&gt; 3  Solar.R       7      146         95.42484        4.575163</span>
-<span class="co">#&gt; 4     Temp       0      153        100.00000        0.000000</span></pre></div>
+<span class="co">#&gt; 4     Temp       0      153        100.00000        0.000000</span>
+</pre></div>
 <p>To get this summary by group:</p>
-<div class="sourceCode" id="cb10"><pre class="r">
-<span class="no">test2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">ID</span><span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="kw">Vals</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>,<span class="fl">4</span>),<span class="st">"No"</span>),<span class="kw">ID2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"E"</span>,<span class="st">"E"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"D"</span>))
+<div class="sourceCode" id="cb10"><pre class="downlit">
 
-<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="no">test2</span>,<span class="kw">grouping_cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ID"</span>,<span class="st">"ID2"</span>))
+<span class="kw">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID= <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>), Vals = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>,<span class="fl">4</span>),<span class="st">"No"</span>),ID2 = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"E"</span>,<span class="st">"E"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"D"</span>))
+
+<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="kw">test2</span>,grouping_cols = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ID"</span>,<span class="st">"ID2"</span>))
 <span class="co">#&gt; # A tibble: 2 x 7</span>
 <span class="co">#&gt;   ID    ID2   variable missing complete percent_complete percent_missing</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 B     D     Vals           1        1               50              50</span>
-<span class="co">#&gt; 2 A     E     Vals           3        0                0             100</span></pre></div>
-<div class="sourceCode" id="cb11"><pre class="r">
-<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="no">test2</span>, <span class="kw">grouping_cols</span><span class="kw">=</span><span class="st">"ID"</span>)
+<span class="co">#&gt; 2 A     E     Vals           3        0                0             100</span>
+</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+
+<span class="fu"><a href="reference/na_summary.html">na_summary</a></span>(<span class="kw">test2</span>, grouping_cols=<span class="st">"ID"</span>)
 <span class="co">#&gt; Warning in na_summary.data.frame(test2, grouping_cols = "ID"): All non grouping</span>
 <span class="co">#&gt; values used. Using select non groups is currently not supported</span>
 <span class="co">#&gt; # A tibble: 4 x 6</span>
@@ -176,148 +197,176 @@
 <span class="co">#&gt; 1 A     Vals           3        0                0             100</span>
 <span class="co">#&gt; 2 A     ID2            0        3              100               0</span>
 <span class="co">#&gt; 3 B     Vals           1        1               50              50</span>
-<span class="co">#&gt; 4 B     ID2            0        2              100               0</span></pre></div>
+<span class="co">#&gt; 4 B     ID2            0        2              100               0</span>
+</pre></div>
 <ul>
 <li><code>get_na_counts</code></li>
 </ul>
 <p>This provides a convenient way to show the number of missing values columnwise. It is relatively fast(tests done on about 400,000 rows, took a few microseconds.)</p>
 <p>To get the number of missing values in each column of <code>airquality</code>, we can use the function as follows:</p>
-<div class="sourceCode" id="cb12"><pre class="r">
-<span class="fu"><a href="reference/get_na_counts.html">get_na_counts</a></span>(<span class="no">airquality</span>)
-<span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
-<span class="co">#&gt; 1    37       7    0    0     0   0</span></pre></div>
-<p>The above might be less useful if one would like to get the results by group. In that case, one can provide a vector of names in <code>grouping_cols</code> to use for grouping.</p>
-<div class="sourceCode" id="cb13"><pre class="r">
-<span class="no">test</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">Subject</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span>), <span class="kw">.Label</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,
-<span class="st">"B"</span>), <span class="kw">class</span> <span class="kw">=</span> <span class="st">"factor"</span>), <span class="kw">res</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>), <span class="kw">ID</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1L</span>,
-<span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span>), <span class="kw">.Label</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>), <span class="kw">class</span> <span class="kw">=</span> <span class="st">"factor"</span>)), <span class="kw">class</span> <span class="kw">=</span> <span class="st">"data.frame"</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">NA</span>,
--<span class="fl">4L</span>))
+<div class="sourceCode" id="cb12"><pre class="downlit">
 
-<span class="fu"><a href="reference/get_na_counts.html">get_na_counts</a></span>(<span class="no">test</span>, <span class="kw">grouping_cols</span> <span class="kw">=</span> <span class="st">"ID"</span>)
+<span class="fu"><a href="reference/get_na_counts.html">get_na_counts</a></span>(<span class="kw">airquality</span>)
+<span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
+<span class="co">#&gt; 1    37       7    0    0     0   0</span>
+</pre></div>
+<p>The above might be less useful if one would like to get the results by group. In that case, one can provide a vector of names in <code>grouping_cols</code> to use for grouping.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+
+<span class="kw">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(Subject = <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span>), .Label = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, 
+<span class="st">"B"</span>), class = <span class="st">"factor"</span>), res = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>), ID = <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1L</span>, 
+<span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span>), .Label = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1"</span>, <span class="st">"2"</span>), class = <span class="st">"factor"</span>)), class = <span class="st">"data.frame"</span>, row.names = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">NA</span>, 
+<span class="op">-</span><span class="fl">4L</span>))
+
+<span class="fu"><a href="reference/get_na_counts.html">get_na_counts</a></span>(<span class="kw">test</span>, grouping_cols = <span class="st">"ID"</span>)
 <span class="co">#&gt; # A tibble: 2 x 3</span>
 <span class="co">#&gt;   ID    Subject   res</span>
 <span class="co">#&gt; * &lt;fct&gt;   &lt;int&gt; &lt;int&gt;</span>
 <span class="co">#&gt; 1 1           0     1</span>
-<span class="co">#&gt; 2 2           0     0</span></pre></div>
+<span class="co">#&gt; 2 2           0     0</span>
+</pre></div>
 <ul>
 <li><code>percent_missing</code></li>
 </ul>
 <p>This is a very simple to use but quick way to take a look at the percentage of data that is missing columnwise.</p>
-<div class="sourceCode" id="cb14"><pre class="r">
+<div class="sourceCode" id="cb14"><pre class="downlit">
 
-<span class="fu"><a href="reference/percent_missing.html">percent_missing</a></span>(<span class="no">airquality</span>)
+
+<span class="fu"><a href="reference/percent_missing.html">percent_missing</a></span>(<span class="kw">airquality</span>)
 <span class="co">#&gt;      Ozone  Solar.R Wind Temp Month Day</span>
-<span class="co">#&gt; 1 24.18301 4.575163    0    0     0   0</span></pre></div>
+<span class="co">#&gt; 1 24.18301 4.575163    0    0     0   0</span>
+</pre></div>
 <p>We can get the results by group by providing an optional <code>grouping_cols</code> character vector.</p>
-<div class="sourceCode" id="cb15"><pre class="r">
-<span class="fu"><a href="reference/percent_missing.html">percent_missing</a></span>(<span class="no">test</span>, <span class="kw">grouping_cols</span> <span class="kw">=</span> <span class="st">"Subject"</span>)
+<div class="sourceCode" id="cb15"><pre class="downlit">
+
+<span class="fu"><a href="reference/percent_missing.html">percent_missing</a></span>(<span class="kw">test</span>, grouping_cols = <span class="st">"Subject"</span>)
 <span class="co">#&gt; # A tibble: 2 x 3</span>
 <span class="co">#&gt;   Subject   res    ID</span>
 <span class="co">#&gt; * &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 A          50     0</span>
-<span class="co">#&gt; 2 B           0     0</span></pre></div>
+<span class="co">#&gt; 2 B           0     0</span>
+</pre></div>
 <p>To exclude some columns from the above exploration, one can provide an optional character vector in <code>exclude_cols</code></p>
-<div class="sourceCode" id="cb16"><pre class="r">
-<span class="fu"><a href="reference/percent_missing.html">percent_missing</a></span>(<span class="no">airquality</span>,<span class="kw">exclude_cols</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Day"</span>,<span class="st">"Temp"</span>))
+<div class="sourceCode" id="cb16"><pre class="downlit">
+
+<span class="fu"><a href="reference/percent_missing.html">percent_missing</a></span>(<span class="kw">airquality</span>,exclude_cols = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Day"</span>,<span class="st">"Temp"</span>))
 <span class="co">#&gt;      Ozone  Solar.R Wind Month</span>
-<span class="co">#&gt; 1 24.18301 4.575163    0     0</span></pre></div>
+<span class="co">#&gt; 1 24.18301 4.575163    0     0</span>
+</pre></div>
 <ul>
 <li><code>sort_by_missingness</code></li>
 </ul>
 <p>This provides a very simple but relatively fast way to sort variables by missingness. Unless otherwise stated, this does not currently support arranging grouped percents.</p>
 <p>Usage:</p>
-<div class="sourceCode" id="cb17"><pre class="r">
+<div class="sourceCode" id="cb17"><pre class="downlit">
 
-<span class="fu"><a href="reference/sort_by_missingness.html">sort_by_missingness</a></span>(<span class="no">airquality</span>, <span class="kw">sort_by</span> <span class="kw">=</span> <span class="st">"counts"</span>)
+
+<span class="fu"><a href="reference/sort_by_missingness.html">sort_by_missingness</a></span>(<span class="kw">airquality</span>, sort_by = <span class="st">"counts"</span>)
 <span class="co">#&gt;   variable percent</span>
 <span class="co">#&gt; 1     Wind       0</span>
 <span class="co">#&gt; 2     Temp       0</span>
 <span class="co">#&gt; 3    Month       0</span>
 <span class="co">#&gt; 4      Day       0</span>
 <span class="co">#&gt; 5  Solar.R       7</span>
-<span class="co">#&gt; 6    Ozone      37</span></pre></div>
+<span class="co">#&gt; 6    Ozone      37</span>
+</pre></div>
 <p>To sort in descending order:</p>
-<div class="sourceCode" id="cb18"><pre class="r">
-<span class="fu"><a href="reference/sort_by_missingness.html">sort_by_missingness</a></span>(<span class="no">airquality</span>, <span class="kw">sort_by</span> <span class="kw">=</span> <span class="st">"counts"</span>, <span class="kw">descend</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb18"><pre class="downlit">
+
+<span class="fu"><a href="reference/sort_by_missingness.html">sort_by_missingness</a></span>(<span class="kw">airquality</span>, sort_by = <span class="st">"counts"</span>, descend = <span class="fl">TRUE</span>)
 <span class="co">#&gt;   variable percent</span>
 <span class="co">#&gt; 1    Ozone      37</span>
 <span class="co">#&gt; 2  Solar.R       7</span>
 <span class="co">#&gt; 3     Wind       0</span>
 <span class="co">#&gt; 4     Temp       0</span>
 <span class="co">#&gt; 5    Month       0</span>
-<span class="co">#&gt; 6      Day       0</span></pre></div>
+<span class="co">#&gt; 6      Day       0</span>
+</pre></div>
 <p>To use percentages instead:</p>
-<div class="sourceCode" id="cb19"><pre class="r">
-<span class="fu"><a href="reference/sort_by_missingness.html">sort_by_missingness</a></span>(<span class="no">airquality</span>, <span class="kw">sort_by</span> <span class="kw">=</span> <span class="st">"percents"</span>)
+<div class="sourceCode" id="cb19"><pre class="downlit">
+
+<span class="fu"><a href="reference/sort_by_missingness.html">sort_by_missingness</a></span>(<span class="kw">airquality</span>, sort_by = <span class="st">"percents"</span>)
 <span class="co">#&gt;   variable   percent</span>
 <span class="co">#&gt; 1     Wind  0.000000</span>
 <span class="co">#&gt; 2     Temp  0.000000</span>
 <span class="co">#&gt; 3    Month  0.000000</span>
 <span class="co">#&gt; 4      Day  0.000000</span>
 <span class="co">#&gt; 5  Solar.R  4.575163</span>
-<span class="co">#&gt; 6    Ozone 24.183007</span></pre></div>
+<span class="co">#&gt; 6    Ozone 24.183007</span>
+</pre></div>
 <ul>
 <li><code>recode_as_na</code></li>
 </ul>
 <p>As the name might imply, this converts any value or vector of values to <code>NA</code> i.e we take a value such as “missing” or “NA”(not a real <code>NA</code> according to <code>R</code>) and convert it to R’s known handler for missing values(<code>NA</code>).</p>
 <p>To use the function out of the box(with default arguments), one simply does something like:</p>
-<div class="sourceCode" id="cb20"><pre class="r">
-<span class="no">dummy_test</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">ID</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>),
-                         <span class="kw">values</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"n/a"</span>,<span class="fl">NA</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>))
+<div class="sourceCode" id="cb20"><pre class="downlit">
+
+<span class="kw">dummy_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>), 
+                         values = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"n/a"</span>,<span class="fl">NA</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>))
 <span class="co"># Convert n/a and no to NA</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="no">dummy_test</span>, <span class="kw">value</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"n/a"</span>,<span class="st">"No"</span>)))
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="kw">dummy_test</span>, value = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"n/a"</span>,<span class="st">"No"</span>)))
 <span class="co">#&gt;   ID values</span>
 <span class="co">#&gt; 1  A   &lt;NA&gt;</span>
 <span class="co">#&gt; 2  B   &lt;NA&gt;</span>
 <span class="co">#&gt; 3  B    Yes</span>
-<span class="co">#&gt; 4  A   &lt;NA&gt;</span></pre></div>
+<span class="co">#&gt; 4  A   &lt;NA&gt;</span>
+</pre></div>
 <p>Great, but I want to do so for specific columns not the entire dataset. You can do this by providing column names to <code>subset_cols</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="r">
+<div class="sourceCode" id="cb21"><pre class="downlit">
 
-<span class="no">another_dummy</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">ID</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">5</span>, <span class="kw">Subject</span> <span class="kw">=</span> <span class="fl">7</span>:<span class="fl">11</span>,
-<span class="kw">Change</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"missing"</span>,<span class="st">"n/a"</span>,<span class="fl">2</span>:<span class="fl">4</span> ))
+
+<span class="kw">another_dummy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID = <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, Subject = <span class="fl">7</span><span class="op">:</span><span class="fl">11</span>, 
+Change = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"missing"</span>,<span class="st">"n/a"</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">4</span> ))
 <span class="co"># Only change values at the column Change</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="no">another_dummy</span>, <span class="kw">subset_cols</span> <span class="kw">=</span> <span class="st">"Change"</span>, <span class="kw">value</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"n/a"</span>,<span class="st">"missing"</span>)))
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="kw">another_dummy</span>, subset_cols = <span class="st">"Change"</span>, value = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"n/a"</span>,<span class="st">"missing"</span>)))
 <span class="co">#&gt;   ID Subject Change</span>
 <span class="co">#&gt; 1  1       7   &lt;NA&gt;</span>
 <span class="co">#&gt; 2  2       8   &lt;NA&gt;</span>
 <span class="co">#&gt; 3  3       9      2</span>
 <span class="co">#&gt; 4  4      10      3</span>
-<span class="co">#&gt; 5  5      11      4</span></pre></div>
+<span class="co">#&gt; 5  5      11      4</span>
+</pre></div>
 <p>To recode columns using <a href="https://en.wikipedia.org/wiki/Regular_expression">RegEx</a>,one can provide <code>pattern_type</code> and a target <code>pattern</code>. Currently supported <code>pattern_types</code> are <code>starts_with</code>, <code>ends_with</code>, <code>contains</code> and <code>regex</code>. See docs for more details.:</p>
-<div class="sourceCode" id="cb22"><pre class="r"><span class="co"># only change at columns that start with Solar</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="no">airquality</span>,<span class="kw">value</span><span class="kw">=</span><span class="fl">190</span>,<span class="kw">pattern_type</span><span class="kw">=</span><span class="st">"starts_with"</span>,<span class="kw">pattern</span><span class="kw">=</span><span class="st">"Solar"</span>))
+<div class="sourceCode" id="cb22"><pre class="downlit">
+<span class="co"># only change at columns that start with Solar</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="kw">airquality</span>,value=<span class="fl">190</span>,pattern_type=<span class="st">"starts_with"</span>,pattern=<span class="st">"Solar"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41      NA  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></pre></div>
-<div class="sourceCode" id="cb23"><pre class="r"><span class="co"># recode at columns that start with O or S(case sensitive)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="no">airquality</span>,<span class="kw">value</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">67</span>,<span class="fl">118</span>),<span class="kw">pattern_type</span><span class="kw">=</span><span class="st">"starts_with"</span>,<span class="kw">pattern</span><span class="kw">=</span><span class="st">"S|O"</span>))
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+</pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit">
+<span class="co"># recode at columns that start with O or S(case sensitive)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="kw">airquality</span>,value=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">67</span>,<span class="fl">118</span>),pattern_type=<span class="st">"starts_with"</span>,pattern=<span class="st">"S|O"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36      NA  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></pre></div>
-<div class="sourceCode" id="cb24"><pre class="r"><span class="co"># use my own RegEx</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="no">airquality</span>,<span class="kw">value</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">67</span>,<span class="fl">118</span>),<span class="kw">pattern_type</span><span class="kw">=</span><span class="st">"regex"</span>,<span class="kw">pattern</span><span class="kw">=</span><span class="st">"(?i)^(s|o)"</span>))
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+</pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit">
+<span class="co"># use my own RegEx</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na.html">recode_as_na</a></span>(<span class="kw">airquality</span>,value=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">67</span>,<span class="fl">118</span>),pattern_type=<span class="st">"regex"</span>,pattern=<span class="st">"(?i)^(s|o)"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36      NA  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+</pre></div>
 <ul>
 <li><code>recode_na_as</code></li>
 </ul>
 <p>Sometimes, for whatever reason one would like to replace <code>NA</code>s with whatever value they would like. <code>recode_na_as</code> provides a very simple way to do just that.</p>
-<div class="sourceCode" id="cb25"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="no">airquality</span>))
+<div class="sourceCode" id="cb25"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="kw">airquality</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
@@ -328,91 +377,105 @@
 
 <span class="co"># use NaN</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="no">airquality</span>, <span class="kw">value</span><span class="kw">=</span><span class="fl">NaN</span>))
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="kw">airquality</span>, value=<span class="fl">NaN</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5   NaN     NaN 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28     NaN 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28     NaN 14.9   66     5   6</span>
+</pre></div>
 <p>As a “bonus”, you can manipulate the data only at specific columns as shown here:</p>
-<div class="sourceCode" id="cb26"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="no">airquality</span>, <span class="kw">value</span><span class="kw">=</span><span class="fl">0</span>, <span class="kw">subset_cols</span><span class="kw">=</span><span class="st">"Ozone"</span>))
+<div class="sourceCode" id="cb26"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="kw">airquality</span>, value=<span class="fl">0</span>, subset_cols=<span class="st">"Ozone"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5     0      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+</pre></div>
 <p>The above also supports custom recoding similar to <code>recode_na_as</code>:</p>
-<div class="sourceCode" id="cb27"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw pkg">mde</span><span class="kw ns">::</span><span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="no">airquality</span>, <span class="kw">value</span><span class="kw">=</span><span class="fl">0</span>, <span class="kw">pattern_type</span><span class="kw">=</span><span class="st">"starts_with"</span>,<span class="kw">pattern</span><span class="kw">=</span><span class="st">"Solar"</span>))
+<div class="sourceCode" id="cb27"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">mde</span>::<span class="fu"><a href="reference/recode_na_as.html">recode_na_as</a></span>(<span class="kw">airquality</span>, value=<span class="fl">0</span>, pattern_type=<span class="st">"starts_with"</span>,pattern=<span class="st">"Solar"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5    NA       0 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28       0 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28       0 14.9   66     5   6</span>
+</pre></div>
 <ul>
 <li><code>column_based_recode</code></li>
 </ul>
 <p>Ever needed to change values in a given column based on the proportions of <code>NA</code>s in other columns(row-wise)?!. The goal of <code>column_based_recode</code> is to achieve just that. Let’s see how we could do this with a simple example:</p>
-<div class="sourceCode" id="cb28"><pre class="r">
+<div class="sourceCode" id="cb28"><pre class="downlit">
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/column_based_recode.html">column_based_recode</a></span>(<span class="no">airquality</span>, <span class="kw">values_from</span> <span class="kw">=</span> <span class="st">"Wind"</span>, <span class="kw">values_to</span><span class="kw">=</span><span class="st">"Wind"</span>, <span class="kw">pattern_type</span> <span class="kw">=</span> <span class="st">"regex"</span>, <span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"Solar|Ozone"</span>))
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/column_based_recode.html">column_based_recode</a></span>(<span class="kw">airquality</span>, values_from = <span class="st">"Wind"</span>, values_to=<span class="st">"Wind"</span>, pattern_type = <span class="st">"regex"</span>, pattern = <span class="st">"Solar|Ozone"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5    NA      NA  0.0   56     5   5</span>
-<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+</pre></div>
 <ul>
 <li><code>custom_na_recode</code></li>
 </ul>
 <p>This allows recoding <code>NA</code> values with common stats functions such as <code>mean</code>,<code>max</code>,<code>min</code>,<code>sd</code>.</p>
 <p>To use default values:</p>
-<div class="sourceCode" id="cb29"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="no">airquality</span>))
+<div class="sourceCode" id="cb29"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="kw">airquality</span>))
 <span class="co">#&gt;      Ozone  Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1 41.00000 190.0000  7.4   67     5   1</span>
 <span class="co">#&gt; 2 36.00000 118.0000  8.0   72     5   2</span>
 <span class="co">#&gt; 3 12.00000 149.0000 12.6   74     5   3</span>
 <span class="co">#&gt; 4 18.00000 313.0000 11.5   62     5   4</span>
 <span class="co">#&gt; 5 42.12931 185.9315 14.3   56     5   5</span>
-<span class="co">#&gt; 6 28.00000 185.9315 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6 28.00000 185.9315 14.9   66     5   6</span>
+</pre></div>
 <p>To use select columns:</p>
-<div class="sourceCode" id="cb30"><pre class="r">
+<div class="sourceCode" id="cb30"><pre class="downlit">
 
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="no">airquality</span>,<span class="kw">func</span><span class="kw">=</span><span class="st">"mean"</span>,<span class="kw">across_columns</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Solar.R"</span>,<span class="st">"Ozone"</span>)))
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="kw">airquality</span>,func=<span class="st">"mean"</span>,across_columns=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Solar.R"</span>,<span class="st">"Ozone"</span>)))
 <span class="co">#&gt;      Ozone  Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1 41.00000 190.0000  7.4   67     5   1</span>
 <span class="co">#&gt; 2 36.00000 118.0000  8.0   72     5   2</span>
 <span class="co">#&gt; 3 12.00000 149.0000 12.6   74     5   3</span>
 <span class="co">#&gt; 4 18.00000 313.0000 11.5   62     5   4</span>
 <span class="co">#&gt; 5 42.12931 185.9315 14.3   56     5   5</span>
-<span class="co">#&gt; 6 28.00000 185.9315 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6 28.00000 185.9315 14.9   66     5   6</span>
+</pre></div>
 <p>To use a function from another package to perform replacements:</p>
 <p>To perform a forward fill with <code>dplyr</code>’s <code>lead</code>:</p>
-<div class="sourceCode" id="cb31"><pre class="r">
+<div class="sourceCode" id="cb31"><pre class="downlit">
+
 <span class="co"># use lag for a backfill</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="no">airquality</span>,<span class="kw">func</span><span class="kw">=</span><span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="no"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span> ))
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="kw">airquality</span>,func=<span class="kw">dplyr</span>::<span class="kw"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span> ))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5    23      99 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28      19 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28      19 14.9   66     5   6</span>
+</pre></div>
 <p>To perform replacement by group:</p>
-<div class="sourceCode" id="cb32"><pre class="r">
-<span class="no">some_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">ID</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A1"</span>,<span class="st">"A1"</span>,<span class="st">"A1"</span>,<span class="st">"A2"</span>,<span class="st">"A2"</span>, <span class="st">"A2"</span>),<span class="kw">A</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>,<span class="fl">NA</span>,<span class="fl">0</span>,<span class="fl">8</span>,<span class="fl">3</span>,<span class="fl">4</span>),<span class="kw">B</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">NA</span>,<span class="fl">5</span>,<span class="fl">6</span>),<span class="kw">C</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">NA</span>,<span class="fl">NA</span>,<span class="fl">25</span>,<span class="fl">7</span>,<span class="fl">8</span>))
+<div class="sourceCode" id="cb32"><pre class="downlit">
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="no">some_data</span>,<span class="kw">func</span> <span class="kw">=</span> <span class="st">"mean"</span>, <span class="kw">grouping_cols</span> <span class="kw">=</span> <span class="st">"ID"</span>))
+<span class="kw">some_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A1"</span>,<span class="st">"A1"</span>,<span class="st">"A1"</span>,<span class="st">"A2"</span>,<span class="st">"A2"</span>, <span class="st">"A2"</span>),A=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>,<span class="fl">NA</span>,<span class="fl">0</span>,<span class="fl">8</span>,<span class="fl">3</span>,<span class="fl">4</span>),B=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">NA</span>,<span class="fl">5</span>,<span class="fl">6</span>),C=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">NA</span>,<span class="fl">NA</span>,<span class="fl">25</span>,<span class="fl">7</span>,<span class="fl">8</span>))
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="kw">some_data</span>,func = <span class="st">"mean"</span>, grouping_cols = <span class="st">"ID"</span>))
 <span class="co">#&gt; # A tibble: 6 x 4</span>
 <span class="co">#&gt;   ID        A     B     C</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -421,10 +484,12 @@
 <span class="co">#&gt; 3 A1      0     0       1</span>
 <span class="co">#&gt; 4 A2      8     5.5    25</span>
 <span class="co">#&gt; 5 A2      3     5       7</span>
-<span class="co">#&gt; 6 A2      4     6       8</span></pre></div>
+<span class="co">#&gt; 6 A2      4     6       8</span>
+</pre></div>
 <p>Across specific columns:</p>
-<div class="sourceCode" id="cb33"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="no">some_data</span>,<span class="kw">func</span> <span class="kw">=</span> <span class="st">"mean"</span>, <span class="kw">grouping_cols</span> <span class="kw">=</span> <span class="st">"ID"</span>, <span class="kw">across_columns</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"C"</span>, <span class="st">"A"</span>)))
+<div class="sourceCode" id="cb33"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/custom_na_recode.html">custom_na_recode</a></span>(<span class="kw">some_data</span>,func = <span class="st">"mean"</span>, grouping_cols = <span class="st">"ID"</span>, across_columns = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"C"</span>, <span class="st">"A"</span>)))
 <span class="co">#&gt; # A tibble: 6 x 4</span>
 <span class="co">#&gt;   ID        A     B     C</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -433,120 +498,139 @@
 <span class="co">#&gt; 3 A1      0       0     1</span>
 <span class="co">#&gt; 4 A2      8      NA    25</span>
 <span class="co">#&gt; 5 A2      3       5     7</span>
-<span class="co">#&gt; 6 A2      4       6     8</span></pre></div>
+<span class="co">#&gt; 6 A2      4       6     8</span>
+</pre></div>
 <ul>
 <li><code>recode_na_if</code></li>
 </ul>
 <p>Given a <code>data.frame</code> object, one can recode <code>NA</code>s as another value based on a grouping variable. In the example below, we replace all <code>NA</code>s in all columns with 0s if the ID is <code>A2</code> or <code>A3</code></p>
-<div class="sourceCode" id="cb34"><pre class="r">
-<span class="no">some_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">ID</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A1"</span>,<span class="st">"A2"</span>,<span class="st">"A3"</span>, <span class="st">"A4"</span>),
-                        <span class="kw">A</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>,<span class="fl">NA</span>,<span class="fl">0</span>,<span class="fl">8</span>), <span class="kw">B</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">1</span>),
-                        <span class="kw">C</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">NA</span>,<span class="fl">NA</span>,<span class="fl">25</span>))
+<div class="sourceCode" id="cb34"><pre class="downlit">
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_if.html">recode_na_if</a></span>(<span class="no">some_data</span>,<span class="kw">grouping_col</span><span class="kw">=</span><span class="st">"ID"</span>, <span class="kw">target_groups</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A2"</span>,<span class="st">"A3"</span>),
-           <span class="kw">replacement</span><span class="kw">=</span> <span class="fl">0</span>))
+<span class="kw">some_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A1"</span>,<span class="st">"A2"</span>,<span class="st">"A3"</span>, <span class="st">"A4"</span>), 
+                        A=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5</span>,<span class="fl">NA</span>,<span class="fl">0</span>,<span class="fl">8</span>), B=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">1</span>),
+                        C=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">NA</span>,<span class="fl">NA</span>,<span class="fl">25</span>))
+                        
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_na_if.html">recode_na_if</a></span>(<span class="kw">some_data</span>,grouping_col=<span class="st">"ID"</span>, target_groups=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A2"</span>,<span class="st">"A3"</span>),
+           replacement= <span class="fl">0</span>))   
 <span class="co">#&gt; # A tibble: 4 x 4</span>
 <span class="co">#&gt;   ID        A     B     C</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 A1        5    10     1</span>
 <span class="co">#&gt; 2 A2        0     0     0</span>
 <span class="co">#&gt; 3 A3        0     0     0</span>
-<span class="co">#&gt; 4 A4        8     1    25</span></pre></div>
+<span class="co">#&gt; 4 A4        8     1    25</span>
+</pre></div>
 <ul>
 <li><code>drop_na_if</code></li>
 </ul>
 <p>Suppose you wanted to drop any column that has a percentage of <code>NA</code>s greater than or equal to a certain value? <code>drop_na_if</code> does just that.</p>
 <p>We can drop any columns that have greater than or equal(gteq) to 24% of the values missing from <code>airquality</code>:</p>
-<div class="sourceCode" id="cb35"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_if.html">drop_na_if</a></span>(<span class="no">airquality</span>, <span class="kw">sign</span><span class="kw">=</span><span class="st">"gteq"</span>,<span class="kw">percent_na</span> <span class="kw">=</span> <span class="fl">24</span>))
+<div class="sourceCode" id="cb35"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_if.html">drop_na_if</a></span>(<span class="kw">airquality</span>, sign=<span class="st">"gteq"</span>,percent_na = <span class="fl">24</span>))
 <span class="co">#&gt;   Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6      NA 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6      NA 14.9   66     5   6</span>
+</pre></div>
 <p>The above also supports less than or equal to(<code>lteq</code>), equal to(<code>eq</code>), greater than(<code>gt</code>) and less than(<code>lt</code>).</p>
 <p>To keep certain columns despite fitting the target <code>percent_na</code> criteria, one can provide an optional <code>keep_columns</code> character vector.</p>
-<div class="sourceCode" id="cb36"><pre class="r">
+<div class="sourceCode" id="cb36"><pre class="downlit">
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_if.html">drop_na_if</a></span>(<span class="no">airquality</span>, <span class="kw">percent_na</span> <span class="kw">=</span> <span class="fl">24</span>, <span class="kw">keep_columns</span> <span class="kw">=</span> <span class="st">"Ozone"</span>))
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_if.html">drop_na_if</a></span>(<span class="kw">airquality</span>, percent_na = <span class="fl">24</span>, keep_columns = <span class="st">"Ozone"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+</pre></div>
 <p>Compare the above result to the following:</p>
-<div class="sourceCode" id="cb37"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_if.html">drop_na_if</a></span>(<span class="no">airquality</span>, <span class="kw">percent_na</span> <span class="kw">=</span> <span class="fl">24</span>))
+<div class="sourceCode" id="cb37"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_if.html">drop_na_if</a></span>(<span class="kw">airquality</span>, percent_na = <span class="fl">24</span>))
 <span class="co">#&gt;   Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1     190  7.4   67     5   1</span>
 <span class="co">#&gt; 2     118  8.0   72     5   2</span>
 <span class="co">#&gt; 3     149 12.6   74     5   3</span>
 <span class="co">#&gt; 4     313 11.5   62     5   4</span>
 <span class="co">#&gt; 5      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6      NA 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6      NA 14.9   66     5   6</span>
+</pre></div>
 <p>For more information, please see the documentation for <code>drop_na_if</code> especially for grouping support.</p>
 <ul>
 <li><code>drop_na_at</code></li>
 </ul>
 <p>This provides a simple way to drop missing values only at specific columns. It currently only returns those columns with their missing values removed. See usage below. Further details are given in the documentation. It is currently case sensitive.</p>
-<div class="sourceCode" id="cb38"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_at.html">drop_na_at</a></span>(<span class="no">airquality</span>,<span class="kw">pattern_type</span> <span class="kw">=</span> <span class="st">"starts_with"</span>,<span class="st">"O"</span>))
+<div class="sourceCode" id="cb38"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_na_at.html">drop_na_at</a></span>(<span class="kw">airquality</span>,pattern_type = <span class="st">"starts_with"</span>,<span class="st">"O"</span>))
 <span class="co">#&gt;   Ozone</span>
 <span class="co">#&gt; 1    41</span>
 <span class="co">#&gt; 2    36</span>
 <span class="co">#&gt; 3    12</span>
 <span class="co">#&gt; 4    18</span>
 <span class="co">#&gt; 5    28</span>
-<span class="co">#&gt; 6    23</span></pre></div>
+<span class="co">#&gt; 6    23</span>
+</pre></div>
 <ul>
 <li><code>recode_as_na_for</code></li>
 </ul>
 <p>For all values greater/less/less or equal/greater or equal than some value, can I convert them to <code>NA</code>?!</p>
 <p><strong>Yes You Can!</strong> All we have to do is use <code>recode_as_na_for</code>:</p>
-<div class="sourceCode" id="cb39"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na_for.html">recode_as_na_for</a></span>(<span class="no">airquality</span>,<span class="kw">criteria</span><span class="kw">=</span><span class="st">"gt"</span>,<span class="kw">value</span><span class="kw">=</span><span class="fl">25</span>))
+<div class="sourceCode" id="cb39"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na_for.html">recode_as_na_for</a></span>(<span class="kw">airquality</span>,criteria=<span class="st">"gt"</span>,value=<span class="fl">25</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    NA      NA  7.4   NA     5   1</span>
 <span class="co">#&gt; 2    NA      NA  8.0   NA     5   2</span>
 <span class="co">#&gt; 3    12      NA 12.6   NA     5   3</span>
 <span class="co">#&gt; 4    18      NA 11.5   NA     5   4</span>
 <span class="co">#&gt; 5    NA      NA 14.3   NA     5   5</span>
-<span class="co">#&gt; 6    NA      NA 14.9   NA     5   6</span></pre></div>
+<span class="co">#&gt; 6    NA      NA 14.9   NA     5   6</span>
+</pre></div>
 <p>To do so at specific columns, pass an optional <code>subset_cols</code> character vector:</p>
-<div class="sourceCode" id="cb40"><pre class="r">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na_for.html">recode_as_na_for</a></span>(<span class="no">airquality</span>, <span class="kw">value</span><span class="kw">=</span><span class="fl">40</span>,<span class="kw">subset_cols</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Solar.R"</span>,<span class="st">"Ozone"</span>), <span class="kw">criteria</span><span class="kw">=</span><span class="st">"gt"</span>))
+<div class="sourceCode" id="cb40"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/recode_as_na_for.html">recode_as_na_for</a></span>(<span class="kw">airquality</span>, value=<span class="fl">40</span>,subset_cols=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Solar.R"</span>,<span class="st">"Ozone"</span>), criteria=<span class="st">"gt"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
 <span class="co">#&gt; 1    NA      NA  7.4   67     5   1</span>
 <span class="co">#&gt; 2    36      NA  8.0   72     5   2</span>
 <span class="co">#&gt; 3    12      NA 12.6   74     5   3</span>
 <span class="co">#&gt; 4    18      NA 11.5   62     5   4</span>
 <span class="co">#&gt; 5    NA      NA 14.3   56     5   5</span>
-<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span></pre></div>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+</pre></div>
 <ul>
 <li><code>drop_all_na</code></li>
 </ul>
 <p>This drops columns where all values are missing.</p>
-<div class="sourceCode" id="cb41"><pre class="r">
-<span class="no">test</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">ID</span><span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="fl">NA</span>), <span class="kw">Vals</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>,<span class="fl">5</span>))
+<div class="sourceCode" id="cb41"><pre class="downlit">
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_all_na.html">drop_all_na</a></span>(<span class="no">test</span>))
+<span class="kw">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID= <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="fl">NA</span>), Vals = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>,<span class="fl">5</span>))
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_all_na.html">drop_all_na</a></span>(<span class="kw">test</span>))
 <span class="co">#&gt;     ID</span>
 <span class="co">#&gt; 1    A</span>
 <span class="co">#&gt; 2    A</span>
 <span class="co">#&gt; 3    B</span>
 <span class="co">#&gt; 4    A</span>
-<span class="co">#&gt; 5 &lt;NA&gt;</span></pre></div>
+<span class="co">#&gt; 5 &lt;NA&gt;</span>
+</pre></div>
 <p>Alternatively, we can drop groups where all variables are all NA.</p>
-<div class="sourceCode" id="cb42"><pre class="r">
-<span class="no">test2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">ID</span><span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="kw">Vals</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>, <span class="fl">5</span>))
+<div class="sourceCode" id="cb42"><pre class="downlit">
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_all_na.html">drop_all_na</a></span>(<span class="no">test</span>, <span class="kw">grouping_cols</span> <span class="kw">=</span> <span class="st">"ID"</span>))
+<span class="kw">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID= <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>), Vals = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>, <span class="fl">5</span>)) 
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="reference/drop_all_na.html">drop_all_na</a></span>(<span class="kw">test</span>, grouping_cols = <span class="st">"ID"</span>))
 <span class="co">#&gt; # A tibble: 0 x 2</span>
-<span class="co">#&gt; # ... with 2 variables: ID &lt;chr&gt;, Vals &lt;lgl&gt;</span></pre></div>
+<span class="co">#&gt; # ... with 2 variables: ID &lt;chr&gt;, Vals &lt;lgl&gt;</span>
+</pre></div>
 <p>Please note that the <code>mde</code> project is released with a <a href="https://github.com/Nelson-Gon/mde/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 <p>For further exploration, please <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes("mde")</a></code>.</p>
 <p>To raise an issue, please do so <a href="https://www.github.com/Nelson-Gon/mde/issues">here</a></p>
@@ -596,7 +680,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

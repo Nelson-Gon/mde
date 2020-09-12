@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.2.2
 
+* `percent_missing` can now work independently for factors, characters, or numeric data. It previouly was limited to `data.frame` objects. 
+
 * Fixed issues with `drop_na_at` that resulted in failing data rebinding. 
 
 * `get_na_counts` now includes an optional `exclude_cols` argument to exclude columns from the analysis. 
