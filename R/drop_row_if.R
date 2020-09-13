@@ -16,6 +16,13 @@ drop_row_if<- function(df, sign="gt", percent_na=20, as_percent=TRUE){
 drop_row_if.data.frame <- function(df, sign="gt", percent_na=20, as_percent=TRUE){
 row_missingness <- rowMeans(is.na(df)) 
 if(as_percent) row_missingness <- row_missingness * 100
+
+available_options <- c("gteq","lteq","gt","lt","eq")
+
+if(! sign %in% available_options ) { stop(paste(paste(c("I was expecting one of ",available_options),
+                                                      collapse=" "), "not",sign))}
+
+
 rows_to_drop<- switch(sign,
                    gteq = row_missingness >=percent_na,
                    lteq =  row_missingness <=percent_na,
