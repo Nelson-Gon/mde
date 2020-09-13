@@ -1,11 +1,13 @@
 ---
 title: 'Missing Data Explorer'
 author: "Nelson Gonzabato"
-date: "15/08/2020"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
 # mde 0.2.2
+
+* `drop_row_if` is a new function similar to `drop_na_if` but for rows instead of columns. 
 
 * `percent_missing` can now work independently for factors, characters, or numeric data. It previouly was limited to `data.frame` objects. 
 

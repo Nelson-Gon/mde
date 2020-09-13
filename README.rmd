@@ -458,7 +458,17 @@ head(drop_na_if(airquality, percent_na = 24))
 For more information, please see the documentation for `drop_na_if` especially for grouping support.
 
 
+* `drop_row_if`
 
+This is similar to `drop_na_if` but does operations rowwise not columnwise. Compare to the example above:
+
+```{r}
+
+head(drop_row_if(airquality, percent_na = 24))
+
+```
+
+For more details, please see the documentation of `drop_row_if`.
 
 * `drop_na_at`
 

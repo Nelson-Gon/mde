@@ -1,4 +1,4 @@
-2020-08-15
+2020-09-13
 
 # `mde`: Missing Data Explorer
 
@@ -199,7 +199,7 @@ test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A",
 get_na_counts(test, grouping_cols = "ID")
 #> # A tibble: 2 x 3
 #>   ID    Subject   res
-#> * <fct>   <int> <int>
+#>   <fct>   <int> <int>
 #> 1 1           0     1
 #> 2 2           0     0
 ```
@@ -225,7 +225,7 @@ character vector.
 percent_missing(test, grouping_cols = "Subject")
 #> # A tibble: 2 x 3
 #>   Subject   res    ID
-#> * <fct>   <dbl> <dbl>
+#>   <fct>   <dbl> <dbl>
 #> 1 A          50     0
 #> 2 B           0     0
 ```
@@ -614,6 +614,25 @@ head(drop_na_if(airquality, percent_na = 24))
 
 For more information, please see the documentation for `drop_na_if`
 especially for grouping support.
+
+  - `drop_row_if`
+
+This is similar to `drop_na_if` but does operations rowwise not
+columnwise. Compare to the example above:
+
+``` r
+
+head(drop_row_if(airquality, percent_na = 24))
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    41     190  7.4   67     5   1
+#> 2    36     118  8.0   72     5   2
+#> 3    12     149 12.6   74     5   3
+#> 4    18     313 11.5   62     5   4
+#> 6    28      NA 14.9   66     5   6
+#> 7    23     299  8.6   65     5   7
+```
+
+For more details, please see the documentation of `drop_row_if`.
 
   - `drop_na_at`
 

@@ -81,7 +81,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Missing Data Exploration with mde</h1>
             
-            <h4 class="date">2020-09-12</h4>
+            <h4 class="date">2020-09-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Nelson-Gon/mde/blob/master/vignettes/mde_vignette.rmd"><code>vignettes/mde_vignette.rmd</code></a></small>
       <div class="hidden name"><code>mde_vignette.rmd</code></div>
@@ -572,10 +572,26 @@ Change = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<
 </pre></div>
 <p>For more information, please see the documentation for <code>drop_na_if</code> especially for grouping support.</p>
 <ul>
+<li><code>drop_row_if</code></li>
+</ul>
+<p>This is similar to <code>drop_na_if</code> but does operations rowwise not columnwise. Compare to the example above:</p>
+<div class="sourceCode" id="cb38"><pre class="downlit">
+
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="../reference/drop_row_if.html">drop_row_if</a></span>(<span class="kw">airquality</span>, percent_na = <span class="fl">24</span>))
+<span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
+<span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
+<span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
+<span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
+<span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
+<span class="co">#&gt; 6    28      NA 14.9   66     5   6</span>
+<span class="co">#&gt; 7    23     299  8.6   65     5   7</span>
+</pre></div>
+<p>For more details, please see the documentation of <code>drop_row_if</code>.</p>
+<ul>
 <li><code>drop_na_at</code></li>
 </ul>
 <p>This provides a simple way to drop missing values only at specific columns. It currently only returns those columns with their missing values removed. See usage below. Further details are given in the documentation. It is currently case sensitive.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit">
+<div class="sourceCode" id="cb39"><pre class="downlit">
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="../reference/drop_na_at.html">drop_na_at</a></span>(<span class="kw">airquality</span>,pattern_type = <span class="st">"starts_with"</span>,<span class="st">"O"</span>))
 <span class="co">#&gt;   Ozone</span>
@@ -591,7 +607,7 @@ Change = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<
 </ul>
 <p>For all values greater/less/less or equal/greater or equal than some value, can I convert them to <code>NA</code>?!</p>
 <p><strong>Yes You Can!</strong> All we have to do is use <code>recode_as_na_for</code>:</p>
-<div class="sourceCode" id="cb39"><pre class="downlit">
+<div class="sourceCode" id="cb40"><pre class="downlit">
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="../reference/recode_as_na_for.html">recode_as_na_for</a></span>(<span class="kw">airquality</span>,criteria=<span class="st">"gt"</span>,value=<span class="fl">25</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
@@ -603,7 +619,7 @@ Change = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<
 <span class="co">#&gt; 6    NA      NA 14.9   NA     5   6</span>
 </pre></div>
 <p>To do so at specific columns, pass an optional <code>subset_cols</code> character vector:</p>
-<div class="sourceCode" id="cb40"><pre class="downlit">
+<div class="sourceCode" id="cb41"><pre class="downlit">
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="../reference/recode_as_na_for.html">recode_as_na_for</a></span>(<span class="kw">airquality</span>, value=<span class="fl">40</span>,subset_cols=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Solar.R"</span>,<span class="st">"Ozone"</span>), criteria=<span class="st">"gt"</span>))
 <span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
@@ -618,7 +634,7 @@ Change = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<
 <li><code>drop_all_na</code></li>
 </ul>
 <p>This drops columns where all values are missing.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit">
+<div class="sourceCode" id="cb42"><pre class="downlit">
 
 <span class="kw">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID= <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="fl">NA</span>), Vals = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>,<span class="fl">5</span>))
 
@@ -631,7 +647,7 @@ Change = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<
 <span class="co">#&gt; 5 &lt;NA&gt;</span>
 </pre></div>
 <p>Alternatively, we can drop groups where all variables are all NA.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit">
+<div class="sourceCode" id="cb43"><pre class="downlit">
 
 <span class="kw">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(ID= <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>), Vals = <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">NA</span>, <span class="fl">5</span>)) 
 
