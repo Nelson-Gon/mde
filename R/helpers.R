@@ -111,3 +111,23 @@ if(!all(target_columns %in% names(df))) stop(paste0("All columns ", unique_name,
 
 }
 
+switches <- function(df, sign,percent_na = 50,target_value=NULL){
+  UseMethod("switches")
+}
+
+switches.data.frame <- function(df, sign, percent_na = 50,target_value=NULL){
+
+available_options <- c("gteq","lteq","gt","lt","eq")
+
+if(! sign %in% available_options ) { stop(paste(paste(c("I was expecting one of ",available_options),collapse=" "), "not",sign))
+
+}
+
+ res<- switch(sign,
+                   gteq = which(target_value >=percent_na),
+                   lteq =  which(target_value <=percent_na),
+                   gt =  which(target_value >percent_na),
+                   lt = which(target_value <percent_na),
+                   eq = which(target_value == percent_na))
+ res
+}

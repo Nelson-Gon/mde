@@ -14,7 +14,7 @@ less than(lt) or equal to(eq) respectively.}
 
 \item{percent_na}{The percentage to use when dropping columns with missing values}
 
-\item{as_percent}{Logical. If set to TRUE, percent_na is treated as a percentage. Otherwise, decimals(fractions) are 
+\item{as_percent}{Logical. If set to TRUE, percent_na is treated as a percentage. Otherwise, decimals(fractions) are
 used.}
 }
 \description{
@@ -22,6 +22,6 @@ Conditionally drop rows based on percent missingness
 }
 \examples{
 head(drop_row_if(airquality, sign="gteq", percent_na = 50))
-# should give the same output as above. 
+# should give the same output as above.
 head(drop_row_if(airquality, sign="gteq", percent_na = 0.5, as_percent=FALSE))
 }

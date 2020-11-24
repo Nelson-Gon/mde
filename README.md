@@ -1,4 +1,4 @@
-2020-09-13
+2020-11-24
 
 # `mde`: Missing Data Explorer
 
@@ -172,8 +172,8 @@ na_summary(test2, grouping_cols="ID")
   - `get_na_counts`
 
 This provides a convenient way to show the number of missing values
-columnwise. It is relatively fast(tests done on about 400,000 rows, took
-a few microseconds.)
+column-wise. It is relatively fast(tests done on about 400,000 rows,
+took a few microseconds.)
 
 To get the number of missing values in each column of `airquality`, we
 can use the function as follows:
@@ -186,8 +186,8 @@ get_na_counts(airquality)
 ```
 
 The above might be less useful if one would like to get the results by
-group. In that case, one can provide a vector of names in
-`grouping_cols` to use for grouping.
+group. In that case, one can provide a grouping vector of names in
+`grouping_cols`.
 
 ``` r
 
@@ -207,7 +207,7 @@ get_na_counts(test, grouping_cols = "ID")
   - `percent_missing`
 
 This is a very simple to use but quick way to take a look at the
-percentage of data that is missing columnwise.
+percentage of data that is missing column-wise.
 
 ``` r
 
@@ -231,7 +231,7 @@ percent_missing(test, grouping_cols = "Subject")
 ```
 
 To exclude some columns from the above exploration, one can provide an
-optional character vector in `exclude_cols`
+optional character vector in `exclude_cols`.
 
 ``` r
 
@@ -292,11 +292,11 @@ sort_by_missingness(airquality, sort_by = "percents")
   - `recode_as_na`
 
 As the name might imply, this converts any value or vector of values to
-`NA` i.e we take a value such as “missing” or “NA”(not a real `NA`
-according to `R`) and convert it to R’s known handler for missing
-values(`NA`).
+`NA` i.e. we take a value such as “missing” or “NA” (not a real `NA`
+according to `R`) and convert it to R’s known handler for missing values
+(`NA`).
 
-To use the function out of the box(with default arguments), one simply
+To use the function out of the box (with default arguments), one simply
 does something like:
 
 ``` r
@@ -374,7 +374,7 @@ head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^
 
   - `recode_na_as`
 
-Sometimes, for whatever reason one would like to replace `NA`s with
+Sometimes, for whatever reason, one would like to replace `NA`s with
 whatever value they would like. `recode_na_as` provides a very simple
 way to do just that.
 

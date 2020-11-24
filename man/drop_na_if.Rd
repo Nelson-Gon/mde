@@ -2,7 +2,7 @@
 % Please edit documentation in R/drop_na_if.R
 \name{drop_na_if}
 \alias{drop_na_if}
-\title{Conditon based dropping of columns with missing values}
+\title{Condition based dropping of columns with missing values}
 \usage{
 drop_na_if(df, sign = "gteq", percent_na = 50, keep_columns = NULL, ...)
 }
