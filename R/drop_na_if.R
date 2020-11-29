@@ -32,7 +32,7 @@ drop_na_if.data.frame <- function(df,sign="gteq",percent_na = 50, keep_columns  
 missing_percents <- percent_missing(df, ...)
 # Drop as required
 
-to_drop <- switches(df, sign, target_value=missing_percents)
+to_drop <- switches(target_value=missing_percents, sign,percent_na)
 
 if(!is.null(keep_columns)){
 

@@ -111,11 +111,11 @@ if(!all(target_columns %in% names(df))) stop(paste0("All columns ", unique_name,
 
 }
 
-switches <- function(df, sign,percent_na = 50,target_value=NULL){
+switches <- function(target_value=NULL,sign,percent_na = 50){
   UseMethod("switches")
 }
 
-switches.data.frame <- function(df, sign, percent_na = 50,target_value=NULL){
+switches.data.frame <- function(,target_value=NULL,sign, percent_na = 50){
 
 available_options <- c("gteq","lteq","gt","lt","eq")
 
@@ -131,3 +131,4 @@ if(! sign %in% available_options ) { stop(paste(paste(c("I was expecting one of 
                    eq = which(target_value == percent_na))
  res
 }
+

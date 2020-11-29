@@ -18,7 +18,7 @@ row_missingness <- rowMeans(is.na(df))
 if(as_percent) row_missingness <- row_missingness * 100
 
 
-rows_to_drop<- switches(df, sign, target_value=row_missingness)
+rows_to_drop<- switches(target_value=row_missingness, sign, percent_na)
 
 df[!rows_to_drop, ]
 

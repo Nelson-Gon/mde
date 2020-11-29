@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.2.2
 
+* `recode_as_na_if` is a new function that allows deliberate addition of `NA`s to a column if it meets a pre-defined condition. This is essentially the reverse of `drop_na_if`. 
+
 * `drop_row_if` is a new function similar to `drop_na_if` but for rows instead of columns. 
 
 * `percent_missing` can now work independently for factors, characters, or numeric data. It previouly was limited to `data.frame` objects. 
