@@ -17,22 +17,20 @@
 #' head(drop_na_if(airquality, sign="gteq",percent_na = 4, keep_columns = "Ozone"))
 #' @export
 
-drop_na_if <- function(df, sign="gteq",percent_na= 50,
-                       keep_columns = NULL,
-                       ...){
+drop_na_if <- function(df, sign="gteq",percent_na= 50,keep_columns=NULL,...){
   UseMethod("drop_na_if")
 }
 
 #' @export
 
-drop_na_if.data.frame <- function(df,sign="gteq",percent_na = 50, keep_columns  = NULL, ...){
+drop_na_if.data.frame <- function(df,sign="gteq",percent_na=50,keep_columns  = NULL, ...){
 
 
 # get percent missing
-missing_percents <- percent_missing(df, ...)
+missing_percents <- percent_missing(df,...)
 # Drop as required
 
-to_drop <- switches(target_value=missing_percents, sign,percent_na)
+to_drop <- switches(target_value=missing_percents,sign,percent_na)
 
 if(!is.null(keep_columns)){
 

@@ -115,7 +115,7 @@ switches <- function(target_value=NULL,sign,percent_na = 50){
   UseMethod("switches")
 }
 
-switches.data.frame <- function(,target_value=NULL,sign, percent_na = 50){
+switches.data.frame <- function(target_value=NULL,sign, percent_na = 50){
 
 available_options <- c("gteq","lteq","gt","lt","eq")
 
@@ -131,4 +131,23 @@ if(! sign %in% available_options ) { stop(paste(paste(c("I was expecting one of 
                    eq = which(target_value == percent_na))
  res
 }
+
+switches.numeric <- function(target_value=NULL,sign, percent_na = 50){
+
+available_options <- c("gteq","lteq","gt","lt","eq")
+
+if(! sign %in% available_options ) stop(paste(paste(c("I was expecting one of ",available_options),collapse=" "), "not",sign))
+
+res<- switch(sign,
+             gteq = target_value >=percent_na,
+             lteq =  target_value <=percent_na,
+             gt =  target_value >percent_na,
+             lt = target_value <percent_na,
+             eq = target_value == percent_na)
+
+res
+}
+
+
+
 
