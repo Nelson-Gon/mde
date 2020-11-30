@@ -299,6 +299,17 @@ head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^
 ```
 
 
+* `recode_as_na_if`
+
+This function allows one to deliberately introduce missing values if a column meets a certain threshold of missin values. This is similar to `amputation` but is much more basic. It is only provided here because it is hoped it may be useful to someone for whatever reason.
+
+
+```{r}
+
+head(recode_as_na_if(airquality,sign="gt", percent_na=20))
+
+```
+
 * `recode_na_as`
 
 Sometimes, for whatever reason, one would like to replace `NA`s with whatever value they would like. `recode_na_as` provides a very simple way to do just that. 

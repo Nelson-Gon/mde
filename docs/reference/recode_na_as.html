@@ -131,15 +131,15 @@ any other value a user wishes to use." />
 any other value a user wishes to use.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>recode_na_as</span>(
-  <span class='kw'>df</span>,
-  value = <span class='fl'>0</span>,
-  subset_cols = <span class='kw'>NULL</span>,
-  pattern_type = <span class='kw'>NULL</span>,
-  pattern = <span class='kw'>NULL</span>,
-  case_sensitive = <span class='fl'>FALSE</span>,
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>recode_na_as</span><span class='op'>(</span>
+  <span class='va'>df</span>,
+  value <span class='op'>=</span> <span class='fl'>0</span>,
+  subset_cols <span class='op'>=</span> <span class='cn'>NULL</span>,
+  pattern_type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
+  case_sensitive <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,21 +179,21 @@ any other value a user wishes to use.</p>
     <p>An object of the same type as x with NAs replaced with the desired value.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_na_as</span>(<span class='kw'>airquality</span>, <span class='st'>"n/a"</span>))
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_na_as</span><span class='op'>(</span><span class='va'>airquality</span>, <span class='st'>"n/a"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
 #&gt; 1    41     190  7.4   67     5   1
 #&gt; 2    36     118  8.0   72     5   2
 #&gt; 3    12     149 12.6   74     5   3
 #&gt; 4    18     313 11.5   62     5   4
 #&gt; 5   n/a     n/a 14.3   56     5   5
-#&gt; 6    28     n/a 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_na_as</span>(<span class='kw'>airquality</span>, subset_cols = <span class='st'>"Ozone"</span>, value = <span class='st'>"N/A"</span>))
+#&gt; 6    28     n/a 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_na_as</span><span class='op'>(</span><span class='va'>airquality</span>, subset_cols <span class='op'>=</span> <span class='st'>"Ozone"</span>, value <span class='op'>=</span> <span class='st'>"N/A"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
 #&gt; 1    41     190  7.4   67     5   1
 #&gt; 2    36     118  8.0   72     5   2
 #&gt; 3    12     149 12.6   74     5   3
 #&gt; 4    18     313 11.5   62     5   4
 #&gt; 5   N/A      NA 14.3   56     5   5
-#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'>recode_na_as</span>(<span class='kw'>airquality</span>, value=<span class='fl'>0</span>, pattern_type=<span class='st'>"starts_with"</span>,pattern=<span class='st'>"Solar"</span>))
+#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_na_as</span><span class='op'>(</span><span class='va'>airquality</span>, value<span class='op'>=</span><span class='fl'>0</span>, pattern_type<span class='op'>=</span><span class='st'>"starts_with"</span>,pattern<span class='op'>=</span><span class='st'>"Solar"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
 #&gt; 1    41     190  7.4   67     5   1
 #&gt; 2    36     118  8.0   72     5   2
@@ -216,7 +216,7 @@ any other value a user wishes to use.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

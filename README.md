@@ -1,4 +1,4 @@
-2020-11-24
+2020-11-30
 
 # `mde`: Missing Data Explorer
 
@@ -370,6 +370,25 @@ head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^
 #> 4    18     313 11.5   62     5   4
 #> 5    NA      NA 14.3   56     5   5
 #> 6    28      NA 14.9   66     5   6
+```
+
+  - `recode_as_na_if`
+
+This function allows one to deliberately introduce missing values if a
+column meets a certain threshold of missin values. This is similar to
+`amputation` but is much more basic. It is only provided here because it
+is hoped it may be useful to someone for whatever reason.
+
+``` r
+
+head(recode_as_na_if(airquality,sign="gt", percent_na=20))
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    NA     190  7.4   67     5   1
+#> 2    NA     118  8.0   72     5   2
+#> 3    NA     149 12.6   74     5   3
+#> 4    NA     313 11.5   62     5   4
+#> 5    NA      NA 14.3   56     5   5
+#> 6    NA      NA 14.9   66     5   6
 ```
 
   - `recode_na_as`
