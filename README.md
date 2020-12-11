@@ -1,4 +1,4 @@
-2020-11-30
+2020-12-11
 
 # `mde`: Missing Data Explorer
 
@@ -389,6 +389,21 @@ head(recode_as_na_if(airquality,sign="gt", percent_na=20))
 #> 4    NA     313 11.5   62     5   4
 #> 5    NA      NA 14.3   56     5   5
 #> 6    NA      NA 14.9   66     5   6
+```
+
+  - `recode_as_na_str`
+
+This allows recoding as `NA` based on a string match.
+
+``` r
+
+partial_match <- data.frame(A=c("Hi","match_me","nope"), B=c(NA, "not_me","nah"))
+
+recode_as_na_str(partial_match,"ends_with","ME", case_sensitive=FALSE)
+#>      A    B
+#> 1   Hi <NA>
+#> 2 <NA> <NA>
+#> 3 nope  nah
 ```
 
   - `recode_na_as`

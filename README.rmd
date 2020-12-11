@@ -310,6 +310,19 @@ head(recode_as_na_if(airquality,sign="gt", percent_na=20))
 
 ```
 
+* `recode_as_na_str`
+
+This allows recoding as `NA` based on a string match.
+
+```{r}
+
+partial_match <- data.frame(A=c("Hi","match_me","nope"), B=c(NA, "not_me","nah"))
+
+recode_as_na_str(partial_match,"ends_with","ME", case_sensitive=FALSE)
+
+```
+
+
 * `recode_na_as`
 
 Sometimes, for whatever reason, one would like to replace `NA`s with whatever value they would like. `recode_na_as` provides a very simple way to do just that. 
