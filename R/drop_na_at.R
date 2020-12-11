@@ -18,26 +18,15 @@ drop_na_at <- function(df, pattern_type="contains",pattern=NULL,
 
 #' @export
 
-drop_na_at.data.frame <- function(df, pattern_type="contains",pattern=NULL,
-                                  case_sensitive=FALSE,...){
+drop_na_at.data.frame <- function(df, pattern_type="contains",pattern=NULL,case_sensitive=FALSE,...){
 
 
-
-if(!is.null(pattern_type)){
-    if(any(!pattern_type %in% c("starts_with","ends_with","contains",
-                                "regex"))){
-
-      stop("pattern_type should be one of starts_with,ends_with,contains or regex")
-    }
-    if(is.null(pattern)) stop("A pattern must be supplied.")
-    res<-df[recode_selectors(df,pattern_type=pattern_type,pattern=pattern,case_sensitive = case_sensitive,...)]
-  }
-
-
-
+res<-df[recode_selectors(df,column_check=TRUE,pattern_type=pattern_type,pattern=pattern,
+                           case_sensitive = case_sensitive,...)]
 
 na_counts <- get_na_counts(res)
 na_counts_test <-all(na_counts == unname(na_counts[[1]]))
+
 if(!na_counts_test){
 
   stop("Unequal number of missing values, cannot rebind data. Please check with get_na_counts first")

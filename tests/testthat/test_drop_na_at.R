@@ -12,7 +12,7 @@ test_that(desc="drop_na_at works as expected",
                                   pattern = "O")))
             expect_error(drop_na_at(airquality,
                                           pattern_type="contains"),
-                                  "A pattern must be supplied.",
+                                  "Both a pattern type and pattern should be provided.",
                                   fixed=TRUE)
             expect_error(mde::drop_na_at(airquality, pattern_type="gibberish"),
                                    'pattern_type should be one of starts_with,ends_with,contains or regex',

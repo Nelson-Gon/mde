@@ -6,25 +6,42 @@
 utils::globalVariables(c("all_of","metric","value","name", ":="))
 # .....
 
-#' @title Helpedr functions in package mde
+#' @title Helper functions in package mde
 #' @inheritParams recode_na_as
-#' @param x A data.frame object
+#' @param x data.frame object
+#' @param column_check If TRUE, pattern search is performed columnwise. Defaults to FALSE.
 #' @export
-recode_selectors <- function(x,pattern_type=NULL,pattern=NULL,case_sensitive=FALSE,...){
+recode_selectors <- function(x,column_check=TRUE,pattern_type=NULL,pattern=NULL,case_sensitive=FALSE,...){
+# If using for column checks, use names
 
- columns_start_with<-grep(paste0("^(",pattern,")",collapse = ""),names(x),ignore.case=case_sensitive)
- columns_end_with <- grep(paste0("(",pattern,")$",collapse = ""),names(x),ignore.case = case_sensitive)
- columns_contain <- grep(pattern,names(x),ignore.case = case_sensitive)
- regex <- grep(pattern,names(x),...)
 
-final_selectors <- switch(pattern_type,
-       starts_with = columns_start_with,
-       ends_with = columns_end_with,
-       contains = columns_contain,
-       regex = columns_contain
-       )
-final_selectors
+if (!is.null(pattern_type)) {
+  if (!pattern_type %in% c("starts_with","ends_with","contains","regex")){
+stop("pattern_type should be one of starts_with,ends_with,contains or regex")
+  }
+if(is.null(pattern)) stop("Both a pattern type and pattern should be provided..")
+
 }
+
+
+use_pattern <- switch(pattern_type,
+                        ends_with = paste0(pattern,"$",collapse = ""),
+                        starts_with = paste0("^",pattern,collapse=""),
+                        contains = pattern,
+                        regex = pattern)
+  if (column_check) {
+
+    grep(use_pattern,names(x),ignore.case = !case_sensitive,...)
+
+  }
+
+  else{
+    grepl(use_pattern,x,ignore.case = !case_sensitive,...)
+  }
+
+}
+
+
 # make changes
 #' @title Helper functions in package mde
 #' @param x A data.frame object
@@ -33,10 +50,10 @@ final_selectors
 #' @inheritParams recode_selectors
 #' @export
 
-recode_helper <- function(x,pattern_type=NULL,pattern=NULL,original_value,
-                          new_value,case_sensitive=FALSE,...){
+recode_helper <- function(x,pattern_type=NULL,pattern=NULL,original_value, new_value,case_sensitive=FALSE,...){
 x %>%
-  mutate(across(recode_selectors(x,pattern=pattern,pattern_type=pattern_type,case_sensitive = case_sensitive,
+  mutate(across(recode_selectors(x,column_check=TRUE,
+                                 pattern=pattern,pattern_type=pattern_type,case_sensitive = case_sensitive,
                                  ...),~ifelse(. %in% original_value, new_value,.)))
 
 }

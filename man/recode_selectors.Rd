@@ -2,10 +2,11 @@
 % Please edit documentation in R/helpers.R
 \name{recode_selectors}
 \alias{recode_selectors}
-\title{Helpedr functions in package mde}
+\title{Helper functions in package mde}
 \usage{
 recode_selectors(
   x,
+  column_check = TRUE,
   pattern_type = NULL,
   pattern = NULL,
   case_sensitive = FALSE,
@@ -13,7 +14,9 @@ recode_selectors(
 )
 }
 \arguments{
-\item{x}{A data.frame object}
+\item{x}{data.frame object}
+
+\item{column_check}{If TRUE, pattern search is performed columnwise. Defaults to FALSE.}
 
 \item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
 
@@ -24,5 +27,5 @@ recode_selectors(
 \item{...}{Other arguments to other functions}
 }
 \description{
-Helpedr functions in package mde
+Helper functions in package mde
 }
