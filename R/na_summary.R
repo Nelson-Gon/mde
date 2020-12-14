@@ -70,7 +70,19 @@ else{
 }
 if(!is.null(sort_by)){
   stopifnot("sort_by should be a valid name in the output of na_summary" = sort_by %in% names(res))
-  res <- res[sort(res[[sort_by]],decreasing=descending,index.return=TRUE)[[2]],]
+
+  # Get the value to sort by
+  target_column <- res[[sort_by]]
+  # Check class of this value and use appropriate sorting
+  if (is.factor(target_column) || is.character(target_column)){
+    res <- res[sort(target_column,decreasing=descending,index.return=TRUE),]
+  }
+  else{
+
+    res <- res[sort(target_column,decreasing=descending,index.return=TRUE)[[2]],]
+
+  }
+
 
 }
 res

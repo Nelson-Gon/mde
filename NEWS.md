@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.2.2
 
+* Sorting strings in `na_summary` contained a minor bug that has now been fixed. 
+
 * `recode_as_na_str` is a new function to `recode_as_na` based on string matching. 
 
 * `recode_as_na_if` is a new function that allows deliberate addition of `NA`s to a column if it meets a pre-defined condition. This is essentially the reverse of `drop_na_if`. 
