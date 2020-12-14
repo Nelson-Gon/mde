@@ -17,6 +17,10 @@ testthat::test_that(desc="Test na_summary",
    expect_true(na_summary(airquality,sort_by = "percent_missing")[1,1]=="Day")
    expect_true(na_summary(airquality,sort_by = "percent_missing",descending = TRUE)[1,1]=="Ozone")
    expect_equal(ncol(na_summary(airquality)),5)
+    # Check that string sorting works
+   expect_true(na_summary(airquality,sort_by="variable", descending = TRUE)[[1]][1] == "Wind")
+
+   expect_true(na_summary(airquality,sort_by="variable", descending = FALSE)[[1]][1] == "Day")
 
 
                     })
