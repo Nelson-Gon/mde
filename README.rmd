@@ -1,6 +1,7 @@
 ---
 date: "`r Sys.Date()`"
 output: github_document
+title: Missing Data Explorer
 vignette: >
   %\VignetteIndexEntry{mde-Missing-Data-Explorer}
   %\VignetteEngine{knitr::rmarkdown}

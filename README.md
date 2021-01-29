@@ -1,4 +1,6 @@
-2020-12-11
+Missing Data Explorer
+================
+2021-01-29
 
 # `mde`: Missing Data Explorer
 
@@ -67,7 +69,7 @@ devtools::install_github("Nelson-Gon/mde@develop")
 ``` r
 
 library(mde)
-#> Welcome to mde. This is mde version 0.2.2.9000.
+#> Welcome to mde. This is mde version 0.3.0.
 #>  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues
 #> Turn this message off using 'suppressPackageStartupMessages(library(mde))'
 #>  Happy Exploration :)
@@ -199,7 +201,7 @@ test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A",
 get_na_counts(test, grouping_cols = "ID")
 #> # A tibble: 2 x 3
 #>   ID    Subject   res
-#>   <fct>   <int> <int>
+#> * <fct>   <int> <int>
 #> 1 1           0     1
 #> 2 2           0     0
 ```
@@ -225,7 +227,7 @@ character vector.
 percent_missing(test, grouping_cols = "Subject")
 #> # A tibble: 2 x 3
 #>   Subject   res    ID
-#>   <fct>   <dbl> <dbl>
+#> * <fct>   <dbl> <dbl>
 #> 1 A          50     0
 #> 2 B           0     0
 ```

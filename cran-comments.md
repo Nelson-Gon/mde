@@ -2,7 +2,7 @@
 Release Summary
 
 
-This is a patch release. It fixes issues with tests on old releases. 
+This is a new release. It introduces new functions and extends older functions. 
 
 ## Test environments
 

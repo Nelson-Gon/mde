@@ -15,7 +15,7 @@ output: html_document
 
 * `drop_row_if` is a new function similar to `drop_na_if` but for rows instead of columns. 
 
-* `percent_missing` can now work independently for factors, characters, or numeric data. It previouly was limited to `data.frame` objects. 
+* `percent_missing` can now work independently for factors, characters, or numeric data. It previously was limited to `data.frame` objects. 
 
 * Fixed issues with `drop_na_at` that resulted in failing data rebinding. 
 
