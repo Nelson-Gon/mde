@@ -1,8 +1,6 @@
-Missing Data Explorer
+mde: Missing Data Explorer
 ================
-2021-01-30
-
-# `mde`: Missing Data Explorer
+2021-01-31
 
 <!-- badges: start -->
 

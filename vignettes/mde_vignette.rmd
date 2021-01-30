@@ -1,6 +1,6 @@
 ---
 date: "`r Sys.Date()`"
-title: Missing Data Exploration with mde
+title: "mde: Missing Data Exploration"
 output: html_document
 vignette: >
   %\VignetteIndexEntry{mde-Missing-Data-Explorer}
