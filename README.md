@@ -7,8 +7,8 @@ Missing Data Explorer
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890659.svg)](https://doi.org/10.5281/zenodo.3890659)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
-[![Rdoc](https://www.rdocumentation.org/badges/version/mde)](https://www.rdocumentation.org/packages/mde)
+[![CRAN\_Status\_Badge](https://r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
+[![Rdoc](https://rdocumentation.org/badges/version/mde)](https://rdocumentation.org/packages/mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![Build
@@ -16,9 +16,9 @@ Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-
 ![R-CMD-check-devel](https://github.com/Nelson-Gon/mde/workflows/R-CMD-check-devel/badge.svg)
 ![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
 [![Project
-Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html)
+Status](https://repostatus.org/badges/latest/active.svg)](https://repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://tidyverse.org/lifecycle/#maturing)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://gnu.org/licenses/old-licenses/gpl-3.0.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
 [![TotalDownloads](https://cranlogs.r-pkg.org/badges/grand-total/mde?color=green)](https://cran.r-project.org/package=mde)
 [![GitHub last
@@ -759,6 +759,6 @@ By contributing to this project, you agree to abide by its terms.
 For further exploration, please `browseVignettes("mde")`.
 
 To raise an issue, please do so
-[here](https://www.github.com/Nelson-Gon/mde/issues)
+[here](https://github.com/Nelson-Gon/mde/issues)
 
 Thank you, feedback is always welcome :)
