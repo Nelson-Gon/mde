@@ -1,6 +1,6 @@
 mde: Missing Data Explorer
 ================
-2021-01-31
+2021-02-05
 
 <!-- badges: start -->
 
@@ -655,8 +655,9 @@ This is similar to `drop_na_if` but does operations rowwise not
 columnwise. Compare to the example above:
 
 ``` r
-
-head(drop_row_if(airquality, percent_na = 24))
+# Drop rows with at least two NAs
+head(drop_row_if(airquality, sign="gteq", type="count" , value = 2))
+#> Dropped 2 rows.
 #>   Ozone Solar.R Wind Temp Month Day
 #> 1    41     190  7.4   67     5   1
 #> 2    36     118  8.0   72     5   2
@@ -664,6 +665,22 @@ head(drop_row_if(airquality, percent_na = 24))
 #> 4    18     313 11.5   62     5   4
 #> 6    28      NA 14.9   66     5   6
 #> 7    23     299  8.6   65     5   7
+```
+
+To drop based on percentages:
+
+``` r
+# Drops 42 rows
+head(drop_row_if(airquality, type="percent", value=16, sign="gteq",
+                 as_percent=TRUE))
+#> Dropped 42 rows.
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    41     190  7.4   67     5   1
+#> 2    36     118  8.0   72     5   2
+#> 3    12     149 12.6   74     5   3
+#> 4    18     313 11.5   62     5   4
+#> 7    23     299  8.6   65     5   7
+#> 8    19      99 13.8   59     5   8
 ```
 
 For more details, please see the documentation of `drop_row_if`.

@@ -5,7 +5,10 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-# mde 0.2.2
+# mde 0.3.0
+
+* `drop_row_if` arguments were changed. See docs for the new arguments. This was
+done to allow new functionality that enables dropping rows based on counts. 
 
 * Sorting strings in `na_summary` contained a minor bug that has now been fixed. 
 

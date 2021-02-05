@@ -486,10 +486,19 @@ For more information, please see the documentation for `drop_na_if` especially f
 This is similar to `drop_na_if` but does operations rowwise not columnwise. Compare to the example above:
 
 ```{r}
-
-head(drop_row_if(airquality, percent_na = 24))
+# Drop rows with at least two NAs
+head(drop_row_if(airquality, sign="gteq", type="count" , value = 2))
 
 ```
+
+To drop based on percentages:
+
+```{r}
+# Drops 42 rows
+head(drop_row_if(airquality, type="percent", value=16, sign="gteq",
+                 as_percent=TRUE))
+```
+
 
 For more details, please see the documentation of `drop_row_if`.
 

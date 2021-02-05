@@ -166,5 +166,11 @@ res
 }
 
 
+unexpected_argument <- function(arg, acceptable_values){
 
+  if(!arg %in% acceptable_values){
+    stop(paste0("Use either ",acceptable_values[1], " or ", 
+                acceptable_values[2]," not ", arg))
+  }
+}
 
