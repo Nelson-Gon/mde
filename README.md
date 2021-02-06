@@ -1,6 +1,6 @@
 mde: Missing Data Explorer
 ================
-2021-02-05
+2021-02-06
 
 <!-- badges: start -->
 
@@ -16,7 +16,7 @@ Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-
 [![Project
 Status](https://repostatus.org/badges/latest/active.svg)](https://repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://tidyverse.org/lifecycle/#maturing)
-[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://gnu.org/licenses/old-licenses/gpl-3.0.html)
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
 [![TotalDownloads](https://cranlogs.r-pkg.org/badges/grand-total/mde?color=green)](https://cran.r-project.org/package=mde)
 [![GitHub last

@@ -1,8 +1,13 @@
 
 Release Summary
 
+* Fixes issues with sorting on R devel Linux as requested.
 
-This is a new release. It introduces new functions and extends older functions. 
+* Fixes URL issues. 
+
+* Introduces new functions and fixes other known issues. 
+
+
 
 ## Test environments
 

@@ -29,31 +29,23 @@ sort_by_missingness <- function(x, sort_by = "counts",
 sort_by_missingness.data.frame <- function(x, sort_by = "counts",
                                         descending = FALSE,
                                         ...){
+  
+unexpected_argument(sort_by,c("counts", "percents"))
 
-  if(!sort_by %in% c("counts", "percents")){
-    stop("sort_by should be one of counts or percents")
-  }
+use_df <-get_na_counts(x,...)
 
-  if(sort_by =="counts"){
-
-    res<-sort(get_na_counts(x,...), decreasing = descending)
-
-  }
+if(sort_by=="percents") use_df <- percent_missing(x,...)
 
 
+res <- use_df[do.call(order, list(use_df, decreasing=descending))]
 
-else{
-
-      res<-sort(percent_missing(x,...), decreasing = descending)
-
-
-    }
 
 # Make result more "sensible" res -h
 
-  res_stacked <- stack(res)[,c(2,1)]
-  names(res_stacked) <- c("variable","percent")
-  res_stacked
+res_stacked <- unname(stack(res)[,c(2,1)])
+names(res_stacked) <- c("variable","percent") 
+res_stacked
+
 
 }
 
