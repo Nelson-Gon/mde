@@ -10,7 +10,7 @@ mde: Missing Data Explorer
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![Build
-Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
+Status](https://travis-ci.com/Nelson-Gon/mde.png?branch=master)](https://travis-ci.com/Nelson-Gon/mde)
 ![R-CMD-check-devel](https://github.com/Nelson-Gon/mde/workflows/R-CMD-check-devel/badge.svg)
 ![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
 [![Project

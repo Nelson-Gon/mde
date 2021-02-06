@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 [![CRAN_Status_Badge](https://r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
 [![Rdoc](https://rdocumentation.org/badges/version/mde)](https://rdocumentation.org/packages/mde)
 [![Codecov test coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
-[![Build Status](https://travis-ci.org/Nelson-Gon/mde.png?branch=master)](https://travis-ci.org/Nelson-Gon/mde)
+[![Build Status](https://travis-ci.com/Nelson-Gon/mde.png?branch=master)](https://travis-ci.com/Nelson-Gon/mde)
 ![R-CMD-check-devel](https://github.com/Nelson-Gon/mde/workflows/R-CMD-check-devel/badge.svg)
 ![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
 [![Project Status](https://repostatus.org/badges/latest/active.svg)](https://repostatus.org/#active) 
