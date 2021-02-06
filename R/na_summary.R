@@ -58,9 +58,10 @@ else{
     agg_formula <- as.formula(paste0(".~",
                                      grouping_cols_formula))
     res<-do.call(data.frame,aggregate(agg_formula,data=df,
-                                      function(x) c(missing = sum(is.na(x)), complete = length(x) - sum(is.na(x)),
-                             percent_complete = sum(!is.na(x)) / length(x) * 100,
-                             percent_missing = sum(is.na(x)) / length(x) * 100
+                                      function(x) c(missing = sum(is.na(x)), 
+                                      complete = length(x) - sum(is.na(x)),
+                             percent_complete = mean(!is.na(x)) * 100,
+                             percent_missing = mean(is.na(x)) * 100
         ) , na.action = na.pass)) %>%
     tidyr::pivot_longer(cols = -all_of(grouping_cols)) %>%
       tidyr::separate(name,c("variable","metric"),sep="\\.(?=percent|miss|complete)")  %>%
@@ -69,24 +70,20 @@ else{
 
 }
 if(!is.null(sort_by)){
-  stopifnot("sort_by should be a valid name in the output of na_summary" = sort_by %in% names(res))
+stopifnot("sort_by should be a valid name in the output of na_summary" = 
+            sort_by %in% names(res))
+  
 
-  # Get the value to sort by
-  target_column <- res[[sort_by]]
+# Get the value to sort by
+target_column <- res[[sort_by]]
   # Check class of this value and use appropriate sorting
-  if (is.factor(target_column) || is.character(target_column)){
-    res <- res[sort(target_column,decreasing=descending,index.return=TRUE),]
-  }
-  else{
+if (is.factor(target_column)) target_column <- as.character(target_column)
 
-    res <- res[sort(target_column,decreasing=descending,index.return=TRUE)[[2]],]
-
-  }
+res <- res[sort(target_column,decreasing=descending,index.return=TRUE)[[2]],]  
 
 
 }
 res
-
 }
 
 

@@ -4,10 +4,10 @@
 \alias{sort_by_missingness}
 \title{Sort Variables according to missingness}
 \usage{
-sort_by_missingness(x, sort_by = "counts", descending = FALSE, ...)
+sort_by_missingness(df, sort_by = "counts", descending = FALSE, ...)
 }
 \arguments{
-\item{x}{A valid R `object` for which `na_counts` are needed.}
+\item{df}{A data.frame object}
 
 \item{sort_by}{One of counts or percents. This determines whether the results are sorted by counts or percentages.}
 
