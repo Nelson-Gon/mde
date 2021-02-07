@@ -1,12 +1,12 @@
 mde: Missing Data Explorer
 ================
-2021-02-06
+2021-02-07
 
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890659.svg)](https://doi.org/10.5281/zenodo.3890659)
 [![CRAN\_Status\_Badge](https://r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
-[![Rdoc](https://rdocumentation.org/badges/version/mde)](https://rdocumentation.org/packages/mde)
+[![Rdoc](https://www.rdocumentation.org/badges/version/mde)](https://www.rdocumentation.org/packages/mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![Build
@@ -14,8 +14,8 @@ Status](https://travis-ci.com/Nelson-Gon/mde.png?branch=master)](https://travis-
 ![R-CMD-check-devel](https://github.com/Nelson-Gon/mde/workflows/R-CMD-check-devel/badge.svg)
 ![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
 [![Project
-Status](https://repostatus.org/badges/latest/active.svg)](https://repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://tidyverse.org/lifecycle/#maturing)
+Status](https://repostatus.org/badges/latest/active.svg)](https://repostatus.org/)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
 [![TotalDownloads](https://cranlogs.r-pkg.org/badges/grand-total/mde?color=green)](https://cran.r-project.org/package=mde)
@@ -744,15 +744,14 @@ This drops columns where all values are missing.
 
 ``` r
 
-test <- data.frame(ID= c("A","A","B","A",NA), Vals = rep(NA,5))
-
-head(drop_all_na(test))
-#>     ID
-#> 1    A
-#> 2    A
-#> 3    B
-#> 4    A
-#> 5 <NA>
+test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = c(4,rep(NA, 4))) 
+drop_all_na(test2, grouping_cols="ID")
+#> # A tibble: 3 x 2
+#>   ID     Vals
+#>   <chr> <dbl>
+#> 1 A         4
+#> 2 A        NA
+#> 3 A        NA
 ```
 
 Alternatively, we can drop groups where all variables are all NA.
@@ -762,8 +761,13 @@ Alternatively, we can drop groups where all variables are all NA.
 test2 <- data.frame(ID= c("A","A","B","A","B"), Vals = rep(NA, 5)) 
 
 head(drop_all_na(test, grouping_cols = "ID"))
-#> # A tibble: 0 x 2
-#> # ... with 2 variables: ID <chr>, Vals <lgl>
+#> # A tibble: 4 x 3
+#>   Subject   res ID   
+#>   <fct>   <dbl> <fct>
+#> 1 A          NA 1    
+#> 2 A           1 1    
+#> 3 B           2 2    
+#> 4 B           3 2
 ```
 
 Please note that the `mde` project is released with a [Contributor Code
