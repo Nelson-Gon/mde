@@ -22,7 +22,10 @@ recode_as_na_str.data.frame <- function(df,pattern_type="ends_with",pattern=NULL
   # This is currently not the best way, a prototype that JustWorks^^TM
 
   recode_df <- function(x){
-    if (is.factor(x)) warning("X has been converted to character")
+    if (is.factor(x)){
+      warning(paste(x,"has been converted to character \n"))
+      x <- as.character(x)
+    }
 
     ifelse(recode_selectors(x,column_check = FALSE,pattern_type=pattern_type,
                             pattern=pattern,
