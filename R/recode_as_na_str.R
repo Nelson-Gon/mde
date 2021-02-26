@@ -23,7 +23,7 @@ recode_as_na_str.data.frame <- function(df,pattern_type="ends_with",pattern=NULL
 
   recode_df <- function(x){
     if (is.factor(x)){
-      warning(paste(x,"has been converted to character \n"))
+      warning("Factor columns have been converted to character")
       x <- as.character(x)
     }
 
