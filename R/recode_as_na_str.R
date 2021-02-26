@@ -12,27 +12,32 @@
 
 #' @export
 
-recode_as_na_str <- function(df, pattern_type="ends_with",pattern=NULL,case_sensitive=FALSE,...){
+recode_as_na_str <- function(df, pattern_type="ends_with",pattern=NULL,
+                             case_sensitive=FALSE,...){
   UseMethod("recode_as_na_str")
 }
 
 #' @export
 
-recode_as_na_str.data.frame <- function(df,pattern_type="ends_with",pattern=NULL,case_sensitive=FALSE,...){
+recode_as_na_str.data.frame <- function(df,pattern_type="ends_with",
+                                        pattern=NULL,case_sensitive=FALSE
+                                        ,...){
   # This is currently not the best way, a prototype that JustWorks^^TM
 
   recode_df <- function(x){
+    
     if (is.factor(x)){
-      warning("Factor columns have been converted to character")
+      warning("Factor columns converted to character.")
       x <- as.character(x)
     }
-
+    
     ifelse(recode_selectors(x,column_check = FALSE,pattern_type=pattern_type,
                             pattern=pattern,
                             case_sensitive = case_sensitive,
                             ...
     ),NA,x)
   }
+  
   data.frame(sapply(df, function(x) recode_df(x) ))
 }
 

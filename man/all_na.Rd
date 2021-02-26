@@ -13,7 +13,8 @@ all_na(x)
 Boolean TRUE or FALSE depending on the nature of the column/vector
 }
 \description{
-This is a helper function to check if all column/vector values are NA
+This is a helper function to check if all column/vector values 
+are NA
 }
 \examples{
 test <- data.frame(A=c(NA, 2), B= c(NA, NA))
