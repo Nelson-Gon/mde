@@ -5,8 +5,12 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-# mde 0.3.0
+# mde 0.3.1
+
 * `recode_as_na_str` updated to convert factors to character.
+
+# mde 0.3.0
+
 
 * `drop_row_if` arguments were changed. See docs for the new arguments. This was
 done to allow new functionality that enables dropping rows based on counts. 

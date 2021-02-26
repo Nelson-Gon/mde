@@ -1,6 +1,6 @@
 mde: Missing Data Explorer
 ================
-2021-02-07
+2021-02-26
 
 <!-- badges: start -->
 
@@ -67,7 +67,7 @@ devtools::install_github("Nelson-Gon/mde@develop")
 ``` r
 
 library(mde)
-#> Welcome to mde. This is mde version 0.3.0.
+#> Welcome to mde. This is mde version 0.3.1.
 #>  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues
 #> Turn this message off using 'suppressPackageStartupMessages(library(mde))'
 #>  Happy Exploration :)
