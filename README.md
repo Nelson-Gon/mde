@@ -1,6 +1,6 @@
 mde: Missing Data Explorer
 ================
-2021-02-26
+2021-02-27
 
 <!-- badges: start -->
 
@@ -646,8 +646,24 @@ head(drop_na_if(airquality, percent_na = 24))
 #> 6      NA 14.9   66     5   6
 ```
 
-For more information, please see the documentation for `drop_na_if`
-especially for grouping support.
+To drop groups that meet a set missingness criterion, we proceed as
+follows.
+
+``` r
+grouped_drop <- structure(list(ID = c("A", "A", "B", "A", "B"), 
+          Vals = c(4, NA,  NA, NA, NA), Values = c(5, 6, 7, 8, NA)), 
+          row.names = c(NA, -5L), class = "data.frame")
+# Drop all columns for groups that meet a percent missingness of reater than or
+# equal to 67
+drop_na_if(grouped_drop,percent_na = 67,sign="gteq",
+                                    grouping_cols = "ID")
+#> # A tibble: 3 x 3
+#>   ID     Vals Values
+#>   <chr> <dbl>  <dbl>
+#> 1 A         4      5
+#> 2 A        NA      6
+#> 3 A        NA      8
+```
 
   - `drop_row_if`
 

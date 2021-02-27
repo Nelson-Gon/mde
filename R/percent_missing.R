@@ -1,22 +1,27 @@
-#' Columnwise missingness percentages
-#' @param df A valid R `object` for which the percentage of missing values is required.
-#' @param exclude_cols A character vector indicating columns to exclude when returning results.
-#' @description A convenient way to obtain percent missingness columnwise.
+#' Column-wise missingness percentages
+#' @param df A valid R `object` for which the percentage of missing values is 
+#' required.
+#' @param exclude_cols A character vector indicating columns to exclude when 
+#' returning results.
+#' @description A convenient way to obtain percent missingness column-wise.
 #' @inheritParams get_na_counts
-#' @return An object of the same class as x showing the percentage of missing values.
+#' @return An object of the same class as x showing the percentage of missing 
+#' values.
 #' @examples
-#' test <- data.frame(ID= c("A","B","A","B","A","B","A"), Vals = c(NA,25,34,NA,67,NA,45))
+#' test <- data.frame(ID= c("A","B","A","B","A","B","A"), 
+#' Vals = c(NA,25,34,NA,67,NA,45))
 #' percent_missing(test,grouping_cols = "ID")
 #' percent_missing(airquality)
 #' percent_missing(airquality,exclude_cols = c("Day","Temp"))
 #' @export
 
-percent_missing <- function(df,  grouping_cols = NULL,exclude_cols = NULL){
+percent_missing <- function(df, grouping_cols = NULL,exclude_cols = NULL){
   UseMethod("percent_missing")
 }
 
 #' @export
-percent_missing.data.frame <- function(df,  grouping_cols = NULL,exclude_cols = NULL){
+percent_missing.data.frame <- function(df,  grouping_cols = NULL,
+                                       exclude_cols = NULL){
 
 
 if(!is.null(grouping_cols)){
@@ -37,7 +42,8 @@ check_column_existence(df, exclude_cols, "to exclude")
 
 }
 
-  df %>% dplyr::summarise(across(everything(),~ get_na_means(.))) %>% dplyr::ungroup()
+  df %>% dplyr::summarise(across(everything(),
+                                 ~ get_na_means(.))) %>% dplyr::ungroup()
 
 }
 

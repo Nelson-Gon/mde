@@ -7,6 +7,9 @@ output: html_document
 
 # mde 0.3.1
 
+* `drop_na_if` now supports dropping groups that meet a set missing data
+threshold. 
+
 * `recode_as_na_str` updated to convert factors to character.
 
 # mde 0.3.0

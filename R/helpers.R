@@ -182,7 +182,7 @@ res<- switch(sign,
 res
 }
 
-
+switches.double <- switches.numeric
 unexpected_argument <- function(arg, acceptable_values){
 
   if(!arg %in% acceptable_values){

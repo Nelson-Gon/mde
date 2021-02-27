@@ -1,13 +1,15 @@
 # Grouped data recoding
-# Currently less flexible and somewhat repititive
+# Currently less flexible and somewhat repetitive
 # Need to use functions we already have to do the replacements
 #' Recode NA as another value with some conditions
 #' @param df A data.frame object with missing values
 #' @param grouping_cols Character columns to use for grouping the data
-#' @param target_groups Character Recode NA as if and only if the grouping column is
+#' @param target_groups Character Recode NA as if and only if the grouping 
+#' column is
 #' in this vector of values
 #' @importFrom dplyr .data
-#' @param replacement Values to use to replace NAs for IDs that meet the requirements.
+#' @param replacement Values to use to replace NAs for IDs that meet the 
+#' requirements.
 #' Defaults to 0.
 #' @examples
 #' some_data <- data.frame(ID=c("A1","A2","A3", "A4"),
