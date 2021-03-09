@@ -7,6 +7,9 @@ output: html_document
 
 # mde 0.3.1
 
+* `drop_na_if` now supports keep certain columns when grouping. It also now
+supports dropping only at certain columns. 
+
 * `drop_na_if` now supports dropping groups that meet a set missing data
 threshold. 
 
