@@ -4,33 +4,59 @@
 \alias{drop_na_if}
 \title{Condition based dropping of columns with missing values}
 \usage{
-drop_na_if(df, sign = "gteq", percent_na = 50, keep_columns = NULL, ...)
+drop_na_if(
+  df,
+  sign = "gteq",
+  percent_na = 50,
+  keep_columns = NULL,
+  grouping_cols = NULL,
+  target_columns = NULL,
+  ...
+)
 }
 \arguments{
 \item{df}{A data.frame object}
 
-\item{sign}{Character. One of gteq,lteq,lt,gt or eq which refer to greater than(gt) or equal(eq) or
+\item{sign}{Character. One of gteq,lteq,lt,gt or eq which refer to greater 
+than(gt) or equal(eq) or
 less than(lt) or equal to(eq) respectively.}
 
-\item{percent_na}{The percentage to use when dropping columns with missing values}
+\item{percent_na}{The percentage to use when dropping columns with missing 
+values}
 
-\item{keep_columns}{Columns that should be kept despite meeting the target percent_na criterion(criteria)}
+\item{keep_columns}{Columns that should be kept despite meeting the target 
+percent_na 
+criterion(criteria)}
+
+\item{grouping_cols}{For dropping groups that meet a target criterion of 
+percent missingness.}
+
+\item{target_columns}{If working on grouped data, drop all columns that meet 
+target or only a specific column.}
 
 \item{...}{Other arguments to "percent_missing"}
 }
 \value{
-A data.frame object with columns  that meet the target criteria dropped
+A data.frame object with columns  that meet the target criteria 
+dropped.
 }
 \description{
-"drop_na_if" provides a simple way to drop columns with missing values if
+"drop_na_if" provides a simple way to drop columns with missing 
+values if
 they meet certain criteria/conditions.
 }
 \examples{
 head(drop_na_if(airquality, percent_na = 24))
 #drop columns that have less tan or equal to 4\%
 head(drop_na_if(airquality,sign="lteq", percent_na = 4))
-# Drop all except with greater than oe equal to 4\% missing but keep Ozone
-head(drop_na_if(airquality, sign="gteq",percent_na = 4, keep_columns = "Ozone"))
+# Drop all except with greater than ie equal to 4\% missing but keep Ozone
+head(drop_na_if(airquality, sign="gteq",percent_na = 4, 
+keep_columns = "Ozone"))
+# Drop groups that meet a given criterion
+grouped_drop <- structure(list(ID = c("A", "A", "B", "A", "B"), Vals = c(4, NA, 
+NA, NA, NA), Values = c(5, 6, 7, 8, NA)), row.names = c(NA, -5L),
+ class = "data.frame")
+ drop_na_if(grouped_drop,percent_na = 67,grouping_cols = "ID")
 }
 \seealso{
 \code{\link{percent_missing}}

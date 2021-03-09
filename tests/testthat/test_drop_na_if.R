@@ -34,4 +34,25 @@ test_that(desc="drop_na_if errors as expected",
                                   grouping_cols = "gibberish"),
                        "All columns to group by should exist in the data set.",
                        fixed=TRUE)
+          
+          # Assert that keeping target columns works as expected 
+          # Here we know that Vals contains 100% NAs but we keep it anyway.
+          keep_cols = drop_na_if(grouped_drop, sign="lteq",percent_na=20, 
+                                 grouping_cols = "ID",
+                                 keep_columns = "Vals")
+          expect_true(all(is.na(keep_cols$Vals)))
+          # Drop less than 20% NA based on the Values column 
+          keep_based_on_col = drop_na_if(grouped_drop, sign="lteq", 
+                                         percent_na = 20, 
+                     grouping_cols = "ID",
+                     target_columns = "Values")
+          expect_false("A" %in% keep_based_on_col$ID)
+          # Fail if both keep columns and target columns are supplied
+          expect_error(drop_na_if(grouped_drop, sign="lteq", 
+                                  percent_na = 20, grouping_cols = "ID",
+                                  target_columns = "Values", 
+                                  keep_columns="Vals"),
+         "Only one of keep_columns or target_columns can be used, not both.",
+         fixed=TRUE)
+          
                       })

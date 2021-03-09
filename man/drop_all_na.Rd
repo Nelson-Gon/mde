@@ -7,7 +7,8 @@
 drop_all_na(df, grouping_cols = NULL)
 }
 \arguments{
-\item{df}{A valid R `object` for which the percentage of missing values is required.}
+\item{df}{A valid R `object` for which the percentage of missing values is 
+required.}
 
 \item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}

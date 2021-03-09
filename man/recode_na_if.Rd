@@ -11,10 +11,12 @@ recode_na_if(df, grouping_cols = NULL, target_groups = NULL, replacement = 0)
 
 \item{grouping_cols}{Character columns to use for grouping the data}
 
-\item{target_groups}{Character Recode NA as if and only if the grouping column is
+\item{target_groups}{Character Recode NA as if and only if the grouping 
+column is
 in this vector of values}
 
-\item{replacement}{Values to use to replace NAs for IDs that meet the requirements.
+\item{replacement}{Values to use to replace NAs for IDs that meet the 
+requirements.
 Defaults to 0.}
 }
 \description{

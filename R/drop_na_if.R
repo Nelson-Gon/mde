@@ -1,5 +1,4 @@
 #' Condition based dropping of columns with missing values
-#' @importFrom dplyr droup_by, filter, ungroup, across, everything, mutate
 #' @description "drop_na_if" provides a simple way to drop columns with missing 
 #' values if
 #' they meet certain criteria/conditions.
@@ -56,16 +55,57 @@ drop_na_if.data.frame <- function(df, sign="gteq",percent_na= 50,
 if(!is.null(grouping_cols)){
 check_column_existence(df, grouping_cols,"to group by")
 
-# Drop everything for now.
-#use_column <- if(is.null(target_column)) everything() else 
-#!!!dplyr::syms(target_column)
 
-df %>% 
-    dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>% 
-    dplyr::filter(across(everything(), ~!switches(mean(is.na(.)) * 100,
-                                    sign=sign,
-                                    percent_na=percent_na))) %>% 
+  
+# Group once, DRY. 
+
+  df %>% 
+    dplyr::group_by(!!!dplyr::syms(grouping_cols)) -> grouped_dfr
+  
+# If we have columns to keep, ignore these 
+  
+# Check that only one of keep_columns or target_columns is used.
+  
+if (all(!is.null(keep_columns), !is.null(target_columns))){
+  stop("Only one of keep_columns or target_columns can be used, not both.")
+}  
+  
+if (!is.null(keep_columns)){
+  grouped_dfr %>% 
+    dplyr::filter(dplyr::across(-c(keep_columns),
+                  ~!switches(mean(is.na(.)) * 100,
+                               sign=sign,
+                percent_na=percent_na))) %>% 
     dplyr::ungroup()
+}  
+
+  else if (!is.null(target_columns)){
+    # if we provide a specific column, only drop at these
+    
+    grouped_dfr %>%   
+    dplyr::filter(dplyr::across(target_columns,
+                      ~!switches(mean(is.na(.)) * 100,
+                        sign=sign,
+                percent_na=percent_na))) %>% 
+    dplyr::ungroup()
+  }
+  
+  else{
+    
+    grouped_dfr %>% 
+    dplyr::filter(dplyr::across(dplyr::everything(), 
+                         ~!switches(mean(is.na(.)) * 100,
+                            sign=sign,
+                      percent_na=percent_na))) %>% 
+      dplyr::ungroup()
+    
+  }
+      
+     
+      
+  
+
+   
 }
 
 

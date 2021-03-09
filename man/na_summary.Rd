@@ -13,7 +13,8 @@ na_summary(
 )
 }
 \arguments{
-\item{df}{A valid R `object` for which the percentage of missing values is required.}
+\item{df}{A valid R `object` for which the percentage of missing values is 
+required.}
 
 \item{grouping_cols}{A character vector. If supplied, one can provide the columns by which to group the
 data.}
@@ -22,7 +23,8 @@ data.}
 
 \item{descending}{Logical. Should missing values be sorted in decreasing order ie largest to smallest? Defaults to FALSE.}
 
-\item{exclude_cols}{A character vector indicating columns to exclude when returning results.}
+\item{exclude_cols}{A character vector indicating columns to exclude when 
+returning results.}
 }
 \description{
 An all-in-one missingness report

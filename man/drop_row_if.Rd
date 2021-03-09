@@ -9,7 +9,8 @@ drop_row_if(df, sign = "gt", type = "count", value = 20, as_percent = TRUE)
 \arguments{
 \item{df}{A data.frame object}
 
-\item{sign}{Character. One of gteq,lteq,lt,gt or eq which refer to greater than(gt) or equal(eq) or
+\item{sign}{Character. One of gteq,lteq,lt,gt or eq which refer to greater 
+than(gt) or equal(eq) or
 less than(lt) or equal to(eq) respectively.}
 
 \item{type}{One of either count or percent. Defaults to count}

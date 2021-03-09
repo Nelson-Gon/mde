@@ -9,12 +9,16 @@ recode_as_na_if(df, sign = "gteq", percent_na = 50, keep_columns = NULL, ...)
 \arguments{
 \item{df}{A data.frame object}
 
-\item{sign}{Character. One of gteq,lteq,lt,gt or eq which refer to greater than(gt) or equal(eq) or
+\item{sign}{Character. One of gteq,lteq,lt,gt or eq which refer to greater 
+than(gt) or equal(eq) or
 less than(lt) or equal to(eq) respectively.}
 
-\item{percent_na}{The percentage to use when dropping columns with missing values}
+\item{percent_na}{The percentage to use when dropping columns with missing 
+values}
 
-\item{keep_columns}{Columns that should be kept despite meeting the target percent_na criterion(criteria)}
+\item{keep_columns}{Columns that should be kept despite meeting the target 
+percent_na 
+criterion(criteria)}
 
 \item{...}{Other arguments to "percent_missing"}
 }
