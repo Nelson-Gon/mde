@@ -1,12 +1,12 @@
 mde: Missing Data Explorer
 ================
-2021-02-27
+2021-04-12
 
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890659.svg)](https://doi.org/10.5281/zenodo.3890659)
 [![CRAN\_Status\_Badge](https://r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
-[![Rdoc](https://www.rdocumentation.org/badges/version/mde)](https://www.rdocumentation.org/packages/mde)
+[![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/mde)](https://CRAN.R-project.org/package=mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![Build
@@ -199,7 +199,7 @@ test <- structure(list(Subject = structure(c(1L, 1L, 2L, 2L), .Label = c("A",
 get_na_counts(test, grouping_cols = "ID")
 #> # A tibble: 2 x 3
 #>   ID    Subject   res
-#> * <fct>   <int> <int>
+#>   <fct>   <int> <int>
 #> 1 1           0     1
 #> 2 2           0     0
 ```
@@ -225,7 +225,7 @@ character vector.
 percent_missing(test, grouping_cols = "Subject")
 #> # A tibble: 2 x 3
 #>   Subject   res    ID
-#> * <fct>   <dbl> <dbl>
+#>   <fct>   <dbl> <dbl>
 #> 1 A          50     0
 #> 2 B           0     0
 ```
