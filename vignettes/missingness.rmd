@@ -48,43 +48,6 @@ knitr::opts_chunk$set(
 The goal of `mde` is to ease exploration of missingness.  
 
 
-# Installation
-
-
- **CRAN release**
-
-
-```{r, eval=FALSE}
-
-install.packages("mde")
-
-
-```
-
- **Stable Development version**
-
-
-```{r, eval = FALSE}
-
-devtools::install_github("Nelson-Gon/mde")
-
-
-devtools::install_github("Nelson-Gon/mde",  build_vignettes=TRUE)
-
-```
-
- **Unstable Development version**
-
-```{r, eval=FALSE}
-
-devtools::install_github("Nelson-Gon/mde@develop")
-
-
-
-```
-
-
-
 **Loading the package**
 
 ```{r}

@@ -121,7 +121,6 @@
 <span class="co">#&gt;  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues</span>
 <span class="co">#&gt; Turn this message off using 'suppressPackageStartupMessages(library(mde))'</span>
 <span class="co">#&gt;  Happy Exploration :)</span></code></pre></div>
-<p><strong>Currently available functions.</strong></p>
 <div id="exploring-missingness" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exploring-missingness" class="anchor"></a>Exploring missingness</h2>
@@ -354,7 +353,7 @@ Change <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/bas
 <ul>
 <li><code>recode_as_na_if</code></li>
 </ul>
-<p>This function allows one to deliberately introduce missing values if a column meets a certain threshold of missin values. This is similar to <code>amputation</code> but is much more basic. It is only provided here because it is hoped it may be useful to someone for whatever reason.</p>
+<p>This function allows one to deliberately introduce missing values if a column meets a certain threshold of missing values. This is similar to <code>amputation</code> but is much more basic. It is only provided here because it is hoped it may be useful to someone for whatever reason.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/recode_as_na_if.html">recode_as_na_if</a></span><span class="op">(</span><span class="va">airquality</span>,sign<span class="op">=</span><span class="st">"gt"</span>, percent_na<span class="op">=</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span>
@@ -559,9 +558,9 @@ Change <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/bas
 <span class="co">#&gt; 3 A3        0     0     0</span>
 <span class="co">#&gt; 4 A4        8     1    25</span></code></pre></div>
 </div>
-<div id="droppimg-nas" class="section level2">
+<div id="dropping-nas" class="section level2">
 <h2 class="hasAnchor">
-<a href="#droppimg-nas" class="anchor"></a>Droppimg NAs</h2>
+<a href="#dropping-nas" class="anchor"></a>Dropping NAs</h2>
 <ul>
 <li><code>drop_na_if</code></li>
 </ul>
@@ -606,7 +605,7 @@ Change <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/bas
 <code class="sourceCode R"><span class="va">grouped_drop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, 
           Vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="cn">NA</span>,  <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>, Values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span>, 
           row.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="op">-</span><span class="fl">5L</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"data.frame"</span><span class="op">)</span>
-<span class="co"># Drop all columns for groups that meet a percent missingness of reater than or</span>
+<span class="co"># Drop all columns for groups that meet a percent missingness of greater than or</span>
 <span class="co"># equal to 67</span>
 <span class="fu"><a href="../reference/drop_na_if.html">drop_na_if</a></span><span class="op">(</span><span class="va">grouped_drop</span>,percent_na <span class="op">=</span> <span class="fl">67</span>,sign<span class="op">=</span><span class="st">"gteq"</span>,
                                     grouping_cols <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span>

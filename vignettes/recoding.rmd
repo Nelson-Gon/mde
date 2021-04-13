@@ -50,41 +50,6 @@ The goal of `mde` is to ease exploration of missingness.
 
 
 
-# Installation
-
- **CRAN release**
-
-
-```{r, eval=FALSE}
-
-install.packages("mde")
-
-
-```
-
- **Stable Development version**
-
-
-```{r, eval = FALSE}
-
-devtools::install_github("Nelson-Gon/mde")
-
-
-devtools::install_github("Nelson-Gon/mde",  build_vignettes=TRUE)
-
-```
-
- **Unstable Development version**
-
-```{r, eval=FALSE}
-
-devtools::install_github("Nelson-Gon/mde@develop")
-
-
-
-```
-
-
 
 **Loading the package**
 
@@ -148,7 +113,7 @@ head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^
 
 * `recode_as_na_if`
 
-This function allows one to deliberately introduce missing values if a column meets a certain threshold of missin values. This is similar to `amputation` but is much more basic. It is only provided here because it is hoped it may be useful to someone for whatever reason.
+This function allows one to deliberately introduce missing values if a column meets a certain threshold of missing values. This is similar to `amputation` but is much more basic. It is only provided here because it is hoped it may be useful to someone for whatever reason.
 
 
 ```{r}
@@ -358,7 +323,7 @@ To drop groups that meet a set missingness criterion, we proceed as follows.
 grouped_drop <- structure(list(ID = c("A", "A", "B", "A", "B"), 
           Vals = c(4, NA,  NA, NA, NA), Values = c(5, 6, 7, 8, NA)), 
           row.names = c(NA, -5L), class = "data.frame")
-# Drop all columns for groups that meet a percent missingness of reater than or
+# Drop all columns for groups that meet a percent missingness of greater than or
 # equal to 67
 drop_na_if(grouped_drop,percent_na = 67,sign="gteq",
                                     grouping_cols = "ID")

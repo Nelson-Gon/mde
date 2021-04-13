@@ -73,8 +73,6 @@ library(mde)
 #>  Happy Exploration :)
 ```
 
-**Currently available functions.**
-
 ## Exploring missingness
 
 To get a simple missingness report, use `na_summary`:
@@ -379,7 +377,7 @@ head(recode_as_na(airquality,value=c(67,118),pattern_type="regex",pattern="(?i)^
   - `recode_as_na_if`
 
 This function allows one to deliberately introduce missing values if a
-column meets a certain threshold of missin values. This is similar to
+column meets a certain threshold of missing values. This is similar to
 `amputation` but is much more basic. It is only provided here because it
 is hoped it may be useful to someone for whatever reason.
 
@@ -633,7 +631,7 @@ head(recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
 #> 4 A4        8     1    25
 ```
 
-## Droppimg NAs
+## Dropping NAs
 
   - `drop_na_if`
 
@@ -695,7 +693,7 @@ follows.
 grouped_drop <- structure(list(ID = c("A", "A", "B", "A", "B"), 
           Vals = c(4, NA,  NA, NA, NA), Values = c(5, 6, 7, 8, NA)), 
           row.names = c(NA, -5L), class = "data.frame")
-# Drop all columns for groups that meet a percent missingness of reater than or
+# Drop all columns for groups that meet a percent missingness of greater than or
 # equal to 67
 drop_na_if(grouped_drop,percent_na = 67,sign="gteq",
                                     grouping_cols = "ID")
