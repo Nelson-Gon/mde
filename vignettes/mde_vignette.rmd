@@ -1,6 +1,6 @@
 ---
 date: "`r Sys.Date()`"
-output: github_document
+output: html_document
 title: "mde: Missing Data Explorer"
 vignette: >
   %\VignetteIndexEntry{mde-Missing-Data-Explorer}

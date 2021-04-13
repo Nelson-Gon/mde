@@ -1,6 +1,6 @@
 mde: Missing Data Explorer
 ================
-2021-04-12
+2021-04-13
 
 <!-- badges: start -->
 
@@ -74,6 +74,8 @@ library(mde)
 ```
 
 **Currently available functions.**
+
+## Exploring missingness
 
 To get a simple missingness report, use `na_summary`:
 
@@ -289,6 +291,8 @@ sort_by_missingness(airquality, sort_by = "percents")
 #> 6    Ozone 24.183007
 ```
 
+## Recoding as NA
+
   - `recode_as_na`
 
 As the name might imply, this converts any value or vector of values to
@@ -405,6 +409,42 @@ recode_as_na_str(partial_match,"ends_with","ME", case_sensitive=FALSE)
 #> 2 <NA> <NA>
 #> 3 nope  nah
 ```
+
+  - `recode_as_na_for`
+
+For all values greater/less/less or equal/greater or equal than some
+value, can I convert them to `NA`?\!
+
+**Yes You Can\!** All we have to do is use `recode_as_na_for`:
+
+``` r
+
+head(recode_as_na_for(airquality,criteria="gt",value=25))
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    NA      NA  7.4   NA     5   1
+#> 2    NA      NA  8.0   NA     5   2
+#> 3    12      NA 12.6   NA     5   3
+#> 4    18      NA 11.5   NA     5   4
+#> 5    NA      NA 14.3   NA     5   5
+#> 6    NA      NA 14.9   NA     5   6
+```
+
+To do so at specific columns, pass an optional `subset_cols` character
+vector:
+
+``` r
+
+head(recode_as_na_for(airquality, value=40,subset_cols=c("Solar.R","Ozone"), criteria="gt"))
+#>   Ozone Solar.R Wind Temp Month Day
+#> 1    NA      NA  7.4   67     5   1
+#> 2    36      NA  8.0   72     5   2
+#> 3    12      NA 12.6   74     5   3
+#> 4    18      NA 11.5   62     5   4
+#> 5    NA      NA 14.3   56     5   5
+#> 6    28      NA 14.9   66     5   6
+```
+
+## Recoding NA as
 
   - `recode_na_as`
 
@@ -593,6 +633,8 @@ head(recode_na_if(some_data,grouping_col="ID", target_groups=c("A2","A3"),
 #> 4 A4        8     1    25
 ```
 
+## Droppimg NAs
+
   - `drop_na_if`
 
 Suppose you wanted to drop any column that has a percentage of `NA`s
@@ -718,40 +760,6 @@ head(drop_na_at(airquality,pattern_type = "starts_with","O"))
 #> 4    18
 #> 5    28
 #> 6    23
-```
-
-  - `recode_as_na_for`
-
-For all values greater/less/less or equal/greater or equal than some
-value, can I convert them to `NA`?\!
-
-**Yes You Can\!** All we have to do is use `recode_as_na_for`:
-
-``` r
-
-head(recode_as_na_for(airquality,criteria="gt",value=25))
-#>   Ozone Solar.R Wind Temp Month Day
-#> 1    NA      NA  7.4   NA     5   1
-#> 2    NA      NA  8.0   NA     5   2
-#> 3    12      NA 12.6   NA     5   3
-#> 4    18      NA 11.5   NA     5   4
-#> 5    NA      NA 14.3   NA     5   5
-#> 6    NA      NA 14.9   NA     5   6
-```
-
-To do so at specific columns, pass an optional `subset_cols` character
-vector:
-
-``` r
-
-head(recode_as_na_for(airquality, value=40,subset_cols=c("Solar.R","Ozone"), criteria="gt"))
-#>   Ozone Solar.R Wind Temp Month Day
-#> 1    NA      NA  7.4   67     5   1
-#> 2    36      NA  8.0   72     5   2
-#> 3    12      NA 12.6   74     5   3
-#> 4    18      NA 11.5   62     5   4
-#> 5    NA      NA 14.3   56     5   5
-#> 6    28      NA 14.9   66     5   6
 ```
 
   - `drop_all_na`

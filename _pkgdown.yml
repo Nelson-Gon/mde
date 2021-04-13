@@ -19,15 +19,25 @@ reference:
        - '`recode_na_as`'
        - '`recode_na_if`'
        - '`sort_by_missingness`'
+       - '`all_na`'
+       - '`column_based_recode`'
+       - '`drop_row_if`'
+       - '`recode_as_na_if`'
+       - '`recode_as_na_str`'
+       - '`recode_helper`'
+       - '`recode_selectors`' 
 
 navbar:
   type: inverse
   left:
     - icon: fa-home
       href: articles/mde_vignette.html
-    - text: "Documentation"
+    - text: "Tutorials"
       menu:
-        - text: Usage
-          href: articles/mde_vignette.html
+        - text: Exploring Missingess 
+          href: articles/missingness.html
+        - text: Recoding to and from NA
+          href: articles/recoding.html 
         - text: Changes
           href: news/index.html
+          
