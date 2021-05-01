@@ -22,6 +22,7 @@ BugReports: https://github.com/Nelson-Gon/mde/issues
 Suggests: 
     knitr,
     rmarkdown,
+    markdown,
     testthat,
     covr
 VignetteBuilder: knitr
