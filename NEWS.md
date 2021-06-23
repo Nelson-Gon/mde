@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.3.1
 
+* `dict_recode` is a new function to allow recoding with a pattern-values pair. 
+
 * `drop_na_if` now supports keep certain columns when grouping. It also now
 supports dropping only at certain columns. 
 

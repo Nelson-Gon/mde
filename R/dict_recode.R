@@ -1,4 +1,4 @@
-# Recode Missing Values using a dictionary
+#' @title  Recode Missing Values Dictionary-Style
 #' @inheritParams recode_na_as 
 #' @param patterns A vector containing patterns to use for pattern_type
 #' @param values A vector containing values to match to the patterns vector
@@ -31,7 +31,7 @@ dict_recoded <- Map(function(pat, val) {
 cur_col <-recode_selectors(names(df),
                     pattern_type = pattern_type,
                    pattern=pat, 
-                   column_check=FALSE)
+                   column_check=TRUE)
 
 recode_na_as(df,
              pattern_type = pattern_type,
@@ -68,9 +68,5 @@ df
   
 }
 
-res <-dict_recode(airquality, pattern_type="starts_with",
-patterns = c("S", "O"), values = c(420, 42))
 
-
-nrow(airquality) == nrow(res)
 

@@ -26,6 +26,7 @@ reference:
        - '`recode_as_na_str`'
        - '`recode_helper`'
        - '`recode_selectors`' 
+       - '`dict_recode'
 
 navbar:
   type: inverse

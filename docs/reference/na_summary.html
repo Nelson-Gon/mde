@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../articles/mde_vignette.html">
-    <span class="fas fa-home"></span>
+    <span class="fa fa-home"></span>
      
   </a>
 </li>
@@ -181,11 +181,11 @@ returning results.</p></td>
 <span class='va'>test2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>ID<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span><span class='op'>)</span>,Vals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='cn'>NA</span>,<span class='fl'>4</span><span class='op'>)</span>,<span class='st'>"No"</span><span class='op'>)</span>,
 ID2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"E"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span>,<span class='st'>"E"</span>,<span class='st'>"D"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>na_summary</span><span class='op'>(</span><span class='va'>test2</span>,grouping_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ID"</span>,<span class='st'>"ID2"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span>
 #&gt;   ID    ID2   variable missing complete percent_complete percent_missing
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> B     D     Vals           1        1               50              50
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> A     E     Vals           3        0                0             100</div><div class='input'><span class='co'># sort summary</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> B     D     Vals           1        1               50              50
+#&gt; <span style='color: #BCBCBC;'>2</span> A     E     Vals           3        0                0             100</div><div class='input'><span class='co'># sort summary</span>
 <span class='fu'>na_summary</span><span class='op'>(</span><span class='va'>airquality</span>,sort_by <span class='op'>=</span> <span class='st'>"percent_missing"</span>,descending <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   variable missing complete percent_complete percent_missing
 #&gt; 3    Ozone      37      116         75.81699       24.183007
@@ -201,7 +201,7 @@ ID2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c
 #&gt; 2    Month       0      153        100.00000        0.000000
 #&gt; 5     Temp       0      153        100.00000        0.000000
 #&gt; 6     Wind       0      153        100.00000        0.000000</div><div class='input'>
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

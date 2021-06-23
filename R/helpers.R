@@ -43,7 +43,7 @@ use_pattern <- switch(pattern_type,
   }
 
   else{
-    grep(use_pattern,x,ignore.case = !case_sensitive,...)
+    grepl(use_pattern,x,ignore.case = !case_sensitive,...)
   }
 
 }

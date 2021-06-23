@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Helper functions in package mde — recode_selectors • Missing Data Explorer</title>
+<title>Recode Missing Values Dictionary-Style — dict_recode • Missing Data Explorer</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Helper functions in package mde — recode_selectors" />
-<meta property="og:description" content="Helper functions in package mde" />
+<meta property="og:title" content="Recode Missing Values Dictionary-Style — dict_recode" />
+<meta property="og:description" content="Recode Missing Values Dictionary-Style" />
 
 
 
@@ -123,55 +123,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Helper functions in package mde</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Nelson-Gon/mde/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
-    <div class="hidden name"><code>recode_selectors.Rd</code></div>
+    <h1>Recode Missing Values Dictionary-Style</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Nelson-Gon/mde/blob/master/R/dict_recode.R'><code>R/dict_recode.R</code></a></small>
+    <div class="hidden name"><code>dict_recode.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Helper functions in package mde</p>
+    <p>Recode Missing Values Dictionary-Style</p>
     </div>
 
-    <pre class="usage"><span class='fu'>recode_selectors</span><span class='op'>(</span>
-  <span class='va'>x</span>,
-  column_check <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  pattern_type <span class='op'>=</span> <span class='cn'>NULL</span>,
-  pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
-  case_sensitive <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dict_recode</span><span class='op'>(</span><span class='va'>df</span>, pattern_type <span class='op'>=</span> <span class='st'>"starts_with"</span>, <span class='va'>patterns</span>, <span class='va'>values</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>data.frame object</p></td>
-    </tr>
-    <tr>
-      <th>column_check</th>
-      <td><p>If TRUE, pattern search is performed columnwise. 
-Defaults to FALSE.</p></td>
+      <th>df</th>
+      <td><p>A data.frame object for which recoding is to be done.</p></td>
     </tr>
     <tr>
       <th>pattern_type</th>
       <td><p>One of contains', 'starts_with' or 'ends_with'.</p></td>
     </tr>
     <tr>
-      <th>pattern</th>
-      <td><p>A character pattern to match</p></td>
+      <th>patterns</th>
+      <td><p>A vector containing patterns to use for pattern_type</p></td>
     </tr>
     <tr>
-      <th>case_sensitive</th>
-      <td><p>Defaults to FALSE. Patterns are case insensitive if TRUE</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other arguments to other functions</p></td>
+      <th>values</th>
+      <td><p>A vector containing values to match to the patterns vector</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A `data.frame` object with replacements as required.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>dict_recode</span><span class='op'>(</span><span class='va'>airquality</span>, pattern_type<span class='op'>=</span><span class='st'>"starts_with"</span>,
+patterns <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Solar"</span>, <span class='st'>"Ozone"</span><span class='op'>)</span>, values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>420</span>, <span class='fl'>42</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
+#&gt; 1    41     190  7.4   67     5   1
+#&gt; 2    36     118  8.0   72     5   2
+#&gt; 3    12     149 12.6   74     5   3
+#&gt; 4    18     313 11.5   62     5   4
+#&gt; 5    NA      NA 14.3   56     5   5
+#&gt; 6    28      NA 14.9   66     5   6</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

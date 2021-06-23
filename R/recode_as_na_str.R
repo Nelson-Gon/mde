@@ -31,11 +31,11 @@ recode_as_na_str.data.frame <- function(df,pattern_type="ends_with",
       x <- as.character(x)
     }
     
-    ifelse(recode_selectors(x,column_check = FALSE,pattern_type=pattern_type,
+    ifelse(recode_selectors(x,column_check = FALSE,
+                            pattern_type=pattern_type,
                             pattern=pattern,
                             case_sensitive = case_sensitive,
-                            ...
-    ),NA,x)
+                            ...),NA,x)
   }
   
   data.frame(sapply(df, function(x) recode_df(x) ))

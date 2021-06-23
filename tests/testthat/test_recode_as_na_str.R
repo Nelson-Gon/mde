@@ -8,11 +8,12 @@ test_that(desc="Test partial string recoding",
             expect_true(is.na(recode_as_na_str(partial_match,
                                                pattern_type="contains",
                                                pattern="me", 
-                                               case_sensitive=FALSE)[[2]][2]))
+                                               
+                                      case_sensitive=FALSE)[[2]][2]))
             expect_false(is.na(recode_as_na_str(partial_match,
                                                 pattern_type="ends_with",
                                                 pattern="ME", 
-                                                case_sensitive=TRUE)[[2]][2]))
+                                  case_sensitive=TRUE)[[2]][2]))
 
 
           })

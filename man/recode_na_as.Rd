@@ -30,14 +30,17 @@ recode_na_as(
 \item{...}{Other arguments to other functions}
 }
 \value{
-An object of the same type as x with NAs replaced with the desired value.
+An object of the same type as x with NAs replaced with the 
+desired value.
 }
 \description{
-This provides a convenient way to recode "NA" as another value for instance "NaN", "n/a" or
+This provides a convenient way to recode "NA" as another value 
+for instance "NaN", "n/a" or
 any other value a user wishes to use.
 }
 \examples{
 head(recode_na_as(airquality, "n/a"))
 head(recode_na_as(airquality, subset_cols = "Ozone", value = "N/A"))
-head(recode_na_as(airquality, value=0, pattern_type="starts_with",pattern="Solar"))
+head(recode_na_as(airquality, value=0, pattern_type="starts_with",
+pattern="Solar"))
 }
