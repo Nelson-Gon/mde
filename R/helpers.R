@@ -12,7 +12,8 @@ utils::globalVariables(c("all_of","metric","value","name", ":="))
 #' @param column_check If TRUE, pattern search is performed columnwise. 
 #' Defaults to FALSE.
 #' @export
-recode_selectors <- function(x,column_check=TRUE,pattern_type=NULL,pattern=NULL,
+recode_selectors <- function(x,column_check=TRUE,
+                             pattern_type=NULL,pattern=NULL,
                              case_sensitive=FALSE,...){
 # If using for column checks, use names
 
@@ -29,8 +30,10 @@ if(is.null(pattern)) stop("Both a pattern type and pattern should be provided.."
 
 
 use_pattern <- switch(pattern_type,
-                        ends_with = paste0(pattern,"$",collapse = ""),
-                        starts_with = paste0("^",pattern,collapse=""),
+                        ends_with = paste0(pattern,"$",
+                                           collapse = ""),
+                        starts_with = paste0("^",
+                                             pattern,collapse=""),
                         contains = pattern,
                         regex = pattern)
   if (column_check) {
@@ -40,7 +43,7 @@ use_pattern <- switch(pattern_type,
   }
 
   else{
-    grepl(use_pattern,x,ignore.case = !case_sensitive,...)
+    grep(use_pattern,x,ignore.case = !case_sensitive,...)
   }
 
 }
@@ -54,12 +57,14 @@ use_pattern <- switch(pattern_type,
 #' @inheritParams recode_selectors
 #' @export
 
-recode_helper <- function(x,pattern_type=NULL,pattern=NULL,original_value, 
+recode_helper <- function(x,pattern_type=NULL,pattern=NULL,
+                          original_value, 
                           new_value,case_sensitive=FALSE,...){
  
 x %>%
   mutate(across(recode_selectors(x,column_check=TRUE,
-                                 pattern=pattern,pattern_type=pattern_type,
+                                 pattern=pattern,
+                                 pattern_type=pattern_type,
                                  case_sensitive = case_sensitive,
                                  ...),~ifelse(. %in% original_value,
                                               new_value,.)))
