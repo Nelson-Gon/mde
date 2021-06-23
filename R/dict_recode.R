@@ -31,7 +31,7 @@ dict_recoded <- Map(function(pat, val) {
 cur_col <-recode_selectors(names(df),
                     pattern_type = pattern_type,
                    pattern=pat, 
-                   column_check=TRUE)
+                   column_check=FALSE)
 
 recode_na_as(df,
              pattern_type = pattern_type,
@@ -39,33 +39,18 @@ recode_na_as(df,
              value= val)[cur_col]}, patterns, values)
 
 
-
-
-
 # Convert to a data.frame object from a list of vectors 
 
 final_res <- do.call("data.frame", dict_recoded)
 
-
-
-
 # replace these in the original dataset 
+
+
 
 df[names(final_res)] <- final_res 
 
-
-
-
-
-# If name order should be preserved, re-order result based on the original 
-# dataset's order 
-
-
 df  
 
- 
-  
-  
 }
 
 
