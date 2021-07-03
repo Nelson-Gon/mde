@@ -7,6 +7,9 @@ output: html_document
 
 # mde 0.3.1
 
+* `dict_recode` now supports the use of different `NA` recoding functions. These
+can be provided via the argument `use_func`. 
+
 * `dict_recode` is a new function to allow recoding with a pattern-values pair. 
 
 * `drop_na_if` now supports keep certain columns when grouping. It also now

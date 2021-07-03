@@ -4,10 +4,19 @@
 \alias{dict_recode}
 \title{Recode Missing Values Dictionary-Style}
 \usage{
-dict_recode(df, pattern_type = "starts_with", patterns, values)
+dict_recode(
+  df,
+  use_func = "recode_na_as",
+  pattern_type = "starts_with",
+  patterns,
+  values
+)
 }
 \arguments{
 \item{df}{A data.frame object for which recoding is to be done.}
+
+\item{use_func}{Function to use for the recoding. One of the various 
+`recode_*` functions in package `mde`.}
 
 \item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
 
@@ -23,5 +32,9 @@ Recode Missing Values Dictionary-Style
 }
 \examples{
 head(dict_recode(airquality, pattern_type="starts_with",
-patterns = c("Solar", "Ozone"), values = c(420, 42)))
+patterns = c("Solar", "Ozone"), values = c(190, 41),
+use_func="recode_as_na"))
+ head(dict_recode(airquality, pattern_type="starts_with",
+patterns = c("Solar", "Ozone"), values = c(42, 420),
+use_func="recode_na_as"))
 }

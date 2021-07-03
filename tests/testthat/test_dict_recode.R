@@ -10,6 +10,7 @@ test_that(desc="Test Dictionary Style Recoding",
       recode_partial <- dict_recode(airquality, 
                                     pattern_type="starts_with",
                                     patterns = c("S", "O"), 
+                                    use_func = "recode_na_as",
                                     values = c(52, 520))
      # Check that nrow is equal to original datasets nrow 
       expect_true(nrow(recode_partial)==nrow(airquality))
