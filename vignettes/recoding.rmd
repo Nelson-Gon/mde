@@ -391,6 +391,21 @@ head(drop_all_na(test2, grouping_cols = "ID"))
 ```
 
 
+* `dict_recode` 
+
+If one would like to recode column values using a "dictionary", `dict_recode` provides a simple way to do that. For example, if one would like to convert `NA` values in `Solar.R` to 520 and those in `Ozone` to 42, one simply calls the following:
+
+```{r}
+head(dict_recode(airquality, use_func="recode_na_as",
+                 patterns = c("solar", "ozone"),
+                 pattern_type="starts_with", values = c(520,42)))
+```
+
+
+
+---
+
+
 Please note that the `mde` project is released with a
 [Contributor Code of Conduct](https://github.com/Nelson-Gon/mde/blob/master/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

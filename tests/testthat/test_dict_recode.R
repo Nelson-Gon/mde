@@ -22,4 +22,13 @@ test_that(desc="Test Dictionary Style Recoding",
      expect_equal(recode_partial[[2]][5], 52)
      # Expect that Ozone has 520s 
      expect_equal(recode_partial[[1]][5], 520)
+     # Check that we can use functions other than recode_na_as 
+     # We expect that values in Solar.R that are 190 are NA and those in
+     # Ozone that are 41 are NA 
+     rasna <-dict_recode(airquality, pattern_type="ends_with",
+                 patterns=c("R", "e"),
+                 use_func="recode_as_na",
+                 values = c(190, 41))
+     expect_true(is.na(rasna[1,1]))
+     expect_true(is.na(rasna[1,2]))
             })

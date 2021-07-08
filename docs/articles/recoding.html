@@ -84,7 +84,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Recoding to and from NA with mde</h1>
             
-            <h4 class="date">2021-07-03</h4>
+            <h4 class="date">2021-07-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Nelson-Gon/mde/blob/master/vignettes/recoding.rmd"><code>vignettes/recoding.rmd</code></a></small>
       <div class="hidden name"><code>recoding.rmd</code></div>
@@ -500,6 +500,22 @@ Change <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/bas
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/drop_all_na.html">drop_all_na</a></span><span class="op">(</span><span class="va">test2</span>, grouping_cols <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 0 x 2</span>
 <span class="co">#&gt; # ... with 2 variables: ID &lt;chr&gt;, Vals &lt;lgl&gt;</span></code></pre></div>
+<ul>
+<li><code>dict_recode</code></li>
+</ul>
+<p>If one would like to recode column values using a “dictionary”, <code>dict_recode</code> provides a simple way to do that. For example, if one would like to convert <code>NA</code> values in <code>Solar.R</code> to 520 and those in <code>Ozone</code> to 42, one simply calls the following:</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/dict_recode.html">dict_recode</a></span><span class="op">(</span><span class="va">airquality</span>, use_func<span class="op">=</span><span class="st">"recode_na_as"</span>,
+                 patterns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"solar"</span>, <span class="st">"ozone"</span><span class="op">)</span>,
+                 pattern_type<span class="op">=</span><span class="st">"starts_with"</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">520</span>,<span class="fl">42</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;   Ozone Solar.R Wind Temp Month Day</span>
+<span class="co">#&gt; 1    41     190  7.4   67     5   1</span>
+<span class="co">#&gt; 2    36     118  8.0   72     5   2</span>
+<span class="co">#&gt; 3    12     149 12.6   74     5   3</span>
+<span class="co">#&gt; 4    18     313 11.5   62     5   4</span>
+<span class="co">#&gt; 5    42     520 14.3   56     5   5</span>
+<span class="co">#&gt; 6    28     520 14.9   66     5   6</span></code></pre></div>
+<hr>
 <p>Please note that the <code>mde</code> project is released with a <a href="https://github.com/Nelson-Gon/mde/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 <p>For further exploration, please <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes("mde")</a></code>.</p>
 <p>To raise an issue, please do so <a href="https://github.com/Nelson-Gon/mde/issues">here</a></p>
