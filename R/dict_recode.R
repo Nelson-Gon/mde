@@ -19,6 +19,7 @@ dict_recode <- function(df,
                         pattern_type="starts_with", 
                         patterns,
                         values){
+ 
   UseMethod("dict_recode")
 }
 
@@ -29,20 +30,32 @@ dict_recode.data.frame <- function(df,
                                    pattern_type="starts_with",
                                    patterns,
                                    values){
+
+# Check that provided function is actually a function 
+if(!exists(use_func, where = "package:mde")){
+  
+# This assumes that we load mde first.
+# It may be possible to use getfromNamespace or get or some other variant
+# tryCatch would be best but it fails if used inside a function. 
+stop(paste0(use_func, " is not a valid function in package mde."))
+  
+}
+ 
+  
+
+
+dict_recoded <- Map(function(pat, val) {
  
 
-  
-# Perform replacement with column-value pair 
-  
-dict_recoded <- Map(function(pat, val) {
-# Get the current column   
 cur_col <-recode_selectors(names(df),
                     pattern_type = pattern_type,
                    pattern=pat, 
                    column_check=FALSE)
 
 do.call(use_func, list(df=df, pattern_type=pattern_type,
-                             pattern=pat,value=val))[cur_col]}, 
+                             pattern=pat,value=val))[cur_col]
+
+}, 
 patterns, values)
 
 
@@ -55,8 +68,9 @@ final_res <- do.call("data.frame", dict_recoded)
 df[names(final_res)] <- final_res 
 
 df  
-
 }
+ 
+
 
 
 

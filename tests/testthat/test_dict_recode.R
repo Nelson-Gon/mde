@@ -31,4 +31,12 @@ test_that(desc="Test Dictionary Style Recoding",
                  values = c(190, 41))
      expect_true(is.na(rasna[1,1]))
      expect_true(is.na(rasna[1,2]))
+     # Check that if given a function that doesn't exist in mde, we throw an 
+     # error 
+     expect_error(dict_recode(airquality, pattern_type="ends_with",
+                              patterns=c("R", "e"),
+                              use_func="not_mde_function",
+                              values = c(190, 41)),
+                  "not_mde_function is not a valid function in package mde.",
+                  fixed=TRUE)
             })
