@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.3.1
 
+* `drop_na_at` no longer uses a `tibble` to avoid warnings with `tibble` `row.names`. 
+
 * Tests in `dict_recode` were extended to ensure that we get what is expected particularly with respect to the `use_func` argument. 
 
 * `dict_recode` now supports the use of different `NA` recoding functions. These

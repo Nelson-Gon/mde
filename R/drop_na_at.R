@@ -33,7 +33,8 @@ if(!na_counts_test){
 
 }
 
-final_res <- stats::na.omit(res)
+final_res <- as.data.frame(stats::na.omit(res))
+
 row.names(final_res) <- 1:nrow(final_res)
 final_res
 
