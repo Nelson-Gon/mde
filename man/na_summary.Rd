@@ -9,7 +9,8 @@ na_summary(
   grouping_cols = NULL,
   sort_by = NULL,
   descending = FALSE,
-  exclude_cols = NULL
+  exclude_cols = NULL,
+  round_to = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ data.}
 
 \item{exclude_cols}{A character vector indicating columns to exclude when 
 returning results.}
+
+\item{round_to}{Number of places to round 2. Defaults to user digits option.}
 }
 \description{
 An all-in-one missingness report

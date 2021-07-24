@@ -137,7 +137,8 @@
   grouping_cols <span class='op'>=</span> <span class='cn'>NULL</span>,
   sort_by <span class='op'>=</span> <span class='cn'>NULL</span>,
   descending <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  exclude_cols <span class='op'>=</span> <span class='cn'>NULL</span>
+  exclude_cols <span class='op'>=</span> <span class='cn'>NULL</span>,
+  round_to <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -165,6 +166,10 @@ data.</p></td>
       <th>exclude_cols</th>
       <td><p>A character vector indicating columns to exclude when 
 returning results.</p></td>
+    </tr>
+    <tr>
+      <th>round_to</th>
+      <td><p>Number of places to round 2. Defaults to user digits option.</p></td>
     </tr>
     </table>
 

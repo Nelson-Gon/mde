@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.3.1
 
+* `na_summary` now includes a `round_to` parameter to control the number of digits to round to. Defaults to `options("digits")` in the user's settings. 
+
 * `drop_na_at` no longer uses a `tibble` to avoid warnings with `tibble` `row.names`. 
 
 * Tests in `dict_recode` were extended to ensure that we get what is expected particularly with respect to the `use_func` argument. 

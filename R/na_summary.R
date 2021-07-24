@@ -1,6 +1,7 @@
 #' An all-in-one missingness report
 #' @inheritParams percent_missing
 #' @inheritParams sort_by_missingness
+#' @param round_to Number of places to round 2. Defaults to user digits option. 
 #' @importFrom stats "aggregate" "as.formula" "na.pass"
 #' @examples
 #' na_summary(airquality)
@@ -15,7 +16,9 @@
 #'
 #' @export
 
-na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,descending=FALSE, exclude_cols = NULL){
+na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,
+                       descending=FALSE, exclude_cols = NULL,
+                       round_to = NULL){
   UseMethod("na_summary")
 
 
@@ -24,11 +27,17 @@ na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,descending=FALSE, excl
 #' @export
 
 na_summary.data.frame <- function(df,grouping_cols=NULL,sort_by=NULL,descending=FALSE,
-                                  exclude_cols= NULL){
+                                  exclude_cols= NULL,
+                                  round_to=NULL){
   # stick to(with?) base as much as possible
   # get total NAs columnwise
 all_counts <-stack(get_na_counts(df,  exclude_cols = exclude_cols))
 all_percents <- stack(percent_missing(df, exclude_cols = exclude_cols))
+# Round percents to chosen round
+round_to = ifelse(is.null(round_to),
+                  options("digits")[[1]], round_to)
+all_percents$values <- round(all_percents$values, digits=round_to)
+
 names(all_counts) <- c("missing","variable")
 names(all_percents) <- c("percent_missing","variable")
 if(is.null(grouping_cols)){
@@ -64,8 +73,12 @@ else{
                              percent_missing = mean(is.na(x)) * 100
         ) , na.action = na.pass)) %>%
     tidyr::pivot_longer(cols = -all_of(grouping_cols)) %>%
-      tidyr::separate(name,c("variable","metric"),sep="\\.(?=percent|miss|complete)")  %>%
+      tidyr::separate(name,c("variable","metric"),
+                      sep="\\.(?=percent|miss|complete)")  %>%
       tidyr::pivot_wider(names_from=metric,values_from=value)
+    
+    res$percent_complete=round(res$percent_complete, digits = round_to)
+    res$percent_missing=round(res$percent_missing, digits = round_to)
 
 
 }
