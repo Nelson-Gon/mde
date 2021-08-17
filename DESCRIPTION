@@ -13,7 +13,7 @@ License: GPL-3
 Depends:
          R(>= 3.6.0)
 Imports:
-         dplyr(>= 0.8.9),
+         dplyr(>= 1.0.0),
          tidyr(>= 1.0.3)
 Encoding: UTF-8
 RoxygenNote: 7.1.1
