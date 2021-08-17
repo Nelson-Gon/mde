@@ -131,6 +131,7 @@
 <a href="#mde-031" class="anchor"></a>mde 0.3.1<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Fixed a bug that made <code>exclude_cols</code> result in non-exclusion in grouped <code>na.summary</code> outputs.</p></li>
 <li><p><code>na_summary</code> now includes a <code>round_to</code> parameter to control the number of digits to round to. Defaults to <code><a href="https://rdrr.io/r/base/options.html">options("digits")</a></code> in the user’s settings.</p></li>
 <li><p><code>drop_na_at</code> no longer uses a <code>tibble</code> to avoid warnings with <code>tibble</code> <code>row.names</code>.</p></li>
 <li><p>Tests in <code>dict_recode</code> were extended to ensure that we get what is expected particularly with respect to the <code>use_func</code> argument.</p></li>

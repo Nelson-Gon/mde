@@ -1,6 +1,6 @@
 mde: Missing Data Explorer
 ================
-2021-07-08
+2021-08-17
 
 <!-- badges: start -->
 
@@ -25,8 +25,6 @@ commit](https://img.shields.io/github/last-commit/Nelson-Gon/mde.svg)](https://g
 issues](https://img.shields.io/github/issues/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues/)
 [![GitHub
 issues-closed](https://img.shields.io/github/issues-closed/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues?q=is%3Aissue+is%3Aclosed)
-[![Average time to resolve an
-issue](https://isitmaintained.com/badge/resolution/Nelson-Gon/mde.svg)](https://isitmaintained.com/project/Nelson-Gon/mde "Average time to resolve an issue")
 [![PRs
 Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
