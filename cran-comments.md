@@ -1,11 +1,11 @@
 
 Release Summary
 
-* Fixes issues with sorting on R devel Linux as requested.
+* Extends package functionality. 
 
-* Fixes URL issues. 
+* Improves tests.  
 
-* Introduces new functions and fixes other known issues. 
+* Fixes known issues in several functions. 
 
 
 
