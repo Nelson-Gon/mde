@@ -21,6 +21,11 @@ get_na_counts <- function(x, grouping_cols = NULL, exclude_cols=NULL){
   UseMethod("get_na_counts")
 }
 
+#' @export 
+get_na_counts.default <- function(x, grouping_cols = NULL, exclude_cols=NULL){
+  stop(paste0("get_na_counts not available for objects of class ",
+              class(x)[1], ". Try 'na_counts(x)' instead."))
+} 
 #' @export
 
 get_na_counts.data.frame <- function(x, grouping_cols = NULL, exclude_cols = NULL){
@@ -39,8 +44,9 @@ x <- x %>% dplyr::select(-all_of(exclude_cols))
 
 }
 
-x %>% dplyr::summarise(dplyr::across(dplyr::everything(), ~sum(is.na(.))))
+x %>% dplyr::summarise(dplyr::across(dplyr::everything(), ~na_counts(.)))
 
 
 }
+
 

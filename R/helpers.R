@@ -109,9 +109,15 @@ skip_on_oldrel <- function(version="3.6.3", msg = NULL) {
 }
 
 
+#' Get mean missingness.
+#' @param x A vector whose mean NA is required.
+#' @param as_percent Boolean? Report means as percents, defaults to TRUE.
+#' @examples get_na_means(airquality)
+#' @export 
 get_na_means <- function(x, as_percent=TRUE) UseMethod("get_na_means")
 
 
+#' @export
 
 get_na_means.numeric <- function(x, as_percent=TRUE){
   res <-mean(is.na(x))
@@ -120,12 +126,14 @@ get_na_means.numeric <- function(x, as_percent=TRUE){
 }
 
 
-
+#' @export
 get_na_means.character <- get_na_means.numeric
-
+#' @export
 get_na_means.factor <- get_na_means.numeric
+#' @export
+get_na_means.POSIXct <- get_na_means.numeric 
 
-
+#' @export
 get_na_means.data.frame <- function(x, as_percent=TRUE){
   
   res <- colMeans(is.na(x))
@@ -196,5 +204,28 @@ unexpected_argument <- function(arg, acceptable_values){
   }
 }
 
+#' Get NA counts for a given character, numeric, factor, etc.
+#' @param x A vector whose number of missing values is to be determined.
+#' @examples 
+#' na_counts(airquality$Ozone) 
+#' @export
+
+na_counts <- function(x) UseMethod("na_counts")
+
+#' @export
+
+na_counts.numeric <- function(x) sum(is.na(x))
+
+#' @export
+
+na_counts.character <- function(x) sum(is.na(x))
+
+#' @export
+
+na_counts.factor <- na_counts.numeric
+
+#' @export
+
+na_counts.POSIXct <- na_counts.numeric 
 
 

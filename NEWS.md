@@ -5,6 +5,12 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+# mde 0.3.2
+
+* `get_na_means` and `percent_missing` now support `POSIXct`. 
+
+* `na_counts`  and `percent_na` are new vector focused functions to allow `get`ting `na_counts` and percent missingness for objects of classes like `POSIXct`.
+
 # mde 0.3.1
 
 * Fixed a bug that made `exclude_cols` result in non-exclusion in grouped `na.summary` outputs. 
