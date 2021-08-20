@@ -23,7 +23,7 @@ percent_missing <- function(df, grouping_cols = NULL,exclude_cols = NULL){
 
 percent_missing.default <- function(df, grouping_cols = NULL,exclude_cols = NULL){
   stop(paste0("percent_missing not available for objects of class ",
-              class(df)[1], ". Try 'na_counts(x)' instead."))
+              class(df)[1], ". Try 'percent_na(x)' instead."))
 }
 
 #' @export
