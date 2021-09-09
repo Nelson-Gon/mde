@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.3.2
 
+* Exclusion via regular expressions is now possible via `exclude_pattern_type`. 
+
 * `exclusion` is now done entirely in `base` R instead of using `dplyr::select`. 
 
 * `na_summary` now includes `include_pattern_type` and `include_pattern` to allow 

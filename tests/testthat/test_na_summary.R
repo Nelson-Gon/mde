@@ -35,5 +35,20 @@ testthat::test_that(desc="Test na_summary",
                             include_pattern = "ozone")
    # we expect this to have the same number of missing values as no inclusion. 
    expect_true(na_summary(airquality)[3,"missing"] == only_ozone[["missing"]])
+   # Check that we can exclude via a regex 
+   expect_false("Ozone" %in% na_summary(airquality, 
+                                        exclude_pattern_type = "starts_with",
+              exclude_pattern = "oz|Sol")[["variable"]])
+   # Error if a user provides unexpected args 
+   expect_error(na_summary(airquality, 
+              exclude_pattern_type = "starts_with",
+              exclude_pattern = "oz|Sol", exclude_cols = "Solar.R"),
+              "Use either exclude_cols or exclude_pattern_type, not both.",
+              fixed=TRUE)
+   expect_error(na_summary(airquality, 
+                           include_pattern_type = "starts_with",
+                           include_pattern = "oz|Sol", exclude_cols = "Solar.R"),
+                "Use either exclude_cols or include_pattern_type, not both.",
+                fixed=TRUE)
    
                     })
