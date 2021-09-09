@@ -10,6 +10,10 @@ na_summary(
   sort_by = NULL,
   descending = FALSE,
   exclude_cols = NULL,
+  include_pattern_type = NULL,
+  include_pattern = NULL,
+  exclude_pattern_type = NULL,
+  exclude_pattern = NULL,
   round_to = NULL
 )
 }
@@ -27,6 +31,16 @@ data.}
 \item{exclude_cols}{A character vector indicating columns to exclude when 
 returning results.}
 
+\item{include_pattern_type}{A regular expression type. One of "starts_with",
+"contains", or "regex". Defaults to NULL. Only use for selective inclusion.}
+
+\item{include_pattern}{A character specifying the pattern to use as the}
+
+\item{exclude_pattern_type}{A regular expression type. for exclusion.}
+
+\item{exclude_pattern}{Pattern to use for exclusion. 
+column inclusion criteria.}
+
 \item{round_to}{Number of places to round 2. Defaults to user digits option.}
 }
 \description{
@@ -41,5 +55,12 @@ na_summary(test2,grouping_cols = c("ID","ID2"))
 # sort summary
 na_summary(airquality,sort_by = "percent_missing",descending = TRUE)
 na_summary(airquality,sort_by = "percent_complete")
-
+# Include only via a regular expression
+na_summary(mtcars, include_pattern_type = "contains", 
+include_pattern = "mpg|disp|wt")
+na_summary(airquality, include_pattern_type = "starts_with", 
+include_pattern = "ozone")
+# exclusion via a regex 
+na_summary(airquality, exclude_pattern_type = "starts_with",
+exclude_pattern = "oz|Sol")
 }
