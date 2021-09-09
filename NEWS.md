@@ -7,6 +7,13 @@ output: html_document
 
 # mde 0.3.2
 
+* `exclusion` is now done entirely in `base` R instead of using `dplyr::select`. 
+
+* `na_summary` now includes `include_pattern_type` and `include_pattern` to allow 
+for easy filtering of what kind of summary is returned. This is especially useful
+for very "large" datasets i.e. datasets with many columns for which supplying
+several columns in `exclude_cols` would be tedious. 
+
 * `get_na_means` and `percent_missing` now support `POSIXct`. 
 
 * `na_counts`  and `percent_na` are new vector focused functions to allow `get`ting `na_counts` and percent missingness for objects of classes like `POSIXct`.

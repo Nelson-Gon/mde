@@ -29,6 +29,11 @@ testthat::test_that(desc="Test na_summary",
    # Check that rounding works as expected 
    expect_true(na_summary(airquality, round_to=2, sort_by="percent_missing", 
               descending = TRUE)[1,"percent_missing"] == 24.18)
-
-
+   
+   # Check that we can use inclusion patterns
+   only_ozone <- na_summary(airquality, include_pattern_type = "starts_with", 
+                            include_pattern = "ozone")
+   # we expect this to have the same number of missing values as no inclusion. 
+   expect_true(na_summary(airquality)[3,"missing"] == only_ozone[["missing"]])
+   
                     })

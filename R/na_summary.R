@@ -1,7 +1,11 @@
 #' An all-in-one missingness report
 #' @inheritParams percent_missing
 #' @inheritParams sort_by_missingness
-#' @param round_to Number of places to round 2. Defaults to user digits option. 
+#' @param round_to Number of places to round 2. Defaults to user digits option.
+#' @param include_pattern_type A regular expression type. One of "starts_with",
+#' "contains", or "regex". Defaults to NULL. Only use for selective inclusion.
+#' @param include_pattern A character specifying the pattern to use as the 
+#' column inclusion criteria. 
 #' @importFrom stats "aggregate" "as.formula" "na.pass"
 #' @examples
 #' na_summary(airquality)
@@ -13,11 +17,17 @@
 #' na_summary(airquality,sort_by = "percent_missing",descending = TRUE)
 
 #' na_summary(airquality,sort_by = "percent_complete")
-#'
+#' # Include only via a regular expression
+#' na_summary(mtcars, include_pattern_type = "contains", 
+#' include_pattern = "mpg|disp|wt")
+#' na_summary(airquality, include_pattern_type = "starts_with", 
+#' include_pattern = "ozone")
 #' @export
 
 na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,
                        descending=FALSE, exclude_cols = NULL,
+                       include_pattern_type = NULL,
+                       include_pattern = NULL, 
                        round_to = NULL){
   UseMethod("na_summary")
 
@@ -26,17 +36,34 @@ na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,
 
 #' @export
 
-na_summary.data.frame <- function(df,grouping_cols=NULL,sort_by=NULL,descending=FALSE,
-                                  exclude_cols= NULL,
-                                  round_to=NULL){
+na_summary.data.frame <- function(df,grouping_cols=NULL,sort_by=NULL,
+                                  descending=FALSE, exclude_cols = NULL,
+                                  include_pattern_type = NULL,
+                                  include_pattern = NULL, 
+                                  round_to = NULL){
   # Round percents to chosen round
   round_to = ifelse(is.null(round_to),
                     options("digits")[[1]], round_to)
+  if(all(!is.null(exclude_cols), !is.null(include_pattern_type))){
+    stop("Use either exclude_cols or include_pattern_type, not both.")
+    
+  }
+  
+  if(!is.null(include_pattern_type)){
+    df <- df[recode_selectors(df, 
+                              pattern_type = include_pattern_type,
+                              pattern = include_pattern)]
+  }
+  
+  if(!is.null(exclude_cols)){
+    exclude_cols_indices <- which(names(df) %in% exclude_cols)
+    df <- df[-exclude_cols_indices] 
+  }  
 if(is.null(grouping_cols)){
   # stick to(with?) base as much as possible
   # get total NAs columnwise
-  all_counts <-stack(get_na_counts(df,  exclude_cols = exclude_cols))
-  all_percents <- stack(percent_missing(df, exclude_cols = exclude_cols))
+  all_counts <-stack(get_na_counts(df))
+  all_percents <- stack(percent_missing(df))
 
   all_percents$values <- round(all_percents$values, digits=round_to)
   
@@ -59,10 +86,10 @@ res <- merge(all_counts,all_percents,by="variable")
 
 
 else{
-    df <-if(!is.null(exclude_cols)) dplyr::select(df, -exclude_cols) else df 
+
     non_grouping = setdiff(names(df), grouping_cols)
     #matched_groups = which(names(df) %in% grouping_cols)
-    if(length(non_grouping) > 1) warning("All non grouping values used. Using select non groups is currently not supported")
+if(length(non_grouping) > 1) warning("All non grouping values used. Using select non groups is currently not supported")
 
     check_column_existence(df,grouping_cols, "to group by")
     grouping_cols_formula = paste0(grouping_cols,collapse="+")
