@@ -21,8 +21,9 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck", "covr"), dependencies=TRUE)
+          install.packages(c("remotes", "rcmdcheck"), dependencies=TRUE)
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_github("r-lib/covr")
         shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
