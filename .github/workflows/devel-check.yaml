@@ -12,18 +12,14 @@ name: R-CMD-check-devel
 
 jobs:
   R-CMD-check:
-    runs-on: Ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
-      - uses: r-lib/actions/setup-pandoc@v1
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck"), dependencies=TRUE)
+          install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("r-lib/covr")
         shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
