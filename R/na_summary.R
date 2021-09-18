@@ -2,11 +2,11 @@
 #' @inheritParams percent_missing
 #' @inheritParams sort_by_missingness
 #' @param round_to Number of places to round 2. Defaults to user digits option.
-#' @param include_pattern_type A regular expression type. One of "starts_with",
+#' @param pattern_type A regular expression type. One of "starts_with",
 #' "contains", or "regex". Defaults to NULL. Only use for selective inclusion.
-#' @param include_pattern A character specifying the pattern to use as the 
-#' @param exclude_pattern_type A regular expression type. for exclusion.  
-#' @param exclude_pattern Pattern to use for exclusion. 
+#' @param regex_kind One of inclusion or exclusion. Defaults to exclusion to exclude 
+#' columns using regular expressions. 
+#' @param pattern Pattern to use for exclusion or inclusion. 
 #' column inclusion criteria. 
 #' @importFrom stats "aggregate" "as.formula" "na.pass"
 #' @examples
@@ -20,21 +20,22 @@
 
 #' na_summary(airquality,sort_by = "percent_complete")
 #' # Include only via a regular expression
-#' na_summary(mtcars, include_pattern_type = "contains", 
-#' include_pattern = "mpg|disp|wt")
-#' na_summary(airquality, include_pattern_type = "starts_with", 
-#' include_pattern = "ozone")
+#' na_summary(mtcars, pattern_type = "contains", 
+#' pattern = "mpg|disp|wt", regex_kind = "inclusion")
+#' na_summary(airquality, pattern_type = "starts_with", 
+#' pattern = "ozone", regex_kind = "inclusion")
 #' # exclusion via a regex 
-#' na_summary(airquality, exclude_pattern_type = "starts_with",
-#' exclude_pattern = "oz|Sol")
+#' na_summary(airquality, pattern_type = "starts_with",
+#' pattern = "oz|Sol", regex_kind = "exclusion")
 #' @export
 
-na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,
-                       descending=FALSE, exclude_cols = NULL,
-                       include_pattern_type = NULL,
-                       include_pattern = NULL, 
-                       exclude_pattern_type = NULL,
-                       exclude_pattern = NULL,
+na_summary <- function(df,grouping_cols=NULL,
+                       sort_by=NULL,
+                       descending=FALSE, 
+                       exclude_cols = NULL,
+                       pattern = NULL,
+                       pattern_type = NULL,
+                       regex_kind = "exclusion", 
                        round_to = NULL){
   UseMethod("na_summary")
 
@@ -43,35 +44,35 @@ na_summary <- function(df,grouping_cols=NULL,sort_by=NULL,
 
 #' @export
 
-na_summary.data.frame <- function(df,grouping_cols=NULL,sort_by=NULL,
-                                  descending=FALSE, exclude_cols = NULL,
-                                  include_pattern_type = NULL,
-                                  include_pattern = NULL, 
-                                  exclude_pattern_type = NULL,
-                                  exclude_pattern = NULL,
-                                  round_to = NULL){
+na_summary.data.frame <- function(df,grouping_cols=NULL,
+                                   sort_by=NULL,
+                                   descending=FALSE, 
+                                   exclude_cols = NULL,
+                                   pattern = NULL,
+                                   pattern_type = NULL,
+                                   regex_kind = "exclusion", 
+                                   round_to = NULL){
   # Round percents to chosen round
   round_to = ifelse(is.null(round_to),
                     options("digits")[[1]], round_to)
-  if(all(!is.null(exclude_cols), !is.null(include_pattern_type))){
-    stop("Use either exclude_cols or include_pattern_type, not both.")
+  if(all(!is.null(exclude_cols), !is.null(pattern_type))){
+    stop("Use either exclude_cols or pattern_type, not both.")
     
   }
   
-  if(!is.null(include_pattern_type)){
-    df <- df[recode_selectors(df, 
-                              pattern_type = include_pattern_type,
-                              pattern = include_pattern)]
+  if(!is.null(pattern_type)){
+    if(is.null(pattern)) stop("Please provide a pattern to use.")
+    if(!regex_kind %in% c("inclusion", "exclusion")) stop(paste0("Use either inclusion or exclusion not ", regex_kind))
+    df<-switch(regex_kind,
+           inclusion =df[recode_selectors(df, 
+                              pattern_type = pattern_type,
+                              pattern = pattern)],
+           exclusion =  df[-recode_selectors(df, 
+                                  pattern_type =pattern_type,
+                                   pattern = pattern)]
+    )
   }
-  if(all(!is.null(exclude_cols), !is.null(exclude_pattern_type))){
-    stop("Use either exclude_cols or exclude_pattern_type, not both.")
-    
-  }
-  if(!is.null(exclude_pattern_type)){
-    df <- df[-recode_selectors(df, 
-                              pattern_type = exclude_pattern_type,
-                              pattern = exclude_pattern)]
-  }
+
   if(!is.null(exclude_cols)){
     exclude_cols_indices <- which(names(df) %in% exclude_cols)
     df <- df[-exclude_cols_indices] 

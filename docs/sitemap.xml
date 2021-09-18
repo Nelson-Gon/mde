@@ -31,10 +31,19 @@
     <loc>https://nelson-gon.github.io/mde//reference/get_na_counts.html</loc>
   </url>
   <url>
+    <loc>https://nelson-gon.github.io/mde//reference/get_na_means.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde//reference/na_counts.html</loc>
+  </url>
+  <url>
     <loc>https://nelson-gon.github.io/mde//reference/na_summary.html</loc>
   </url>
   <url>
     <loc>https://nelson-gon.github.io/mde//reference/percent_missing.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde//reference/percent_na.html</loc>
   </url>
   <url>
     <loc>https://nelson-gon.github.io/mde//reference/recode_as_na.html</loc>

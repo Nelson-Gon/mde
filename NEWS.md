@@ -7,14 +7,9 @@ output: html_document
 
 # mde 0.3.2
 
-* Exclusion via regular expressions is now possible via `exclude_pattern_type`. 
+* Exclusion or inclusion in `na_summary`via regular expressions is now possible via `regex_kind` and providing a `pattern_type` and `pattern`. 
 
 * `exclusion` is now done entirely in `base` R instead of using `dplyr::select`. 
-
-* `na_summary` now includes `include_pattern_type` and `include_pattern` to allow 
-for easy filtering of what kind of summary is returned. This is especially useful
-for very "large" datasets i.e. datasets with many columns for which supplying
-several columns in `exclude_cols` would be tedious. 
 
 * `get_na_means` and `percent_missing` now support `POSIXct`. 
 

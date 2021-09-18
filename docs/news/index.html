@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Missing Data Explorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
       </span>
     </div>
 
@@ -126,9 +126,20 @@
       <small>Source: <a href='https://github.com/Nelson-Gon/mde/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mde-032" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.2">
+<a href="#mde-032" class="anchor"></a>mde 0.3.2<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>Exclusion or inclusion in <code>na_summary</code>via regular expressions is now possible via <code>regex_kind</code> and providing a <code>pattern_type</code> and <code>pattern</code>.</p></li>
+<li><p><code>exclusion</code> is now done entirely in <code>base</code> R instead of using <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select</a></code>.</p></li>
+<li><p><code>get_na_means</code> and <code>percent_missing</code> now support <code>POSIXct</code>.</p></li>
+<li><p><code>na_counts</code> and <code>percent_na</code> are new vector focused functions to allow <code>get</code>ting <code>na_counts</code> and percent missingness for objects of classes like <code>POSIXct</code>.</p></li>
+</ul>
+</div>
     <div id="mde-031" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.1">
-<a href="#mde-031" class="anchor"></a>mde 0.3.1<small> Unreleased </small>
+<a href="#mde-031" class="anchor"></a>mde 0.3.1<small> 2021-08-17 </small>
 </h1>
 <ul>
 <li><p>Fixed a bug that made <code>exclude_cols</code> result in non-exclusion in grouped <code>na.summary</code> outputs.</p></li>
