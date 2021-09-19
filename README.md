@@ -9,8 +9,6 @@ mde: Missing Data Explorer
 [![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/mde)](https://CRAN.R-project.org/package=mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
-[![Build
-Status](https://travis-ci.com/Nelson-Gon/mde.png?branch=master)](https://travis-ci.com/Nelson-Gon/mde)
 [![R-CMD-check](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml/badge.svg)](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml)
 ![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
 [![Project
