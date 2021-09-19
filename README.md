@@ -1,6 +1,6 @@
 mde: Missing Data Explorer
 ================
-2021-08-17
+2021-09-19
 
 <!-- badges: start -->
 
@@ -11,7 +11,7 @@ mde: Missing Data Explorer
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![Build
 Status](https://travis-ci.com/Nelson-Gon/mde.png?branch=master)](https://travis-ci.com/Nelson-Gon/mde)
-![R-CMD-check-devel](https://github.com/Nelson-Gon/mde/workflows/R-CMD-check-devel/badge.svg)
+[![R-CMD-check](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml/badge.svg)](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml)
 ![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
 [![Project
 Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
@@ -61,7 +61,7 @@ devtools::install_github("Nelson-Gon/mde@develop")
 
 ``` r
 library(mde)
-#> Welcome to mde. This is mde version 0.3.1.
+#> Welcome to mde. This is mde version 0.3.2.
 #>  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues
 #> Turn this message off using 'suppressPackageStartupMessages(library(mde))'
 #>  Happy Exploration :)
@@ -130,6 +130,24 @@ na_summary(airquality, exclude_cols = c("Day", "Wind"))
 #> 2    Ozone      37      116         75.81699       24.183007
 #> 3  Solar.R       7      146         95.42484        4.575163
 #> 4     Temp       0      153        100.00000        0.000000
+```
+
+To include or exclude via regex match:
+
+``` r
+na_summary(airquality, regex_kind = "inclusion",pattern_type = "starts_with", pattern = "O|S")
+#>   variable missing complete percent_complete percent_missing
+#> 1    Ozone      37      116         75.81699       24.183007
+#> 2  Solar.R       7      146         95.42484        4.575163
+```
+
+``` r
+na_summary(airquality, regex_kind = "exclusion",pattern_type = "regex", pattern = "^[O|S]")
+#>   variable missing complete percent_complete percent_missing
+#> 1      Day       0      153              100               0
+#> 2    Month       0      153              100               0
+#> 3     Temp       0      153              100               0
+#> 4     Wind       0      153              100               0
 ```
 
 To get this summary by group:
