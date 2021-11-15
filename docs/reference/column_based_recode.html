@@ -185,16 +185,17 @@
     <p>A `data.frame` object with target `NA` values replaced.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>40</span><span class='op'>:</span><span class='fl'>43</span>, v1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span><span class='op'>)</span>, v2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span><span class='op'>)</span>,
-v3 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>2L</span>, <span class='cn'>NA</span>, <span class='fl'>1L</span><span class='op'>)</span>,
-test <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>1L</span>, <span class='fl'>3L</span><span class='op'>)</span><span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"data.frame"</span>, row.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'># recode test as 0 if all NA, return test otherwise</span>
-<span class='fu'>column_based_recode</span><span class='op'>(</span><span class='va'>df</span>,values_from <span class='op'>=</span> <span class='st'>"test"</span>, pattern_type <span class='op'>=</span> <span class='st'>"starts_with"</span>, pattern<span class='op'>=</span><span class='st'>"v"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   id v1 v2 v3 test
-#&gt; 1 40 NA NA NA    0
-#&gt; 2 41  1  1  2    2
-#&gt; 3 42  1  1 NA    1
-#&gt; 4 43  1  1  1    3</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>40</span><span class='op'>:</span><span class='fl'>43</span>, v1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span><span class='op'>)</span>, v2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span><span class='op'>)</span>,</span>
+<span class='r-in'>v3 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>2L</span>, <span class='cn'>NA</span>, <span class='fl'>1L</span><span class='op'>)</span>,</span>
+<span class='r-in'>test <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>1L</span>, <span class='fl'>3L</span><span class='op'>)</span><span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"data.frame"</span>, row.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>4L</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># recode test as 0 if all NA, return test otherwise</span></span>
+<span class='r-in'><span class='fu'>column_based_recode</span><span class='op'>(</span><span class='va'>df</span>,values_from <span class='op'>=</span> <span class='st'>"test"</span>, pattern_type <span class='op'>=</span> <span class='st'>"starts_with"</span>, pattern<span class='op'>=</span><span class='st'>"v"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   id v1 v2 v3 test</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 40 NA NA NA    0</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 41  1  1  2    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 42  1  1 NA    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 43  1  1  1    3</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

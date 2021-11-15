@@ -22,28 +22,6 @@ knitr::opts_chunk$set(
 
 
 
-<!-- badges: start -->
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890659.svg)](https://doi.org/10.5281/zenodo.3890659)
-[![CRAN_Status_Badge](https://r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
-[![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/mde)](https://CRAN.R-project.org/package=mde) 
-[![Codecov test coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
-[![R-CMD-check](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml/badge.svg)](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml)
-![test-coverage](https://github.com/Nelson-Gon/mde/workflows/test-coverage/badge.svg)
-[![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/) 
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Downloads](https://cranlogs.r-pkg.org/badges/mde)](https://cran.r-project.org/package=mde)
-[![TotalDownloads](https://cranlogs.r-pkg.org/badges/grand-total/mde?color=green)](https://cran.r-project.org/package=mde)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Nelson-Gon/mde.svg)](https://github.com/Nelson-Gon/mde/commits/master)
-[![GitHub issues](https://img.shields.io/github/issues/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues/)
-[![GitHub issues-closed](https://img.shields.io/github/issues-closed/Nelson-Gon/mde.svg)](https://GitHub.com/Nelson-Gon/mde/issues?q=is%3Aissue+is%3Aclosed)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/mde/graphs/commit-activity)
-<!-- badges: end -->
-
-<img src='https://github.com/Nelson-Gon/mde/blob/master/man/figures/mde_icon_2.png?raw=true' align="right" height="120" width="120"/>
-
-
 The goal of `mde` is to ease exploration of missingness.  
 
 

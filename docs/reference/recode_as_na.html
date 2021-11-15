@@ -182,28 +182,31 @@
     <p>An object of the same class as x with values changed to `NA`.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_as_na</span><span class='op'>(</span><span class='va'>airquality</span>,value<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>67</span>,<span class='fl'>118</span><span class='op'>)</span>,pattern_type<span class='op'>=</span><span class='st'>"starts_with"</span>,pattern<span class='op'>=</span><span class='st'>"S|O"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
-#&gt; 1    41     190  7.4   67     5   1
-#&gt; 2    36      NA  8.0   72     5   2
-#&gt; 3    12     149 12.6   74     5   3
-#&gt; 4    18     313 11.5   62     5   4
-#&gt; 5    NA      NA 14.3   56     5   5
-#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_as_na</span><span class='op'>(</span><span class='va'>airquality</span>,value<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>41</span><span class='op'>)</span>,pattern_type<span class='op'>=</span><span class='st'>"ends_with"</span>,pattern<span class='op'>=</span><span class='st'>"e"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
-#&gt; 1    NA     190  7.4   67     5   1
-#&gt; 2    36     118  8.0   72     5   2
-#&gt; 3    12     149 12.6   74     5   3
-#&gt; 4    18     313 11.5   62     5   4
-#&gt; 5    NA      NA 14.3   56     5   5
-#&gt; 6    28      NA 14.9   66     5   6</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_as_na</span><span class='op'>(</span><span class='va'>airquality</span>, value<span class='op'>=</span><span class='fl'>41</span>,subset_cols<span class='op'>=</span><span class='st'>"Ozone"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   Ozone Solar.R Wind Temp Month Day
-#&gt; 1    NA     190  7.4   67     5   1
-#&gt; 2    36     118  8.0   72     5   2
-#&gt; 3    12     149 12.6   74     5   3
-#&gt; 4    18     313 11.5   62     5   4
-#&gt; 5    NA      NA 14.3   56     5   5
-#&gt; 6    28      NA 14.9   66     5   6</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_as_na</span><span class='op'>(</span><span class='va'>airquality</span>,value<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>67</span>,<span class='fl'>118</span><span class='op'>)</span>,pattern_type<span class='op'>=</span><span class='st'>"starts_with"</span>,pattern<span class='op'>=</span><span class='st'>"S|O"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Ozone Solar.R Wind Temp Month Day</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1    41     190  7.4   67     5   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2    36      NA  8.0   72     5   2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    12     149 12.6   74     5   3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4    18     313 11.5   62     5   4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5    NA      NA 14.3   56     5   5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6    28      NA 14.9   66     5   6</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_as_na</span><span class='op'>(</span><span class='va'>airquality</span>,value<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>41</span><span class='op'>)</span>,pattern_type<span class='op'>=</span><span class='st'>"ends_with"</span>,pattern<span class='op'>=</span><span class='st'>"e"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Ozone Solar.R Wind Temp Month Day</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1    NA     190  7.4   67     5   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2    36     118  8.0   72     5   2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    12     149 12.6   74     5   3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4    18     313 11.5   62     5   4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5    NA      NA 14.3   56     5   5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6    28      NA 14.9   66     5   6</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>recode_as_na</span><span class='op'>(</span><span class='va'>airquality</span>, value<span class='op'>=</span><span class='fl'>41</span>,subset_cols<span class='op'>=</span><span class='st'>"Ozone"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Ozone Solar.R Wind Temp Month Day</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1    NA     190  7.4   67     5   1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2    36     118  8.0   72     5   2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3    12     149 12.6   74     5   3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4    18     313 11.5   62     5   4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5    NA      NA 14.3   56     5   5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6    28      NA 14.9   66     5   6</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

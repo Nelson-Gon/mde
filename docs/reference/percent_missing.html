@@ -160,18 +160,21 @@ returning results.</p></td>
 values.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>ID<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span><span class='op'>)</span>, 
-Vals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>,<span class='fl'>25</span>,<span class='fl'>34</span>,<span class='cn'>NA</span>,<span class='fl'>67</span>,<span class='cn'>NA</span>,<span class='fl'>45</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>percent_missing</span><span class='op'>(</span><span class='va'>test</span>,grouping_cols <span class='op'>=</span> <span class='st'>"ID"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 2</span>
-#&gt;   ID     Vals
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> A      25  
-#&gt; <span style='color: #BCBCBC;'>2</span> B      66.7</div><div class='input'><span class='fu'>percent_missing</span><span class='op'>(</span><span class='va'>airquality</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      Ozone  Solar.R Wind Temp Month Day
-#&gt; 1 24.18301 4.575163    0    0     0   0</div><div class='input'><span class='fu'>percent_missing</span><span class='op'>(</span><span class='va'>airquality</span>,exclude_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Day"</span>,<span class='st'>"Temp"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      Ozone  Solar.R Wind Month
-#&gt; 1 24.18301 4.575163    0     0</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>ID<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span>,<span class='st'>"B"</span>,<span class='st'>"A"</span><span class='op'>)</span>, </span>
+<span class='r-in'>Vals <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>,<span class='fl'>25</span>,<span class='fl'>34</span>,<span class='cn'>NA</span>,<span class='fl'>67</span>,<span class='cn'>NA</span>,<span class='fl'>45</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>percent_missing</span><span class='op'>(</span><span class='va'>test</span>,grouping_cols <span class='op'>=</span> <span class='st'>"ID"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 2 x 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ID     Vals</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> A      25  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> B      66.7</span>
+<span class='r-in'><span class='fu'>percent_missing</span><span class='op'>(</span><span class='va'>airquality</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      Ozone  Solar.R Wind Temp Month Day</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 24.18301 4.575163    0    0     0   0</span>
+<span class='r-in'><span class='fu'>percent_missing</span><span class='op'>(</span><span class='va'>airquality</span>,exclude_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Day"</span>,<span class='st'>"Temp"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      Ozone  Solar.R Wind Month</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 24.18301 4.575163    0     0</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

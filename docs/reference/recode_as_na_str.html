@@ -170,18 +170,20 @@
     <div class='dont-index'><p><code><a href='recode_as_na.html'>recode_as_na</a></code> <code><a href='recode_as_na_if.html'>recode_as_na_if</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>partial_match</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>A<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Hi"</span>,<span class='st'>"match_me"</span>,<span class='st'>"nope"</span><span class='op'>)</span>, B<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='st'>"not_me"</span>,<span class='st'>"nah"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'># Replace all that end with "me" with NA</span>
-<span class='fu'>recode_as_na_str</span><span class='op'>(</span><span class='va'>partial_match</span>,<span class='st'>"ends_with"</span>,<span class='st'>"me"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      A    B
-#&gt; 1   Hi &lt;NA&gt;
-#&gt; 2 &lt;NA&gt; &lt;NA&gt;
-#&gt; 3 nope  nah</div><div class='input'><span class='co'># Do not recode, ie case-sensitive</span>
-<span class='fu'>recode_as_na_str</span><span class='op'>(</span><span class='va'>partial_match</span>,<span class='st'>"ends_with"</span>,<span class='st'>"ME"</span>, case_sensitive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;          A      B
-#&gt; 1       Hi   &lt;NA&gt;
-#&gt; 2 match_me not_me
-#&gt; 3     nope    nah</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>partial_match</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>A<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Hi"</span>,<span class='st'>"match_me"</span>,<span class='st'>"nope"</span><span class='op'>)</span>, B<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='st'>"not_me"</span>,<span class='st'>"nah"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Replace all that end with "me" with NA</span></span>
+<span class='r-in'><span class='fu'>recode_as_na_str</span><span class='op'>(</span><span class='va'>partial_match</span>,<span class='st'>"ends_with"</span>,<span class='st'>"me"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      A    B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1   Hi &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 &lt;NA&gt; &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 nope  nah</span>
+<span class='r-in'><span class='co'># Do not recode, ie case-sensitive</span></span>
+<span class='r-in'><span class='fu'>recode_as_na_str</span><span class='op'>(</span><span class='va'>partial_match</span>,<span class='st'>"ends_with"</span>,<span class='st'>"ME"</span>, case_sensitive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          A      B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1       Hi   &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 match_me not_me</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3     nope    nah</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.3.2
 
+* Vignettes no longer include URLs to avoid future issues with broken links on CRAN. 
+
 * Exclusion or inclusion in `na_summary`via regular expressions is now possible via `regex_kind` and providing a `pattern_type` and `pattern`. 
 
 * `exclusion` is now done entirely in `base` R instead of using `dplyr::select`. 
