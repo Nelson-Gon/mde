@@ -33,9 +33,8 @@ test_that(desc="Test factor to character conversion and warning message",
                                                 pattern="ME", 
                                                 case_sensitive=TRUE)[[2]][2]))
             
-          expect_warning(recode_as_na_str(partial_match,
+          expect_snapshot(expect_warning(recode_as_na_str(partial_match,
                                           pattern_type="contains",
                                           pattern="me", 
-                                          case_sensitive=FALSE),
-                         "Factor columns converted to character.")
+                                          case_sensitive=FALSE)))
           })
