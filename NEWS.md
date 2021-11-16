@@ -7,6 +7,8 @@ output: html_document
 
 # mde 0.3.2
 
+* Fixed `all_of` warnings in `dplyr` `select` and `across` verbs. 
+
 * Tests now use edition 3 of testthat. See https://github.com/r-lib/testthat/issues/1471 and https://github.com/Nelson-Gon/manymodelr/pull/22
 
 * Vignettes no longer include URLs to avoid future issues with broken links on CRAN. 

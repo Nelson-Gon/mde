@@ -51,17 +51,17 @@ if(is.null(subset_cols)){
   else{
   check_column_existence(df,subset_cols, "to subset")
     gteq_subset <- df %>%
-      mutate(across(subset_cols,~ifelse(. >= value,NA,
+      mutate(across(all_of(subset_cols),~ifelse(. >= value,NA,
                                         .)))
-    lteq_subset <- df %>% mutate(across(subset_cols, ~ifelse(. <= value, NA,
+    lteq_subset <- df %>% mutate(across(all_of(subset_cols), ~ifelse(. <= value, NA,
                                          .)))
-    lt_subset <- df %>% mutate(across(subset_cols, ~ifelse(. < value,
+    lt_subset <- df %>% mutate(across(all_of(subset_cols), ~ifelse(. < value,
                                          NA, .)))
     gt_subset <- df %>%
-      mutate(across(subset_cols, ~ifelse(. > value,
+      mutate(across(all_of(subset_cols), ~ifelse(. > value,
                                          NA, .)))
     eq_subset <- df %>%
-      mutate(across(subset_cols, ~ifelse(. == value,
+      mutate(across(all_of(subset_cols), ~ifelse(. == value,
                                          NA, .)))
     switch(criteria,
            gt = gt_subset,

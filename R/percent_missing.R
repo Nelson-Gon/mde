@@ -44,7 +44,7 @@ if(! is.null(exclude_cols)){
 check_column_existence(df, exclude_cols, "to exclude")
 
 
-  df <- df %>% dplyr::select(-exclude_cols)
+  df <- df %>% dplyr::select(-dplyr::all_of(exclude_cols))
 
 
 }
