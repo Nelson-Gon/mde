@@ -1,6 +1,6 @@
 test_that(desc="Test partial string recoding",
           code = {
-            
+            skip_on_oldrel()
             partial_match <- data.frame(A=c("Hi","match_me","nope"), 
                                         B=c(NA, "not_me","nah"))
             

@@ -1,6 +1,7 @@
 test_that(desc="Test row dropping",
                     code={
                       
+                      skip_on_oldrel()
                     # drop rows with at least 16% NAs
     no_percents <- head(drop_row_if(airquality, sign="gteq", type="percent",
                                     value = 0.167, as_percent=FALSE))
