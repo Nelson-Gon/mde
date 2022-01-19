@@ -1,12 +1,12 @@
 pandoc: 2.14.0.3
-pkgdown: 1.6.1
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   mde_vignette: mde_vignette.html
   missingness: missingness.html
   recoding: recoding.html
-last_built: 2021-11-16T20:21Z
+last_built: 2022-01-19T20:43Z
 urls:
-  reference: https://nelson-gon.github.io/mde//reference
-  article: https://nelson-gon.github.io/mde//articles
+  reference: https://nelson-gon.github.io/mde/reference
+  article: https://nelson-gon.github.io/mde/articles
 

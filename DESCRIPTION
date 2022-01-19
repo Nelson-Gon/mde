@@ -16,7 +16,7 @@ Imports:
          dplyr(>= 1.0.0),
          tidyr(>= 1.0.3)
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 URL: https://github.com/Nelson-Gon/mde
 BugReports: https://github.com/Nelson-Gon/mde/issues
 Suggests: 

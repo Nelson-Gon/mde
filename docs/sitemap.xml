@@ -1,84 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nelson-gon.github.io/mde//index.html</loc>
+    <loc>https://nelson-gon.github.io/mde/404.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/all_na.html</loc>
+    <loc>https://nelson-gon.github.io/mde/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/column_based_recode.html</loc>
+    <loc>https://nelson-gon.github.io/mde/articles/mde_vignette.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/custom_na_recode.html</loc>
+    <loc>https://nelson-gon.github.io/mde/articles/missingness.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/dict_recode.html</loc>
+    <loc>https://nelson-gon.github.io/mde/articles/recoding.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/drop_all_na.html</loc>
+    <loc>https://nelson-gon.github.io/mde/authors.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/drop_na_at.html</loc>
+    <loc>https://nelson-gon.github.io/mde/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/drop_na_if.html</loc>
+    <loc>https://nelson-gon.github.io/mde/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/drop_row_if.html</loc>
+    <loc>https://nelson-gon.github.io/mde/index.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/get_na_counts.html</loc>
+    <loc>https://nelson-gon.github.io/mde/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/get_na_means.html</loc>
+    <loc>https://nelson-gon.github.io/mde/news/index.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/na_counts.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/all_na.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/na_summary.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/column_based_recode.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/percent_missing.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/custom_na_recode.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/percent_na.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/dict_recode.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_as_na.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/drop_all_na.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_as_na_for.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/drop_na_at.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_as_na_if.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/drop_na_if.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_as_na_str.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/drop_row_if.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_helper.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/get_na_counts.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_na_as.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/get_na_means.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_na_if.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/recode_selectors.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/na_counts.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//reference/sort_by_missingness.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/na_summary.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//articles/mde_vignette.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/percent_missing.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//articles/missingness.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/percent_na.html</loc>
   </url>
   <url>
-    <loc>https://nelson-gon.github.io/mde//articles/recoding.html</loc>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_as_na.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_as_na_for.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_as_na_if.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_as_na_str.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_as_value.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_helper.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_na_as.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_na_if.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/recode_selectors.html</loc>
+  </url>
+  <url>
+    <loc>https://nelson-gon.github.io/mde/reference/sort_by_missingness.html</loc>
   </url>
 </urlset>

@@ -27,6 +27,10 @@ reference:
        - '`recode_helper`'
        - '`recode_selectors`' 
        - '`dict_recode`'
+       - '`get_na_means`'
+       - '`na_counts`'
+       - '`percent_na`'
+       - '`recode_as_value`'
 
 navbar:
   type: inverse

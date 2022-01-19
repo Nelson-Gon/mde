@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Missing Data Explorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.2</span>
       </span>
     </div>
 
@@ -64,7 +66,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Nelson-Gon/mde/">
+  <a href="https://github.com/Nelson-Gon/mde/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -79,14 +81,14 @@
 
       
 
-      </header><script src="missingness_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Exploring Missingness with mde</h1>
             
-            <h4 class="date">2021-11-16</h4>
+            <h4 data-toc-skip class="date">2022-01-19</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/Nelson-Gon/mde/blob/master/vignettes/missingness.rmd"><code>vignettes/missingness.rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Nelson-Gon/mde/blob/HEAD/vignettes/missingness.rmd" class="external-link"><code>vignettes/missingness.rmd</code></a></small>
       <div class="hidden name"><code>missingness.rmd</code></div>
 
     </div>
@@ -97,7 +99,7 @@
 <p><strong>Loading the package</strong></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Nelson-Gon/mde">mde</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Nelson-Gon/mde" class="external-link">mde</a></span><span class="op">)</span>
 <span class="co">#&gt; Welcome to mde. This is mde version 0.3.2.</span>
 <span class="co">#&gt;  Please file issues and feedback at https://www.github.com/Nelson-Gon/mde/issues</span>
 <span class="co">#&gt; Turn this message off using 'suppressPackageStartupMessages(library(mde))'</span>
@@ -147,7 +149,7 @@
 <p>To exclude certain columns from the analysis:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="fu"><a href="../reference/na_summary.html">na_summary</a></span><span class="op">(</span><span class="va">airquality</span>, exclude_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Day"</span>, <span class="st">"Wind"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/na_summary.html">na_summary</a></span><span class="op">(</span><span class="va">airquality</span>, exclude_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Day"</span>, <span class="st">"Wind"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;   variable missing complete percent_complete percent_missing</span>
 <span class="co">#&gt; 1    Month       0      153        100.00000        0.000000</span>
 <span class="co">#&gt; 2    Ozone      37      116         75.81699       24.183007</span>
@@ -169,26 +171,26 @@
 <p>To get this summary by group:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>ID<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span><span class="op">)</span>, Vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">4</span><span class="op">)</span>,<span class="st">"No"</span><span class="op">)</span>,ID2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"E"</span>,<span class="st">"E"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"D"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>ID<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span><span class="op">)</span>, Vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">4</span><span class="op">)</span>,<span class="st">"No"</span><span class="op">)</span>,ID2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"E"</span>,<span class="st">"E"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"D"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/na_summary.html">na_summary</a></span><span class="op">(</span><span class="va">test2</span>,grouping_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ID"</span>,<span class="st">"ID2"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 7</span>
+<span class="fu"><a href="../reference/na_summary.html">na_summary</a></span><span class="op">(</span><span class="va">test2</span>,grouping_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ID"</span>,<span class="st">"ID2"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 x 7</span></span>
 <span class="co">#&gt;   ID    ID2   variable missing complete percent_complete percent_missing</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 B     D     Vals           1        1               50              50</span>
-<span class="co">#&gt; 2 A     E     Vals           3        0                0             100</span></code></pre></div>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> B     D     Vals           1        1               50              50</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> A     E     Vals           3        0                0             100</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="../reference/na_summary.html">na_summary</a></span><span class="op">(</span><span class="va">test2</span>, grouping_cols<span class="op">=</span><span class="st">"ID"</span><span class="op">)</span>
 <span class="co">#&gt; Warning in na_summary.data.frame(test2, grouping_cols = "ID"): All non grouping</span>
 <span class="co">#&gt; values used. Using select non groups is currently not supported</span>
-<span class="co">#&gt; # A tibble: 4 x 6</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 x 6</span></span>
 <span class="co">#&gt;   ID    variable missing complete percent_complete percent_missing</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 A     Vals           3        0                0             100</span>
-<span class="co">#&gt; 2 A     ID2            0        3              100               0</span>
-<span class="co">#&gt; 3 B     Vals           1        1               50              50</span>
-<span class="co">#&gt; 4 B     ID2            0        2              100               0</span></code></pre></div>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> A     Vals           3        0                0             100</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> A     ID2            0        3              100               0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> B     Vals           1        1               50              50</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span> B     ID2            0        2              100               0</span></code></pre></div>
 <ul>
 <li><code>get_na_counts</code></li>
 </ul>
@@ -202,17 +204,17 @@
 <p>The above might be less useful if one would like to get the results by group. In that case, one can provide a grouping vector of names in <code>grouping_cols</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>Subject <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span><span class="op">)</span>, .Label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, 
-<span class="st">"B"</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"factor"</span><span class="op">)</span>, res <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, 
-<span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span><span class="op">)</span>, .Label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"factor"</span><span class="op">)</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"data.frame"</span>, row.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, 
+<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>Subject <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span><span class="op">)</span>, .Label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, 
+<span class="st">"B"</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"factor"</span><span class="op">)</span>, res <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, 
+<span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span><span class="op">)</span>, .Label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"factor"</span><span class="op">)</span><span class="op">)</span>, class <span class="op">=</span> <span class="st">"data.frame"</span>, row.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, 
 <span class="op">-</span><span class="fl">4L</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/get_na_counts.html">get_na_counts</a></span><span class="op">(</span><span class="va">test</span>, grouping_cols <span class="op">=</span> <span class="st">"ID"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 x 3</span></span>
 <span class="co">#&gt;   ID    Subject   res</span>
-<span class="co">#&gt;   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1 1           0     1</span>
-<span class="co">#&gt; 2 2           0     0</span></code></pre></div>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1           0     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2           0     0</span></code></pre></div>
 <ul>
 <li><code>percent_missing</code></li>
 </ul>
@@ -227,15 +229,15 @@
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="../reference/percent_missing.html">percent_missing</a></span><span class="op">(</span><span class="va">test</span>, grouping_cols <span class="op">=</span> <span class="st">"Subject"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 x 3</span></span>
 <span class="co">#&gt;   Subject   res    ID</span>
-<span class="co">#&gt;   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 A          50     0</span>
-<span class="co">#&gt; 2 B           0     0</span></code></pre></div>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> A          50     0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> B           0     0</span></code></pre></div>
 <p>To exclude some columns from the above exploration, one can provide an optional character vector in <code>exclude_cols</code>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="fu"><a href="../reference/percent_missing.html">percent_missing</a></span><span class="op">(</span><span class="va">airquality</span>,exclude_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Day"</span>,<span class="st">"Temp"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/percent_missing.html">percent_missing</a></span><span class="op">(</span><span class="va">airquality</span>,exclude_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Day"</span>,<span class="st">"Temp"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;      Ozone  Solar.R Wind Month</span>
 <span class="co">#&gt; 1 24.18301 4.575163    0     0</span></code></pre></div>
 <ul>
@@ -276,9 +278,9 @@
 <span class="co">#&gt; 4      Day  0.000000</span>
 <span class="co">#&gt; 5  Solar.R  4.575163</span>
 <span class="co">#&gt; 6    Ozone 24.183007</span></code></pre></div>
-<p>Please note that the <code>mde</code> project is released with a <a href="https://github.com/Nelson-Gon/mde/blob/master/.github/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the <code>mde</code> project is released with a <a href="https://github.com/Nelson-Gon/mde/blob/master/.github/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 <p>For further exploration, please <code>browseVignettes("mde")</code>.</p>
-<p>To raise an issue, please do so <a href="https://github.com/Nelson-Gon/mde/issues">here</a></p>
+<p>To raise an issue, please do so <a href="https://github.com/Nelson-Gon/mde/issues" class="external-link">here</a></p>
 <p>Thank you, feedback is always welcome :)</p>
   </div>
 
@@ -291,11 +293,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Nelson Gonzabato.</p>
+  <p></p>
+<p>Developed by Nelson Gonzabato.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -303,6 +307,8 @@
 
   
 
+
+  
 
   </body>
 </html>
