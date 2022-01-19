@@ -7,6 +7,9 @@ output: html_document
 
 # mde 0.3.2
 
+* There is now a function `recode_as_value` for general recoding. See 
+[#41](https://github.com/Nelson-Gon/mde/issues/41). 
+
 * Fixed `all_of` warnings in `dplyr` `select` and `across` verbs. 
 
 * Tests now use edition 3 of testthat. See https://github.com/r-lib/testthat/issues/1471 and https://github.com/Nelson-Gon/manymodelr/pull/22

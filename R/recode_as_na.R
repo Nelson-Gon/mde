@@ -19,7 +19,8 @@
 recode_as_na <- function(df, value=NULL,
                          subset_cols = NULL,
                          pattern_type=NULL,
-                         pattern=NULL,case_sensitive=FALSE,...){
+                         pattern=NULL,case_sensitive=FALSE,
+                         ...){
   UseMethod("recode_as_na")
 }
 
@@ -27,55 +28,19 @@ recode_as_na <- function(df, value=NULL,
 recode_as_na.data.frame <-function(df, value=NULL,
                                    subset_cols = NULL,
                                    pattern_type=NULL,
-                                   pattern=NULL,case_sensitive=FALSE,...){
+                                   pattern=NULL,
+                                   case_sensitive=FALSE,
+                                  
+                                   ...){
   
-  recode_df <- function(x){
-    if(is.factor(x)){
-    warning("Factor columns converted to character.")
-    x <- as.character(x)
-    }
-    ifelse(x %in% value, NA, x)
-  }
-
-final_res <- data.frame(sapply(df, function(x) recode_df(x)))
-
-if(all(!is.null(subset_cols), !is.null(pattern_type))){
-  
-stop("Only one of pattern_type or subset_cols should be used but not both.")
-}
-  
-if(!is.null(subset_cols)){
-
-    check_column_existence(df, subset_cols, unique_name = "to subset")
-
-    make_pattern <-paste(subset_cols,collapse="|")
-    
-    final_res<-recode_helper(df,pattern_type="contains",original_value=value,
-                             pattern=make_pattern,
-                            new_value=NA,
-                            case_sensitive=case_sensitive,...)
-  }
-
-  if(!is.null(pattern_type)){
-    
-    if(any(!pattern_type %in% c("starts_with","ends_with","contains",
-                                "regex"))){
-
-  stop("pattern_type should be one of starts_with,ends_with,contains or regex")
-    }
-    
-    if(is.null(pattern)) stop("A pattern must be supplied.")
-    
-    final_res<-recode_helper(df,pattern_type=pattern_type,
-                             original_value=value,
-                             pattern=pattern,
-                  new_value=NA,case_sensitive=case_sensitive,...)
-  }
-
-
-
-final_res
-
+ 
+recode_as_value(df=df, value=value, 
+                replacement_value = NA,
+                subset_cols=subset_cols,
+                pattern_type = pattern_type,
+                pattern = pattern, 
+                case_sensitive = case_sensitive,
+                ...)
 }
 
 
