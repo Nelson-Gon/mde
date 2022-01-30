@@ -24,6 +24,9 @@ output: html_document
 
 * `na_counts`  and `percent_na` are new vector focused functions to allow `get`ting `na_counts` and percent missingness for objects of classes like `POSIXct`.
 
+* include a new argument to reset rownames in `na_summary`. Fixes  
+[#33](https://github.com/Nelson-Gon/mde/issues/33). 
+
 # mde 0.3.1
 
 * Fixed a bug that made `exclude_cols` result in non-exclusion in grouped `na.summary` outputs. 
