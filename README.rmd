@@ -86,7 +86,7 @@ devtools::install_github("Nelson-Gon/mde@develop")
 
 **Loading the package**
 
-```{r}
+```{r pkg_load}
 
 library(mde)
 
@@ -105,7 +105,7 @@ library(mde)
  To get a simple missingness report, use `na_summary`:
 
 
-```{r}
+```{r na_summary_default}
 
 na_summary(airquality)
 
@@ -114,9 +114,19 @@ na_summary(airquality)
 
 To sort this summary by a given column :
 
-```{r}
+```{r column_sort_na_summary}
 
 na_summary(airquality,sort_by = "percent_complete")
+
+```
+If one would like to reset (drop) row names, then one can set `row_names` to 
+`TRUE` This may especially be useful in cases where `rownames` are simply 
+numeric and do not have much additional use.
+
+
+```{r reset_rownames}
+
+na_summary(airquality,sort_by = "percent_complete", reset_rownames = TRUE)
 
 ```
 
@@ -133,6 +143,7 @@ To sort the above in descending order:
 na_summary(airquality, sort_by="percent_missing", descending = TRUE)
 
 ```
+
 To exclude certain columns from the analysis:
 
 ```{r}
@@ -147,7 +158,9 @@ To include or exclude via regex match:
 na_summary(airquality, regex_kind = "inclusion",pattern_type = "starts_with", pattern = "O|S")
 ```
 ```{r}
+
 na_summary(airquality, regex_kind = "exclusion",pattern_type = "regex", pattern = "^[O|S]")
+
 ```
 
 To get this summary by group:

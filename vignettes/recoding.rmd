@@ -35,6 +35,8 @@ library(mde)
 
 ```
 
+
+
 # Recoding as NA
 
 * `recode_as_na`
@@ -377,7 +379,20 @@ head(dict_recode(airquality, use_func="recode_na_as",
                  pattern_type="starts_with", values = c(520,42)))
 ```
 
+# General Recoding 
 
+
+* For general recoding of values, one can use `recode_as_value` for 
+example as shown below 
+
+
+```{r}
+
+head(recode_as_value(airquality, value=c(67,118),replacement=NA,
+                     pattern_type="starts_with",pattern="S|O"))
+```
+
+The above is a more general function that can do what the other functions do and may be more useful for development purposes. 
 
 ---
 

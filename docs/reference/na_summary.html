@@ -78,7 +78,8 @@
   pattern <span class="op">=</span> <span class="cn">NULL</span>,
   pattern_type <span class="op">=</span> <span class="cn">NULL</span>,
   regex_kind <span class="op">=</span> <span class="st">"exclusion"</span>,
-  round_to <span class="op">=</span> <span class="cn">NULL</span>
+  round_to <span class="op">=</span> <span class="cn">NULL</span>,
+  reset_rownames <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -98,16 +99,18 @@ data.</p></dd>
 <dd><p>A character vector indicating columns to exclude when 
 returning results.</p></dd>
 <dt>pattern</dt>
-<dd><p>Pattern to use for exclusion or inclusion. 
+<dd><p>Pattern to use for exclusion or inclusion.
 column inclusion criteria.</p></dd>
 <dt>pattern_type</dt>
 <dd><p>A regular expression type. One of "starts_with",
 "contains", or "regex". Defaults to NULL. Only use for selective inclusion.</p></dd>
 <dt>regex_kind</dt>
-<dd><p>One of inclusion or exclusion. Defaults to exclusion to exclude 
+<dd><p>One of inclusion or exclusion. Defaults to exclusion to exclude
 columns using regular expressions.</p></dd>
 <dt>round_to</dt>
 <dd><p>Number of places to round 2. Defaults to user digits option.</p></dd>
+<dt>reset_rownames</dt>
+<dd><p>Should the rownames be reset in the output? defaults to FALSE</p></dd>
 </dl></div>
 
     <div id="ref-examples">
@@ -123,6 +126,8 @@ columns using regular expressions.</p></dd>
 <span class="r-in"><span class="co"># grouping</span></span>
 <span class="r-in"><span class="va">test2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>ID<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"A"</span>,<span class="st">"B"</span><span class="op">)</span>,Vals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">4</span><span class="op">)</span>,<span class="st">"No"</span><span class="op">)</span>,</span>
 <span class="r-in">ID2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"E"</span>,<span class="st">"E"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"D"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>A<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,B<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span>,<span class="fl">25</span>,<span class="fl">24</span>,<span class="fl">53</span><span class="op">)</span>, C<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"></span>
 <span class="r-in"><span class="fu">na_summary</span><span class="op">(</span><span class="va">test2</span>,grouping_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ID"</span>,<span class="st">"ID2"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 x 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ID    ID2   variable missing complete percent_complete percent_missing</span>
@@ -147,17 +152,17 @@ columns using regular expressions.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5     Temp       0      153        100.00000        0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6     Wind       0      153        100.00000        0.000000</span>
 <span class="r-in"><span class="co"># Include only via a regular expression</span></span>
-<span class="r-in"><span class="fu">na_summary</span><span class="op">(</span><span class="va">mtcars</span>, pattern_type <span class="op">=</span> <span class="st">"contains"</span>, </span>
+<span class="r-in"><span class="fu">na_summary</span><span class="op">(</span><span class="va">mtcars</span>, pattern_type <span class="op">=</span> <span class="st">"contains"</span>,</span>
 <span class="r-in">pattern <span class="op">=</span> <span class="st">"mpg|disp|wt"</span>, regex_kind <span class="op">=</span> <span class="st">"inclusion"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   variable missing complete percent_complete percent_missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     disp       0       32              100               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      mpg       0       32              100               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3       wt       0       32              100               0</span>
-<span class="r-in"><span class="fu">na_summary</span><span class="op">(</span><span class="va">airquality</span>, pattern_type <span class="op">=</span> <span class="st">"starts_with"</span>, </span>
+<span class="r-in"><span class="fu">na_summary</span><span class="op">(</span><span class="va">airquality</span>, pattern_type <span class="op">=</span> <span class="st">"starts_with"</span>,</span>
 <span class="r-in">pattern <span class="op">=</span> <span class="st">"ozone"</span>, regex_kind <span class="op">=</span> <span class="st">"inclusion"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   variable missing complete percent_complete percent_missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    Ozone      37      116         75.81699        24.18301</span>
-<span class="r-in"><span class="co"># exclusion via a regex </span></span>
+<span class="r-in"><span class="co"># exclusion via a regex</span></span>
 <span class="r-in"><span class="fu">na_summary</span><span class="op">(</span><span class="va">airquality</span>, pattern_type <span class="op">=</span> <span class="st">"starts_with"</span>,</span>
 <span class="r-in">pattern <span class="op">=</span> <span class="st">"oz|Sol"</span>, regex_kind <span class="op">=</span> <span class="st">"exclusion"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   variable missing complete percent_complete percent_missing</span>
@@ -165,6 +170,12 @@ columns using regular expressions.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    Month       0      153              100               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3     Temp       0      153              100               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4     Wind       0      153              100               0</span>
+<span class="r-in"><span class="co"># reset rownames when sorting by variable</span></span>
+<span class="r-in"><span class="fu">na_summary</span><span class="op">(</span><span class="va">df</span>,sort_by<span class="op">=</span><span class="st">"variable"</span>,descending<span class="op">=</span><span class="cn">TRUE</span>, reset_rownames <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   variable missing complete percent_complete percent_missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        C       1        4               80              20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        B       2        3               60              40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        A       0        5              100               0</span>
 </code></pre></div>
     </div>
   </div>

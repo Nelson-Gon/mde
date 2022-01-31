@@ -55,6 +55,20 @@ na_summary(airquality,sort_by = "percent_complete")
 
 ```
 
+
+
+If one would like to reset (drop) row names, then one can set `row_names` to 
+`TRUE` This may especially be useful in cases where `rownames` are simply 
+numeric and do not have much additional use.
+
+
+```{r reset_rownames}
+
+na_summary(airquality,sort_by = "percent_complete", reset_rownames = TRUE)
+
+```
+
+
 To sort by `percent_missing` instead:
 
 ```{r}

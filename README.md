@@ -1,12 +1,12 @@
 mde: Missing Data Explorer
 ================
-2021-09-19
+2022-01-31
 
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3890659.svg)](https://doi.org/10.5281/zenodo.3890659)
-[![CRAN\_Status\_Badge](https://r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
-[![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/mde)](https://CRAN.R-project.org/package=mde)
+[![CRAN_Status_Badge](https://r-pkg.org/badges/version/mde)](https://cran.r-project.org/package=mde)
+[![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/mde)](https://CRAN.R-project.org/package=mde)
 [![Codecov test
 coverage](https://codecov.io/gh/Nelson-Gon/mde/branch/master/graph/badge.svg)](https://codecov.io/gh/Nelson-Gon/mde?branch=master)
 [![R-CMD-check](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml/badge.svg)](https://github.com/Nelson-Gon/mde/actions/workflows/devel-check.yaml)
@@ -89,6 +89,21 @@ na_summary(airquality,sort_by = "percent_complete")
 #> 4  Solar.R       7      146         95.42484        4.575163
 #> 1      Day       0      153        100.00000        0.000000
 #> 2    Month       0      153        100.00000        0.000000
+#> 5     Temp       0      153        100.00000        0.000000
+#> 6     Wind       0      153        100.00000        0.000000
+```
+
+If one would like to reset (drop) row names, then one can set
+`row_names` to `TRUE` This may especially be useful in cases where
+`rownames` are simply numeric and do not have much additional use.
+
+``` r
+na_summary(airquality,sort_by = "percent_complete", reset_rownames = TRUE)
+#>   variable missing complete percent_complete percent_missing
+#> 1    Ozone      37      116         75.81699       24.183007
+#> 2  Solar.R       7      146         95.42484        4.575163
+#> 3      Day       0      153        100.00000        0.000000
+#> 4    Month       0      153        100.00000        0.000000
 #> 5     Temp       0      153        100.00000        0.000000
 #> 6     Wind       0      153        100.00000        0.000000
 ```
