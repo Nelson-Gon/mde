@@ -1,11 +1,7 @@
 
 Release Summary
 
-* Extends package functionality. 
-
-* Improves tests.  
-
-* Fixes known issues in several functions. 
+* This release fixes major issues with CRAN checks, minor bug fixes, and introduces new functionality.  
 
 
 
@@ -13,7 +9,7 @@ Release Summary
 
 * local Windows 10 1903 x86_64, R 4.0.0 
 
-* ubuntu 16.04.6 (on Travis), R 3.5.3
+* Ubuntu 18.04 LTS (on Travis), R 4.0.0 
 
 * win-builder (devel, release)
 
