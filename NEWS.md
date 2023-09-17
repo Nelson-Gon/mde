@@ -5,6 +5,10 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+# mde 0.3.3
+
+* Fixed a bug that caused missingness counts to fail in case of logical vectors. 
+
 # mde 0.3.2
 
 * There is now a function `recode_as_value` for general recoding. See 

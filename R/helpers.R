@@ -9,7 +9,7 @@ utils::globalVariables(c("all_of","metric","value","name", ":="))
 #' @title Helper functions in package mde
 #' @inheritParams recode_na_as
 #' @param x data.frame object
-#' @param column_check If TRUE, pattern search is performed columnwise. 
+#' @param column_check If TRUE, pattern search is performed columnwise.
 #' Defaults to FALSE.
 #' @export
 recode_selectors <- function(x,column_check=TRUE,
@@ -19,11 +19,11 @@ recode_selectors <- function(x,column_check=TRUE,
 
 
 if (!is.null(pattern_type)) {
-  
+
   if (!pattern_type %in% c("starts_with","ends_with","contains","regex")){
 stop("pattern_type should be one of starts_with,ends_with,contains or regex")
   }
-  
+
 if(is.null(pattern)) stop("Both a pattern type and pattern should be provided..")
 
 }
@@ -58,9 +58,9 @@ use_pattern <- switch(pattern_type,
 #' @export
 
 recode_helper <- function(x,pattern_type=NULL,pattern=NULL,
-                          original_value, 
+                          original_value,
                           new_value,case_sensitive=FALSE,...){
- 
+
 x %>%
   mutate(across(recode_selectors(x,column_check=TRUE,
                                  pattern=pattern,
@@ -73,7 +73,7 @@ x %>%
 
 #' Checks that all values are NA
 #' @param x A vector or data.frame column
-#' @description This is a helper function to check if all column/vector values 
+#' @description This is a helper function to check if all column/vector values
 #' are NA
 #' @return Boolean TRUE or FALSE depending on the nature of the column/vector
 #' @examples
@@ -113,7 +113,7 @@ skip_on_oldrel <- function(version="3.6.3", msg = NULL) {
 #' @param x A vector whose mean NA is required.
 #' @param as_percent Boolean? Report means as percents, defaults to TRUE.
 #' @examples get_na_means(airquality)
-#' @export 
+#' @export
 get_na_means <- function(x, as_percent=TRUE) UseMethod("get_na_means")
 
 
@@ -131,15 +131,15 @@ get_na_means.character <- get_na_means.numeric
 #' @export
 get_na_means.factor <- get_na_means.numeric
 #' @export
-get_na_means.POSIXct <- get_na_means.numeric 
+get_na_means.POSIXct <- get_na_means.numeric
 
 #' @export
 get_na_means.data.frame <- function(x, as_percent=TRUE){
-  
+
   res <- colMeans(is.na(x))
-  
+
   if(as_percent) res <- res * 100
-  
+
   res
 }
 
@@ -147,7 +147,7 @@ check_column_existence <- function(df, target_columns=NULL, unique_name=NULL){
 
 
 if(!all(target_columns %in% names(df))){
-  
+
 stop(paste0("All columns ", unique_name, " should exist in the data set."))
 
 }
@@ -162,7 +162,7 @@ switches.data.frame <- function(target_value=NULL,sign, percent_na = 50){
 
 available_options <- c("gteq","lteq","gt","lt","eq")
 
-if(! sign %in% available_options ) { 
+if(! sign %in% available_options ) {
   stop(paste(paste(c("I was expecting one of ",
                      available_options),collapse=" "),"not",sign))
 
@@ -199,15 +199,15 @@ switches.double <- switches.numeric
 unexpected_argument <- function(arg, acceptable_values){
 
   if(!arg %in% acceptable_values){
-    stop(paste0("Use either ",acceptable_values[1], " or ", 
+    stop(paste0("Use either ",acceptable_values[1], " or ",
                 acceptable_values[2]," not ", arg))
   }
 }
 
 #' Get NA counts for a given character, numeric, factor, etc.
 #' @param x A vector whose number of missing values is to be determined.
-#' @examples 
-#' na_counts(airquality$Ozone) 
+#' @examples
+#' na_counts(airquality$Ozone)
 #' @export
 
 na_counts <- function(x) UseMethod("na_counts")
@@ -222,10 +222,14 @@ na_counts.character <- function(x) sum(is.na(x))
 
 #' @export
 
+na_counts.logical <- na_counts.numeric
+
+#' @export
+
 na_counts.factor <- na_counts.numeric
 
 #' @export
 
-na_counts.POSIXct <- na_counts.numeric 
+na_counts.POSIXct <- na_counts.numeric
 
 

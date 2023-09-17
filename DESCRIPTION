@@ -1,6 +1,6 @@
 Package: mde
 Title: Missing Data Explorer
-Version: 0.3.2
+Version: 0.3.3.9000
 Authors@R: 
     person(given = "Nelson",
            family = "Gonzabato",
@@ -16,7 +16,7 @@ Imports:
          dplyr(>= 1.0.0),
          tidyr(>= 1.0.3)
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 URL: https://github.com/Nelson-Gon/mde
 BugReports: https://github.com/Nelson-Gon/mde/issues
 Suggests: 
