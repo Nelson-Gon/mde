@@ -13,7 +13,7 @@ all_na(x)
 Boolean TRUE or FALSE depending on the nature of the column/vector
 }
 \description{
-This is a helper function to check if all column/vector values 
+This is a helper function to check if all column/vector values
 are NA
 }
 \examples{

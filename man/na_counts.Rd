@@ -13,5 +13,5 @@ na_counts(x)
 Get NA counts for a given character, numeric, factor, etc.
 }
 \examples{
-na_counts(airquality$Ozone) 
+na_counts(airquality$Ozone)
 }

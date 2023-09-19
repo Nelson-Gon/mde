@@ -16,7 +16,7 @@ recode_selectors(
 \arguments{
 \item{x}{data.frame object}
 
-\item{column_check}{If TRUE, pattern search is performed columnwise. 
+\item{column_check}{If TRUE, pattern search is performed columnwise.
 Defaults to FALSE.}
 
 \item{pattern_type}{One of contains', 'starts_with' or 'ends_with'.}
