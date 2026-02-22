@@ -132,6 +132,8 @@ get_na_means.character <- get_na_means.numeric
 get_na_means.factor <- get_na_means.numeric
 #' @export
 get_na_means.POSIXct <- get_na_means.numeric 
+#' @export 
+get_na_means.logical <- get_na_means.numeric 
 
 #' @export
 get_na_means.data.frame <- function(x, as_percent=TRUE){
@@ -227,5 +229,9 @@ na_counts.factor <- na_counts.numeric
 #' @export
 
 na_counts.POSIXct <- na_counts.numeric 
+
+#' @export
+na_counts.logical <- na_counts.numeric 
+
 
 
