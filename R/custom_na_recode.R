@@ -36,7 +36,7 @@ df <- df %>% dplyr::group_by(!!!dplyr::syms(grouping_cols))
 if(is.null(across_columns)){
 
   df %>%
-    dplyr::mutate(dplyr::if_all(dplyr::everything(),
+    dplyr::mutate(dplyr::across(dplyr::everything(),
                                 ~ifelse(is.na(.),
                                   do.call(func,list(na.omit(.))),.))) %>%
     dplyr::ungroup()
@@ -46,7 +46,7 @@ else{
 check_column_existence(df, across_columns, unique_name = "in across_columns")
 
 df %>%
-dplyr::mutate(dplyr::if_all(c(!!!dplyr::syms(across_columns)), ~ifelse(is.na(.),
+dplyr::mutate(dplyr::across(c(!!!dplyr::syms(across_columns)), ~ifelse(is.na(.),
                               do.call(func,list(na.omit(.))),.))) %>%
   dplyr::ungroup()
 

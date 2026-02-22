@@ -8,6 +8,7 @@
       expect_error(na_summary(airquality, sort_by = "not_in"))
       expect_warning(na_summary(airquality, grouping_cols = c("Month", "Day")))
       expect_error(na_summary(airquality, grouping_cols = "gibberish"))
-    Warning <simpleWarning>
+    Condition
+      Warning in `na_summary.data.frame()`:
       All non grouping values used. Using select non groups is currently not supported
 
