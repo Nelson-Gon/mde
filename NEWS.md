@@ -4,7 +4,9 @@ author: "Nelson Gonzabato"
 date: "`r Sys.Date()`"
 output: html_document
 ---
+# mde 0.3.3 
 
+* This is a minor release that fixes issues with changes to dplyr syntax and how dataframes are processed in specific scenarios. 
 # mde 0.3.2
 
 * There is now a function `recode_as_value` for general recoding. See 
