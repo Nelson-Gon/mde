@@ -72,10 +72,10 @@ if (all(!is.null(keep_columns), !is.null(target_columns))){
   
 if (!is.null(keep_columns)){
   grouped_dfr %>% 
-    dplyr::filter(dplyr::across(-all_of(c(keep_columns)),
-                  ~!switches(mean(is.na(.)) * 100,
-                               sign=sign,
-                percent_na=percent_na))) %>% 
+   dplyr::filter(dplyr::if_all(-dplyr::all_of(keep_columns),
+                      ~ !switches(mean(is.na(.)) * 100,
+                                   sign = sign,
+                                   percent_na = percent_na))) %>% 
     dplyr::ungroup()
 }  
 
@@ -83,7 +83,7 @@ if (!is.null(keep_columns)){
     # if we provide a specific column, only drop at these
     
     grouped_dfr %>%   
-    dplyr::filter(dplyr::across(all_of(target_columns),
+    dplyr::filter(dplyr::if_all(all_of(target_columns),
                       ~!switches(mean(is.na(.)) * 100,
                         sign=sign,
                 percent_na=percent_na))) %>% 
@@ -93,7 +93,7 @@ if (!is.null(keep_columns)){
   else{
     
     grouped_dfr %>% 
-    dplyr::filter(dplyr::across(dplyr::everything(), 
+    dplyr::filter(dplyr::if_all(dplyr::everything(), 
                          ~!switches(mean(is.na(.)) * 100,
                             sign=sign,
                       percent_na=percent_na))) %>% 
