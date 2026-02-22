@@ -21,7 +21,7 @@ check_column_existence(df, grouping_cols, unique_name = "to group by")
     
    df %>%
          dplyr::group_by(!!!dplyr::syms(grouping_cols)) %>%
-     dplyr::filter(dplyr::across(everything(),~!all_na(.))) %>%
+     dplyr::filter(dplyr::if_all(everything(),~!all_na(.))) %>%
      dplyr::ungroup()
 
 
