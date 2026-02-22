@@ -1,6 +1,6 @@
-# Contributing to mde
+# Contributing to mde 
 
-This document provides guidelines for contributions to mde.
+This document provides guidelines for contributions to manymodelr.
 
 **Kinds of contribution**
 
@@ -17,7 +17,7 @@ If edited via an `.R` file, please also update the docs using `roxygen2` to gene
 
 **Pull Requests**
 
-* Please raise an issue for discussion and reproducibility checks at [issues](https://github.com/Nelson-Gon/mde/issues)
+* Please raise an issue for discussion and reproducibility checks at [issues](https://github.com/Nelson-Gon/manymodelr/issues)
 
 * Once the bug/enhancement is approved, please create a Git branch for the pull request.
 
@@ -25,13 +25,11 @@ If edited via an `.R` file, please also update the docs using `roxygen2` to gene
 
 * Update `NEWS.md` to reflect the changes made.
 
-* Update examples in `README.rmd` and knit it to make the relevant `README.md`
+* Update `README.Rmd`, `knit`
 
-* Copy `README.rmd` to `vignettes/mde_vignette.rmd` 
+* Run: `cp README.Rmd vignettes/manymodelr_vignette.rmd && sed -i 's/github_document/html_document/g' vignettes/manymodelr_vignette.rmd`
 
-* Perform tests and checks locally.
-
-* PR or push to branch not **master**
+* `Knit` vignettes. Bonus points if you use `Rscript` or some way to automate this process. 
 
 **Release checklist**
 
@@ -59,6 +57,7 @@ If edited via an `.R` file, please also update the docs using `roxygen2` to gene
 
 * Release package with `devtools::release` if all steps above are fulfilled. 
 
-Please note that the 'mde' project is released with a
+
+Please note that the 'manymodelr' project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
